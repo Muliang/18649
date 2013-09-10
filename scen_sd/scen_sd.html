@@ -260,7 +260,8 @@
       <h3> <a name="scenario5a" id="scenario5a"></a>Scenario 5A:
         Passenger attempts to enter the car as the doors begin to close.
       </h3>
-      <h3> Author name: Example Solutions </h3>
+      <h3> Author name: Priya Mahajan<br>
+      </h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Passenger is outside the car. </li>
@@ -269,7 +270,22 @@
         <li>At least one door[<b>b</b>,<b>r</b>] is open. </li>
       </ul>
       <h3> Scenario: </h3>
+      <ol>
+        <li>Door[b,r] starts closing.</li>
+        <li>Passenger attempts to enter.</li>
+        <li>Passenger triggers the door[<b>b,r</b>] reversal.</li>
+        <li>Door starts opening.</li>
+        <li>Door opens completely.<br>
+        </li>
+      </ol>
       <h3> Post-Conditions: </h3>
+      <ul>
+        <li>Passenger is inside the car.</li>
+        <li>Elevator is stopped and both elevator and Passenger are at
+          the same floor <b>f.</b></li>
+        <li>All doors[b,r] of hallway<b> b</b> are completely open.<b><br>
+          </b></li>
+      </ul>
       <h3> Sequence Diagram: </h3>
       <p> <a href="proj2_scenario5a.gif"><br>
         </a> </p>
@@ -278,7 +294,8 @@
       <h3> <a name="scenario5b" id="scenario5b"></a>Scenario 5B:
         Passenger attempts to exit the car as the doors begin to close.
       </h3>
-      <h3> Author name: Example Solutions </h3>
+      <h3> Author name: Priya Mahajan<br>
+      </h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Passenger is inside the car. </li>
@@ -287,7 +304,20 @@
         <li>At least one door[<b>b</b>,<b>r</b>] is open. </li>
       </ul>
       <h3> Scenario: </h3>
+      <ol>
+        <li>Door[b,r] starts closing.</li>
+        <li>Passenger attempts to exit.</li>
+        <li>Passenger triggers the door[b,r] reversal.</li>
+        <li>Door starts opening.</li>
+        <li>Door opens completely.<br>
+        </li>
+      </ol>
       <h3> Post-Conditions: </h3>
+      <ul type="disc">
+        <li>Passenger is outside the car. </li>
+        <li>Car is stopped at floor <b>f</b> and hallway <b>b</b>. </li>
+        <li>All doors[<b>b</b>,<b>r</b>] are completely open. </li>
+      </ul>
       <h3> Sequence Diagram: </h3>
       <p> <a href="proj2_scenario5b.gif"><br>
         </a> </p>
@@ -306,7 +336,8 @@
         CarLevelPosition Sensor to plan when to slow down. You will be
         given information on how to design a Fast Drive in the upcoming
         projects. For Project 2, a Slow Drive will suffice.</p>
-      <h3> Author name: Example Solutions </h3>
+      <h3> Author name: Priya Mahajan<br>
+      </h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Car is at hallway [<b>f</b>, <b>b</b>]. </li>
@@ -314,7 +345,26 @@
         <li>Car is moving in hoistway. </li>
       </ul>
       <h3> Scenario: </h3>
+      <ol>
+        <li>Car Position indicator shows floor x.<br>
+        </li>
+        <li>Car is moving towards floor y.<br>
+        </li>
+        <li>Car Lantern for floor[y,g] is already lit.(Desired floor)<br>
+        </li>
+        <li>Car reaches floor y (Desired floor). Car Position Indicator
+          shows floor y<br>
+        </li>
+        <li>Car stops.<br>
+        </li>
+      </ol>
       <h3> Post-Conditions: </h3>
+      <ul>
+        <li>Car is stopped at floor y <br>
+        </li>
+        <li>Doors are closed.<br>
+        </li>
+      </ul>
       <h3> Sequence Diagram: </h3>
       <p> <a href="proj2_scenario6.gif"><br>
         </a> </p>
@@ -360,8 +410,8 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="../../../SD_7A_YujiaWang.png" height="364"
-        width="1481"><br>
+      <img alt="" src="../../../SD_7A_YujiaWang.png" width="1481"
+        height="364"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7b" id="scenario7b"></a>Scenario 7B:
@@ -394,8 +444,8 @@
         <li>Elevator starts from floor f, and stays <b>Stop</b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="../../../SD_7B_YujiaWang.png" height="316"
-        width="916"><br>
+      <img alt="" src="../../../SD_7B_YujiaWang.png" width="916"
+        height="316"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -419,8 +469,8 @@
       </ul>
       <h3> </h3>
       <h3> Sequence Diagram:</h3>
-      <img alt="" src="../../../SD_7C_YujiaWang.png" height="248"
-        width="710"><br>
+      <img alt="" src="../../../SD_7C_YujiaWang.png" width="710"
+        height="248"><br>
       <h3></h3>
       <p> <a href="proj2_scenario7c.gif"><br>
         </a> </p>
