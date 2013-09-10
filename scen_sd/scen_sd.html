@@ -388,11 +388,16 @@
         <li>Both Car Lanterns are off. </li>
       </ul>
       <h3> Scenario: </h3>
+      <p><font color="#ff0000">//Number your scenario</font><br>
+      </p>
       <ul>
         <li>Elevator stops at floor <b>f</b>, this is one passenger's
-          destination.</li>
+          destination. <font color="#ff0000">//not required</font><br>
+        </li>
         <li>Elevator opens doors to let the passenger exit.</li>
-        <li>Another passenger pressed the hall call button at floor <b>f1</b>.</li>
+        <li>Another passenger pressed the hall call button at floor <b>f1</b>.
+          <font color="#ff0000">//just add has already been pressed</font><br>
+        </li>
         <li>Dispatcher intends direction <b>d</b> to pick up the next
           passenger at floor <b>f1</b>.</li>
         <li>CarLantern[<b>d</b>] is on.<br>
@@ -410,8 +415,7 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7A_YujiaWang.png" width="1481"
-        height="364"><br>
+      <img alt="" src="SD_7A_YujiaWang.png" width="1481" height="364"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7b" id="scenario7b"></a>Scenario 7B:
@@ -428,12 +432,19 @@
         <li>Both Car Lanterns are off. </li>
       </ul>
       <h3> Scenario:</h3>
+      <p><font color="#ff0000">Number your scenario </font></p>
       <ul>
         <li>Elevator stops at floor <b>f</b>, this is one passenger's
-          destination.</li>
-        <li>Elevator opens doors to let the passenger exit.</li>
+          destination. <font color="#ff0000">/ not required</font></li>
+        <li>Elevator opens doors to let the passenger exit.&nbsp;<font
+            color="#ff0000"></font></li>
         <li>Dispatcher intends direction <b>Stop</b>, with enabled
-          pickup in hallway <b>b</b>.</li>
+          pickup in hallway <b>b</b>. //Delete it</li>
+        <li><font color="#ff0000">There was no Hall Call made from any
+            other floor</font></li>
+        <li><font color="#ff0000">All Car Call lights are inactive or
+            all CarCallLight [f,b] are false.</font></li>
+        <li><font color="#ff0000">Elevator stops at hallway b</font></li>
         <li>Elevator closes doors.<br>
         </li>
       </ul>
@@ -441,11 +452,13 @@
       <h3> Post-Conditions: </h3>
       <ul>
         <li>All doors are closed.</li>
-        <li>Elevator starts from floor f, and stays <b>Stop</b>.</li>
+        <li>Elevator starts from floor f, and stays <b>Stop</b>. <font
+            color="#ff0000">//Delete it</font></li>
+        <li><font color="#ff0000">Elevator is at floor f, hallway b</font><br>
+        </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7B_YujiaWang.png" width="916"
-        height="316"><br>
+      <img alt="" src="SD_7B_YujiaWang.png" width="916" height="316"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -469,8 +482,7 @@
       </ul>
       <h3> </h3>
       <h3> Sequence Diagram:</h3>
-      <img alt="" src="SD_7C_YujiaWang.png" width="710"
-        height="248"><br>
+      <img alt="" src="SD_7C_YujiaWang.png" width="710" height="248"><br>
       <h3></h3>
       <p> <a href="proj2_scenario7c.gif"><br>
         </a> </p>
