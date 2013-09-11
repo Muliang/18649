@@ -8,7 +8,7 @@
     <link rel="Edit-Time-Data" href="proj2_scenarios_files/editdata.mso">
     <title>18-649 Scenarios and Sequence Diagrams</title>
   </head>
-  <body vlink="blue" link="blue">
+  <body link="blue" vlink="blue">
     <div class="Section1">
       <h1 align="center"> 18-649 Scenarios and Sequence Diagrams </h1>
       <div align="center">
@@ -162,7 +162,8 @@
       <h3> <a name="scenario2a" id="scenario2a"></a>Scenario 2A:
         Passenger is in the car and elevator is not at the desired
         destination floor. </h3>
-      <h3> Author name: Yichao Xue </h3>
+      <h3> Author name: Yichao Xue (yichaox@andrew.cmu.edu)<br>
+      </h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Car is at floor <b>f</b>, with at least one Door[<b>b</b>,<b>r</b>]
@@ -190,14 +191,14 @@
       </ul>
       <h3> Sequence Diagram:</h3>
       <a href="scenario2a.png"><img alt="2A" src="scenario2a.png"
-          width="987" border="0" height="337"></a>
+          height="337" width="987" border="0"></a>
       <div align="center">
         <hr size="2" width="100%" align="center"> </div>
       <h3> <a name="scenario2b" id="scenario2b"></a>2B: Passenger is in
         the car and the elevator has arrived at the passenger's desired
         floor, but passenger has not yet exited the car as the doors
         begin to close. </h3>
-      <h3> Author name: Yichao Xue </h3>
+      <h3> Author name: Yichao Xue (yichaox@andrew.cmu.edu)</h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Passenger is in the car. </li>
@@ -237,7 +238,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario2b.png"><img alt="2B" src="scenario2b.png"
-          width="576" border="0" height="337"></a>
+          height="337" width="576" border="0"></a>
       <div align="center">
         <hr size="2" width="100%" align="center"> </div>
       <p> &nbsp; </p>
@@ -245,7 +246,7 @@
         Enters Elevator </h2>
       <h3> Scenario 3A: Passenger is waiting at a hallway for the
         elevator and has already pressed the hall call button. </h3>
-      <h3> Author name: Yichao Xue </h3>
+      <h3> Author name: Yichao Xue (yichaox@andrew.cmu.edu)</h3>
       <h3> Pre-Conditions: </h3>
       <ul type="disc">
         <li>Car is about to arrive at a hallway [<b>f</b>,<b>b</b>] at
@@ -267,7 +268,8 @@
         white-space: normal; widows: auto; word-spacing: 0px;
         -webkit-text-stroke-width: 0px;">
         <li>Passenger is waiting at a hallway.</li>
-        <li>Door[b, r] starts opening. // it might be better to add "Car arrives at floor f" before foor starts opening.</li>
+        <li>Car arrives at floor f, door[b, r] starts opening. <br>
+        </li>
         <li>All doors are fully open.</li>
         <li>Passenger enters the elevator.</li>
         <li>Passenger presses the car call button CarCall[f, b] for
@@ -294,7 +296,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario3a.png"><img alt="3A" src="scenario3a.png"
-          width="1127" border="0" height="402"></a>
+          height="402" width="1127" border="0"></a>
       <div align="center">
         <hr size="2" width="100%" align="center"> </div>
       <p> &nbsp; </p>
@@ -326,7 +328,7 @@
         <li>Passenger is outside the elevator. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img src="Wenhui_4.png" style="width:50%; height:50%;" alt="" />
+      <img src="Wenhui_4.png" style="width:50%; height:50%;" alt="">
       <h2> <a name="usecase5" id="usecase5"></a>Use Case 5: Passenger
         Triggers Door Reversal </h2>
       <h3> <a name="scenario5a" id="scenario5a"></a>Scenario 5A:
@@ -359,7 +361,7 @@
           </b></li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Priya_5A.png" width="909" height="444"><br>
+      <img alt="" src="Priya_5A.png" height="444" width="909"><br>
       <p> <a href="proj2_scenario5a.gif"><br>
         </a> </p>
       <div align="center">
@@ -392,7 +394,7 @@
         <li>All doors[<b>b</b>,<b>r</b>] are completely open. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Priya_5B.png" width="909" height="437"><br>
+      <img alt="" src="Priya_5B.png" height="437" width="909"><br>
       <p> <a href="proj2_scenario5b.gif"><br>
         </a> </p>
       <div align="center">
@@ -441,7 +443,7 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Priya_6A.png" width="992" height="425"><br>
+      <img alt="" src="Priya_6A.png" height="425" width="992"><br>
       <p> <a href="proj2_scenario6.gif"><br>
         </a> </p>
       <div align="center">
@@ -487,7 +489,7 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7A_YujiaWang.png" width="1362" height="322"><br>
+      <img alt="" src="SD_7A_YujiaWang.png" height="322" width="1362"><br>
       <div align="center">
         <hr size="2" width="100%" align="center"> </div>
       <h3> <a name="scenario7b" id="scenario7b"></a>Scenario 7B:
@@ -525,7 +527,7 @@
         <li>Elevator stops at floor <b>f</b><b></b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7B_YujiaWang.png" width="1125" height="316"><br>
+      <img alt="" src="SD_7B_YujiaWang.png" height="316" width="1125"><br>
       <div align="center">
         <hr size="2" width="100%" align="center"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -553,7 +555,7 @@
       </ul>
       <h3> </h3>
       <h3> Sequence Diagram:</h3>
-      <img alt="" src="SD_7C_YujiaWang.png" width="677" height="248"><br>
+      <img alt="" src="SD_7C_YujiaWang.png" height="248" width="677"><br>
       <h3></h3>
       <p> <a href="proj2_scenario7c.gif"><br>
         </a> </p>
@@ -580,7 +582,9 @@
         <li>Drive() is set other than <b>Stop</b> for direction <b>d</b>.
         </li>
         <li>Car starts moving towards floor <b>g</b>. </li>
-        <li>Car arrives at floor <b>g</b>. </li>
+        <li>Car arrives at floor <b>g</b>.&nbsp;</li>
+        <li><font color="#ff0000">// better to add "drive is stopped".</font><br>
+        </li>
       </ol>
       <h3> Post-Conditions: </h3>
       <ul type="disc">
@@ -588,7 +592,7 @@
         <li>All doors are closed. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Wenhui_8.png" width="800" height="300"><br>
+      <img alt="" src="Wenhui_8.png" height="300" width="800"><br>
       <h3></h3>
       <p> <a href="Wenhui_8.png"><br>
         </a> </p>
@@ -622,8 +626,8 @@
         <li>All doors are closed. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Wenhui_9.png" width="700" height="350"><br>
+      <h3> Sequence Diagram: </h3>
+      <img alt="" src="Wenhui_9.png" height="350" width="700"><br>
       <h3></h3>
       <p> <a href="Wenhui_9.png"><br>
         </a> </p>
