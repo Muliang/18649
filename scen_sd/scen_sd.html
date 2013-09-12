@@ -580,16 +580,17 @@
       <ol start="1" type="1">
         <li>Door[<b>b</b>,<b>r</b>] starts closing. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes closing. </li>
-        <li>Drive() is set other than <b>Stop</b> for direction <b>d</b>.
+        <li>Drive() is set to <b>Slow</b> for direction <b>d</b>.
         </li>
         <li>Car starts moving towards floor <b>g</b>. </li>
-        <li>Car arrives at floor <b>g</b>.&nbsp;</li>
-        <li><font color="#ff0000">// better to add "drive is stopped".</font><br>
+        <li>Car arrives at floor <b>g</b>. </li>
+        <li>Drive() is set to <b>Stop</b> for diresction <b>Stop</b>.&nbsp;
         </li>
       </ol>
       <h3> Post-Conditions: </h3>
       <ul type="disc">
         <li>Elevator is at floor <b>g</b>. </li>
+        <li>Drive is <b>Stop</b>. </li>
         <li>All doors are closed. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
