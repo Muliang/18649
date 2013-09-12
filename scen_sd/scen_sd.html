@@ -12,7 +12,7 @@
     <div class="Section1">
       <h1 align="center"> 18-649 Scenarios and Sequence Diagrams </h1>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p>18649 &lt;semester&gt;<br>
         Group #9 s&nbsp; <br>
       </p>
@@ -53,7 +53,7 @@
         <li><a href="#usecase9">9. Cycle Doors</a></li>
       </ul>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h2> <a name="usecase1" id="usecase1"></a>Use Case 1: Passenger
         Makes A Hall Call </h2>
       <h3> <a name="scenario1a" id="scenario1a"></a>Scenario 1A:
@@ -83,7 +83,7 @@
             name="_x0000_i1027" style="border: 0px solid ; width: 602px;
             height: 237px;"></a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario1b" id="scenario1b"></a>Scenario 1B:
         Passenger arrives at a hallway when elevator is already there
         and the car is traveling in the same direction as desired by
@@ -120,7 +120,7 @@
             name="_x0000_i1029" style="border: 0px solid ; width:
             1042px; height: 338px;"></a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario1c" id="scenario1c"></a>Scenario 1C:
         Passenger arrives at a hallway when elevator is already there
         and the car is traveling in opposite direction as desired by
@@ -156,7 +156,7 @@
             name="_x0000_i1031" style="border: 0px solid ; width:
             1044px; height: 340px;"></a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h2> <a name="usecase2" id="usecase2"></a>Use Case 2: Passenger
         Makes A Car Call </h2>
       <h3> <a name="scenario2a" id="scenario2a"></a>Scenario 2A:
@@ -191,9 +191,9 @@
       </ul>
       <h3> Sequence Diagram:</h3>
       <a href="scenario2a.png"><img alt="2A" src="scenario2a.png"
-          height="337" width="987" border="0"></a>
+          border="0" height="337" width="987"></a>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario2b" id="scenario2b"></a>2B: Passenger is in
         the car and the elevator has arrived at the passenger's desired
         floor, but passenger has not yet exited the car as the doors
@@ -238,9 +238,9 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario2b.png"><img alt="2B" src="scenario2b.png"
-          height="337" width="576" border="0"></a>
+          border="0" height="337" width="576"></a>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h2> <a name="usecase3" id="usecase3"></a>Use Case 3: Passenger
         Enters Elevator </h2>
@@ -296,9 +296,9 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario3a.png"><img alt="3A" src="scenario3a.png"
-          height="402" width="1127" border="0"></a>
+          border="0" height="402" width="1127"></a>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h2> <a name="usecase4" id="usecase4"></a>Use Case 4: Passenger
         Exits Elevator </h2>
@@ -365,7 +365,7 @@
       <p> <a href="proj2_scenario5a.gif"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario5b" id="scenario5b"></a>Scenario 5B:
         Passenger attempts to exit the car as the doors begin to close.
       </h3>
@@ -398,7 +398,7 @@
       <p> <a href="proj2_scenario5b.gif"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h2> <a name="usecase6" id="usecase6"></a>Use Case 6: Determine
         Car Position </h2>
@@ -447,7 +447,7 @@
       <p> <a href="proj2_scenario6.gif"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h2> <a name="usecase7" id="usecase7"></a>Use Case 7: Determine
         Car Direction </h2>
@@ -469,13 +469,13 @@
       <ul>
       </ul>
       <ol>
-        <li>Elevator opens doors to let the passenger exit.</li>
-        <li>The hall call button[<b>f1</b>,<b>b</b>,<b>d</b>] has
-          already been pressed<b></b>.</li>
-        <li>CarLantern[<b>d</b>] is on.<br>
+        <li>Door[<b>b,r</b>] starts opening.</li>
+        <li>Door[<b>b,r</b>] completes opening.<br>
         </li>
-        <li>Elevator closes doors.<br>
+        <li>CarLantern[<b>d</b>] is on, elevator is enabling pickup.<br>
         </li>
+        <li>Door[<b>b,r</b>] starts close.</li>
+        <li>Door[<b>b,r</b>] completes closing.</li>
       </ol>
       <ul>
       </ul>
@@ -483,15 +483,13 @@
       </h3>
       <ul>
         <li>All doors are closed.</li>
-        <li>CarLantern[<b>d</b>] is on.<br>
-        </li>
-        <li>Elevator starts from floor f, moving in direction d.<br>
-        </li>
+        <li>Elevator is at floor <b>f</b>, intends to move in direction
+          <b>d</b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7A_YujiaWang.png" height="322" width="1362"><br>
+      <img alt="" src="SD_7A_YujiaWang.png" height="354" width="922"><br>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7b" id="scenario7b"></a>Scenario 7B:
         Elevator arrives at a hallway and the desired direction is Stop.
       </h3>
@@ -509,14 +507,14 @@
       <ul>
       </ul>
       <ol>
-        <li>Elevator ostops at floor f,doors tlet the passenger exit.</li>
+        <li>Door[<b>b,r</b>] starts opening.</li>
+        <li>Door[<b>b,r</b>] completes opening.<br>
+        </li>
         <li>There is no other hall call from any other floor.</li>
         <li>All Car Call lights are inactive or all CarCallLight[<b>f</b>,<b>b</b>]
           are false.</li>
-        <li>Elevator stops at hallway <b>b</b>.<br>
-        </li>
-        <li>Elevator closes doors.<br>
-        </li>
+        <li>Door[<b>b,r</b>] starts closing.</li>
+        <li>Door[<b>b,r</b>] completes closing.</li>
       </ol>
       <ul>
       </ul>
@@ -524,12 +522,12 @@
       <h3> Post-Conditions: </h3>
       <ul>
         <li>All doors are closed.</li>
-        <li>Elevator stops at floor <b>f</b><b></b>.</li>
+        <li>Elevator is at floor <b>f</b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7B_YujiaWang.png" height="316" width="1125"><br>
+      <img alt="" src="SD_7B_YujiaWang.png" height="374" width="873"><br>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
         Elevator doors close on a hallway. </h3>
       <h3> Author name: Yujia Wang </h3>
@@ -541,26 +539,29 @@
       <ul>
       </ul>
       <ol>
-        <li>The passenger exits.</li>
+        <li>There is no other hall call from any other floor.<br>
+        </li>
+        <li>All Car Call lights are inactive or all CarCallLight[<b>f</b>,<b>b</b>]
+          are false.</li>
         <li>Dispatcher intends direction <b>Stop</b>.</li>
-        <li>Elevator closes doors.</li>
+        <li>Door[<b>b</b>,<b>r</b>] starts closing.</li>
+        <li>Door[<b>b</b>,<b>r</b>] completes closing.</li>
       </ol>
       <ul>
       </ul>
       <h3> Post-Conditions:</h3>
       <ul>
         <li>All doors are closed.</li>
-        <li>Elevator stops at floor <b>f</b>.<br>
-        </li>
+        <li>Elevator is at floor <b>f, </b>hallway <b>b</b>.</li>
       </ul>
       <h3> </h3>
       <h3> Sequence Diagram:</h3>
-      <img alt="" src="SD_7C_YujiaWang.png" height="248" width="677"><br>
+      <img alt="" src="SD_7C_YujiaWang.png" height="295" width="781"><br>
       <h3></h3>
       <p> <a href="proj2_scenario7c.gif"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h2> <a name="usecase8" id="usecase8"></a>Use Case 8: Move Car to
         Next Floor </h2>
@@ -597,7 +598,7 @@
       <p> <a href="Wenhui_8.png"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <h3> Scenario 9A: Elevator stops at hallway and doors open.
         Dispatcher computes next desired floor just as doors open. Doors
@@ -627,13 +628,12 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <h3> </h3>
-      &nbsp;
-      <img alt="" src="Wenhui_9.png" height="350" width="700"><br>
+      &nbsp; <img alt="" src="Wenhui_9.png" height="350" width="700"><br>
       <h3></h3>
       <p> <a href="Wenhui_9.png"><br>
         </a> </p>
       <div align="center">
-        <hr size="2" width="100%" align="center"> </div>
+        <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
       <br>
     </div>
