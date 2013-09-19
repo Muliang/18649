@@ -1271,7 +1271,10 @@
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    <br>
+    6.6 mDriveSpeed shall be the same value with the DriveSpeed.<br>
+    6.7 mAtFloor[f, b] = true shall set the drive speed to [Stop, Stop].<br>
+    6.8 if mDoorClosed[f, b] received is true, and mDesiredFloor[f, b,
+    d] = true, shall set the drive speed to [Slow, d].<br>
     <h2><a name="lanterncontrol"></a> 7. LanternControl[d] </h2>
     <h3> Replication: </h3>
     <ul>
