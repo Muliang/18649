@@ -1311,14 +1311,44 @@
     7.1&nbsp;&nbsp;&nbsp; Both CarLanterns[d] shall not be On at the
     same time.
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    7.2&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is received as true,
-    CarLantern[d] shall be commanded to be Off.<br>
-    7.3&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is false and mAtFloor[f,b]
-    is true, and f &gt; mDesiredFloor.f, CarLantern[Down] shall be On.<br>
-    7.4&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is false and mAtFloor[f,b]
-    is true, and f &lt; mDesiredFloor.f, CarLantern[Up] shall be On.<br>
-    7.5&nbsp;&nbsp;&nbsp; If mAtFloor[f,b] is true, and f =
-    mDesiredFloor.f, CarLantern[d] shall be Off.<br>
+    <meta charset="utf-8">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">7.2&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is received as
+      true, CarLantern[*] shall be commanded to be Off.</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">7.3&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is received as
+      false, DesiredDirection[Down] and DesiredDirection[Up] shall set
+      CarLantern[Down] and&nbsp; CarLantern[Up] respectively to be On.</span><br
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px;">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">7.4 &nbsp;&nbsp; If DesiredDirection is Stop , then the
+      CarLantern[*] shall be commanded to be Off.</span><br>
     <br>
     <h2><a name="hallbuttoncontrol"></a> 8. HallButtonControl[f, b, d] </h2>
     <h3> Replication: </h3>
