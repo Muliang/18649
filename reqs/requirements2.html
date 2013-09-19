@@ -1271,7 +1271,10 @@
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    <br>
+    6.6 mDriveSpeed shall be the same value with the DriveSpeed.<br>
+    6.7 mAtFloor[f, b] = true shall set the drive speed to [Stop, Stop].<br>
+    6.8 if mDoorClosed[f, b] received is true, when not CurrentFloor,
+    shall set the drive speed to [Slow, d].<br>
     <h2><a name="lanterncontrol"></a> 7. LanternControl[d] </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1442,7 +1445,8 @@
     <h3> CONSTRAINTS: </h3>
     <p> 9.1 If CarCall[b,r] is true, CarLight[b,r] shall be commanded to
       be On. </p>
-    <p> 9.2 If no car button is pressed, mCarLight should be false. </p>
+    <p> 9.2 If no car call button is pressed, mCarLight should be false.
+    </p>
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
     <br>
     <h2><a name="carpositioncontrol"></a> 10. CarPositionControl </h2>
