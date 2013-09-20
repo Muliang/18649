@@ -478,8 +478,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">10.4 (add requirement
-            summary) </td>
+          <td style="vertical-align: top;">10.4 car is at any floor -&gt; CarPositionInicator shows current floor </td>
           <td style="vertical-align: top;"><br>
           </td>
           <td style="vertical-align: top;"><br>
@@ -491,34 +490,8 @@
           <td style="vertical-align: top;"><br>
           </td>
         </tr>
-        <tr>
-          <td style="vertical-align: top;">...<br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-          <td style="vertical-align: top;"><br>
-          </td>
-        </tr>
+        
+       
         <tr>
           <td style="vertical-align: top;"><u><b>Behavioral
                 Requirements/Constraints</b></u></td>
@@ -551,8 +524,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">11.4&nbsp; Set DesiredFloor
-            to Target<br>
+          <td style="vertical-align: top;">11.4&nbsp; Set mDesiredFloor.f<br>
           </td>
           <td style="vertical-align: top;">X<br>
           </td>
@@ -566,8 +538,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">11.5 Set DesiredFloor
-            direction to Stop <br>
+          <td style="vertical-align: top;">11.5 Set DesiredFloor.d <br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
@@ -581,7 +552,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.1 Doors not closed --&gt; set Target<br>
+          <td valign="top">11.6.1 Doors not closed --&gt; Target = ((f mod MaxFloors)+1)<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -595,8 +566,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.2 Doors not closed --&gt; set
-            DesiredFloor's hallway<br>
+          <td valign="top">11.6.2 Doors not closed --&gt; mDesiredFloor.b = b<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -611,7 +581,7 @@
         </tr>
         <tr>
           <td valign="top">11.7.1 Doors not closed between floors --
-            &gt; set Target<br>
+            &gt; set Target = 1<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -626,7 +596,7 @@
         </tr>
         <tr>
           <td valign="top">11.7.2 Doors not closed between floors --
-            &gt; set DesiredFloor's&nbsp;&nbsp; hallway<br>
+            &gt; set mDesiredFloor.b = None<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -640,8 +610,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.8 AtFloor true for two hallways --&gt; set
-            both DesiredFloor's hallways<br>
+          <td valign="top">11.8 two AtFloor[f,b] values are true for the same f --&gt; mDesiredFloor.b = Both<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -655,27 +624,13 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.9 Door Open dwell --&gt; set Desired Dwell<br>
+          <td valign="top">11.9 set mDesiredDwell<br>
           </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
