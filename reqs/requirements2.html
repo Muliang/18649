@@ -1278,11 +1278,12 @@
     6.5&nbsp;&nbsp;&nbsp; If mCarWeight(x) &gt;= MaxCarCapacity, the
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
-    <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
+    <h3> TIME-TRIGGERED BEHAVIORS: </h3>
     6.6 Drive[s,d] shall be set to an appropriate value based on
     DriveSpeed.<br>
-    6.7 mAtFloor[f, b] = true shall set the drive speed to [Stop, Stop].<br>
-    6.8 If mDoorClosed[f, b]=true, and DesiredDirection is UP or DOWN,
+    6.7 If mAtFloor[f, b] = true, then the drive speed shall be set to
+    [Stop, Stop].<br>
+    6.8 If mDoorClosed[f, b]=true and DesiredDirection is UP or DOWN,
     then Drive[s,d] shall be set to [Slow, d].<br>
     <h2><a name="lanterncontrol"></a> 7. LanternControl[d] </h2>
     <h3> Replication: </h3>
