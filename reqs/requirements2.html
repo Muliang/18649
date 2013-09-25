@@ -2195,13 +2195,85 @@
       be set to OFF<br>
       &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
       be set to False.<br>
-      8.6 If CurrentFloor is f and mDesiredFloor is g, and
-      HallCall[f,b,d]= true ; then HallLight[f,b,d] shall be ON<br>
+      8.6 If CurrentFloor is g and HallCall[f,b,d]= true ; then
+      HallLight[f,b,d] shall be ON<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
+<<<<<<< HEAD
       height="443" width="762">
+=======
+      width="762" height="443"><br>
+    <br>
+    <table width="777" height="80" border="1" cellpadding="2"
+      cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T8.1<br>
+          </td>
+          <td valign="top">CurrentFloor <span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; g AND HallCall[f,b,d] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; true</span> <br>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span></td>
+        </tr>
+        <tr>
+          <td valign="top">T8.2<br>
+          </td>
+          <td valign="top">CurrentFloor <span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; f AND mDesiredFloor </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; f AND
+              mDoorClosed[b,*] = false</span><br>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+>>>>>>> aefc13b5ab214677cb3d0a26268e4d6538eec8d6
     <p> </p>
     <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
