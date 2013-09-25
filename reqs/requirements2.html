@@ -1281,11 +1281,12 @@
     6.5&nbsp;&nbsp;&nbsp; If mCarWeight(x) &gt;= MaxCarCapacity, the
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
-    <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
+    <h3> TIME-TRIGGERED BEHAVIORS: </h3>
     6.6 Drive[s,d] shall be set to an appropriate value based on
     DriveSpeed.<br>
-    6.7 mAtFloor[f, b] = true shall set the drive speed to [Stop, Stop].<br>
-    6.8 If mDoorClosed[f, b]=true, and DesiredDirection is UP or DOWN,
+    6.7 If mAtFloor[f, b] = true, then the drive speed shall be set to
+    [Stop, Stop].<br>
+    6.8 If mDoorClosed[f, b]=true and DesiredDirection is UP or DOWN,
     then Drive[s,d] shall be set to [Slow, d].<br>
     <h2><a name="lanterncontrol"></a> 7. LanternControl[d] </h2>
     <h3> Replication: </h3>
@@ -1646,14 +1647,30 @@
         is invalid it has a mnemonic value of None. </li>
     </ul>
     <h3> CONSTRAINTS: </h3>
-    <p> 9.1 If CarCall[b,r] is true, CarLight[b,r] shall be commanded to
-      be On. </p>
-    <p> 9.2 If no car call button is pressed, mCarLight should be false.
+    <p>None<br>
     </p>
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
+    <p> ER9.1 If CarCall[b,r] is true, CarLight[b,r] shall be commanded
+      to be On. </p>
+    <p> ER9.2 If no car call button is pressed, mCarLight should be
+      false.<br>
+    </p>
+    <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
+    <p>R9.1 mCarCall[f,b] shall be set to the current value of
+      CarCall[f,b].</p>
+    <p>R9.2 mCarLight[f,b] shall be set to the current value of
+      CarLight[f,b].<br>
+    </p>
+    <p>R9.3&nbsp; If CurrentFloor is [f,b] and mDesiredFloor[f,b] is
+      true and mDoorClosed[b,r] is False, CarLight[f,b] shall be set to
+      Off.<br>
+    </p>
+    <p>R9.4 If CarCall[f,b] is True and mDesiredFloor[f,b] is True and
+      CurrentFloor is not [f,b], CarLight[f,b] shall be set to On.<br>
+    </p>
     <br>
     <h2><a name="carpositioncontrol"></a> 10. CarPositionControl </h2>
-    <h3> Replication: </h3>
+    <h3> Replication:;</h3>
     <ul>
       <li>There is one CarPositionControl instance in the car, which
         feeds values to the CarPositionIndicator. </li>

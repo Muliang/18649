@@ -38,6 +38,8 @@
         <ul>
           <li><a href="#scenario2a">Scenario 2A</a> </li>
           <li><a href="#scenario2b">Scenario 2B</a></li>
+          <li><a href="#scenario2c">Scenario 2C</a><br>
+          </li>
         </ul>
         <li><a href="#usecase3">3. Passenger Enters Car</a> </li>
         <li><a href="#usecase4">4. Passenger Exits Car</a> </li>
@@ -186,7 +188,7 @@
         <li>Door[b, r] starts closing.</li>
         <li>The passenger presses the car call button CarCall[f, b] for
           desired destination [f, b].</li>
-        <li>The car light turns on.</li>
+        <li>The CarLight[f,b] turns on.</li>
         <li>Doors complete closing.</li>
       </ol>
       <h3> Post-Conditions: </h3>
@@ -249,7 +251,48 @@
           border="0" height="337" width="576"></a>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
-      <p> &nbsp; </p>
+      <p> &nbsp; <br>
+      </p>
+      <h3><a name="scenario2c" id="scenario2b"></a>2C: Passenger is in
+        the car and the elevator has arrived at the passenger's desired
+        floor with doors shut, door starts to open. </h3>
+      <h3> Author name: Wenhui Hu (wenhuih@andrew.cmu.edu)</h3>
+      <h3> Pre-Conditions: </h3>
+      <ul type="disc">
+        <li>Passenger is in the car. </li>
+        <li>Elevator has arrived at the desired hallway, but the
+          passenger has not yet exited the car. </li>
+        <li>All doors are closed. </li>
+      </ul>
+      <h3> Scenario: </h3>
+      <p> </p>
+      <ol style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; orphans:
+        auto; text-align: start; text-indent: 0px; text-transform: none;
+        white-space: normal; widows: auto; word-spacing: 0px;
+        -webkit-text-stroke-width: 0px;">
+        <li>Door[b, r] starts opening.</li>
+        <li>CarLight[f,b] turns off.<br>
+        </li>
+        <li>Doors are fully opened.</li>
+      </ol>
+      <h3> Post-Conditions: </h3>
+      <p> </p>
+      <ul style="color: rgb(0, 0, 0); font-family: Times; font-size:
+        medium; font-style: normal; font-variant: normal; font-weight:
+        normal; letter-spacing: normal; line-height: normal; orphans:
+        auto; text-align: start; text-indent: 0px; text-transform: none;
+        white-space: normal; widows: auto; word-spacing: 0px;
+        -webkit-text-stroke-width: 0px;">
+        <li>Elevator is at passenger's desired floor.</li>
+        <li>At least one door is open.</li>
+        <li>CarLight[f,b] is off.<br>
+        </li>
+      </ul>
+      <h3> Sequence Diagram: </h3>
+      <p><br>
+      </p>
       <h2> <a name="usecase3" id="usecase3"></a>Use Case 3: Passenger
         Enters Elevator </h2>
       <h3> Scenario 3A: Passenger is waiting at a hallway for the
@@ -576,8 +619,8 @@
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
-      <h2> <a name="usecase8" id="usecase8"></a>Use Case 8: Move Car to
-        Next Floor </h2>
+      <h2><a name="Use_Case_8:_Move_Car_to"></a> <a name="usecase8"
+          id="usecase8"></a>Use Case 8: Move Car to Next Floor </h2>
       <h3> Scenario 8A: Elevator moves from {floor f, hallway b} to
         {floor g, hallway c} in direction d. </h3>
       <p> Note: You will want to create other scenarios that involve
@@ -596,9 +639,11 @@
         <li> Dispatcher sets mDesiredFloor[g,c,d] as true.</li>
         <li> Car is not at floor[g,c]</li>
         <li>Drive() is set to <b>Slow</b> for direction <b>d</b>. </li>
-        <li>Car starts moving towards floor <b>g</b>, DriveSpeed is between Stop and Slow for direction d. </li>
+        <li>Car starts moving towards floor <b>g</b>, DriveSpeed is
+          between Stop and Slow for direction d. </li>
         <li>Car arrives at floor <b>g</b>. </li>
         <li>Drive() is set to <b>Stop</b> for diresction <b>Stop</b>.&nbsp;
+
 
 
 
