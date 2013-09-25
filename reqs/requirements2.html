@@ -1365,10 +1365,10 @@
       set to On.</span><br>
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" border="0"
-        height="420" width="449"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" width="449"
+        height="420" border="0"></a><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="148">
+    <table height="148" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -1396,6 +1396,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">mAtFloor[mDesiredFloor,
+
 
 
               b] </span><span style="color: rgb(0, 0, 0); font-family:
@@ -1502,6 +1503,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">mAtFloor[mDesiredFloor,
+
 
 
               b] </span><span style="color: rgb(0, 0, 0); font-family:
@@ -1614,8 +1616,26 @@
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
     8.1&nbsp;&nbsp; &nbsp; HallCall[f,b,d] = true shall return
     HallLight[f,b,d]= true<br>
-    8.2&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = false shall return
-    mHallCall[f,b,d] = false
+    8.2&nbsp;&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = false shall return
+    mHallCall[f,b,d] = false<br>
+    &nbsp; <br>
+    <br>
+    <h3>TIME-TRIGGERED BEHAVIORS: </h3>
+    <p>8.3&nbsp; If HallCall[f,b,d] is true then mHallCall[f,b,d] shall
+      be set to true.<br>
+      8.4&nbsp; If HallCall[f,b,d] is false then mHallCall[f,b,d] shall
+      be set to false.<br>
+      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and
+      mDoorClosed[b,*] = false, then<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
+      be set to OFF<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
+      be set to False.<br>
+      8.6 If CurrentFloor is f and mDesiredFloor is g, and
+      HallCall[f,b,d]= true ; then HallLight[f,b,d] shall be ON<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+    </p>
+    <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1675,11 +1695,11 @@
     </p>
     <h3>State Chart:</h3>
     <img alt="carbuttoncontrol_statechart"
-      src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="321" width="349"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png" width="349"
+      height="321"><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
-      width="742">
+    <table width="742" height="115" border="1" cellpadding="2"
+      cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -1705,6 +1725,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2206,7 +2227,7 @@
     <h3>State Chart:</h3>
     <img alt="carpositioncontrol_statechart"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="41" width="217">
+      width="217" height="41">
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
     <ul>
