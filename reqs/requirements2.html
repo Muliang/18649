@@ -1283,13 +1283,114 @@
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    6.6 Drive[s,d] shall be set to an appropriate value based on
-    DriveSpeed.<br>
-    6.7 If mAtFloor[f, b] = true, then the drive speed shall be set to
+    6.6 If CommitPoint[DesiredFloor] = Reached AND
+    mAtFloor[mDesiredFloor.f] = true AND<br>
+    &nbsp;&nbsp;&nbsp; 6.6.1 if DriveSpeed &gt; SlowSpeed, then Drive
+    speed shall be set to [Slow, d]<br>
+    &nbsp;&nbsp;&nbsp; 6.6.2 if SlowSpeed &gt;= DriveSpeed &gt;
+    LevelSpeed, then Drive speed shall be set to [Level, d]<br>
+    &nbsp;&nbsp;&nbsp; 6.6.3 if LevelSpeed &gt;= DriveSpeed, then Drive
+    speed shall be set to [Stop, Stop]<br>
+    6.7 If any mLevel[d] = false AND DriveSpeed = [Stop, Stop], then
+    Drive shall be set to [Level, d]<br>
+    6.8 If any mLevel[d] = true AND DriveSpeed = [Level, d], then Drive
+    shall be set to [Stop, Stop]<br>
+    6.9 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
+    AND DesiredDirection is UP or DOWN AND mAtFloor[mDesiredFloor.f] =
+    false, then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
+    6.10 If any mDoorClosed[b, r] is False, then<br>
+    &nbsp;&nbsp;&nbsp; 6.9.1 Drive shall be set to Stop<br>
+    &nbsp;&nbsp;&nbsp; 6.9.2 State shall be set to Emergency<br>
+    6.11 If any mDoorMotor[b, r] is Open,&nbsp; then<br>
+    &nbsp;&nbsp;&nbsp; 6.10.1 Drive shall be set to Stop<br>
+    &nbsp;&nbsp;&nbsp; 6.10.2 State shall be set to Emergency<br>
+    6.12 If mEmergencyBrake is true, then Drive[s,d] shall be set to
     [Stop, Stop].<br>
-    6.8 If mDoorClosed[f, b]=true and DesiredDirection is UP or DOWN,
-    then Drive[s,d] shall be set to [Slow, d].<br>
-    <h2><a name="lanterncontrol"></a> 7. LanternControl[d] </h2>
+    <h3>TIME-TRIGGERED STATECHART:<br>
+    </h3>
+    <h3><img alt="" src="statechart-DriveControl_group9_yujiaw.png"
+        height="665" width="1189"><br>
+    </h3>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top">Transition<br>
+            #<br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.1<br>
+          </td>
+          <td valign="top">DesiredDirection &#8592; Up AND All
+            mDoorClosed[b,r] &#8592; true <br>
+            AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
+            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
+            Unreached<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.2<br>
+          </td>
+          <td valign="top">DesiredDirection &#8592; Down AND All
+            mDoorClosed[b,r] &#8592; true <br>
+            AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
+            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, Down] &#8592;
+            Unreached</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.3<br>
+          </td>
+          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
+            &#8592; DestinationFloor<br>
+            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
+            Reached</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.4<br>
+          </td>
+          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
+            &#8592; DestinationFloor<br>
+            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, DOWN] &#8592;
+            Reached<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.5<br>
+          </td>
+          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed &lt;=
+            LEVEL_SPEED<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.6<br>
+          </td>
+          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed = 0<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.7<br>
+          </td>
+          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed &lt;=
+            LEVEL_SPEED<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.8<br>
+          </td>
+          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed &#8592;0</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.9.*<br>
+          </td>
+          <td valign="top">mEmergencyBrake &#8592; true<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h2>&nbsp;7. LanternControl[d] </h2>
     <h3> Replication: </h3>
     <ul>
       <li>Two controllers, one for each lantern {Up, Down} mounted in
@@ -1396,23 +1497,22 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">mAtFloor[mDesiredFloor,
-
-              b] </span><span style="color: rgb(0, 0, 0); font-family:
-              Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              left; text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span style="color: rgb(0, 0,
-                0); font-family: Times; font-size: medium; font-style:
-                normal; font-variant: normal; font-weight: normal;
-                letter-spacing: normal; line-height: normal; orphans:
-                auto; text-align: left; text-indent: 0px;
-                text-transform: none; white-space: normal; widows: auto;
-                word-spacing: 0px; -webkit-text-stroke-width: 0px;
-                display: inline !important; float: none;">&#8592; true AND </span></span><span
+              display: inline !important; float: none;">mAtFloor[mDesiredFloor</span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"> AND </span></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -1501,13 +1601,12 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">mAtFloor[mDesiredFloor,
-
-              b] </span><span style="color: rgb(0, 0, 0); font-family:
-              Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              left; text-indent: 0px; text-transform: none; white-space:
+              display: inline !important; float: none;">mAtFloor[mDesiredFloor
+            </span><span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;"><span style="color: rgb(0, 0,
@@ -1572,8 +1671,8 @@
       auto; text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;"></span>
-    <h2><a name="hallbuttoncontrol"></a> 8. HallButtonControl[f, b, d] </h2>
+      none;"></span><a name="hallbuttoncontrol"></a>
+    <h2>&nbsp;8. HallButtonControl[f, b, d] </h2>
     <h3> Replication: </h3>
     <ul>
       <li>There are two HallButtonControllers[f, b, d] per hallway, one
@@ -1613,8 +1712,26 @@
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
     8.1&nbsp;&nbsp; &nbsp; HallCall[f,b,d] = true shall return
     HallLight[f,b,d]= true<br>
-    8.2&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = false shall return
-    mHallCall[f,b,d] = false
+    8.2&nbsp;&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = false shall return
+    mHallCall[f,b,d] = false<br>
+    &nbsp; <br>
+    <br>
+    <h3>TIME-TRIGGERED BEHAVIORS: </h3>
+    <p>8.3&nbsp; If HallCall[f,b,d] is true then mHallCall[f,b,d] shall
+      be set to true.<br>
+      8.4&nbsp; If HallCall[f,b,d] is false then mHallCall[f,b,d] shall
+      be set to false.<br>
+      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and
+      mDoorClosed[b,*] = false, then<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
+      be set to OFF<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
+      be set to False.<br>
+      8.6 If CurrentFloor is f and mDesiredFloor is g, and
+      HallCall[f,b,d]= true ; then HallLight[f,b,d] shall be ON<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+    </p>
+    <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1664,13 +1781,497 @@
     <p>R9.2 mCarLight[f,b] shall be set to the current value of
       CarLight[f,b].<br>
     </p>
-    <p>R9.3&nbsp; If CurrentFloor is [f,b] and mDesiredFloor[f,b] is
-      true and mDoorClosed[b,r] is False, CarLight[f,b] shall be set to
-      Off.<br>
+    <p>R9.3&nbsp; If CurrentFloor is f and mDesiredFloor is f and
+      mDoorClosed[b,r] is False<br>
+      &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to Off.<br>
+      &nbsp;&nbsp;&nbsp; R9.3.2 mCarCall[f,b] shall be set to False.<br>
     </p>
-    <p>R9.4 If CarCall[f,b] is True and mDesiredFloor[f,b] is True and
-      CurrentFloor is not [f,b], CarLight[f,b] shall be set to On.<br>
+    <p>R9.4 If CarCall[f,b] is True, and CurrentFloor g is not the same
+      as mDesiredFloor f, CarLight[f,b] shall be set to On.<br>
     </p>
+    <h3>State Chart:</h3>
+    <img alt="carbuttoncontrol_statechart"
+      src="CallButtonControl_state_chart_group9_wenhuih.png"
+      height="321" width="349"><br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="115"
+      width="742">
+      <tbody>
+        <tr>
+          <td valign="top">Transition # <br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T9.1<br>
+          </td>
+          <td valign="top"><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span>CurrentFloor
+
+
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; f AND mDesiredFloor </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; f AND
+              mDoorClosed[f,b] </span><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; False</span></td>
+        </tr>
+        <tr>
+          <td valign="top">T9.2<br>
+          </td>
+          <td valign="top">CarCall[f,b] <span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; True AND mDesiredFloor </span>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; f AND CurrentFloor </span> <span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; not f</span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <br>
     <h2><a name="carpositioncontrol"></a> 10. CarPositionControl </h2>
     <h3> Replication:;</h3>
@@ -1719,8 +2320,11 @@
     within stopping distance in the direction of motion.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
     10.4 &nbsp;&nbsp;&nbsp; Whenever any mAtFloor[f, b] is True,
-    CarPositionIndicator shall be commanded to display
-    CurrentFloor.&nbsp;
+    CarPositionIndicator shall be commanded to display CurrentFloor. <br>
+    <h3>State Chart:</h3>
+    <img alt="carpositioncontrol_statechart"
+      src="CarPositionControl_state_chart_group9_wenhuih.png"
+      height="41" width="217">
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1777,13 +2381,49 @@
     r] is False (which means doors are not closed between floors!); then<br>
     &nbsp;&nbsp;&nbsp; 11.7.1&nbsp;&nbsp; Target shall be set to 1<br>
     &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp; mDesiredFloor.b shall be set
-    to None .<br>
+    to None.<br>
     11.8 &nbsp; If two mAtFloor[f, b] values are True with the same
     value f, then mDesiredFloor.b shall be set to Both.<br>
     11.9 &nbsp;&nbsp; mDesiredDwell shall always be set to a constant
-    appropriate value for door open dwell. &nbsp; &nbsp;
+    appropriate value for door open dwell.<br>
+    <h3>TIME-TRIGGERED STATECHART:</h3>
+    <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
+      height="492" width="574">
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top">Transition<br>
+            #<br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.1<br>
+          </td>
+          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
+            b] &#8592; true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.2<br>
+          </td>
+          <td valign="top">All mDoorClosed[b, r] &#8592; true AND mAtFloor[f,
+            b] &#8592; false<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.3<br>
+          </td>
+          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
+            b] &#8592; false<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp;&nbsp; &nbsp;
     <p> &nbsp;<br>
-      &nbsp;<br>
+      <br>
       &nbsp;<br>
       &nbsp;<br>
       &nbsp; </p>
