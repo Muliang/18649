@@ -1026,14 +1026,17 @@
     &nbsp;&nbsp;&nbsp; 5.7.2&nbsp; CountDown shall be decremented.<br>
     5.8&nbsp; If mDoorClosed[b, r] is True, then DoorMotor[b,r] should
     be commanded to Stop.<br>
-    5.9&nbsp; When CountDown &lt;= 0, DoorMotor[b,r] should be commanded
-    to Nudge.<br>
-    5.10 If mCarWeight(g) &gt;= MaxCarCapacity, and mDoorOpened[b, r] is
+    5.9&nbsp; When CountDown &lt;= 0, DoorMotor[b,r] shall be commanded
+    to Close<br>
+    5.10&nbsp; When CountDown &lt;= 0, DoorMotor[b,r] should be
+    commanded to Nudge.<br>
+    5.11 If mCarWeight(g) &gt;= MaxCarCapacity, and mDoorOpened[b, r] is
     False, DoorMotor[b, r] shall be commanded to Open.<br>
-    5.11 Dwell shall be set to an appropriate value based on
+    5.12 Dwell shall be set to an appropriate value based on
     mDesiredDwell[b].<br>
-    5.12 mDoorMotor[b,r] shall be set to the current value of
+    5.13 mDoorMotor[b,r] shall be set to the current value of
     DoorMotor[b,r]<br>
+    <br>
     <h2><a name="drivecontrol"></a> 6. DriveControl </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1321,60 +1324,251 @@
     </ul>
     <h3> CONSTRAINTS: </h3>
     7.1&nbsp;&nbsp;&nbsp; Both CarLanterns[d] shall not be On at the
-    same time.
-    <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    <meta charset="utf-8">
-    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">7.2&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is received as
-      true, CarLantern[*] shall be commanded to be Off.</span><br
-      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
-      font-style: normal; font-variant: normal; font-weight: normal;
-      letter-spacing: normal; line-height: normal; orphans: auto;
-      text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px;">
-    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">7.3&nbsp;&nbsp;&nbsp; If mDoorClose[b,r] is received as
-      false, DesiredDirection == Down shall set CarLantern[Down] to be
-      On.</span><br style="color: rgb(0, 0, 0); font-family: Times;
+    same time.<span style="color: rgb(0, 0, 0); font-family: Times;
       font-size: medium; font-style: normal; font-variant: normal;
       font-weight: normal; letter-spacing: normal; line-height: normal;
       orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
-      word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"><br>
+    </span>
+    <h3>TIME-TRIGGERED BEHAVIORS: </h3>
+    7.2 &nbsp;&nbsp; If any <span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      display: inline !important; float: none;">mDoorClose[b,*] is true</span>,
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
       medium; font-style: normal; font-variant: normal; font-weight:
       normal; letter-spacing: normal; line-height: normal; orphans:
       auto; text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">7.4 &nbsp;&nbsp; </span><span style="color: rgb(0, 0, 0);
+      none;">CarLantern[*]</span> shall be set to Off.<br>
+    7.3 &nbsp;&nbsp; If any<span style="color: rgb(0, 0, 0);
       font-family: Times; font-size: medium; font-style: normal;
       font-variant: normal; font-weight: normal; letter-spacing: normal;
       line-height: normal; orphans: auto; text-align: start;
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      display: inline !important; float: none;">If mDoorClose[b,r] is
-      received as false, DesiredDirection == Up shall set CarLantern[Up]
-      to be On.</span><br>
-    7.5&nbsp;&nbsp;&nbsp; <span style="color: rgb(0, 0, 0);
-      font-family: Times; font-size: medium; font-style: normal;
-      font-variant: normal; font-weight: normal; letter-spacing: normal;
-      line-height: normal; orphans: auto; text-align: start;
+      display: inline !important; float: none;"> mDoorClose[b,*] is
+      false and DesiredDirection == d</span>, <span style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; orphans: auto; text-align: start;
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      display: inline !important; float: none;">If DesiredDirection is
-      Stop , then the CarLantern[*] shall be commanded to be Off.</span>
+      display: inline !important; float: none;">CarLantern[d] shall be
+      set to On.</span><br>
+    <h3>TIME-TRIGGERED STATE CHART</h3>
+    <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
+        src="LanternControl_state_chart_group9_yichaox.png" border="0"
+        height="420" width="449"></a><br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="148">
+      <tbody>
+        <tr>
+          <td valign="top">Transition # <br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.1<br>
+          </td>
+          <td valign="top">mDoorClosed[*, *]
+            <meta charset="utf-8">
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; false AND </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">mAtFloor[mDesiredFloor,
+              b] </span><span style="color: rgb(0, 0, 0); font-family:
+              Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">&#8592; true AND </span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;">DesiredDirection </span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;">&#8592; d</span></span></span>&nbsp;</span>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.2<br>
+          </td>
+          <td valign="top">All mDoorClosed[f, b] <span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; true </span></td>
+        </tr>
+        <tr>
+          <td valign="top">T7.3<br>
+          </td>
+          <td valign="top">All mDoorClosed[f, b] <span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; true </span></td>
+        </tr>
+        <tr>
+          <td valign="top">T7.4<br>
+          </td>
+          <td valign="top">mDoorClosed[*, *] <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; false AND </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">mAtFloor[mDesiredFloor,
+              b] </span><span style="color: rgb(0, 0, 0); font-family:
+              Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">&#8592; true AND </span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;">DesiredDirection </span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;">&#8592; not d</span></span></span></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;"></span>
     <h2><a name="hallbuttoncontrol"></a> 8. HallButtonControl[f, b, d] </h2>
     <h3> Replication: </h3>
     <ul>
