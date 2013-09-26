@@ -351,8 +351,8 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" width="613" height="523"
-          border="0"></a><br>
+          width: 613px; height: 523px;" border="0" height="523"
+          width="613"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
       cellpadding="2" cellspacing="2">
@@ -1307,7 +1307,7 @@
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <h3><img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-        width="1189" height="665"><br>
+        height="665" width="1189"><br>
     </h3>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -1320,64 +1320,69 @@
         <tr>
           <td valign="top">T6.1<br>
           </td>
-          <td valign="top">mDesiredFloor.f = g AND DesiredDirection &#8592; Up
-            AND All mDoorClosed[b,r] &#8592; true <br>
+          <td valign="top">DesiredDirection &#8592; Up AND All
+            mDoorClosed[b,r] &#8592; true <br>
             AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
-            CommitPoint[g] &#8592; NotReached </td>
+            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
+            Unreached<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">T6.2<br>
           </td>
-          <td valign="top">mDesiredFloor.f = g AND DesiredDirection &#8592; Up
-            AND All mDoorClosed[b,r] &#8592; true <br>
+          <td valign="top">DesiredDirection &#8592; Down AND All
+            mDoorClosed[b,r] &#8592; true <br>
             AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
-            CommitPoint[g] &#8592; NotReached</td>
+            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, Down] &#8592;
+            Unreached</td>
         </tr>
         <tr>
           <td valign="top">T6.3<br>
           </td>
-          <td valign="top">mDesiredFloor.f =g AND DriveSpeed.s &lt;=
-            SLOW_SPEED AND CurrentFloor &#8592; g<br>
-            AND CommitPoint[g] &#8592; Reached</td>
+          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
+            &#8592; DestinationFloor<br>
+            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
+            Reached</td>
         </tr>
         <tr>
           <td valign="top">T6.4<br>
           </td>
-          <td valign="top">mDesiredFloor.f =g AND DriveSpeed.s &lt;=
-            SLOW_SPEED AND CurrentFloor &#8592; g<br>
-            AND CommitPoint[g] &#8592; Reached </td>
+          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
+            &#8592; DestinationFloor<br>
+            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, DOWN] &#8592;
+            Reached<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">T6.5<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed.s &lt;=
+          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed &lt;=
             LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.6<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed.s = STOP<br>
+          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed = 0<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.7<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed.s &lt;=
+          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed &lt;=
             LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.8<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed.s = STOP<br>
-          </td>
+          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed &#8592;0</td>
         </tr>
         <tr>
           <td valign="top">T6.9.*<br>
           </td>
-          <td valign="top">mEmergencyBrake &#8592; true OR mHoistwayLimit &#8592;
-            true </td>
+          <td valign="top">mEmergencyBrake &#8592; true<br>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -1924,10 +1929,10 @@
       set to On.</span><br>
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" width="449"
-        height="420" border="0"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" border="0"
+        height="420" width="449"></a><br>
     <br>
-    <table height="148" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="148">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2180,24 +2185,21 @@
       set to true.<br>
       8.4&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall
       be set to false.<br>
-      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and all
+      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and
       mDoorClosed[b,*] = false, then<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
       be set to OFF<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall be
-      set to False<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.5.3 mHallLight[f,b,d] shall be
-      set to True<br>
-      8.6 If CurrentFloor is g and HallCall[f,b,d]= True then <br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.6.1 HallLight[f,b,d] shall be ON<br>
-      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.6.2 mHallLight[f,b,d] shall be
-      True &nbsp;&nbsp;&nbsp;&nbsp; <br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
+      be set to False.<br>
+      8.6 If CurrentFloor is g and HallCall[f,b,d]= true ; then
+      HallLight[f,b,d] shall be ON<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-      <<<<<<<="" head="" width="762" height="443"><br>
-    <table width="777" height="80" border="1" cellpadding="2"
-      cellspacing="2">
+      <<<<<<<="" head="" height="443" width="762"><br>
+    <table border="1" cellpadding="2" cellspacing="2" height="80"
+      width="777">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -2250,21 +2252,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">&#8592; f AND
-              mDoorClosed[b,*] </span><span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              left; text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span style="color: rgb(0, 0,
-                0); font-family: Times; font-size: medium; font-style:
-                normal; font-variant: normal; font-weight: normal;
-                letter-spacing: normal; line-height: normal; orphans:
-                auto; text-align: left; text-indent: 0px;
-                text-transform: none; white-space: normal; widows: auto;
-                word-spacing: 0px; -webkit-text-stroke-width: 0px;
-                display: inline !important; float: none;">&#8592;</span> false</span><br>
+              mDoorClosed[b,*] = false</span><br>
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2334,11 +2322,11 @@
     <h3>State Chart:<br>
     </h3>
     &nbsp; <img alt="carbutton"
-      src="CallButtonControl_state_chart_group9_wenhuih.png" width="443"
-      height="518"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png"
+      height="518" width="443"><br>
     <br>
-    <table width="742" height="115" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="115"
+      width="742">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2965,10 +2953,10 @@
     <h3>State Chart:</h3>
     &nbsp; <img alt="carposition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      width="443" height="221"><br>
+      height="221" width="443"><br>
     <br>
-    <table width="379" height="73" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="73"
+      width="379">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -3086,7 +3074,7 @@
     constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     <img alt="" src="statechart-Dispatcher_group9_yujiaw.png" <<<<<<<=""
-      head="" width="574" height="492"> <br>
+      head="" height="492" width="574"> <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
