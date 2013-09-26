@@ -1036,8 +1036,21 @@
     5.12 Dwell shall be set to an appropriate value based on
     mDesiredDwell[b].<br>
     5.13 mDoorMotor[b,r] shall be set to the current value of
-    DoorMotor[b,r]<br>
+    DoorMotor[b,r].<br>
+    5.14 If
+    <meta charset="utf-8">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">mDoorReversal[b,r] is true, then DoorMotor[b,r] shall be
+      commanded open.</span>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
+    <a href="DoorControl_state_chart_group9_yichaox.png"><img alt=""
+        src="DoorControl_state_chart_group9_yichaox.png" border="0"
+        height="570" width="975"></a><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="303">
       <tbody>
@@ -1048,7 +1061,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T5.1<br>
+          <td valign="top">T5.1 <br>
           </td>
           <td valign="top">
             <meta charset="utf-8">
@@ -1071,17 +1084,20 @@
               mDriveSpeed = (s, Stop)</span></td>
         </tr>
         <tr>
-          <td valign="top">T5.2</td>
+          <td valign="top">T5.2 <br>
+          </td>
           <td valign="top">mDoorOpened[b,r] &#8592; True<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">T5.3</td>
+          <td valign="top">T5.3 <br>
+          </td>
           <td valign="top">CountDown &lt;= 0<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">T5.4</td>
+          <td valign="top">T5.4 <br>
+          </td>
           <td valign="top">mDoorClosed[b,r] &#8592; True<br>
           </td>
         </tr>
@@ -1148,6 +1164,486 @@
         <tr>
           <td valign="top">T5.10</td>
           <td valign="top">mDoorClosed[b,r] &#8592; True</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>
+      <meta charset="utf-8">
+    </h2>
+    <h3 style="color: rgb(0, 0, 0); font-family: Times; font-style:
+      normal; font-variant: normal; letter-spacing: normal; line-height:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
+      to Statechart Traceability</h3>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="11" rowspan="1" valign="top"><b>Requirements</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><b>States</b><br>
+          </td>
+          <td valign="top">5.6.1<br>
+          </td>
+          <td valign="top">5.6.2<br>
+          </td>
+          <td valign="top">5.7.1<br>
+          </td>
+          <td valign="top">5.7.2<br>
+          </td>
+          <td valign="top">5.8 <br>
+          </td>
+          <td valign="top">5.9<br>
+          </td>
+          <td valign="top">5.10<br>
+          </td>
+          <td valign="top">5.11<br>
+          </td>
+          <td valign="top">5.12<br>
+          </td>
+          <td valign="top">5.13<br>
+          </td>
+          <td valign="top">5.14<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.1 Closed</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.2 Openning</td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.3 Open</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.4 Closing</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.5 Reopening<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.6 Reopen<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S5.7 Nudging<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><b>Transition</b><br>
+          </td>
+          <td colspan="11" rowspan="1" valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.1<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.2</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.3</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.4</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.5</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.6</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.7</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.8</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.9</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.10</td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -1398,11 +1894,9 @@
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
     6.6 If CommitPoint[DesiredFloor] = Reached AND
     mAtFloor[mDesiredFloor.f] = true AND<br>
-    &nbsp;&nbsp;&nbsp; 6.6.1 if DriveSpeed &gt; SlowSpeed, then Drive
-    speed shall be set to [Slow, d]<br>
-    &nbsp;&nbsp;&nbsp; 6.6.2 if SlowSpeed &gt;= DriveSpeed &gt;
+    &nbsp;&nbsp;&nbsp; 6.6.1 if SlowSpeed &gt;= DriveSpeed &gt;
     LevelSpeed, then Drive speed shall be set to [Level, d]<br>
-    &nbsp;&nbsp;&nbsp; 6.6.3 if LevelSpeed &gt;= DriveSpeed, then Drive
+    &nbsp;&nbsp;&nbsp; 6.6.2 if LevelSpeed &gt;= DriveSpeed, then Drive
     speed shall be set to [Stop, Stop]<br>
     6.7 If any mLevel[d] = false AND DriveSpeed = [Stop, Stop], then
     Drive shall be set to [Level, d]<br>
@@ -1412,13 +1906,15 @@
     AND DesiredDirection is UP or DOWN AND mAtFloor[mDesiredFloor.f] =
     false, then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
     6.10 If any mDoorClosed[b, r] is False, then<br>
-    &nbsp;&nbsp;&nbsp; 6.9.1 Drive shall be set to Stop<br>
-    &nbsp;&nbsp;&nbsp; 6.9.2 State shall be set to Emergency<br>
-    6.11 If any mDoorMotor[b, r] is Open,&nbsp; then<br>
-    &nbsp;&nbsp;&nbsp; 6.10.1 Drive shall be set to Stop<br>
+    &nbsp;&nbsp;&nbsp; 6.10.1 Drive speed shall be set to [Stop, Stop]<br>
     &nbsp;&nbsp;&nbsp; 6.10.2 State shall be set to Emergency<br>
-    6.12 If mEmergencyBrake is true, then Drive[s,d] shall be set to
-    [Stop, Stop].<br>
+    6.11 If any mDoorMotor[b, r] is Open,&nbsp; then<br>
+    &nbsp;&nbsp;&nbsp; 6.11.1 Drive speed shall be set to [Stop, Stop]<br>
+    &nbsp;&nbsp;&nbsp; 6.11.2 State shall be set to Emergency<br>
+    6.12 If mEmergencyBrake is true, then <br>
+    &nbsp;&nbsp;&nbsp; 6.12.1 Drive speed shall be set to [Stop, Stop].<br>
+    &nbsp;&nbsp;&nbsp; 6.12.2 State shall be set to Emergency<br>
+    6.13 mDriveSpeed shall be set the same as DriveSpeed
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <h3><img alt="" src="statechart-DriveControl_group9_yujiaw.png"
@@ -1503,6 +1999,472 @@
       </tbody>
     </table>
     <br>
+    <h3>Requirements-to-Statecharts Traceability</h3>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="12" rowspan="1" valign="top">Requirements<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">States<br>
+          </td>
+          <td valign="top" width="6%">6.6.1<br>
+          </td>
+          <td valign="top" width="6%">6.6.2<br>
+          </td>
+          <td valign="top" width="6%">6.7<br>
+          </td>
+          <td valign="top" width="6%">6.8<br>
+          </td>
+          <td valign="top" width="6%">6.9<br>
+          </td>
+          <td valign="top" width="6%">6.10.1<br>
+          </td>
+          <td valign="top" width="6%">6.10.2<br>
+          </td>
+          <td valign="top" width="6%">6.11.1<br>
+          </td>
+          <td valign="top" width="6%">6.11.2<br>
+          </td>
+          <td valign="top" width="6%">6.12.1<br>
+          </td>
+          <td valign="top" width="6%">6.12.2<br>
+          </td>
+          <td valign="top" width="6%">6.13<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.1 Stop<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.2 Slow_Up<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.3 Slow_Down<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.4 Level_Up<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.5 Level_Down<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S6.6 Emergency<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Transitions<br>
+          </td>
+          <td colspan="12" rowspan="1" valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.3<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.4<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.5<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.6<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.7<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.8<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.9.*<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp;
     <h2>&nbsp;7. LanternControl[d] </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1578,6 +2540,23 @@
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
       display: inline !important; float: none;">CarLantern[d] shall be
       set to On.</span><br>
+    7.4&nbsp;&nbsp;&nbsp; If any<span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      display: inline !important; float: none;"> mDoorClose[b,*] is
+      false and DesiredDirection is not d</span>, <span style="color:
+      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      display: inline !important; float: none;">CarLantern[d] shall be
+      set to Off.</span><br>
+    7.5 &nbsp;&nbsp; mCarLantern[d] shall be set to the current value of
+    CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
         src="LanternControl_state_chart_group9_yichaox.png" border="0"
@@ -1752,23 +2731,23 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">mAtFloor[mDesiredFloor]
-
-            </span><span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: left;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span style="color: rgb(0, 0,
-                0); font-family: Times; font-size: medium; font-style:
-                normal; font-variant: normal; font-weight: normal;
-                letter-spacing: normal; line-height: normal; orphans:
-                auto; text-align: left; text-indent: 0px;
-                text-transform: none; white-space: normal; widows: auto;
-                word-spacing: 0px; -webkit-text-stroke-width: 0px;
-                display: inline !important; float: none;">&#8592; true AND </span></span><span
+              &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD display: inline
+              !important; float: none;">mAtFloor[mDesiredFloor] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;">&#8592; true AND </span></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -1813,7 +2792,8 @@
                     left; text-indent: 0px; text-transform: none;
                     white-space: normal; widows: auto; word-spacing:
                     0px; -webkit-text-stroke-width: 0px; display: inline
-                    !important; float: none;">&#8592; not d</span></span></span></span></td>
+                    !important; float: none;">&#8592; not d<br>
+                  </span></span></span></span></td>
         </tr>
       </tbody>
     </table>
@@ -1823,8 +2803,133 @@
       auto; text-align: start; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;"></span><a name="hallbuttoncontrol"></a>
-    <h2>&nbsp;8. HallButtonControl[f, b, d] </h2>
+      none;"></span>
+    <h2>
+      <meta charset="utf-8">
+    </h2>
+    <h3 style="color: rgb(0, 0, 0); font-family: Times; font-style:
+      normal; font-variant: normal; letter-spacing: normal; line-height:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
+      to Statechart Traceability</h3>
+    <table border="1" cellpadding="2" cellspacing="2" height="303"
+      width="319">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="4" rowspan="1" valign="top" width="50"><b>Requirements</b><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><b>State</b><br>
+          </td>
+          <td valign="top" width="50">7.2<br>
+          </td>
+          <td valign="top" width="50">7.3<br>
+          </td>
+          <td valign="top" width="50">7.4<br>
+          </td>
+          <td valign="top" width="50">7.5<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S7.1 Idle<br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S7.2 On<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S7.3 Off<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top"><b>Transition</b><br>
+          </td>
+          <td colspan="4" rowspan="1" valign="top" width="50"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.1<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.2<br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.3<br>
+          </td>
+          <td valign="top" width="50">X<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T7.4<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top" width="50"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <h2><a name="hallbuttoncontrol"></a></h2>
+    <h2>8. HallButtonControl[f, b, d]&nbsp; </h2>
     <h3> Replication: </h3>
     <ul>
       <li>There are two HallButtonControllers[f, b, d] per hallway, one
@@ -1862,16 +2967,16 @@
     <h3> CONSTRAINTS: </h3>
     None
     <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    8.1&nbsp;&nbsp; &nbsp; HallCall[f,b,d] = true shall return
+    8.1&nbsp;&nbsp; &nbsp; HallCall[f,b,d] = pressed shall return
     HallLight[f,b,d]= true<br>
-    8.2&nbsp;&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = false shall return
+    8.2&nbsp;&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = idle shall return
     mHallCall[f,b,d] = false<br>
     &nbsp; <br>
     <br>
     <h3>TIME-TRIGGERED BEHAVIORS: </h3>
-    <p>8.3&nbsp; If HallCall[f,b,d] is true then mHallCall[f,b,d] shall
-      be set to true.<br>
-      8.4&nbsp; If HallCall[f,b,d] is false then mHallCall[f,b,d] shall
+    <p>8.3&nbsp; If HallCall[f,b,d] is pressed mHallCall[f,b,d] shall be
+      set to true.<br>
+      8.4&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall
       be set to false.<br>
       8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and
       mDoorClosed[b,*] = false, then<br>
@@ -1879,10 +2984,82 @@
       be set to OFF<br>
       &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
       be set to False.<br>
-      8.6 If CurrentFloor is f and mDesiredFloor is g, and
-      HallCall[f,b,d]= true ; then HallLight[f,b,d] shall be ON<br>
+      8.6 If CurrentFloor is g and HallCall[f,b,d]= true ; then
+      HallLight[f,b,d] shall be ON<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
     </p>
+    <h3>TIME-TRIGGERED STATE CHART:</h3>
+    <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
+      <<<<<<<="" head="" height="443" width="762"> <br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="80"
+      width="777">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T8.1<br>
+          </td>
+          <td valign="top">CurrentFloor <span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; g AND HallCall[f,b,d] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; true</span> <br>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span></td>
+        </tr>
+        <tr>
+          <td valign="top">T8.2<br>
+          </td>
+          <td valign="top">CurrentFloor <span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; f AND mDesiredFloor </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; f AND
+              mDoorClosed[b,*] = false</span><br>
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p> </p>
     <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
     <h3> Replication: </h3>
@@ -1930,21 +3107,20 @@
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
     <p>R9.1 mCarCall[f,b] shall be set to the current value of
       CarCall[f,b].</p>
-    <p>R9.2 mCarLight[f,b] shall be set to the current value of
-      CarLight[f,b].<br>
-    </p>
-    <p>R9.3&nbsp; If CurrentFloor is f and mDesiredFloor is f and
+    <p>R9.2&nbsp; If CurrentFloor is f and mDesiredFloor is f and
       mDoorClosed[b,r] is False<br>
-      &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to Off.<br>
-      &nbsp;&nbsp;&nbsp; R9.3.2 mCarCall[f,b] shall be set to False.<br>
-    </p>
-    <p>R9.4 If CarCall[f,b] is True, and CurrentFloor g is not the same
-      as mDesiredFloor f, CarLight[f,b] shall be set to On.<br>
-    </p>
+      &nbsp;&nbsp;&nbsp; R9.2.1 CarLight[f,b] shall be set to Off.<br>
+      &nbsp;&nbsp;&nbsp; R9.2.2 mCarLight[f,b] shall be set to False.<br>
+      &nbsp;&nbsp;&nbsp; R9.2.2 mCarCall[f,b] shall be set to False. </p>
+    R9.3 If CarCall[f,b] is True, and CurrentFloor g is not the same as
+    mDesiredFloor f, <br>
+    &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to On.<br>
+    &nbsp;&nbsp;&nbsp; R9.3.2 mCarLight[f,b] shall be set to True.<br>
+    &nbsp;&nbsp;&nbsp; R9.3.3 mCarCall[f,b] shall be set to True.
     <h3>State Chart:</h3>
-    <img alt="carbuttoncontrol_statechart"
+    <img alt="carbutton"
       src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="321" width="349"><br>
+      height="403" width="349"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="115"
       width="742">
@@ -1973,7 +3149,6 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
-
 
 
             <span style="color: rgb(0, 0, 0); font-family: Times;
@@ -2012,53 +3187,7 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
-                style="color: rgb(0, 0, 0); font-family: Times;
-                font-size: medium; font-style: normal; font-variant:
-                normal; font-weight: normal; letter-spacing: normal;
-                line-height: normal; orphans: auto; text-align: left;
-                text-indent: 0px; text-transform: none; white-space:
-                normal; widows: auto; word-spacing: 0px;
-                -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"></span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
-                style="color: rgb(0, 0, 0); font-family: Times;
-                font-size: medium; font-style: normal; font-variant:
-                normal; font-weight: normal; letter-spacing: normal;
-                line-height: normal; orphans: auto; text-align: left;
-                text-indent: 0px; text-transform: none; white-space:
-                normal; widows: auto; word-spacing: 0px;
-                -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"><span style="color: rgb(0, 0,
-                  0); font-family: Times; font-size: medium; font-style:
-                  normal; font-variant: normal; font-weight: normal;
-                  letter-spacing: normal; line-height: normal; orphans:
-                  auto; text-align: left; text-indent: 0px;
-                  text-transform: none; white-space: normal; widows:
-                  auto; word-spacing: 0px; -webkit-text-stroke-width:
-                  0px; display: inline !important; float: none;"><span
-                    style="color: rgb(0, 0, 0); font-family: Times;
-                    font-size: medium; font-style: normal; font-variant:
-                    normal; font-weight: normal; letter-spacing: normal;
-                    line-height: normal; orphans: auto; text-align:
-                    left; text-indent: 0px; text-transform: none;
-                    white-space: normal; widows: auto; word-spacing:
-                    0px; -webkit-text-stroke-width: 0px; display: inline
-                    !important; float: none;"></span></span></span></span>
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: left;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; f AND mDesiredFloor </span><span
+              display: inline !important; float: none;"></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -2066,14 +3195,21 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">&#8592; f AND
-              mDoorClosed[f,b] </span><span style="color: rgb(0, 0, 0);
+              mDesiredFloor </span><span style="color: rgb(0, 0, 0);
               font-family: Times; font-size: medium; font-style: normal;
               font-variant: normal; font-weight: normal; letter-spacing:
               normal; line-height: normal; orphans: auto; text-align:
               left; text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; False</span></td>
+              !important; float: none;">&#8592; f AND mDoorClosed[f,b] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; False</span></td>
         </tr>
         <tr>
           <td valign="top">T9.2<br>
@@ -2475,9 +3611,28 @@
     10.4 &nbsp;&nbsp;&nbsp; Whenever any mAtFloor[f, b] is True,
     CarPositionIndicator shall be commanded to display CurrentFloor. <br>
     <h3>State Chart:</h3>
-    <img alt="carpositioncontrol_statechart"
+    <img alt="carposition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="41" width="217">
+      height="106" width="217"><br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="73"
+      width="379">
+      <tbody>
+        <tr>
+          <td valign="top">Transition # <br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">No Transition<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
     <ul>
@@ -2574,9 +3729,182 @@
         </tr>
       </tbody>
     </table>
-    &nbsp;&nbsp; &nbsp;
-    <p> &nbsp;<br>
-      <br>
+    <h3>Requirements-to-Statecharts Traceability </h3>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="8" rowspan="1" valign="top">Requirements<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">States<br>
+          </td>
+          <td valign="top" width="8%">11.4<br>
+          </td>
+          <td valign="top" width="8%">11.5<br>
+          </td>
+          <td valign="top" width="8%">11.6.1<br>
+          </td>
+          <td valign="top" width="8%">11.6.2<br>
+          </td>
+          <td valign="top" width="8%">11.7.1<br>
+          </td>
+          <td valign="top" width="8%">11.7.2<br>
+          </td>
+          <td valign="top" width="8%">11.8<br>
+          </td>
+          <td valign="top" width="8%">11.9<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S11.1 Idle<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S11.2 At_Floor<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S11.3 Emergency<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Transitions<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.2<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.3<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p>&nbsp; <br>
+    </p>
+    <p> <br>
       &nbsp;<br>
       &nbsp;<br>
       &nbsp; </p>
