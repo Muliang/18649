@@ -295,16 +295,16 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - State" version="0" id="O5">
       <dia:attribute name="obj_pos">
-        <dia:point val="42.64,16.415"/>
+        <dia:point val="42.54,16.415"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="42.59,16.365;53.9,22.265"/>
+        <dia:rectangle val="42.49,16.365;53.8,22.265"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="42.64,16.415"/>
+        <dia:point val="42.54,16.415"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="11.209999999999999"/>
@@ -335,7 +335,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="48.245,17.555"/>
+            <dia:point val="48.145,17.555"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -357,16 +357,16 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - State" version="0" id="O6">
       <dia:attribute name="obj_pos">
-        <dia:point val="0.615,16.18"/>
+        <dia:point val="0.665,16.13"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0.565,16.13;11.875,22.03"/>
+        <dia:rectangle val="0.615,16.08;11.925,21.98"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="0.615,16.18"/>
+        <dia:point val="0.665,16.13"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="11.209999999999999"/>
@@ -397,7 +397,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="6.22,17.32"/>
+            <dia:point val="6.27,17.27"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -608,7 +608,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="21.0001,19.065"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="11.775,16.9225;21.0501,19.58"/>
+        <dia:rectangle val="11.825,16.8975;21.0501,19.565"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -616,8 +616,8 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="21.0001,19.065"/>
         <dia:point val="16.89,19.065"/>
-        <dia:point val="16.89,19.08"/>
-        <dia:point val="11.825,19.08"/>
+        <dia:point val="16.89,19.03"/>
+        <dia:point val="11.875,19.03"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -643,10 +643,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.2#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="16.39,17.5725"/>
+        <dia:point val="16.39,17.5475"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="16.9276,18.365"/>
+        <dia:point val="16.9276,18.34"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -660,7 +660,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="32.285,19.325"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="32.235,17.17;42.6407,19.825"/>
+        <dia:rectangle val="32.235,17.17;42.5398,19.825"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -669,7 +669,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="32.285,19.325"/>
         <dia:point val="37.24,19.325"/>
         <dia:point val="37.24,19.315"/>
-        <dia:point val="42.5907,19.315"/>
+        <dia:point val="42.4898,19.315"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -710,18 +710,18 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O12">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.22,16.1296"/>
+        <dia:point val="6.27,16.0796"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="4.8525,10.8654;6.745,16.1796"/>
+        <dia:rectangle val="5.745,10.8654;8.155,16.1296"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.22,16.1296"/>
-        <dia:point val="6.22,13.5225"/>
-        <dia:point val="6.245,13.5225"/>
+        <dia:point val="6.27,16.0796"/>
+        <dia:point val="6.27,13.4975"/>
+        <dia:point val="6.245,13.4975"/>
         <dia:point val="6.245,10.9154"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -748,10 +748,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.4#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="5.7325,12.0225"/>
+        <dia:point val="5.7575,11.9975"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="5.7325,13.0225"/>
+        <dia:point val="7.275,13.09"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -815,19 +815,19 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O14">
       <dia:attribute name="obj_pos">
-        <dia:point val="48.245,16.3647"/>
+        <dia:point val="48.145,16.3656"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.8162,11.1453;48.745,16.4147"/>
+        <dia:rectangle val="47.645,11.1252;50.18,16.4156"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="48.245,16.3647"/>
-        <dia:point val="48.245,13.78"/>
-        <dia:point val="48.1475,13.78"/>
-        <dia:point val="48.1475,11.1953"/>
+        <dia:point val="48.145,16.3656"/>
+        <dia:point val="48.145,13.565"/>
+        <dia:point val="48.1475,13.565"/>
+        <dia:point val="48.1475,11.1752"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -853,10 +853,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.3#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="47.6962,12.28"/>
+        <dia:point val="47.6463,12.065"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="47.6962,13.28"/>
+        <dia:point val="49.3,13.265"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -974,18 +974,18 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O17">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.22,22.0304"/>
+        <dia:point val="6.27,21.9804"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.72,21.9804;21.59,27.515"/>
+        <dia:rectangle val="5.77,21.9304;21.59,27.515"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.22,22.0304"/>
-        <dia:point val="6.22,24.7477"/>
-        <dia:point val="21.09,24.7477"/>
+        <dia:point val="6.27,21.9804"/>
+        <dia:point val="6.27,24.7227"/>
+        <dia:point val="21.09,24.7227"/>
         <dia:point val="21.09,27.465"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -1012,10 +1012,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.9.3#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="13.155,23.2477"/>
+        <dia:point val="13.18,23.2227"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="13.155,24.2477"/>
+        <dia:point val="13.18,24.2227"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -1080,17 +1080,17 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O19">
       <dia:attribute name="obj_pos">
-        <dia:point val="48.245,22.2654"/>
+        <dia:point val="48.145,22.2654"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="31.8,22.2154;48.745,27.515"/>
+        <dia:rectangle val="31.8,22.2154;48.645,27.515"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="48.245,22.2654"/>
-        <dia:point val="48.245,24.8652"/>
+        <dia:point val="48.145,22.2654"/>
+        <dia:point val="48.145,24.8652"/>
         <dia:point val="32.3,24.8652"/>
         <dia:point val="32.3,27.465"/>
       </dia:attribute>
@@ -1118,10 +1118,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.9.2#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="39.7725,23.3652"/>
+        <dia:point val="39.7225,23.3652"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="39.7725,24.3652"/>
+        <dia:point val="39.7225,24.3652"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
