@@ -1037,7 +1037,120 @@
     mDesiredDwell[b].<br>
     5.13 mDoorMotor[b,r] shall be set to the current value of
     DoorMotor[b,r]<br>
+    <h3>TIME-TRIGGERED STATE CHART:</h3>
     <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="303">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.1<br>
+          </td>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">Any mAtFloor[f, b] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: start; text-indent:
+              0px; text-transform: none; white-space: normal; widows:
+              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; True AND f
+              equals mDesiredFloor.f, AND mDriveSpeed = (0, d) OR
+              mDriveSpeed = (s, Stop)</span></td>
+        </tr>
+        <tr>
+          <td valign="top">T5.2</td>
+          <td valign="top">mDoorOpened[b,r] &#8592; True<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.3</td>
+          <td valign="top">CountDown &lt;= 0<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.4</td>
+          <td valign="top">mDoorClosed[b,r] &#8592; True<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T5.5</td>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">mCarWeight(g) &gt;=
+              MaxCarCapacity</span></td>
+        </tr>
+        <tr>
+          <td valign="top">T5.6</td>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">mDoorReversal[b,r] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; True</span></td>
+        </tr>
+        <tr>
+          <td valign="top">T5.7</td>
+          <td valign="top">mDoorOpened[b,r] &#8592; True</td>
+        </tr>
+        <tr>
+          <td valign="top">T5.8</td>
+          <td valign="top">CountDown &lt;= 0</td>
+        </tr>
+        <tr>
+          <td valign="top">T5.9</td>
+          <td valign="top"><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">mDoorReversal[b,r] </span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; True</span></td>
+        </tr>
+        <tr>
+          <td valign="top">T5.10</td>
+          <td valign="top">mDoorClosed[b,r] &#8592; True</td>
+        </tr>
+      </tbody>
+    </table>
     <h2><a name="drivecontrol"></a> 6. DriveControl </h2>
     <h3> Replication: </h3>
     <ul>
@@ -1465,7 +1578,7 @@
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
       display: inline !important; float: none;">CarLantern[d] shall be
       set to On.</span><br>
-    <h3>TIME-TRIGGERED STATE CHART</h3>
+    <h3>TIME-TRIGGERED STATE CHART:</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
         src="LanternControl_state_chart_group9_yichaox.png" border="0"
         height="420" width="449"></a><br>
@@ -1481,7 +1594,7 @@
         <tr>
           <td valign="top">T7.1<br>
           </td>
-          <td valign="top">mDoorClosed[*, *]
+          <td valign="top">Any mDoorClosed[f, b]
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1512,7 +1625,45 @@
                 text-indent: 0px; text-transform: none; white-space:
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"> AND </span></span><span
+                !important; float: none;">]</span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"> </span><span
+                  style="color: rgb(0, 0, 0); font-family: Times;
+                  font-size: medium; font-style: normal; font-variant:
+                  normal; font-weight: normal; letter-spacing: normal;
+                  line-height: normal; orphans: auto; text-align: left;
+                  text-indent: 0px; text-transform: none; white-space:
+                  normal; widows: auto; word-spacing: 0px;
+                  -webkit-text-stroke-width: 0px; display: inline
+                  !important; float: none;"><span style="color: rgb(0,
+                    0, 0); font-family: Times; font-size: medium;
+                    font-style: normal; font-variant: normal;
+                    font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;">&#8592; true</span></span> AND </span></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -1587,21 +1738,22 @@
         <tr>
           <td valign="top">T7.4<br>
           </td>
-          <td valign="top">mDoorClosed[*, *] <span style="color: rgb(0,
-              0, 0); font-family: Times; font-size: medium; font-style:
-              normal; font-variant: normal; font-weight: normal;
-              letter-spacing: normal; line-height: normal; orphans:
-              auto; text-align: left; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; false AND </span><span
+          <td valign="top">Any mDoorClosed[f, b] <span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">&#8592; false AND </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">mAtFloor[mDesiredFloor
+              display: inline !important; float: none;">mAtFloor[mDesiredFloor]
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -1821,6 +1973,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
             <span style="color: rgb(0, 0, 0); font-family: Times;
