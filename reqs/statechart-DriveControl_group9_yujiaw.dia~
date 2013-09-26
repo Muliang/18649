@@ -68,7 +68,7 @@
         <dia:point val="0,1"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="0,0.1525;9.01,1.175"/>
+        <dia:rectangle val="0,0.126938;9.03556,1.22613"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -180,7 +180,7 @@ Yujia Wang/yujiaw#</dia:string>
             <dia:string>#State S6.1 Stop
 
 Do:
-Set Drive(s, d) to [Stop, Stop].
+Set Drive speed to 0.
 Set DesiredDirection to Stop.
 Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
@@ -324,7 +324,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:string>#State S6.2 Slow_Up
 
 Do:
-Set Drive(s, d) to [Slow, Up].
+Set Drive speed to Slow.
 Set DesiredDirection to Up.
 Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
@@ -386,8 +386,8 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:string>#State S6.3 Slow_Down
 
 Do:
-Set Drive(s, d) to [Slow, Down].
-Set DesiredDirection to Down.
+Set Drive speed to 0.
+Set DesiredDirection to Stop.
 Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
@@ -422,7 +422,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="42.64,5.345"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="42.59,5.295;53.705,11.195"/>
+        <dia:rectangle val="42.59,5.295;53.9,11.195"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -431,7 +431,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="42.64,5.345"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="11.015000000000001"/>
+        <dia:real val="11.209999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="5.8000000000000007"/>
@@ -448,9 +448,9 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:string>#State S6.4 Level_Up
 
 Do:
-Set Drive(s, d) to [Level, Up].
+Set Drive speed to Level.
 Set DesiredDirection to Up.
-Set mDriveSpeed() to DriveSpeed()#</dia:string>
+Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -459,7 +459,7 @@ Set mDriveSpeed() to DriveSpeed()#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="48.1475,6.485"/>
+            <dia:point val="48.245,6.485"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -510,7 +510,7 @@ Set mDriveSpeed() to DriveSpeed()#</dia:string>
             <dia:string>#State S6.5 Level_Down
 
 Do:
-Set Drive(s, d) to [Level, Down].
+Set Drive speed to Level.
 Set DesiredDirection to Down.
 Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
@@ -572,7 +572,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
             <dia:string>#State S6.6 Emergency
 
 Do:
-Set Drive(s, d) to [Stop, Stop].
+Set Drive speed to 0.
 Set DesiredDirection to Stop.
 Set mDriveSpeed() to DriveSpeed().#</dia:string>
           </dia:attribute>
@@ -818,7 +818,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:point val="48.245,16.3647"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.8162,11.1453;48.745,16.4147"/>
+        <dia:rectangle val="46.865,11.1453;48.745,16.4147"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -826,8 +826,8 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="48.245,16.3647"/>
         <dia:point val="48.245,13.78"/>
-        <dia:point val="48.1475,13.78"/>
-        <dia:point val="48.1475,11.1953"/>
+        <dia:point val="48.245,13.78"/>
+        <dia:point val="48.245,11.1953"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -853,10 +853,10 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:string>#T6.3#</dia:string>
       </dia:attribute>
       <dia:attribute name="trigger_text_pos">
-        <dia:point val="47.6962,12.28"/>
+        <dia:point val="47.745,12.28"/>
       </dia:attribute>
       <dia:attribute name="guard_text_pos">
-        <dia:point val="47.6962,13.28"/>
+        <dia:point val="47.745,13.28"/>
       </dia:attribute>
       <dia:attribute name="direction_inverted">
         <dia:boolean val="false"/>
@@ -1133,7 +1133,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
     </dia:object>
     <dia:object type="UML - Transition" version="2" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="53.7031,8.245"/>
+        <dia:point val="53.8995,8.245"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="32.25,7.745;56.2527,30.865"/>
@@ -1142,7 +1142,7 @@ Set mDriveSpeed() to DriveSpeed().#</dia:string>
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="53.7031,8.245"/>
+        <dia:point val="53.8995,8.245"/>
         <dia:point val="56.2027,8.245"/>
         <dia:point val="56.2027,30.365"/>
         <dia:point val="32.3,30.365"/>
