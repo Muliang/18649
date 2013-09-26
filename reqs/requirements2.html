@@ -351,8 +351,8 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" border="0" height="523"
-          width="613"></a><br>
+          width: 613px; height: 523px;" width="613" height="523"
+          border="0"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
       cellpadding="2" cellspacing="2">
@@ -1283,33 +1283,31 @@
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    6.6 If CommitPoint[DesiredFloor] = Reached AND
-    mAtFloor[mDesiredFloor.f] = true AND<br>
-    &nbsp;&nbsp;&nbsp; 6.6.1 if SlowSpeed &gt;= DriveSpeed &gt;
-    LevelSpeed, then Drive speed shall be set to [Level, d]<br>
-    &nbsp;&nbsp;&nbsp; 6.6.2 if LevelSpeed &gt;= DriveSpeed, then Drive
-    speed shall be set to [Stop, Stop]<br>
-    6.7 If any mLevel[d] = false AND DriveSpeed = [Stop, Stop], then
-    Drive shall be set to [Level, d]<br>
-    6.8 If any mLevel[d] = true AND DriveSpeed = [Level, d], then Drive
-    shall be set to [Stop, Stop]<br>
-    6.9 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
-    AND DesiredDirection is UP or DOWN AND mAtFloor[mDesiredFloor.f] =
-    false, then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
-    6.10 If any mDoorClosed[b, r] is False, then<br>
-    &nbsp;&nbsp;&nbsp; 6.10.1 Drive speed shall be set to [Stop, Stop]<br>
-    &nbsp;&nbsp;&nbsp; 6.10.2 State shall be set to Emergency<br>
-    6.11 If any mDoorMotor[b, r] is Open,&nbsp; then<br>
-    &nbsp;&nbsp;&nbsp; 6.11.1 Drive speed shall be set to [Stop, Stop]<br>
-    &nbsp;&nbsp;&nbsp; 6.11.2 State shall be set to Emergency<br>
-    6.12 If mEmergencyBrake is true, then <br>
-    &nbsp;&nbsp;&nbsp; 6.12.1 Drive speed shall be set to [Stop, Stop].<br>
-    &nbsp;&nbsp;&nbsp; 6.12.2 State shall be set to Emergency<br>
-    6.13 mDriveSpeed shall be set the same as DriveSpeed
+    6.6 mDriveSpeed shall be set to the same value as DriveSpeed <br>
+    6.7 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
+    AND DesiredDirection is Up or Down AND CommitPoint[f] = NotReached,
+    then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
+    6.8 If any mLevel[d] = false AND DriveSpeed(s,d) = [Stop, Stop],
+    then Drive shall be set to [Level, d]<br>
+    6.9 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
+    CurrentFloor = g&nbsp; AND<br>
+    &nbsp;&nbsp;&nbsp; 6.9.1 if <b>DriveSpeed.s</b> is &gt; than
+    LevelSpeed AND &lt;= to SlowSpeed, then Drive(s,d) shall be set to
+    [Level, d]<br>
+    &nbsp;&nbsp;&nbsp; 6.9.2 if <b>DriveSpeed.s</b> &lt;= LevelSpeed ,
+    then Drive(s,d) shall be set to [Stop, Stop]<br>
+    6.10 If any mLevel[d] = true AND DriveSpeed(s,d) = [Level, d], then
+    Drive shall be set to [Stop, Stop]<br>
+    6.11 If any mDoorClosed[b, r] is False, then Drive(s,d) shall be set
+    to [Stop, Stop]<br>
+    6.12 If any mDoorMotor[b, r] is Open,&nbsp; then Drive speed shall
+    be set to [Stop, Stop]<br>
+    6.13 If mEmergencyBrake(b) is ON, then Drive speed shall be set to
+    [Stop, Stop].<br>
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <h3><img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-        height="665" width="1189"><br>
+        width="1189" height="665"><br>
     </h3>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -1933,10 +1931,10 @@
       set to On.</span><br>
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" border="0"
-        height="420" width="449"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" width="449"
+        height="420" border="0"></a><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="148">
+    <table height="148" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2070,6 +2068,7 @@
               display: inline !important; float: none;">mAtFloor[mDesiredFloor
 
 
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2201,10 +2200,8 @@
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-<<<<<<< HEAD
-      height="443" width="762">
-=======
-      width="762" height="443"><br>
+      <<<<<<<="" head="" width="762" height="443">
+    ======= width="762" height="443"&gt;<br>
     <br>
     <table width="777" height="80" border="1" cellpadding="2"
       cellspacing="2">
@@ -2273,7 +2270,8 @@
       </tbody>
     </table>
     <br>
->>>>>>> aefc13b5ab214677cb3d0a26268e4d6538eec8d6
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+    aefc13b5ab214677cb3d0a26268e4d6538eec8d6
     <p> </p>
     <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
@@ -2335,11 +2333,11 @@
     </p>
     <h3>State Chart:</h3>
     <img alt="carbuttoncontrol_statechart"
-      src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="321" width="349"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png" width="349"
+      height="321"><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
-      width="742">
+    <table width="742" height="115" border="1" cellpadding="2"
+      cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2365,6 +2363,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -2870,7 +2869,7 @@
     <h3>State Chart:</h3>
     <img alt="carpositioncontrol_statechart"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="41" width="217">
+      width="217" height="41">
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
     <ul>
@@ -2934,7 +2933,7 @@
     appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="492" width="574">
+      width="574" height="492">
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
