@@ -1970,6 +1970,7 @@
 
 
 
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2161,8 +2162,8 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; f AND
-              any mDoorClosed[b,*] = false</span><br>
+              display: inline !important; float: none;">&#8592; f AND any
+              mDoorClosed[b,*] = false</span><br>
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2339,16 +2340,17 @@
       false.<br>
     </p>
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
-    <p>R9.1&nbsp; If CurrentFloor is f and mDesiredFloor is f and
+    <p>9.1&nbsp; If CurrentFloor is f and mDesiredFloor is f and
       mDoorClosed[b,r] is False<br>
-      &nbsp;&nbsp;&nbsp; R9.1.1 CarLight[f,b] shall be set to Off.<br>
-      &nbsp;&nbsp;&nbsp; R9.1.2 mCarLight[f,b] shall be set to False.<br>
-      &nbsp;&nbsp;&nbsp; R9.1.3 mCarCall[f,b] shall be set to False. </p>
-    R9.2 If CarCall[f,b] is True, and CurrentFloor g is not the same as
+      &nbsp;&nbsp;&nbsp; 9.1.1 CarLight[f,b] shall be set to Off.<br>
+      &nbsp;&nbsp;&nbsp; 9.1.2 mCarLight[f,b] shall be set to False.<br>
+    </p>
+    9.2 If CarCall[f,b] is True, and CurrentFloor g is not the same as
     mDesiredFloor f, <br>
-    &nbsp;&nbsp;&nbsp; R9.2.1 CarLight[f,b] shall be set to On.<br>
-    &nbsp;&nbsp;&nbsp; R9.2.2 mCarLight[f,b] shall be set to True.<br>
-    &nbsp;&nbsp;&nbsp; R9.2.3 mCarCall[f,b] shall be set to True.
+    &nbsp;&nbsp;&nbsp; 9.2.1 CarLight[f,b] shall be set to On.<br>
+    &nbsp;&nbsp;&nbsp; 9.2.2 mCarLight[f,b] shall be set to True.<br>
+    <br>
+    9.3 mCarCall[f,b] shall be set to the current value of CarCall[f,b].
     <h3>State Chart:<br>
     </h3>
     &nbsp; <img alt="carbutton"
@@ -2382,6 +2384,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -2841,7 +2844,7 @@
         <tr>
           <td valign="top"><br>
           </td>
-          <td colspan="6" rowspan="1" valign="top">Requirements<br>
+          <td colspan="5" rowspan="1" valign="top">Requirements<br>
           </td>
         </tr>
         <tr>
@@ -2851,19 +2854,15 @@
           </td>
           <td valign="top" width="6%">9.1.2<br>
           </td>
-          <td valign="top" width="6%">9.1.3<br>
-          </td>
           <td valign="top" width="6%">9.2.1<br>
           </td>
           <td valign="top" width="6%">9.2.2<br>
           </td>
-          <td valign="top" width="6%">9.2.3<br>
+          <td valign="top" width="6%">9.3<br>
           </td>
         </tr>
         <tr>
           <td valign="top">S9.1 Off<br>
-          </td>
-          <td valign="top">x<br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -2883,19 +2882,17 @@
           </td>
           <td valign="top"><br>
           </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
           <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
           </td>
         </tr>
         <tr>
           <td valign="top">Transitions<br>
           </td>
-          <td colspan="6" rowspan="1" valign="top"><br>
+          <td colspan="5" rowspan="1" valign="top"><br>
           </td>
         </tr>
         <tr>
@@ -2905,19 +2902,15 @@
           </td>
           <td valign="top">x<br>
           </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
           <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
           </td>
         </tr>
         <tr>
           <td valign="top">T9.2<br>
-          </td>
-          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
