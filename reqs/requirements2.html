@@ -2070,6 +2070,8 @@
               display: inline !important; float: none;">mAtFloor[mDesiredFloor
 
 
+
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2201,13 +2203,10 @@
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-<<<<<<< HEAD
-      height="443" width="762">
-=======
-      width="762" height="443"><br>
+      <<<<<<<="" head="" height="443" width="762"> <br>
     <br>
-    <table width="777" height="80" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="80"
+      width="777">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -2273,7 +2272,6 @@
       </tbody>
     </table>
     <br>
->>>>>>> aefc13b5ab214677cb3d0a26268e4d6538eec8d6
     <p> </p>
     <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
@@ -2322,21 +2320,20 @@
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
     <p>R9.1 mCarCall[f,b] shall be set to the current value of
       CarCall[f,b].</p>
-    <p>R9.2 mCarLight[f,b] shall be set to the current value of
-      CarLight[f,b].<br>
-    </p>
-    <p>R9.3&nbsp; If CurrentFloor is f and mDesiredFloor is f and
+    <p>R9.2&nbsp; If CurrentFloor is f and mDesiredFloor is f and
       mDoorClosed[b,r] is False<br>
-      &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to Off.<br>
-      &nbsp;&nbsp;&nbsp; R9.3.2 mCarCall[f,b] shall be set to False.<br>
-    </p>
-    <p>R9.4 If CarCall[f,b] is True, and CurrentFloor g is not the same
-      as mDesiredFloor f, CarLight[f,b] shall be set to On.<br>
-    </p>
+      &nbsp;&nbsp;&nbsp; R9.2.1 CarLight[f,b] shall be set to Off.<br>
+      &nbsp;&nbsp;&nbsp; R9.2.2 mCarLight[f,b] shall be set to False.<br>
+      &nbsp;&nbsp;&nbsp; R9.2.2 mCarCall[f,b] shall be set to False. </p>
+    R9.3 If CarCall[f,b] is True, and CurrentFloor g is not the same as
+    mDesiredFloor f, <br>
+    &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to On.<br>
+    &nbsp;&nbsp;&nbsp; R9.3.2 mCarLight[f,b] shall be set to True.<br>
+    &nbsp;&nbsp;&nbsp; R9.3.3 mCarCall[f,b] shall be set to True.
     <h3>State Chart:</h3>
-    <img alt="carbuttoncontrol_statechart"
+    <img alt="carbutton"
       src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="321" width="349"><br>
+      height="403" width="349"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="115"
       width="742">
@@ -2365,6 +2362,8 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
+
 
 
 
@@ -2868,9 +2867,28 @@
     10.4 &nbsp;&nbsp;&nbsp; Whenever any mAtFloor[f, b] is True,
     CarPositionIndicator shall be commanded to display CurrentFloor. <br>
     <h3>State Chart:</h3>
-    <img alt="carpositioncontrol_statechart"
+    <img alt="carposition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="41" width="217">
+      height="106" width="217"><br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="73"
+      width="379">
+      <tbody>
+        <tr>
+          <td valign="top">Transition # <br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">No Transition<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
     <ul>
