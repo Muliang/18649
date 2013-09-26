@@ -2180,15 +2180,18 @@
       set to true.<br>
       8.4&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall
       be set to false.<br>
-      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and
+      8.5&nbsp; If CurrentFloor is f and mDesiredFloor is also f and all
       mDoorClosed[b,*] = false, then<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.5.1 HallLight[f,b,d] shall
       be set to OFF<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall
-      be set to False.<br>
-      8.6 If CurrentFloor is g and HallCall[f,b,d]= true ; then
-      HallLight[f,b,d] shall be ON<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.5.2 mHallCall[f,b,d] shall be
+      set to False<br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.5.3 mHallLight[f,b,d] shall be
+      set to True<br>
+      8.6 If CurrentFloor is g and HallCall[f,b,d]= True then <br>
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 8.6.1 HallLight[f,b,d] shall be ON<br>
+      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.6.2 mHallLight[f,b,d] shall be
+      True &nbsp;&nbsp;&nbsp;&nbsp; <br>
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
@@ -2247,7 +2250,21 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">&#8592; f AND
-              mDoorClosed[b,*] = false</span><br>
+              mDoorClosed[b,*] </span><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">&#8592;</span> false</span><br>
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
