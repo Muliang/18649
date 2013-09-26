@@ -1892,39 +1892,35 @@
     drive shall not be commanded to {Slow, d} or {Fast, d}until the car
     is no longer overloaded.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    6.6 If CommitPoint[DesiredFloor] = Reached AND
-    mAtFloor[mDesiredFloor.f] = true AND<br>
-    &nbsp;&nbsp;&nbsp; 6.6.1 if SlowSpeed &gt;= DriveSpeed &gt;
-    LevelSpeed, then Drive speed shall be set to [Level, d]<br>
-    &nbsp;&nbsp;&nbsp; 6.6.2 if LevelSpeed &gt;= DriveSpeed, then Drive
-    speed shall be set to [Stop, Stop]<br>
-    6.7 If any mLevel[d] = false AND DriveSpeed = [Stop, Stop], then
-    Drive shall be set to [Level, d]<br>
-    6.8 If any mLevel[d] = true AND DriveSpeed = [Level, d], then Drive
-    shall be set to [Stop, Stop]<br>
-    6.9 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
-    AND DesiredDirection is UP or DOWN AND mAtFloor[mDesiredFloor.f] =
-    false, then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
-    6.10 If any mDoorClosed[b, r] is False, then<br>
-    &nbsp;&nbsp;&nbsp; 6.10.1 Drive speed shall be set to [Stop, Stop]<br>
-    &nbsp;&nbsp;&nbsp; 6.10.2 State shall be set to Emergency<br>
-    6.11 If any mDoorMotor[b, r] is Open,&nbsp; then<br>
-    &nbsp;&nbsp;&nbsp; 6.11.1 Drive speed shall be set to [Stop, Stop]<br>
-    &nbsp;&nbsp;&nbsp; 6.11.2 State shall be set to Emergency<br>
-    6.12 If mEmergencyBrake is true, then <br>
-    &nbsp;&nbsp;&nbsp; 6.12.1 Drive speed shall be set to [Stop, Stop].<br>
-    &nbsp;&nbsp;&nbsp; 6.12.2 State shall be set to Emergency<br>
-    6.13 mDriveSpeed shall be set the same as DriveSpeed
+    6.6 mDriveSpeed shall be set to the same value as DriveSpeed <br>
+    6.7 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
+    AND DesiredDirection is Up or Down AND CommitPoint[f] = NotReached,
+    then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
+    6.8 If any mLevel[d] = false AND DriveSpeed(s,d) = [Stop, Stop],
+    then Drive shall be set to [Level, d]<br>
+    6.9 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
+    CurrentFloor = g&nbsp; AND<br>
+    &nbsp;&nbsp;&nbsp; 6.9.1 if <b>DriveSpeed.s</b> is &gt; than
+    LevelSpeed AND &lt;= to SlowSpeed, then Drive(s,d) shall be set to
+    [Level, d]<br>
+    &nbsp;&nbsp;&nbsp; 6.9.2 if <b>DriveSpeed.s</b> &lt;= LevelSpeed ,
+    then Drive(s,d) shall be set to [Stop, Stop]<br>
+    6.10 If any mLevel[d] = true AND DriveSpeed(s,d) = [Level, d], then
+    Drive shall be set to [Stop, Stop]<br>
+    6.11 If any mDoorClosed[b, r] is False, then Drive(s,d) shall be set
+    to [Stop, Stop]<br>
+    6.12 If any mDoorMotor[b, r] is Open,&nbsp; then Drive speed shall
+    be set to [Stop, Stop]<br>
+    6.13 If mEmergencyBrake(b) is ON, then Drive speed shall be set to
+    [Stop, Stop].<br>
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
-    <h3><img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-        height="665" width="1189"><br>
-    </h3>
+    <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
+      height="665" width="1189">
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
-          <td valign="top">Transition<br>
-            #<br>
+          <td valign="top">Transition #<br>
           </td>
           <td valign="top">Guard<br>
           </td>
@@ -1932,74 +1928,68 @@
         <tr>
           <td valign="top">T6.1<br>
           </td>
-          <td valign="top">DesiredDirection &#8592; Up AND All
-            mDoorClosed[b,r] &#8592; true <br>
+          <td valign="top">mDesiredFloor.f = g AND DesiredDirection &#8592; Up
+            AND All mDoorClosed[b,r] &#8592; true <br>
             AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
-            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
-            Unreached<br>
-          </td>
+            CommitPoint[g] &#8592; NotReached </td>
         </tr>
         <tr>
           <td valign="top">T6.2<br>
           </td>
-          <td valign="top">DesiredDirection &#8592; Down AND All
-            mDoorClosed[b,r] &#8592; true <br>
+          <td valign="top">mDesiredFloor.f = g AND DesiredDirection &#8592;
+            Down AND All mDoorClosed[b,r] &#8592; true <br>
             AND mCarWeight(x) &lt; MaxCarCapacity AND<br>
-            CommitPoint[mDesiredFloor.f, mDesiredFloor.b, Down] &#8592;
-            Unreached</td>
+            CommitPoint[g] &#8592; NotReached</td>
         </tr>
         <tr>
           <td valign="top">T6.3<br>
           </td>
-          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
-            &#8592; DestinationFloor<br>
-            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, UP] &#8592;
-            Reached</td>
+          <td valign="top">mDesiredFloor.f =g AND DriveSpeed.s &lt;=
+            SLOW_SPEED AND CurrentFloor &#8592; g<br>
+            AND CommitPoint[g] &#8592; Reached</td>
         </tr>
         <tr>
           <td valign="top">T6.4<br>
           </td>
-          <td valign="top">DriveSpeed &lt;= SLOW_SPEED AND currentFloor
-            &#8592; DestinationFloor<br>
-            AND CommitPoint[mDesiredFloor.f, mDesiredFloor.b, DOWN] &#8592;
-            Reached<br>
-          </td>
+          <td valign="top">mDesiredFloor.f =g AND DriveSpeed.s &lt;=
+            SLOW_SPEED AND CurrentFloor &#8592; g<br>
+            AND CommitPoint[g] &#8592; Reached </td>
         </tr>
         <tr>
           <td valign="top">T6.5<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed &lt;=
+          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed.s &lt;=
             LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.6<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed = 0<br>
+          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed.s = STOP<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.7<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed &lt;=
+          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed.s &lt;=
             LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.8<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed &#8592;0</td>
+          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed.s = STOP<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">T6.9.*<br>
           </td>
-          <td valign="top">mEmergencyBrake &#8592; true<br>
-          </td>
+          <td valign="top">mEmergencyBrake &#8592; true OR mHoistwayLimit &#8592;
+            true </td>
         </tr>
       </tbody>
     </table>
-    <br>
-    <h3>Requirements-to-Statecharts Traceability</h3>
+    <h3>Requirements-to-Statecharts Traceability </h3>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
@@ -2731,6 +2721,7 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
               &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD display: inline
               !important; float: none;">mAtFloor[mDesiredFloor] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
@@ -2748,13 +2739,22 @@
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
                 !important; float: none;">&#8592; true AND </span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
+              =="=====" display:="" inline="" !important;="" float:=""
+              none;"=""></span><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;"></span></span><span><span
                 style="color: rgb(0, 0, 0); font-family: Times;
                 font-size: medium; font-style: normal; font-variant:
                 normal; font-weight: normal; letter-spacing: normal;
@@ -2990,7 +2990,7 @@
     </p>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-      <<<<<<<="" head="" height="443" width="762"> <br>
+      height="471" width="693"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="80"
       width="777">
@@ -3059,8 +3059,6 @@
       </tbody>
     </table>
     <br>
-    <p> </p>
-    <br>
     <h2><a name="carbuttoncontrol"></a> 9. CarButtonControl[f, b] </h2>
     <h3> Replication: </h3>
     <ul>
@@ -3098,29 +3096,23 @@
     <h3> CONSTRAINTS: </h3>
     <p>None<br>
     </p>
-    <h3> EVENT-TRIGGERED BEHAVIORS: </h3>
-    <p> ER9.1 If CarCall[b,r] is true, CarLight[b,r] shall be commanded
-      to be On. </p>
-    <p> ER9.2 If no car call button is pressed, mCarLight should be
-      false.<br>
-    </p>
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
-    <p>R9.1 mCarCall[f,b] shall be set to the current value of
-      CarCall[f,b].</p>
-    <p>R9.2&nbsp; If CurrentFloor is f and mDesiredFloor is f and
+    <p>9.1&nbsp; If CurrentFloor is f and mDesiredFloor is f and
       mDoorClosed[b,r] is False<br>
-      &nbsp;&nbsp;&nbsp; R9.2.1 CarLight[f,b] shall be set to Off.<br>
-      &nbsp;&nbsp;&nbsp; R9.2.2 mCarLight[f,b] shall be set to False.<br>
-      &nbsp;&nbsp;&nbsp; R9.2.2 mCarCall[f,b] shall be set to False. </p>
-    R9.3 If CarCall[f,b] is True, and CurrentFloor g is not the same as
+      &nbsp;&nbsp;&nbsp; 9.1.1 CarLight[f,b] shall be set to Off.<br>
+      &nbsp;&nbsp;&nbsp; 9.1.2 mCarLight[f,b] shall be set to False.<br>
+    </p>
+    9.2 If CarCall[f,b] is True, and CurrentFloor g is not the same as
     mDesiredFloor f, <br>
-    &nbsp;&nbsp;&nbsp; R9.3.1 CarLight[f,b] shall be set to On.<br>
-    &nbsp;&nbsp;&nbsp; R9.3.2 mCarLight[f,b] shall be set to True.<br>
-    &nbsp;&nbsp;&nbsp; R9.3.3 mCarCall[f,b] shall be set to True.
-    <h3>State Chart:</h3>
-    <img alt="carbutton"
+    &nbsp;&nbsp;&nbsp; 9.2.1 CarLight[f,b] shall be set to On.<br>
+    &nbsp;&nbsp;&nbsp; 9.2.2 mCarLight[f,b] shall be set to True.<br>
+    <br>
+    9.3 mCarCall[f,b] shall be set to the current value of CarCall[f,b].
+    <h3>State Chart:<br>
+    </h3>
+    &nbsp; <img alt="carbutton"
       src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="403" width="349"><br>
+      height="518" width="443"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="115"
       width="742">
@@ -3149,6 +3141,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
             <span style="color: rgb(0, 0, 0); font-family: Times;
@@ -3561,6 +3554,94 @@
       </tbody>
     </table>
     <br>
+    <h3>Requirements-to-Statecharts Traceability </h3>
+    <table border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="5" rowspan="1" valign="top">Requirements<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">States<br>
+          </td>
+          <td valign="top" width="6%">9.1.1<br>
+          </td>
+          <td valign="top" width="6%">9.1.2<br>
+          </td>
+          <td valign="top" width="6%">9.2.1<br>
+          </td>
+          <td valign="top" width="6%">9.2.2<br>
+          </td>
+          <td valign="top" width="6%">9.3<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S9.1 Off<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S9.2 On<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Transitions<br>
+          </td>
+          <td colspan="5" rowspan="1" valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T9.1<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T9.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp; <br>
     <br>
     <h2><a name="carpositioncontrol"></a> 10. CarPositionControl </h2>
     <h3> Replication:;</h3>
@@ -3611,9 +3692,9 @@
     10.4 &nbsp;&nbsp;&nbsp; Whenever any mAtFloor[f, b] is True,
     CarPositionIndicator shall be commanded to display CurrentFloor. <br>
     <h3>State Chart:</h3>
-    <img alt="carposition"
+    &nbsp; <img alt="carposition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="106" width="217"><br>
+      height="221" width="443"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="73"
       width="379">
@@ -3632,6 +3713,44 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <h3>Requirements-to-Statecharts Traceability </h3>
+    <table border="1" cellpadding="2" cellspacing="2" height="144"
+      width="388">
+      <tbody>
+        <tr>
+          <td valign="top"><br>
+          </td>
+          <td colspan="1" rowspan="1" valign="top">Requirements<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">States<br>
+          </td>
+          <td valign="top" width="6%">10.4<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S10.1 Indicate Floor<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Transitions<br>
+          </td>
+          <td colspan="1" rowspan="1" valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">No Transition<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    &nbsp; <br>
     <br>
     <h2><a name="dispatcher"></a> 11. Dispatcher </h2>
     <h3> Replication: </h3>
@@ -3692,36 +3811,22 @@
     to None.<br>
     11.8 &nbsp; If two mAtFloor[f, b] values are True with the same
     value f, then mDesiredFloor.b shall be set to Both.<br>
-    11.9 &nbsp;&nbsp; mDesiredDwell shall always be set to a constant
-    appropriate value for door open dwell.<br>
+    11.9&nbsp;&nbsp;&nbsp; mDesiredDwell shall always be set to a
+    constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
-    <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="492" width="574">
+    &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
+      height="456" width="492"><br>
+    <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
-          <td valign="top">Transition<br>
-            #<br>
+          <td valign="top">Transition #<br>
           </td>
           <td valign="top">Guard<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T11.1<br>
-          </td>
-          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
-            b] &#8592; true<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.2<br>
-          </td>
-          <td valign="top">All mDoorClosed[b, r] &#8592; true AND mAtFloor[f,
-            b] &#8592; false<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.3<br>
           </td>
           <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
             b] &#8592; false<br>
@@ -3759,31 +3864,11 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.1 Idle<br>
+          <td valign="top">S11.1 Normal<br>
           </td>
           <td valign="top">x<br>
           </td>
           <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">S11.2 At_Floor<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -3799,7 +3884,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.3 Emergency<br>
+          <td valign="top">S11.2 Emergency<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -3821,65 +3906,11 @@
         <tr>
           <td valign="top">Transitions<br>
           </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
+          <td colspan="8" rowspan="1" valign="top"><br>
           </td>
         </tr>
         <tr>
           <td valign="top">T11.1<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.2<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.3<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -3900,6 +3931,8 @@
         </tr>
       </tbody>
     </table>
+    <p><br>
+    </p>
     <p><br>
     </p>
     <p>&nbsp; <br>
