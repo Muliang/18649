@@ -351,8 +351,8 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" width="613" height="523"
-          border="0"></a><br>
+          width: 613px; height: 523px;" border="0" height="523"
+          width="613"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
       cellpadding="2" cellspacing="2">
@@ -1294,6 +1294,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -1310,7 +1311,7 @@
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-      width="1189" height="665">
+      height="665" width="1189">
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
@@ -1836,10 +1837,10 @@
       set to On.</span><br>
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" width="449"
-        height="420" border="0"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" border="0"
+        height="420" width="449"></a><br>
     <br>
-    <table height="148" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="148">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -1971,6 +1972,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">mAtFloor[mDesiredFloor]
+
 
 
 
@@ -2114,9 +2116,9 @@
     <br>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-      width="693" height="471"><br>
+      height="471" width="693"><br>
     <br>
-    <table width="100%" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
         <tr>
           <td valign="top">State<br>
@@ -2157,8 +2159,8 @@
     </table>
     <br>
     <br>
-    <table width="777" height="80" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="80"
+      width="777">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -2402,11 +2404,11 @@
     <h3>State Chart:<br>
     </h3>
     &nbsp; <img alt="carbutton"
-      src="CallButtonControl_state_chart_group9_wenhuih.png" width="443"
-      height="518"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png"
+      height="518" width="443"><br>
     <br>
-    <table width="742" height="115" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="115"
+      width="742">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2432,6 +2434,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -2889,8 +2892,8 @@
       </tbody>
     </table>
     <br>
-    <table style="text-align: left; width: 800px;" border="1"
-      cellpadding="2" cellspacing="2">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" height="148" width="801">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -2907,7 +2910,8 @@
             passenger has already arrived at desired floor and door
             starts to open, car light for desired floor[f,b] is off.<br>
           </td>
-          <td style="vertical-align: top;">set CarLight[f,b] Off<br>
+          <td style="vertical-align: top;">set CarLight[f,b] Off, set
+            mCarLight[f,b] to False, set mCarCall[f,b] to False<br>
           </td>
         </tr>
         <tr>
@@ -2916,7 +2920,8 @@
           <td style="vertical-align: top;">After passenger makes a car
             call and has yet not arrived at desired floor, car light for
             desired floor[f,b] is on.</td>
-          <td style="vertical-align: top;">set CarLight[f,b] On<br>
+          <td style="vertical-align: top;">set CarLight[f,b] On, set
+            mCarLight[f,b] to True, set mCarCall[f,b] to True<br>
           </td>
         </tr>
       </tbody>
@@ -3062,10 +3067,10 @@
     <h3>State Chart:</h3>
     &nbsp; <img alt="carposition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      width="443" height="221"><br>
+      height="221" width="443"><br>
     <br>
-    <table width="379" height="73" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="73"
+      width="379">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -3107,8 +3112,8 @@
     </table>
     <br>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table width="388" height="144" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="144"
+      width="388">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -3207,9 +3212,9 @@
     constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      width="492" height="456"><br>
+      height="456" width="492"><br>
     <br>
-    <table width="100%" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
         <tr>
           <td valign="top">State<br>
