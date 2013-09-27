@@ -3150,6 +3150,45 @@
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
       width="492" height="456"><br>
     <br>
+    <table width="100%" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td valign="top">State<br>
+          </td>
+          <td valign="top">Description<br>
+          </td>
+          <td valign="top">Actions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Normal<br>
+          </td>
+          <td valign="top">When the elevator is running in a normal( in
+            this case Sabbath mode) operating mode and has not
+            encountered any emergency situations<br>
+          </td>
+          <td valign="top">Set appropriate values for Target , always
+            stop at the Desired Floor and the Desired Hallway and set
+            mDesiredDwell to a proper constant value<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">Emergency<br>
+          </td>
+          <td valign="top">When the elevator has doors that are not
+            closed between floors.<br>
+          </td>
+          <td valign="top">The Target is always set to Floor 1, and
+            always stop at the DesiredFloor and DesiredFloor hallway is
+            set to None.<br>
+            MDesiredDwell is set to a proper constant value<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
