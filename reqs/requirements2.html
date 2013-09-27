@@ -1895,6 +1895,7 @@
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -3180,6 +3181,7 @@
 
 
 
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -3629,6 +3631,39 @@
       </tbody>
     </table>
     <br>
+    <table style="text-align: left; width: 800px;" border="1"
+      cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">State<br>
+          </td>
+          <td style="vertical-align: top;">Description<br>
+          </td>
+          <td style="vertical-align: top;">Actions<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">CAR_LIGHT_OFF<br>
+          </td>
+          <td style="vertical-align: top;">When there is no car call OR
+            passenger has already arrived at desired floor and door
+            starts to open, car light for desired floor[f,b] is off.<br>
+          </td>
+          <td style="vertical-align: top;">set CarLight[f,b] Off<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">CAR_LIGHT_ON<br>
+          </td>
+          <td style="vertical-align: top;">After passenger makes a car
+            call and has yet not arrived at desired floor, car light for
+            desired floor[f,b] is on.</td>
+          <td style="vertical-align: top;">set CarLight[f,b] On<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <h3>Requirements-to-Statecharts Traceability </h3>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -3784,6 +3819,30 @@
           <td valign="top">No Transition<br>
           </td>
           <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" height="80" width="902">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">State<br>
+          </td>
+          <td style="vertical-align: top;">Description<br>
+          </td>
+          <td style="vertical-align: top;">Actions<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">INDICATE_FLOOR<br>
+          </td>
+          <td style="vertical-align: top;">Indicate current floor
+            whenever the car arrives at any floor<br>
+          </td>
+          <td style="vertical-align: top;">command CarPositionIndicator
+            to display CurrentFloor <br>
           </td>
         </tr>
       </tbody>
