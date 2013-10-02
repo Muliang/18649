@@ -7,6 +7,7 @@ import simulator.elevatormodules.CarWeightCanPayloadTranslator;
 import simulator.elevatormodules.DoorClosedCanPayloadTranslator;
 import simulator.elevatormodules.HoistwayLimitSensorCanPayloadTranslator;
 import simulator.elevatormodules.LevelingCanPayloadTranslator;
+import simulator.elevatormodules.SafetySensorCanPayloadTranslator;
 import simulator.framework.Controller;
 import simulator.framework.Direction;
 import simulator.framework.Elevator;
@@ -55,7 +56,8 @@ import simulator.payloads.translators.BooleanCanPayloadTranslator;
 public class DriveControl extends Controller {
 	//trace current state
 	Direction DesiredDirection;
-	int currentFloor;
+	private int currentFloor;
+	private int desiredFloor;
 	
 	//local physical state
     private ReadableDriveSpeedPayload localDriveSpeed;
@@ -71,7 +73,8 @@ public class DriveControl extends Controller {
     //private AtFloorCanPayloadTranslator mAtFloor;
     private Utility.AtFloorArray mAtFloor;
     
-    private ReadableCanMailbox networkLevel;
+    private ReadableCanMailbox networkLevelUp;
+    private ReadableCanMailbox networkLevelDown;
     private LevelingCanPayloadTranslator mLevelUp;
     private LevelingCanPayloadTranslator mLevelDown;
     
@@ -87,7 +90,7 @@ public class DriveControl extends Controller {
     //private DoorCommandCanPayloadTranslator mDoorMotor;
     
     private ReadableCanMailbox networkEmergencyBrake;
-    private BooleanCanPayloadTranslator mEmergencyBrake;
+    private SafetySensorCanPayloadTranslator mEmergencyBrake;
     
     private ReadableCanMailbox networkDesiredFloor;
     private DesiredFloorCanPayloadTranslator mDesiredFloor;
@@ -181,33 +184,26 @@ public class DriveControl extends Controller {
          * of message.
          */
         
-        //to be fixed
-        //networkAtFloor = CanMailbox.getReadableCanMailbox(MessageDictionary.AT_FLOOR_BASE_CAN_ID + ReplicationComputer.computeReplicationId(1, Hallway.FRONT));
-        //mAtFloor = new AtFloorCanPayloadTranslator(networkAtFloor, 1, Hallway.FRONT);
-        //register to receive periodic updates to the mailbox via the CAN network
-        //the period of updates will be determined by the sender of the message
-        //canInterface.registerTimeTriggered(networkAtFloor);
-        mAtFloor			= new Utility.AtFloorArray(canInterface);
+        mAtFloor = new Utility.AtFloorArray(canInterface);
         
-        //to be fixed
-        networkLevel = CanMailbox.getReadableCanMailbox(MessageDictionary.LEVELING_BASE_CAN_ID);
-        mLevelUp = new LevelingCanPayloadTranslator(networkLevel, Direction.UP);
-        mLevelDown = new LevelingCanPayloadTranslator(networkLevel, Direction.DOWN);
-        canInterface.registerTimeTriggered(networkLevel);
+        networkLevelUp = CanMailbox.getReadableCanMailbox(MessageDictionary.LEVELING_BASE_CAN_ID + 
+        		ReplicationComputer.computeReplicationId(Direction.UP));
+        networkLevelDown = CanMailbox.getReadableCanMailbox(MessageDictionary.LEVELING_BASE_CAN_ID +
+        		ReplicationComputer.computeReplicationId(Direction.DOWN));
+        mLevelUp = new LevelingCanPayloadTranslator(networkLevelUp, Direction.UP);
+        mLevelDown = new LevelingCanPayloadTranslator(networkLevelDown, Direction.DOWN);
+        canInterface.registerTimeTriggered(networkLevelUp);
+        canInterface.registerTimeTriggered(networkLevelDown);
         
         networkCarLevelPosition = CanMailbox.getReadableCanMailbox(MessageDictionary.CAR_LEVEL_POSITION_CAN_ID);
         mCarLevelPosition = new CarLevelPositionCanPayloadTranslator(networkCarLevelPosition);
         canInterface.registerTimeTriggered(networkCarLevelPosition);
         
-        //to be fixed
-        //networkDoorClosed = CanMailbox.getReadableCanMailbox(MessageDictionary.DOOR_CLOSED_SENSOR_BASE_CAN_ID);
-        //mDoorClosed = new DoorClosedCanPayloadTranslator(networkDoorClosed, Hallway.FRONT, Side.LEFT);
-        //canInterface.registerTimeTriggered(networkDoorClosed);
         mDoorClosedArrayBack = new Utility.DoorClosedArray(Hallway.BACK, canInterface);
         mDoorClosedArrayFront = new Utility.DoorClosedArray(Hallway.FRONT, canInterface);
         
         networkEmergencyBrake = CanMailbox.getReadableCanMailbox(MessageDictionary.EMERGENCY_BRAKE_CAN_ID);
-        mEmergencyBrake = new BooleanCanPayloadTranslator(networkEmergencyBrake);
+        mEmergencyBrake = new SafetySensorCanPayloadTranslator(networkEmergencyBrake);
         canInterface.registerTimeTriggered(networkEmergencyBrake);
         
         networkDesiredFloor = CanMailbox.getReadableCanMailbox(MessageDictionary.DESIRED_FLOOR_CAN_ID);
@@ -232,7 +228,10 @@ public class DriveControl extends Controller {
 	}
 	
 	private Commit commitPoint(int floor){
-		return Commit.REACHED;
+		if(currentFloor == floor)
+			return Commit.REACHED;
+		else
+			return Commit.NOTREACHED;
 	} 
 
 	@Override
@@ -265,23 +264,23 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.STOP;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//add get currentFloor method
 			
 			//#transition 'S6.1'
-			if (commitPoint(mDesiredFloor.getFloor()) == Commit.NOTREACHED && DesiredDirection==Direction.UP 
+			if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor > currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_UP;
 			//#transition 'S6.2'
-			else if (commitPoint(mDesiredFloor.getFloor()) == Commit.NOTREACHED && DesiredDirection==Direction.DOWN
+			else if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor < currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_DOWN;
 			//#transition 'S6.6'
 			
-			//to be fixed mLevel[d] not specified
 			else if (mLevelUp.getValue() == false && localDriveSpeed.speed() == 0 
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_UP;
@@ -290,7 +289,7 @@ public class DriveControl extends Controller {
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_DOWN;
 			//#transition 'S6.9.1'
-			else if (mEmergencyBrake.getValue() == true)
+			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
 		
@@ -301,16 +300,18 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.UP;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//add get currentFloor method
 			
 			//#transition 'S6.3'
-			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED && DesiredDirection==Direction.UP 
-					&& localDriveSpeed.speed() <= SLOW_SPEED && currentFloor == mDesiredFloor.getFloor())
+			if (commitPoint(desiredFloor) == Commit.REACHED 
+					&& localDriveSpeed.speed() <= SLOW_SPEED 
+					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_UP;
 			//#transition 'S6.9.2'
-			else if (mEmergencyBrake.getValue() == true)
+			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
 		
@@ -321,16 +322,18 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.DOWN;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//add get currentFloor method
 			
 			//#transition 'S6.4'
-			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED && DesiredDirection==Direction.DOWN 
-					&& localDriveSpeed.speed() <= SLOW_SPEED && currentFloor == mDesiredFloor.getFloor())
+			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED 
+					&& localDriveSpeed.speed() <= SLOW_SPEED 
+					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_DOWN;
 			//#transition 'S6.9.3'
-			else if (mEmergencyBrake.getValue() == true)
+			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
 		
@@ -341,6 +344,7 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.UP;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//add get currentFloor method
@@ -349,7 +353,7 @@ public class DriveControl extends Controller {
 			if (mLevelUp.getValue()==true && localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
 			//#transition 'S6.9.4'
-			else if (mEmergencyBrake.getValue() == true)
+			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
 		
@@ -360,6 +364,7 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.STOP;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//add get currentFloor method
@@ -369,7 +374,7 @@ public class DriveControl extends Controller {
 				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
 			//#transition 'S6.9.5'
-			else if (mEmergencyBrake.getValue() == true)
+			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
 		      	
@@ -380,6 +385,7 @@ public class DriveControl extends Controller {
 			mDriveSpeed.setSpeed(localDriveSpeed.speed());
 			mDriveSpeed.setDirection(localDriveSpeed.direction());
 			DesiredDirection = Direction.STOP;
+			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 		}
 

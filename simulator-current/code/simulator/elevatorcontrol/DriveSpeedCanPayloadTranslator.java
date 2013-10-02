@@ -1,6 +1,9 @@
 /*
- * 18649 - Fall 2012
- * Group 13 - Felix Hutchison (fhutchin), Milda Zizyte (mzizyte), Seth Aaron (saaron), and Tristan Muntsinger (tmuntsin) 
+ * 18649 - Fall 2013
+ * Group 9 - 	Priya Mahajan 	(priyam)
+ * 				Wenhui Hu		(wenhuih)
+ * 				Yichao Xue		(yichaox)
+ * 				Yujia Wang		(yujiaw) 
  */
 
 package simulator.elevatorcontrol;
@@ -14,7 +17,7 @@ import simulator.payloads.CanMailbox.WriteableCanMailbox;
 import simulator.payloads.translators.CanPayloadTranslator;
 
 /**
- * @author Tristan Muntsinger, Milda Zizyte
+ * @author Yujia Wang
  */
 public class DriveSpeedCanPayloadTranslator extends CanPayloadTranslator {
 
