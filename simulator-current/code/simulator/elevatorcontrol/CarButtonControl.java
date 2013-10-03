@@ -5,7 +5,9 @@ import simulator.framework.Controller;
 import simulator.framework.Elevator;
 import simulator.framework.Hallway;
 import simulator.framework.ReplicationComputer;
+import simulator.payloads.CarCallPayload;
 import simulator.payloads.CarCallPayload.ReadableCarCallPayload;
+import simulator.payloads.CarLightPayload;
 import simulator.payloads.CarLightPayload.WriteableCarLightPayload;
 
 
@@ -36,14 +38,17 @@ public class CarButtonControl extends Controller {
 	private Utility.AtFloorArray mAtFloor;
 	private Utility.DoorClosedArray mDoorClosed;
 	private Utility.DesiredFloor mDesiredFloor;
+	
 	private ReadableCarCallPayload CarCall;
 	
 	
 	
 	// output
 	private Utility.CarCall	mCarCall;
-	private WriteableCarLightPayload CarLight;
 	private Utility.CarLight mCarLight;
+	
+	private WriteableCarLightPayload CarLight;
+
 
 	
 	public CarButtonControl(int floor, Hallway hallway, SimTime period, boolean verbose)
@@ -60,12 +65,21 @@ public class CarButtonControl extends Controller {
 		mAtFloor		= new Utility.AtFloorArray(canInterface);
 		mDesiredFloor	= new Utility.DesiredFloor(canInterface);
 		mDoorClosed		= new Utility.DoorClosedArray(hallway, canInterface);
-		CarCall			= mCarCall.Readable(physicalInterface);
+		
+		
+		
 		
 		// Outputs
-		CarLight		= Utility.CarLight.Writeable(physicalInterface, period, floor, hallway);
 		mCarCall		= new Utility.CarCall(canInterface, period, floor, hallway);
-		mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 	
+		mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 
+		
+		CarLight		= Utility.CarLight.Writeable(physicalInterface, period, floor, hallway);
+		CarCall			= mCarCall.Readable(physicalInterface);
+
+
+		
+		// CarLight 		= CarLightPayload.getWriteablePayload(floor, hallway);
+		// CarCall			= CarCallPayload.getReadablePayload(floor, hallway);
 		
 		
 		// Start Timer
@@ -77,10 +91,30 @@ public class CarButtonControl extends Controller {
 	@Override
 	public void timerExpired(Object callbackData) {
 		State oldState = state;
-		switch(state) {
-		case STATE_ON:	StateOff();
-		case STATE_OFF:	StateOn();
+
+		switch(oldState) {
+		
+			case STATE_ON:	
+				StateOn();
+				break;
+		
+			case STATE_OFF:	
+				StateOff();
+				break;
+		
+			default:
+				throw new RuntimeException("State " + state + " was not recognized.");
+		
 		}
+		
+		if (state == oldState)
+			log("No transition: ", state);
+		else
+			log("Transition:", oldState, "->", state);
+		
+		setState(STATE_KEY, state.toString());
+		
+		timer.start(period);
 	}
 
 	private void StateOn() {
@@ -88,7 +122,7 @@ public class CarButtonControl extends Controller {
 		mCarLight.set(true);
 		mCarCall.set(true);
 		
-		// transition T9.1
+		// #transition 'T9.1'
 		if (mDesiredFloor.getFloor() == floor && mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 			state = State.STATE_OFF;
 		}
@@ -100,7 +134,7 @@ public class CarButtonControl extends Controller {
 		mCarLight.set(false);
 		mCarCall.set(false);
 		
-		// transition T9.2
+		// #transition 'T9.2'
 		if(CarCall.isPressed()) {
 			state = State.STATE_ON;
 		}

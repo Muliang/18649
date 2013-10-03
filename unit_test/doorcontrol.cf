@@ -1,6 +1,12 @@
-; 18649 <semester>
-; group #
-; student names and andrewID's
-; doorcontrol_test.cf
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; DoorControl.cf	Author: Yichao Xue (yichaox)
 
-DoorControl ;TODO complete this line
+;**************************************
+;
+;	     DoorControl.cf
+;
+;**************************************
+
+DoorControl FRONT LEFT 10.0ms true;
