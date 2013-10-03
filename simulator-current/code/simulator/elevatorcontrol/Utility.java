@@ -69,7 +69,7 @@ public class Utility {
 
 	public static class DoorClosedArray {
 
-		private HashMap<Integer, DoorClosedCanPayloadTranslator> translatorArray = new HashMap<Integer, DoorClosedCanPayloadTranslator>();
+		private HashMap<Integer, DoorClosedCanPayloadTranslator> networkDoorClosedTranslators = new HashMap<Integer, DoorClosedCanPayloadTranslator>();
 		public final Hallway hallway;
 
 		public DoorClosedArray(Hallway hallway, CANNetwork.CanConnection conn) {
@@ -83,16 +83,16 @@ public class Utility {
 				DoorClosedCanPayloadTranslator t = new DoorClosedCanPayloadTranslator(
 						m, hallway, s);
 				conn.registerTimeTriggered(m);
-				translatorArray.put(index, t);
+				networkDoorClosedTranslators.put(index, t);
 			}
 		}
 
 		public boolean getBothClosed() {
-			return translatorArray.get(
+			return networkDoorClosedTranslators.get(
 					ReplicationComputer
 							.computeReplicationId(hallway, Side.LEFT))
 					.getValue()
-					&& translatorArray.get(
+					&& networkDoorClosedTranslators.get(
 							ReplicationComputer.computeReplicationId(hallway,
 									Side.RIGHT)).getValue();
 		}
@@ -155,7 +155,7 @@ public class Utility {
 	}
 
 	public static class HallCallArray {
-		private HashMap<Integer, HallCallCanPayloadTranslator> networkHallCallArray = new HashMap<Integer, HallCallCanPayloadTranslator>();
+		private HashMap<Integer, HallCallCanPayloadTranslator> networkHallCallTranslators = new HashMap<Integer, HallCallCanPayloadTranslator>();
 
 
 		public HallCallArray(CANNetwork.CanConnection conn) {
@@ -172,7 +172,7 @@ public class Utility {
 						HallCallCanPayloadTranslator t = new HallCallCanPayloadTranslator(
 								m, floor, h, d);
 						conn.registerTimeTriggered(m);
-						networkHallCallArray.put(index, t);
+						networkHallCallTranslators.put(index, t);
 					}
 				}
 			}
@@ -183,12 +183,12 @@ public class Utility {
 			int upIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.UP);
 			int downIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.DOWN);
 			
-			return networkHallCallArray.get(upIndex).getValue() || networkHallCallArray.get(downIndex).getValue();
+			return networkHallCallTranslators.get(upIndex).getValue() || networkHallCallTranslators.get(downIndex).getValue();
 		}
 	}
 
 	public static class CarCallArray {
-		private HashMap<Integer, CarCallCanPayloadTranslator> translatorArray = new HashMap<Integer, CarCallCanPayloadTranslator>();
+		private HashMap<Integer, CarCallCanPayloadTranslator> networkCarCallTranslators = new HashMap<Integer, CarCallCanPayloadTranslator>();
 
 
 		public CarCallArray(CANNetwork.CanConnection conn) {
@@ -203,7 +203,7 @@ public class Utility {
 					CarCallCanPayloadTranslator t = new CarCallCanPayloadTranslator(
 							m, floor, h);
 					conn.registerTimeTriggered(m);
-					translatorArray.put(index, t);
+					networkCarCallTranslators.put(index, t);
 				}
 			}
 		}
@@ -212,7 +212,7 @@ public class Utility {
 		public boolean isPressed(int floor, Hallway hallway) {
 			int index = ReplicationComputer
 					.computeReplicationId(floor, hallway);
-			return translatorArray.get(index).getValue();
+			return networkCarCallTranslators.get(index).getValue();
 		}
 
 	}
