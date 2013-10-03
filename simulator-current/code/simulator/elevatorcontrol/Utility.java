@@ -217,6 +217,36 @@ public class Utility {
 
 	}
 
+		public static class CarLightArray {
+		private HashMap<Integer, CarLightCanPayloadTranslator> networkCarLightTranslators = new HashMap<Integer, CarLightCanPayloadTranslator>();
+
+
+		public CarLightArray(CANNetwork.CanConnection conn) {
+			for (int i = 0; i < Elevator.numFloors; i++) {
+				int floor = i + 1;
+				for (Hallway h : Hallway.replicationValues) {
+					int index = ReplicationComputer.computeReplicationId(floor,
+							h);
+					ReadableCanMailbox m = CanMailbox
+							.getReadableCanMailbox(MessageDictionary.CAR_CALL_BASE_CAN_ID
+									+ index);
+					CarLightCanPayloadTranslator t = new CarLightCanPayloadTranslator(
+							m, floor, h);
+					conn.registerTimeTriggered(m);
+					networkCarLightTranslators.put(index, t);
+				}
+			}
+		}
+
+
+		public boolean isLighted(int floor, Hallway hallway) {
+			int index = ReplicationComputer
+					.computeReplicationId(floor, hallway);
+			return networkCarLightTranslators.get(index).getValue();
+		}
+
+	}
+
 	public static class CarCall extends CarCallCanPayloadTranslator {
 		private int floor;
 		private Hallway hallway;

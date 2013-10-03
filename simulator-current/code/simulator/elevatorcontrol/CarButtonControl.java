@@ -98,7 +98,8 @@ public class CarButtonControl extends Controller {
 				StateOn();
 				break;
 		
-			case STATE_OFF:	StateOff();
+			case STATE_OFF:	
+				StateOff();
 				break;
 		
 			default:

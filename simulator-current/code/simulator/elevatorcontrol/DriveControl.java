@@ -269,26 +269,26 @@ public class DriveControl extends Controller {
 			
 			//add get currentFloor method
 			
-			//#transition 'S6.1'
+			//#transition 'T6.1'
 			if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor > currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_UP;
-			//#transition 'S6.2'
+			//#transition 'T6.2'
 			else if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor < currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_DOWN;
-			//#transition 'S6.6'
+			//#transition 'T6.6'
 			
 			else if (mLevelUp.getValue() == false && localDriveSpeed.speed() == 0 
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_UP;
-			//#transition 'S6.8'
+			//#transition 'T6.8'
 			else if (mLevelDown.getValue() == false && localDriveSpeed.speed() == 0 
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_DOWN;
-			//#transition 'S6.9.1'
+			//#transition 'T6.9.1'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
@@ -305,12 +305,12 @@ public class DriveControl extends Controller {
 			
 			//add get currentFloor method
 			
-			//#transition 'S6.3'
+			//#transition 'T6.3'
 			if (commitPoint(desiredFloor) == Commit.REACHED 
 					&& localDriveSpeed.speed() <= SLOW_SPEED 
 					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_UP;
-			//#transition 'S6.9.2'
+			//#transition 'T6.9.2'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
@@ -327,12 +327,12 @@ public class DriveControl extends Controller {
 			
 			//add get currentFloor method
 			
-			//#transition 'S6.4'
+			//#transition 'T6.4'
 			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED 
 					&& localDriveSpeed.speed() <= SLOW_SPEED 
 					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_DOWN;
-			//#transition 'S6.9.3'
+			//#transition 'T6.9.3'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
@@ -349,10 +349,10 @@ public class DriveControl extends Controller {
 			
 			//add get currentFloor method
 			
-			//#transition 'S6.5'
+			//#transition 'T6.5'
 			if (mLevelUp.getValue()==true && localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
-			//#transition 'S6.9.4'
+			//#transition 'T6.9.4'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
@@ -369,11 +369,11 @@ public class DriveControl extends Controller {
 			
 			//add get currentFloor method
 			
-			//#transition 'S6.7'
+			//#transition 'T6.7'
 			if (mLevelDown.getValue()==true 
 				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
-			//#transition 'S6.9.5'
+			//#transition 'T6.9.5'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
 		}
