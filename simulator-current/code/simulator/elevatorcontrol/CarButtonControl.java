@@ -66,20 +66,20 @@ public class CarButtonControl extends Controller {
 		mDesiredFloor	= new Utility.DesiredFloor(canInterface);
 		mDoorClosed		= new Utility.DoorClosedArray(hallway, canInterface);
 		
-
-		// CarCall			= CarCallPayload.getReadablePayload(floor, hallway);
 		
 		
 		
 		// Outputs
 		mCarCall		= new Utility.CarCall(canInterface, period, floor, hallway);
-
-		CarCall			= mCarCall.Readable(physicalInterface);
-		
-		mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 	
+		mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 
 		
 		CarLight		= Utility.CarLight.Writeable(physicalInterface, period, floor, hallway);
+		CarCall			= mCarCall.Readable(physicalInterface);
+
+
+		
 		// CarLight 		= CarLightPayload.getWriteablePayload(floor, hallway);
+		// CarCall			= CarCallPayload.getReadablePayload(floor, hallway);
 		
 		
 		// Start Timer
@@ -91,14 +91,19 @@ public class CarButtonControl extends Controller {
 	@Override
 	public void timerExpired(Object callbackData) {
 		State oldState = state;
+
 		switch(oldState) {
+		
 			case STATE_ON:	
 				StateOn();
 				break;
+		
 			case STATE_OFF:	StateOff();
 				break;
+		
 			default:
 				throw new RuntimeException("State " + state + " was not recognized.");
+		
 		}
 		
 		if (state == oldState)

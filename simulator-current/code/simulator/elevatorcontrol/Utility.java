@@ -97,13 +97,6 @@ public class Utility {
 									Side.RIGHT)).getValue();
 		}
 
-		// public boolean isClosed() {
-		// return false;
-		// }
-		//
-		// public boolean isClosed(Hallway hallway) {
-		// return false;
-		// }
 	}
 
 	public static class AtFloorArray {
@@ -164,7 +157,6 @@ public class Utility {
 	public static class HallCallArray {
 		private HashMap<Integer, HallCallCanPayloadTranslator> networkHallCallArray = new HashMap<Integer, HallCallCanPayloadTranslator>();
 
-		// public final Hallway hallway;
 
 		public HallCallArray(CANNetwork.CanConnection conn) {
 
@@ -186,7 +178,7 @@ public class Utility {
 			}
 		}
 		
-		//hallcallbutton is pressed at a floor
+		// any hall call button is pressed at a floor
 		public boolean isAnyPressed(int floor, Hallway hallway){
 			int upIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.UP);
 			int downIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.DOWN);
@@ -198,10 +190,8 @@ public class Utility {
 	public static class CarCallArray {
 		private HashMap<Integer, CarCallCanPayloadTranslator> translatorArray = new HashMap<Integer, CarCallCanPayloadTranslator>();
 
-		// public final Hallway hallway;
 
 		public CarCallArray(CANNetwork.CanConnection conn) {
-			// this.hallway = Hallway.NONE;
 			for (int i = 0; i < Elevator.numFloors; i++) {
 				int floor = i + 1;
 				for (Hallway h : Hallway.replicationValues) {
@@ -218,31 +208,6 @@ public class Utility {
 			}
 		}
 
-		// public CarCallArray(CANNetwork.CanConnection conn, Hallway hallway) {
-		// this.hallway = hallway;
-		// for (int i = 0; i < Elevator.numFloors; i++) {
-		// int floor = i + 1;
-		// int index = ReplicationComputer.computeReplicationId(floor,
-		// hallway);
-		// ReadableCanMailbox m = CanMailbox
-		// .getReadableCanMailbox(MessageDictionary.CAR_CALL_BASE_CAN_ID
-		// + index);
-		// CarCallCanPayloadTranslator t = new CarCallCanPayloadTranslator(
-		// m, floor, hallway);
-		// conn.registerTimeTriggered(m);
-		// translatorArray.put(index, t);
-		// }
-		// }
-
-		// public boolean isPressed(int floor) {
-		// if (hallway == Hallway.NONE) {
-		// return isPressed(floor, Hallway.FRONT)
-		// || isPressed(floor, Hallway.BACK);
-		// }
-		// int index = ReplicationComputer
-		// .computeReplicationId(floor, hallway);
-		// return translatorArray.get(index).getValue();
-		// }
 
 		public boolean isPressed(int floor, Hallway hallway) {
 			int index = ReplicationComputer

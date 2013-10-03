@@ -1,11 +1,10 @@
 package simulator.elevatorcontrol;
 
-//import simulator.elevatormodules.BooleanCanTranslator;
 import simulator.framework.Hallway;
 import simulator.framework.ReplicationComputer;
 import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
-//import simulator.payloads.translators.BooleanCanPayloadTranslator;
+
 
 public class CarCallCanPayloadTranslator extends BooleanCanTranslator {
 
