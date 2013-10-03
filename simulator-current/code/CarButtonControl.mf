@@ -1,0 +1,92 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; DriveControl.mf
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           CarButtonControl.mf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#INCLUDE ElevatorDefines.mf
+
+#DEFINE HALLWAY FRONT
+#DEFINE CURRENT_FLOOR 1
+#DEFINE NEXT_FLOOR 3
+#DEFINE DIRECTION UP
+#DEFINE SIDE LEFT
+
+; Intialize to STATE_OFF
+
+0.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = false;
+0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor CURRENT_FLOOR HALLWAY = true;
+0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = NEXT_FLOOR HALLWAY DIRECTION;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+
+
+
+; check STATE_OFF
+
+0.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == false;
+0.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == false;
+0.50s A S CarButtonControl[3][FRONT] : STATE == STATE_OFF;
+
+
+
+
+; set CarCall
+; #transition T9.2
+
+1.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = true;
+1.50s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = false;
+
+
+
+
+; check STATE_ON
+
+1.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == true;
+1.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == true;
+1.50s A S CarButtonControl[3][FRONT] : STATE == STATE_ON;
+
+
+
+
+; mAtFloor[NEXT_FLOOR, HALLWAY] = true should not change the state
+
+3.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor NEXT_FLOOR HALLWAY = true;
+
+
+
+
+; check STATE_ON
+
+3.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == true;
+3.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == true;
+3.50s A S CarButtonControl[3][FRONT] : STATE == STATE_ON;
+
+
+
+
+; mDoorClosed[HALLWAY, SIDE] = false should change the state
+; #transition T9.1
+
+4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed HALLWAY SIDE = false;
+4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+
+
+
+
+
+; check STATE_OFF
+
+4.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == false;
+4.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == false;
+4.50s A S CarButtonControl[3][FRONT] : STATE == STATE_OFF;
