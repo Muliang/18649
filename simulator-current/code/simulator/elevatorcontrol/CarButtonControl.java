@@ -121,7 +121,7 @@ public class CarButtonControl extends Controller {
 		mCarLight.set(true);
 		mCarCall.set(true);
 		
-		// transition T9.1
+		// #transition 'T9.1'
 		if (mDesiredFloor.getFloor() == floor && mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 			state = State.STATE_OFF;
 		}
@@ -133,7 +133,7 @@ public class CarButtonControl extends Controller {
 		mCarLight.set(false);
 		mCarCall.set(false);
 		
-		// transition T9.2
+		// #transition 'T9.2'
 		if(CarCall.isPressed()) {
 			state = State.STATE_ON;
 		}
