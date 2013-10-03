@@ -132,7 +132,7 @@ public class HallButtonControl extends Controller{
 		HallLight.set(true);
 		mHallLight.set(true);
 		mHallCall.set(true);
-		// transition T8.2
+		// #transition 'T8.2'
 		if (mDesiredFloor.getFloor() == CurrentFloor && mAtFloor.isAtFloor(CurrentFloor, hallway) == true && !mDoorClosed.getBothClosed()) {
 							state = State.STATE_OFF;
 		}
@@ -144,7 +144,7 @@ public class HallButtonControl extends Controller{
 		mHallLight.set(false);
 		mHallCall.set(false);
 		
-		// transition T8.1
+		// #transition 'T8.1'
 		if(HallCall.pressed() && CurrentFloor != mDesiredFloor.getFloor()) {
 			state = State.STATE_ON;
 		}
