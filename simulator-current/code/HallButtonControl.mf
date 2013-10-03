@@ -1,0 +1,85 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; HallButtonControl.mf
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           HallButtonControl.mf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#INCLUDE ElevatorDefines.mf
+
+
+
+; Initialize to STATE_OFF
+
+0.00s I HALL_BUTTON_CONTROL_PERIOD F HallCall CURRENT_FLOOR HALLWAY DIRECTION= false;
+0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT  = false;
+0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 1 FRONT STOP;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+
+
+
+; check STATE_OFF
+;Assertions
+
+0.50s A F HallLight NEXT_FLOOR HALLWAY : isLighted == false;
+0.50s A N HALL_CALL_[3][FRONT][UP]_CAN_ID HaLLCall 1 FRONT UP : getValue == false;
+;0.50s A N HALL_CALL_[3][FRONT][DOWN]_CAN_ID HaLLCall 1 FRONT DOWN: getValue == false;
+0.50s A N HALL_LIGHT_[3][FRONT][UP]_CAN_ID HaLLCall 1 FRONT UP: getValue == false;
+;0.50s A N HALL_LIGHT_[3][FRONT][DOWN]_CAN_ID HaLLCall 1 FRONT DOWN: getValue == false;
+0.50s A S HallButtonControl[3][FRONT][UP] : STATE == STATE_OFF;
+;0.50s A S HallButtonControl[3][FRONT][DOWN] : STATE == STATE_OFF;
+
+
+
+; set HallCall
+; #transition 'T8.1'
+
+1.00s I HALl_BUTTON_CONTROL_PERIOD F HallCall 3 FRONT UP = true;
+1.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT  = false;
+
+
+
+; # check state 'S8.1 HALL_LIGHT_ON'
+
+1.50s A F HallLight CURRENT_FLOOR FRONT UP : isLighted == true;
+1.50s A N HALL_CALL_[3][FRONT][UP]_CAN_ID CarCall CURRENT_FLOOR FRONT UP : getValue == true;
+1.50s A N HALL_LIGHT_[3][FRONT][UP]_CAN_ID CarCall CURRENT_FLOOR FRONT UP : getValue == true;
+1.50s A S CarButtonControl[3][FRONT][UP] : STATE == STATE_ON;
+
+
+1.50s I HALL_BUTTON_CONTROL_PERIOD F HallCall CURRENT_FLOOR FRONT UP = false; ;ButtonValue should be set to false after some time
+
+
+
+
+;transition T8.2
+
+; mDesiredFloor == CurrentFloor and mDoorClosed is false then transition T8.2
+
+2.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT STOP;
+2.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT  = true;
+2.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = false;
+2.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
+
+
+; check S8.2 STATE_OFF 
+2.50s A F HallLight NEXT_FLOOR HALLWAY : isLighted == false;
+2.50s A N HALL_CALL_[3][FRONT][UP]_CAN_ID HaLLCall 1 FRONT UP : getValue == false;
+2.50s A N HALL_LIGHT_[3][FRONT][UP]_CAN_ID HaLLCall 1 FRONT UP: getValue == false;
+2.50s A S HallButtonControl[3][FRONT][UP] : STATE == STATE_OFF;
+
+
+
+
+
+
+
+

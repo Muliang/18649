@@ -15,44 +15,37 @@ import simulator.payloads.HallLightPayload.WriteableHallLightPayload;
 
 public class HallButtonControl extends Controller{
 
-	//INPUTS are Readable Objects, while OUTPUTS are Writable Objects
-	
-	//local physical state
-	private ReadableHallCallPayload HallCall; //input
-	private WriteableHallLightPayload HallLight; //output
-	
-	//Network Interfaces
-	//receive hall call from the other button
-	private Utility.HallCall mHallCall; 
-	//translator for the hall light message 
-	private Utility.HallLight mHallLight;
-	
-	
-	//private DoorClosedCanPayloadTranslator mDoorClosedFrontLeft;
-	
-	//Enumerate state
+	// global
+	private Hallway hallway;
+	private Direction direction;
+	private int floor;
+	private State state;
+	private SimTime period;
+
+	private static final State STATE_INIT = State.STATE_OFF;
+
+	// Enumerate state
 	private enum State {
 			STATE_OFF,
 			STATE_ON,
 	}
 	
-	//State Variables
-	private final Hallway hallway;
-	private final Direction direction;
-	private final int CurrentFloor;
-	private State state;
-	
-	//The following variables are input interface to the Hall Button Controller 
+
+	// input 
 	private Utility.AtFloorArray mAtFloor;
 	private Utility.DoorClosedArray mDoorClosed;
 	private Utility.DesiredFloor mDesiredFloor;
 	
-	//Store the period for the Controller
-	private SimTime period;
+	private ReadableHallCallPayload HallCall;
+	
+	
+	
+	// output
+	private Utility.HallCall	mHallCall;
+	private Utility.HallLight mHallLight;
+	
+	private WriteableHallLightPayload HallLight;
 
-
-	//State Variable initialized to the initial state off
-	private State state_init = State.STATE_OFF;
 	
 	/*
 	 * The arguments listed in the .cf configuration files should match
@@ -60,33 +53,27 @@ public class HallButtonControl extends Controller{
 	 * 
 	 */
 	public HallButtonControl(int floor, Hallway hallway, Direction direction, SimTime period, boolean verbose){
-		//call to the Controller superclass constructor
+
 		super("HallButtonControl"+ReplicationComputer.makeReplicationString(floor, hallway,direction),verbose);
 		
-		//store the constructor arguments in internal state
 		this.period = period;
 		this.hallway = hallway;
 		this.direction = direction;
-		this.CurrentFloor = floor;
-		this.state = state_init;
+		this.floor = floor;
+		this.state = STATE_INIT;
 		
-		//Initialize INPUT Variables and Physical State
-		//Create a payload object
-		//HallCall		 = HallCallPayload.getReadablePayload(floor, hallway, direction);
-		HallCall			= mHallCall.Readable(physicalInterface);
+		// input
 		mAtFloor		 = new Utility.AtFloorArray(canInterface);
 		mDesiredFloor	 = new Utility.DesiredFloor(canInterface);
 		mDoorClosed		 = new Utility.DoorClosedArray(hallway, canInterface);
 		
-		//We have to register th payload with physical interface
-		//physicalInterface.registerTimeTriggered(HallCall);
 		
-		//Write to OUTPUT variables
-		
+		// output		
 		mHallCall		= new Utility.HallCall(canInterface, period, floor, hallway, direction);
 		mHallLight		= new Utility.HallLight(canInterface, period, floor, hallway, direction);
+		
 		HallLight		= Utility.HallLight.Writeable(physicalInterface, period, floor, hallway, direction);
-		//mHallLight		= new BooleanCanPayloadTranslator(mHallCall);
+		HallCall		= mHallCall.Readable(physicalInterface);
 		
 		
 		timer.start(period);
@@ -104,22 +91,22 @@ public class HallButtonControl extends Controller{
 
 	@Override
 	public void timerExpired(Object callbackData) {
-		State OldState = state;
-		switch(OldState) {
-		case STATE_ON:	
-			StateOn();
-			break;
-		case STATE_OFF:	
-			StateOff();
-			break;
-		default:
-			throw new RuntimeException("State " + state + " was not recognized.");
+		State oldState = state;
+		switch(oldState) {
+			case STATE_ON:	
+				StateOn();
+				break;
+			case STATE_OFF:	
+				StateOff();
+				break;
+			default:
+				throw new RuntimeException("State " + state + " was not recognized.");
 		}
 		
-			if (state == OldState)
+			if (state == oldState)
 				log("No transition: ", state);
 			else
-				log("Transition:", OldState, "->", state);
+				log("Transition:", oldState, "->", state);
 			
 			setState(STATE_KEY, state.toString());
 			
@@ -132,8 +119,9 @@ public class HallButtonControl extends Controller{
 		HallLight.set(true);
 		mHallLight.set(true);
 		mHallCall.set(true);
+
 		// #transition 'T8.2'
-		if (mDesiredFloor.getFloor() == CurrentFloor && mAtFloor.isAtFloor(CurrentFloor, hallway) == true && !mDoorClosed.getBothClosed()) {
+		if (mDesiredFloor.getFloor() == floor && mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 							state = State.STATE_OFF;
 		}
 		
@@ -145,7 +133,7 @@ public class HallButtonControl extends Controller{
 		mHallCall.set(false);
 		
 		// #transition 'T8.1'
-		if(HallCall.pressed() && CurrentFloor != mDesiredFloor.getFloor()) {
+		if(HallCall.pressed()) {
 			state = State.STATE_ON;
 		}
 		

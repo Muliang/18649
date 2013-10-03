@@ -35,6 +35,7 @@
 0.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == false;
 0.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == false;
 0.50s A S CarButtonControl[3][FRONT] : STATE == STATE_OFF;
+0.50s A N CAR_LIGHT_[3][FROINT]_CAN_ID CarLight NEXT_FLOOR HALLWAY : getValue == false;
 
 
 
