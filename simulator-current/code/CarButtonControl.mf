@@ -40,7 +40,7 @@
 
 
 ; set CarCall
-; #transition T9.2
+; #transition 'T9.2'
 
 1.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = true;
 1.50s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = false;
@@ -48,7 +48,7 @@
 
 
 
-; check STATE_ON
+; #state 'S9.2 CAR_LIGHT_ON'
 
 1.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == true;
 1.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == true;
@@ -89,7 +89,7 @@
 
 
 ; mDoorClosed[HALLWAY, SIDE] = false should change the state
-; #transition T9.1
+; #transition 'T9.1'
 
 4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed HALLWAY SIDE = false;
 4.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
@@ -100,7 +100,7 @@
 
 
 
-; check STATE_OFF
+; #state 'S9.1 CAR_LIGHT_OFF'
 
 4.50s A F CarLight NEXT_FLOOR HALLWAY : isLighted == false;
 4.50s A N CAR_CALL_[3][FRONT]_CAN_ID CarCall NEXT_FLOOR HALLWAY : getValue == false;
