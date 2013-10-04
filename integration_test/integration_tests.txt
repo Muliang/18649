@@ -1,2 +1,8 @@
-;there is only one test in the sample file.  Your file shall contain all tests.
-SD1A.1 sd1a1.cf sd1a1.mf
+18649 <Fall 2013>
+Group 9 - Yichao Xue         yichaox
+          Priya Mahajan    priyam
+          Wenhui Hu         wenhuih
+          Yujia Wang         yujiaw 
+
+ <sequence diagram 2B> <Scenario2B.cf>  <Scenario2B.mf>
+ <sequence diagram 4A> <Scenario4A.cf>  <Scenario4A.mf>

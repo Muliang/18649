@@ -1,0 +1,17 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario4A.cf  Author: Yujia Wang(yujiaw)
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;          Scenario4A.cf
+;
+;  Integration test for scenario 4a:
+;          Passenger is in the elevator as it arrives at the 
+;		passenger's desired hallway.
+;
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+DoorControl FRONT LEFT 10.0ms false;

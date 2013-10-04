@@ -1,0 +1,18 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario2B.cf    Author: Yujia Wang (yujiaw)
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;          Scenario2B.cf
+;
+;  Integration test for scenario 2b:
+;          Passenger is in the car and the elevator has arrived 
+;		at the passenger's desired floor, but passenger has 
+;		not yet exited the car as the doors begin to close.
+;
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+DoorControl FRONT LEFT 10.0ms false;

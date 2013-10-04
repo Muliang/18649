@@ -1,0 +1,82 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; DoorControl.cf	 Author: Yujia Wang(yujiaw)
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;          Scenario2B.cf
+;
+;  Integration test for scenario 2b:
+;          Passenger is in the car and the elevator has arrived 
+;		at the passenger's desired floor, but passenger has 
+;		not yet exited the car as the doors begin to close.
+;
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#INCLUDE ElevatorDefines.mf
+
+;Initialize
+;Door Opened is false
+;Door Closed is true
+;mDoorReversal is false
+;mAtFloor is false for F
+;Dwell time is set
+;Desired floor is not this floor
+;HallCall and CarCall for this floor/hallway are false
+
+;Begin setting up pre-conditions for the scenario
+0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
+
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+0.00s I DOOR_REVERSAL_NETWORK_PERIOD N DOOR_REVERSAL_SENSOR_[FRONT][LEFT]_CAN_ID DoorReversal FRONT LEFT = false;
+0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = false;
+0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 6 FRONT UP;
+0.00s I DISPATCHER_PERIOD N DESIRED_DWELL_[FRONT]_CAN_ID Integer = 2000;
+0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = UP 25;
+0.00s I WEIGHT_PERIOD N CAR_WEIGHT_CAN_ID CarWeight = 5;
+
+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
+0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][UP]_CAN_ID HallCall 3 FRONT UP = false;
+
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
++0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT STOP;
++0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = UP 0;
+
+;Opening
+
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = false;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = false;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = false;
+ 
++0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = true;
+
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
+;Ending setting up pre-conditions
+
+;#arc '1'
+
+;#arc '2'
++0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
++5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
+
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
+
++0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 6 FRONT UP;
++0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = UP 25;
+
+;#arc '4A'
++0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+;#arc '4B'
+
++1.00s A F DoorMotor FRONT LEFT : command == STOP;
