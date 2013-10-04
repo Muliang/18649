@@ -351,8 +351,8 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" height="523" width="613"
-          border="0"></a><br>
+          width: 613px; height: 523px;" border="0" width="613"
+          height="523"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
       cellpadding="2" cellspacing="2">
@@ -1048,11 +1048,11 @@
     <br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     <img alt="doorcontrol"
-      src="DoorControl_state_chart_group9_yichaox.png" height="570"
-      width="975"><br>
+      src="DoorControl_state_chart_group9_yichaox.png" width="975"
+      height="570"><br>
     <br>
     <br>
-    <table height="303" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="303">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -1995,6 +1995,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -2011,7 +2012,7 @@
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-      height="665" width="1189"><br>
+      width="1189" height="665"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -2100,8 +2101,8 @@
       normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      background-color: rgb(255, 255, 255);" width="100%" border="1"
-      cellpadding="2" cellspacing="2">
+      background-color: rgb(255, 255, 255);" border="1" cellpadding="2"
+      cellspacing="2" width="100%">
       <tbody>
         <tr>
           <td style="font-family: arial, sans-serif; margin: 0px;"
@@ -2660,11 +2661,11 @@
     CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" height="420"
-        width="449" border="0"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" border="0"
+        width="449" height="420"></a><br>
     <br>
     <br>
-    <table height="148" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="148">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2958,8 +2959,8 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table height="303" width="319" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="319"
+      height="303">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -3142,7 +3143,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-      height="471" width="693"><br>
+      width="693" height="471"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -3185,8 +3186,8 @@
     </table>
     <br>
     <br>
-    <table height="80" width="777" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="777"
+      height="80">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -3430,11 +3431,11 @@
     <h3>State Chart:<br>
     </h3>
     &nbsp; <img alt="carbutton"
-      src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="518" width="443"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png" width="443"
+      height="518"><br>
     <br>
-    <table height="115" width="742" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="742"
+      height="115">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -3460,6 +3461,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -3921,8 +3923,8 @@
       </tbody>
     </table>
     <br>
-    <table style="text-align: left;" height="148" width="801" border="1"
-      cellpadding="2" cellspacing="2">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" width="801" height="148">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4092,15 +4094,19 @@
     direction the Drive is moving. By "close approximation" we mean
     within stopping distance in the direction of motion.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    10.4 &nbsp;&nbsp;&nbsp; Whenever any mAtFloor[f, b] is True,
+    10.4 &nbsp;&nbsp; Whenever any mAtFloor[f,b] is true,
     CarPositionIndicator shall be commanded to display CurrentFloor. <br>
+    10.5&nbsp;&nbsp;&nbsp; When none of mAtFloor[f,b] is true,
+    CarPositionIndicator shall be commanded to display nothing.<br>
     <h3>State Chart:</h3>
-    &nbsp; <img alt="carposition"
-      src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="221" width="443"><br>
+    &nbsp; <a href="CarPositionControl_state_chart_group9_wenhuih.png"><img
+        alt="carposition"
+        src="CarPositionControl_state_chart_group9_wenhuih.png"
+        border="0" width="638" height="512"></a><br>
     <br>
-    <table height="73" width="379" border="1" cellpadding="2"
-      cellspacing="2">
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" width="379"
+      height="73">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -4109,16 +4115,22 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">No Transition<br>
+          <td valign="top">T 10.1<br>
           </td>
-          <td valign="top"><br>
+          <td valign="top">CurrentFloor &lt;- not any f<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T 10.2<br>
+          </td>
+          <td valign="top">CurrentFloor &lt;- any f<br>
           </td>
         </tr>
       </tbody>
     </table>
     <br>
-    <table style="text-align: left;" height="80" width="902" border="1"
-      cellpadding="2" cellspacing="2">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" width="902" height="80">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4129,7 +4141,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">INDICATE_FLOOR<br>
+          <td style="vertical-align: top;">INDICATE FLOOR<br>
           </td>
           <td style="vertical-align: top;">Indicate current floor
             whenever the car arrives at any floor<br>
@@ -4138,17 +4150,28 @@
             to display CurrentFloor <br>
           </td>
         </tr>
+        <tr>
+          <td valign="top">INDICATE NOTHING<br>
+          </td>
+          <td valign="top">Indicate nothing when car is not at any floor<br>
+          </td>
+          <td valign="top">command CarPositionIndicator to display
+            nothing<br>
+          </td>
+        </tr>
       </tbody>
     </table>
     <br>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table height="144" width="388" border="1" cellpadding="2"
-      cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="388"
+      height="144">
       <tbody>
         <tr>
           <td valign="top"><br>
           </td>
           <td colspan="1" rowspan="1" valign="top">Requirements<br>
+          </td>
+          <td valign="top"><br>
           </td>
         </tr>
         <tr>
@@ -4156,9 +4179,21 @@
           </td>
           <td valign="top" width="6%">10.4<br>
           </td>
+          <td valign="top">10.5<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">S10.1 Indicate Floor<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S10.2 Indicate nothing<br>
+          </td>
+          <td valign="top"><br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -4168,9 +4203,21 @@
           </td>
           <td colspan="1" rowspan="1" valign="top"><br>
           </td>
+          <td valign="top"><br>
+          </td>
         </tr>
         <tr>
-          <td valign="top">No Transition<br>
+          <td valign="top">T10.1 <br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T10.2<br>
+          </td>
+          <td valign="top">x<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4241,9 +4288,9 @@
     constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="456" width="492"><br>
+      width="492" height="456"><br>
     <br>
-    <table width="100%" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
         <tr>
           <td valign="top">State<br>
