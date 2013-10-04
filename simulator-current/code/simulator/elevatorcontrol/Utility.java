@@ -331,46 +331,48 @@ public class Utility {
 
 
 
-		public static class HallLight extends HallCallCanPayloadTranslator{
-			/*
-			 * author priyam
-			 */
-					//global variables
-					private int floor;
-					private Hallway hallway;
-					private Direction direction;
-					private SimTime period;
+	public static class HallLight extends BooleanCanPayloadTranslator{
+		/*
+		 * author priyam
+		 */
 
-					public HallLight(CANNetwork.CanConnection conn, SimTime period,
-							int floor, Hallway hallway, Direction direction) {
-						super(getMailbox(conn, period, floor, hallway, direction), floor, hallway, direction);
-						this.floor = floor;
-						this.hallway = hallway;
-						this.period = period;
-						this.direction = direction;
-					}
-					
-					private static WriteableCanMailbox getMailbox(
-							CANNetwork.CanConnection conn, SimTime period, int floor,
-							Hallway hallway, Direction direction) {
-						int id = ReplicationComputer.computeReplicationId(floor, hallway, direction);
-						WriteableCanMailbox canMailbox = CanMailbox
-								.getWriteableCanMailbox(MessageDictionary.HALL_LIGHT_BASE_CAN_ID
-										+ id);
-						conn.sendTimeTriggered(canMailbox, period);
-						return canMailbox;
-					}
-					
-					public static WriteableHallLightPayload Writeable(
-							PhysicalConnection physicalInterface, SimTime period,
-							int floor, Hallway hallway, Direction direction) {
-						WriteableHallLightPayload HallLight = HallLightPayload
-								.getWriteablePayload(floor, hallway , direction);
-						physicalInterface.sendTimeTriggered(HallLight, period);
-						return HallLight;
-					}
-			
+		//global variables
+		private int floor;
+		private Hallway hallway;
+		private Direction direction;
+		private SimTime period;
+
+		public HallLight(CANNetwork.CanConnection conn, SimTime period,
+				int floor, Hallway hallway, Direction direction) {
+			super(getMailbox(conn, period, floor, hallway, direction));
+			this.floor = floor;
+			this.hallway = hallway;
+			this.period = period;
+			this.direction = direction;
 		}
+		
+		private static WriteableCanMailbox getMailbox(
+				CANNetwork.CanConnection conn, SimTime period, int floor,
+				Hallway hallway, Direction direction) {
+			int id = ReplicationComputer.computeReplicationId(floor, hallway, direction);
+			WriteableCanMailbox canMailbox = CanMailbox
+					.getWriteableCanMailbox(MessageDictionary.HALL_LIGHT_BASE_CAN_ID
+							+ id);
+			conn.sendTimeTriggered(canMailbox, period);
+			return canMailbox;
+		}
+
+		
+		public static WriteableHallLightPayload Writeable(
+				PhysicalConnection physicalInterface, SimTime period,
+				int floor, Hallway hallway, Direction direction) {
+			WriteableHallLightPayload HallLight = HallLightPayload
+					.getWriteablePayload(floor, hallway , direction);
+			physicalInterface.sendTimeTriggered(HallLight, period);
+			return HallLight;
+		}
+		
+	}
 
 	public static class CarLight extends BooleanCanPayloadTranslator {
 

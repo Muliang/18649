@@ -9,12 +9,17 @@ import simulator.payloads.CanMailbox.WriteableCanMailbox;
 public class HallCallCanPayloadTranslator extends BooleanCanTranslator{
 
 	public HallCallCanPayloadTranslator(ReadableCanMailbox payload, int floor, Hallway hallway, Direction direction) {
-		super(payload, MessageDictionary.HALL_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway, direction), "HallCall" + ReplicationComputer.makeReplicationString(floor, hallway, direction));
+		super(payload, MessageDictionary.HALL_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway, direction), "HallCall" + ReplicationComputer.computeReplicationId(floor, hallway, direction));
 		// TODO Auto-generated constructor stub
 	}
 
 	public HallCallCanPayloadTranslator(WriteableCanMailbox payload, int floor, Hallway hallway, Direction direction) {
-		super(payload, MessageDictionary.HALL_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway, direction), "HallCall" + ReplicationComputer.makeReplicationString(floor, hallway, direction));
+		super(payload, MessageDictionary.HALL_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway, direction), "HallCall" + ReplicationComputer.computeReplicationId(floor, hallway, direction));
 		// TODO Auto-generated constructor stub
 	}
+
+	// public CarCallCanPayloadTranslator(WriteableCanMailbox payload, int floor, Hallway hallway) {
+	// 	super(payload, MessageDictionary.CAR_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarCall" + ReplicationComputer.computeReplicationId(floor, hallway));
+	// }
+
 }

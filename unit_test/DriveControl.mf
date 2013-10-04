@@ -150,7 +150,7 @@
 ;#state 'S6.6 EMERGENCY'
 +0.50s A F Drive : speed == STOP;
 +0.00s A F Drive : direction == STOP;
-+0.00s A S DriveControl : STATE == STATE_STOP;
++0.00s A S DriveControl : STATE == STATE_EMERGENCY;
 
 +0.00s I DRIVE_PERIOD F DriveSpeed = STOP 0;
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
