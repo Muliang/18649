@@ -5,6 +5,7 @@ import simulator.framework.Controller;
 import simulator.framework.Direction;
 import simulator.framework.Elevator;
 import simulator.framework.Hallway;
+import simulator.framework.ReplicationComputer;
 import simulator.payloads.CanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
 import simulator.payloads.translators.IntegerCanPayloadTranslator;
@@ -30,40 +31,42 @@ import simulator.payloads.translators.IntegerCanPayloadTranslator;
 
 public class Dispatcher extends Controller {
 	//trace current state
-		private int target; //desired floor, initialized to 1
-		private int currentFloor;
-		private Hallway currentHallway;
-		
-	    //network interface
-		//output
-	    private WriteableCanMailbox networkDesiredFloor;
-	    private DesiredFloorCanPayloadTranslator mDesiredFloor;
-	    
-	    private WriteableCanMailbox networkDesiredDwell;
-	    private IntegerCanPayloadTranslator mDesiredDwell;
-	    
-	    //input
-	    private Utility.AtFloorArray mAtFloor;
-	    
-	    private Utility.DoorClosedArray mDoorClosedArrayFront;
-	    private Utility.DoorClosedArray mDoorClosedArrayBack;
-	    
-	    private static int dwellTime = 2000; //in ms
-	    //add Time translator
-	    		
-		//enumerate states
-	    private static enum State {
-	        STATE_NORMAL,
-	        STATE_BOTH_HALL,
-	        STATE_IDLE,
-	        STATE_EMERGENCY
-	    }
-	    
-	    
-	  //store the period for the controller
-	    private SimTime period;
-	    private State currentState;
-	    private int maxFloors = Elevator.numFloors;
+	private int target; //desired floor, initialized to 1
+	private int currentFloor;
+	private Hallway currentHallway;
+	
+    //network interface
+	//output
+    private WriteableCanMailbox networkDesiredFloor;
+    private DesiredFloorCanPayloadTranslator mDesiredFloor;
+    
+    private WriteableCanMailbox networkDesiredDwellFront;
+    private DesiredDwellCanPayloadTranslator mDesiredDwellFront;
+    private WriteableCanMailbox networkDesiredDwellBack;
+    private DesiredDwellCanPayloadTranslator mDesiredDwellBack;
+    
+    //input
+    private Utility.AtFloorArray mAtFloor;
+    
+    private Utility.DoorClosedArray mDoorClosedArrayFront;
+    private Utility.DoorClosedArray mDoorClosedArrayBack;
+    
+    private static int dwellTime = 2000; //in ms
+    //add Time translator
+    		
+	//enumerate states
+    private static enum State {
+        STATE_NORMAL,
+        STATE_BOTH_HALL,
+        STATE_IDLE,
+        STATE_EMERGENCY
+    }
+    
+    
+  //store the period for the controller
+    private SimTime period;
+    private State currentState;
+    private int maxFloors = Elevator.numFloors;
 	    
 	public Dispatcher(SimTime period, boolean verbose) {
 		super("Dispatcher", verbose);
@@ -71,7 +74,7 @@ public class Dispatcher extends Controller {
 		this.period = period;
 		this.currentState = State.STATE_NORMAL;
 		this.target = 1;
-		this.currentFloor = mAtFloor.getCurrentFloor();
+		this.currentFloor = MessageDictionary.NONE;
 		this.currentHallway = Hallway.NONE;
 
         //initialize network interface
@@ -80,10 +83,17 @@ public class Dispatcher extends Controller {
         mDesiredFloor = new DesiredFloorCanPayloadTranslator(networkDesiredFloor);
         canInterface.sendTimeTriggered(networkDesiredFloor, period);
         
-        networkDesiredDwell = CanMailbox.getWriteableCanMailbox(MessageDictionary.DESIRED_DWELL_BASE_CAN_ID);
-        mDesiredDwell = new IntegerCanPayloadTranslator(networkDesiredDwell);
-        canInterface.sendTimeTriggered(networkDesiredDwell, period);
-
+        networkDesiredDwellFront = 
+        		CanMailbox.getWriteableCanMailbox(MessageDictionary.DESIRED_DWELL_BASE_CAN_ID 
+        				+ ReplicationComputer.computeReplicationId(Hallway.FRONT));
+        networkDesiredDwellBack = 
+        		CanMailbox.getWriteableCanMailbox(MessageDictionary.DESIRED_DWELL_BASE_CAN_ID 
+        				+ ReplicationComputer.computeReplicationId(Hallway.BACK));
+        mDesiredDwellFront = new DesiredDwellCanPayloadTranslator(networkDesiredDwellFront, Hallway.FRONT);
+        mDesiredDwellBack = new DesiredDwellCanPayloadTranslator(networkDesiredDwellBack, Hallway.BACK);
+        canInterface.sendTimeTriggered(networkDesiredDwellFront, period);
+        canInterface.sendTimeTriggered(networkDesiredDwellBack, period);
+        
         //input
         
         mAtFloor = new Utility.AtFloorArray(canInterface);
@@ -122,7 +132,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(target);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwell.set(dwellTime);
+		mDesiredDwellFront.set(dwellTime);
+		mDesiredDwellBack.set(dwellTime);
 		currentFloor = mAtFloor.getCurrentFloor();
 		currentHallway = mAtFloor.getCurrentHallway();
 		target = currentFloor % maxFloors +1;
@@ -145,7 +156,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(target);
 		mDesiredFloor.setHallway(Hallway.BOTH);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwell.set(dwellTime);
+		mDesiredDwellFront.set(dwellTime);
+		mDesiredDwellBack.set(dwellTime);
 		currentFloor = mAtFloor.getCurrentFloor();
 		currentHallway = mAtFloor.getCurrentHallway();
 		target = currentFloor % maxFloors +1;
@@ -168,15 +180,17 @@ public class Dispatcher extends Controller {
 		currentHallway = mAtFloor.getCurrentHallway();
 		target = currentFloor % maxFloors +1;
 		//#transition 'T11.2'
-		if(mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
-			mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == false
-			|| (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == false &&
-			mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true))
-			currentState = State.STATE_NORMAL;
-		//#transition 'T11.3'
-		if (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
-			mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == true)
-			currentState = State.STATE_BOTH_HALL;
+		if(currentFloor != MessageDictionary.NONE){
+			if((mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
+					mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == false)
+				|| (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == false &&
+				mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true))
+				currentState = State.STATE_NORMAL;
+			//#transition 'T11.3'
+			else if (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
+				mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == true)
+				currentState = State.STATE_BOTH_HALL;
+		}
 		//#transition 'T11.4.3'
 		if ((mDoorClosedArrayFront.getBothClosed()==false || 
 			mDoorClosedArrayBack.getBothClosed()==false) &&
@@ -190,7 +204,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(1);
 		mDesiredFloor.setHallway(Hallway.NONE);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwell.set(dwellTime);
+		mDesiredDwellFront.set(dwellTime);
+		mDesiredDwellBack.set(dwellTime);
 		target = 1;
 	}
 
