@@ -1,0 +1,20 @@
+
+Simulator Parameters:
+Command line = -cf Scenario1A.cf -mf Scenario1A.mf
+RandomSeed = 1381527950339
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Message File = Scenario1A.mf
+Controller File = Scenario1A.cf
+
+Assertion Results:
+@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@8a3cf3e :: lighted ?== true PASSED
+
+
+******************Summary******************
+Passed:  1
+Failed:  0
+Total :  1
+
