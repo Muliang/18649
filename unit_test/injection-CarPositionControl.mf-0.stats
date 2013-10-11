@@ -1,0 +1,25 @@
+
+Simulator Parameters:
+Command line = -cf CarPositionControl.cf -mf CarPositionControl.mf
+RandomSeed = 1381483914822
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Message File = CarPositionControl.mf
+Controller File = CarPositionControl.cf
+
+Assertion Results:
+@0.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@253777b3 :: floor ?== 1 PASSED
+@0.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_CURRENT_FLOOR PASSED
+@1.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@1d84bc10 :: floor ?== 1 PASSED
+@1.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_PREVIOUS_FLOOR PASSED
+@2.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@399c123d :: floor ?== 2 PASSED
+@2.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_CURRENT_FLOOR PASSED
+
+
+******************Summary******************
+Passed:  6
+Failed:  0
+Total :  6
+

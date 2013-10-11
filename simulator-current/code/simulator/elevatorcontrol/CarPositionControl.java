@@ -44,7 +44,8 @@ public class CarPositionControl extends Controller{
 		
 		// Outputs
 		CarPositionIndicator	= Utility.CarPositionIndicator.Writeable(physicalInterface, period);
-				
+		mCarPositionIndicator 	= new Utility.CarPositionIndicator(canInterface, physicalInterface, period);
+		
 		// Start Timer
 		timer.start(period);
 		

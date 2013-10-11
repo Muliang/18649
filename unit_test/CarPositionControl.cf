@@ -1,0 +1,12 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw), Priya Mahajan (priyam)
+; CarPositionControl.cf
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           CarPositionControl.cf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CarPositionControl 50.0ms true;

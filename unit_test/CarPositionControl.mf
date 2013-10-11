@@ -1,0 +1,45 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw), Priya Mahajan (priyam)
+; CarPositionControl.mf
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           CarPositionControl.mf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#INCLUDE ElevatorDefines.mf
+
+#DEFINE FLOOR 1
+#DEFINE HALLWAY FRONT
+
+#DEFINE NEXT_FLOOR 2
+#DEFINE NEXT_HALLWAY BACK
+
+
+; Intialize car stopp at Lobby
+0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor FLOOR HALLWAY = true;
+
+; #state 'INDICATE_CURRENT_FLOOR'
+0.50s A F CarPositionIndicator : floor == 1;
+0.50s A S CarPositionControl : STATE == STATE_INDICATE_CURRENT_FLOOR;
+
+
+
+
+; Move up to second floor
+1.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor FLOOR HALLWAY = false;
+
+; #state 'INDICATE_PREVIOUS_FLOOR'
+1.50s A F CarPositionIndicator : floor == 1;
+1.50s A S CarPositionControl : STATE == STATE_INDICATE_PREVIOUS_FLOOR;
+
+
+
+; Arrive at second floor
+2.00s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor NEXT_FLOOR NEXT_HALLWAY = True;
+
+; #state 'INDICATE_CURRENT_FLOOR'
+2.50s A F CarPositionIndicator : floor == 2;
+2.50s A S CarPositionControl : STATE == STATE_INDICATE_CURRENT_FLOOR;
