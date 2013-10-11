@@ -454,8 +454,8 @@
           <td style="vertical-align: top;">10.2 Any doors open -&gt;
             Display floor<br>
           </td>
-          <td style="vertical-align: top;">10.3 Reflect actual floor,
-            direction<br>
+          <td style="vertical-align: top;">10.3 Reflect
+            actual/approximate position/direction<br>
           </td>
           <td style="vertical-align: top;"><br>
           </td>
@@ -478,7 +478,8 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">10.4 car is at any floor -&gt; CarPositionInicator shows current floor </td>
+          <td style="vertical-align: top;">10.4 car is at any floor
+            -&gt; CarPositionIndicator shows current floor </td>
           <td style="vertical-align: top;">X<br>
           </td>
           <td style="vertical-align: top;">X<br>
@@ -490,8 +491,21 @@
           <td style="vertical-align: top;"><br>
           </td>
         </tr>
-        
-       
+        <tr>
+          <td valign="top">10.5 car is not at any floor -&gt;
+            CarPositionIndicator show previous floor<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
         <tr>
           <td style="vertical-align: top;"><u><b>Behavioral
                 Requirements/Constraints</b></u></td>
@@ -524,7 +538,8 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">11.4&nbsp; Set mDesiredFloor.f<br>
+          <td style="vertical-align: top;">11.4&nbsp; Set
+            mDesiredFloor.f<br>
           </td>
           <td style="vertical-align: top;">X<br>
           </td>
@@ -552,7 +567,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.1 Doors not closed --&gt; Target = ((f mod MaxFloors)+1)<br>
+          <td valign="top">11.6.1 Doors not closed --&gt; Target = ((f
+            mod MaxFloors)+1)<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -566,7 +582,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.2 Doors not closed --&gt; mDesiredFloor.b = b<br>
+          <td valign="top">11.6.2 Doors not closed --&gt;
+            mDesiredFloor.b = b<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -610,7 +627,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.8 two AtFloor[f,b] values are true for the same f --&gt; mDesiredFloor.b = Both<br>
+          <td valign="top">11.8 two AtFloor[f,b] values are true for the
+            same f --&gt; mDesiredFloor.b = Both<br>
           </td>
           <td valign="top">~<br>
           </td>

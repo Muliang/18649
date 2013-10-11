@@ -186,7 +186,7 @@ public class Dispatcher extends Controller {
 				|| (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == false &&
 				mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true))
 				currentState = State.STATE_NORMAL;
-			//#transition 'T11.3'
+		//#transition 'T11.3'
 			else if (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
 				mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == true)
 				currentState = State.STATE_BOTH_HALL;
