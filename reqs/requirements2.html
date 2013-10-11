@@ -351,8 +351,8 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" border="0" height="523"
-          width="613"></a><br>
+          width: 613px; height: 523px;" border="0" width="613"
+          height="523"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
       cellpadding="2" cellspacing="2">
@@ -1048,8 +1048,8 @@
     <br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     <img alt="doorcontrol"
-      src="DoorControl_state_chart_group9_yichaox.png" height="570"
-      width="975"><br>
+      src="DoorControl_state_chart_group9_yichaox.png" width="975"
+      height="570"><br>
     <br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="303">
@@ -2013,7 +2013,7 @@
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-      height="665" width="1189"><br>
+      width="1189" height="665"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -2663,7 +2663,7 @@
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
         src="LanternControl_state_chart_group9_yichaox.png" border="0"
-        height="420" width="449"></a><br>
+        width="449" height="420"></a><br>
     <br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" height="148">
@@ -2960,8 +2960,8 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="303"
-      width="319">
+    <table border="1" cellpadding="2" cellspacing="2" width="319"
+      height="303">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -3144,7 +3144,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
     <h3>TIME-TRIGGERED STATE CHART:</h3>
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
-      height="471" width="693"><br>
+      width="693" height="471"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -3187,8 +3187,8 @@
     </table>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="80"
-      width="777">
+    <table border="1" cellpadding="2" cellspacing="2" width="777"
+      height="80">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -3432,11 +3432,48 @@
     <h3>State Chart:<br>
     </h3>
     &nbsp; <img alt="carbutton"
-      src="CallButtonControl_state_chart_group9_wenhuih.png"
-      height="518" width="443"><br>
+      src="CallButtonControl_state_chart_group9_wenhuih.png" width="443"
+      height="518"><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
-      width="742">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" width="801" height="148">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;">State<br>
+          </td>
+          <td style="vertical-align: top;">Description<br>
+          </td>
+          <td style="vertical-align: top;">Actions<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">CAR_LIGHT_OFF<br>
+          </td>
+          <td style="vertical-align: top;">When there is no car call OR
+            passenger has already arrived at desired floor and door
+            starts to open, car light for desired floor[f,b] is off.<br>
+          </td>
+          <td style="vertical-align: top;">set CarLight[f,b] Off, <br>
+            set mCarLight[f,b] to False, <br>
+            set mCarCall[f,b] to False<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">CAR_LIGHT_ON<br>
+          </td>
+          <td style="vertical-align: top;">After passenger makes a car
+            call and has yet not arrived at desired floor, car light for
+            desired floor[f,b] is on.</td>
+          <td style="vertical-align: top;">set CarLight[f,b] On, <br>
+            set mCarLight[f,b] to True, <br>
+            set mCarCall[f,b] to True<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" width="742"
+      height="115">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -3924,44 +3961,6 @@
         </tr>
       </tbody>
     </table>
-    <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="148" width="801">
-      <tbody>
-        <tr>
-          <td style="vertical-align: top;">State<br>
-          </td>
-          <td style="vertical-align: top;">Description<br>
-          </td>
-          <td style="vertical-align: top;">Actions<br>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">CAR_LIGHT_OFF<br>
-          </td>
-          <td style="vertical-align: top;">When there is no car call OR
-            passenger has already arrived at desired floor and door
-            starts to open, car light for desired floor[f,b] is off.<br>
-          </td>
-          <td style="vertical-align: top;">set CarLight[f,b] Off, <br>
-            set mCarLight[f,b] to False, <br>
-            set mCarCall[f,b] to False<br>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">CAR_LIGHT_ON<br>
-          </td>
-          <td style="vertical-align: top;">After passenger makes a car
-            call and has yet not arrived at desired floor, car light for
-            desired floor[f,b] is on.</td>
-          <td style="vertical-align: top;">set CarLight[f,b] On, <br>
-            set mCarLight[f,b] to True, <br>
-            set mCarCall[f,b] to True<br>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
     <h3>Requirements-to-Statecharts Traceability </h3>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -4083,6 +4082,10 @@
         on car's acceleration profile, current speed, and distance from
         the floor f, to determine whether or not the car can still stop
         at the next floor. </li>
+      <li>PreviousFloor, is a shorthand notation for the value f of
+        whichever mAtFloor[f, b] was most recently true if CurrentFloor
+        has a mnemonic value of None. <br>
+      </li>
     </ul>
     <h3> CONSTRAINTS: </h3>
     10.1&nbsp;&nbsp;&nbsp; The Car can be at only one position at a
@@ -4099,40 +4102,15 @@
     10.4 &nbsp;&nbsp; Whenever any mAtFloor[f,b] is true,
     CarPositionIndicator shall be commanded to display CurrentFloor. <br>
     10.5&nbsp;&nbsp;&nbsp; When none of mAtFloor[f,b] is true,
-    CarPositionIndicator shall be commanded to display nothing.<br>
+    CarPositionIndicator shall be commanded to display PreviousFloor.<br>
     <h3>State Chart:</h3>
-    &nbsp; <a href="CarPositionControl_state_chart_group9_wenhuih.png"><img
-        alt="carposition"
-        src="CarPositionControl_state_chart_group9_wenhuih.png"
-        border="0" height="512" width="638"></a><br>
+    &nbsp; <img alt="carPositionControl"
+      src="CarPositionControl_state_chart_group9_wenhuih.png"
+      width="638" height="512"><br>
     <br>
-    <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="73"
-      width="379">
-      <tbody>
-        <tr>
-          <td valign="top">Transition # <br>
-          </td>
-          <td valign="top">Guard<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T 10.1<br>
-          </td>
-          <td valign="top">CurrentFloor &lt;- not any f<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T 10.2<br>
-          </td>
-          <td valign="top">CurrentFloor &lt;- any f<br>
-          </td>
-        </tr>
-      </tbody>
-    </table>
     <br>
     <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="80" width="902">
+      cellspacing="2" width="902" height="80">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4143,7 +4121,7 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">INDICATE FLOOR<br>
+          <td style="vertical-align: top;">INDICATE CURRENT FLOOR<br>
           </td>
           <td style="vertical-align: top;">Indicate current floor
             whenever the car arrives at any floor<br>
@@ -4153,20 +4131,44 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">INDICATE NOTHING<br>
+          <td valign="top">INDICATE PREVIOUS FLOOR<br>
           </td>
-          <td valign="top">Indicate nothing when car is not at any floor<br>
+          <td valign="top">Indicate previous floor when car is not at
+            any floor<br>
           </td>
           <td valign="top">command CarPositionIndicator to display
-            nothing<br>
+            PreviousFloor<br>
           </td>
         </tr>
       </tbody>
     </table>
     <br>
+    <table border="1" cellpadding="2" cellspacing="2" width="379"
+      height="73">
+      <tbody>
+        <tr>
+          <td valign="top">Transition # <br>
+          </td>
+          <td valign="top">Guard<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T 10.1<br>
+          </td>
+          <td valign="top">all mAtFloor[f,b] &lt;- false<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T 10.2<br>
+          </td>
+          <td valign="top">any mAtFloor[f,b] &lt;- true<br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="144"
-      width="388">
+    <table border="1" cellpadding="2" cellspacing="2" width="388"
+      height="144">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -4185,7 +4187,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S10.1 Indicate Floor<br>
+          <td valign="top">S10.1 Indicate Current Floor<br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -4193,7 +4195,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S10.2 Indicate nothing<br>
+          <td valign="top">S10.2 Indicate Previous Floor<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4290,7 +4292,7 @@
     constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="651" width="775"><br>
+      width="492" height="456"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
@@ -4303,37 +4305,19 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">NORMAL<br>
+          <td valign="top">Normal<br>
           </td>
           <td valign="top">When the elevator is running in a normal( in
             this case Sabbath mode) operating mode and has not
             encountered any emergency situations<br>
           </td>
-          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.d to Stop, mDesiredFloor.b to b. Set
-            mDesiredDwell to a proper constant value.<br>
+          <td valign="top">Set appropriate values for Target , always
+            stop at the Desired Floor and the Desired Hallway and set
+            mDesiredDwell to a proper constant value<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">BOTH_HALL_CALL<br>
-          </td>
-          <td valign="top">When the elevator stops at one floor that has
-            two hallways.<br>
-          </td>
-          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.d to Stop, mDesiredFloor.b to Both. Set
-            mDesiredDwell to a proper constant value.</td>
-        </tr>
-        <tr>
-          <td valign="top">IDLE<br>
-          </td>
-          <td valign="top">The dispatcher does nothing.<br>
-          </td>
-          <td valign="top">The dispatcher doesn't update outputs.<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">EMERGENCY<br>
+          <td valign="top">Emergency<br>
           </td>
           <td valign="top">When the elevator has doors that are not
             closed between floors.<br>
@@ -4348,6 +4332,7 @@
     </table>
     <br>
     <br>
+    <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
@@ -4357,31 +4342,11 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1.*<br>
+          <td valign="top">T11.1<br>
           </td>
-          <td valign="top">All mDoorClosed[b, r] &#8592; true AND all
-            mAtFloor[f, b] &#8592; false</td>
-        </tr>
-        <tr>
-          <td valign="top">T11.2<br>
+          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
+            b] &#8592; false<br>
           </td>
-          <td valign="top">mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f,
-            BACK] &#8592; true </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.3<br>
-          </td>
-          <td valign="top">(mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f,
-            BACK] &#8592; true)<br>
-            OR <br>
-            (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592; true)<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.4.*<br>
-          </td>
-          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND all
-            mAtFloor[f, b] &#8592; false</td>
         </tr>
       </tbody>
     </table>
@@ -4415,7 +4380,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.1 NORMAL<br>
+          <td valign="top">S11.1 Normal<br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -4424,26 +4389,6 @@
           <td valign="top">x<br>
           </td>
           <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">S11.2 BOTH_HALL<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4455,27 +4400,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.3 IDLE<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">S11.4 EMERGENCY<br>
+          <td valign="top">S11.2 Emergency<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4501,67 +4426,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1.*<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.2<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.3<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top">x<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">T11.4.*<br>
+          <td valign="top">T11.1<br>
           </td>
           <td valign="top"><br>
           </td>
