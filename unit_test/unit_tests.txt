@@ -5,4 +5,4 @@ DoorControl DoorControl.cf DoorControl.mf
 HallButtonControl HallButtonControl.cf HallButtonControl.mf
 CarPositionControl CarPositionControl.cf CarPositionControl.mf
 Dispatcher Dispatcher.cf Dispatcher.mf
-CarLanternControl CarLanternControl.cf CarLanternControl.mf
+LanternControl LanternControl.cf LanternControl.mf
