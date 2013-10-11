@@ -20,6 +20,8 @@ import simulator.framework.Side;
 import simulator.payloads.CanMailbox;
 import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
+import simulator.payloads.CarPositionIndicatorPayload;
+import simulator.payloads.CarPositionIndicatorPayload.WriteableCarPositionIndicatorPayload;
 import simulator.payloads.HallCallPayload;
 import simulator.payloads.HallCallPayload.ReadableHallCallPayload;
 import simulator.payloads.HallLightPayload;
@@ -30,6 +32,7 @@ import simulator.payloads.CarLightPayload;
 import simulator.payloads.CarLightPayload.WriteableCarLightPayload;
 import simulator.payloads.PhysicalNetwork.PhysicalConnection;
 import simulator.payloads.translators.BooleanCanPayloadTranslator;
+import simulator.payloads.translators.IntegerCanPayloadTranslator;
 
 /**
  * This class provides some example utility classes that might be useful in more
@@ -40,6 +43,32 @@ import simulator.payloads.translators.BooleanCanPayloadTranslator;
  * @author justinr2
  */
 public class Utility {
+	
+    public static class CarPositionIndicator extends IntegerCanPayloadTranslator {
+    	PhysicalConnection physicalInterface;
+    	SimTime period;
+		
+        public CarPositionIndicator(CANNetwork.CanConnection conn, PhysicalConnection physicalInterface, SimTime period) {
+			super(getMailbox(conn, period));
+			
+        	this.physicalInterface = physicalInterface;
+        	this.period = period;
+        }
+        
+        private static WriteableCanMailbox getMailbox(CANNetwork.CanConnection conn, SimTime period)
+        {
+			WriteableCanMailbox canMailbox = CanMailbox.getWriteableCanMailbox(MessageDictionary.CAR_POSITION_CAN_ID);
+			conn.sendTimeTriggered(canMailbox, period);
+			return canMailbox;
+        }
+        
+        public static WriteableCarPositionIndicatorPayload Writeable(PhysicalConnection physicalInterface, SimTime period) {
+			WriteableCarPositionIndicatorPayload CarPositionIndicator = CarPositionIndicatorPayload.getWriteablePayload();
+			physicalInterface.sendTimeTriggered(CarPositionIndicator, period);
+			return CarPositionIndicator;
+        }
+	}
+	
 
 	public static class DesiredFloor extends DesiredFloorCanPayloadTranslator {
 
@@ -70,6 +99,8 @@ public class Utility {
 		}
 
 	}
+	
+
 
 	public static class DoorClosedArray {
 
