@@ -356,7 +356,7 @@ Set mDesiredDwell to a proper contant value#</dia:string>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#State S11.2 BOTH_HALL
+            <dia:string>#State S11.2 BOTH_HALL_CALL
 
 Do:
 Set Target to ((f mod MaxFloors) + 1).
