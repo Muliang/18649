@@ -68,14 +68,14 @@ public class LanternControl extends Controller {
 		case STATE_IDLE:
 			// do:
 			localCarLantern.set(false);
-			// transition #T7.1
+			// #transition 'T7.1'
 			if (((mAtFloor.isAtFloor(mDesiredFloor.getFloor(), Hallway.FRONT)) || (mAtFloor
 					.isAtFloor(mDesiredFloor.getFloor(), Hallway.BACK)))
 					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction == mDesiredFloor.getDirection()))
 				newState = State.STATE_ON;
-			// transition #T7.4
+			// #transition 'T7.4'
 			if (((mAtFloor.isAtFloor(mDesiredFloor.getFloor(), Hallway.FRONT)) || (mAtFloor
 					.isAtFloor(mDesiredFloor.getFloor(), Hallway.BACK)))
 					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
@@ -87,7 +87,7 @@ public class LanternControl extends Controller {
 		case STATE_ON:
 			//do:
 			localCarLantern.set(true);
-			// transition #T7.2
+			// #transition 'T7.2'
 			if((mDoorClosedFront.getBothClosed()) && (mDoorClosedBack
 					.getBothClosed()))
 				newState = State.STATE_IDLE;
@@ -96,7 +96,7 @@ public class LanternControl extends Controller {
 		case STATE_OFF:
 			//do:
 			localCarLantern.set(false);
-			// transition #T7.3
+			// #transition 'T7.3'
 			if((mDoorClosedFront.getBothClosed()) && (mDoorClosedBack
 					.getBothClosed()))
 				newState = State.STATE_IDLE;
