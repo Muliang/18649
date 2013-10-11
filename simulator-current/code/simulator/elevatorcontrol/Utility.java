@@ -156,6 +156,34 @@ public class Utility {
 			}
 			return retval;
 		}
+		
+		
+		//Front + Back = Both??
+		public Hallway getCurrentHallway() {
+			Hallway retval = Hallway.NONE;
+			for (int i = 0; i < numFloors; i++) {
+				int floor = i + 1;
+				for (Hallway h : Hallway.replicationValues) {
+					int index = ReplicationComputer.computeReplicationId(floor,
+							h);
+					AtFloorCanPayloadTranslator t = networkAtFloorsTranslators
+							.get(index);
+					if (t.getValue()) {
+						if (retval == Hallway.NONE) {
+							// this is the first true atFloor
+							retval = h;
+						} else if (retval != Hallway.NONE) {
+							// found a second floor that is different from the
+							// first one
+							throw new RuntimeException(
+									"AtFloor is true for more than one floor at "
+											+ Harness.getTime());
+						}
+					}
+				}
+			}
+			return retval;
+		}
 	}
 
 	public static class HallCallArray {
