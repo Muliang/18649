@@ -30,6 +30,7 @@ import simulator.payloads.CarLightPayload;
 import simulator.payloads.CarLightPayload.WriteableCarLightPayload;
 import simulator.payloads.PhysicalNetwork.PhysicalConnection;
 import simulator.payloads.translators.BooleanCanPayloadTranslator;
+import simulator.payloads.translators.IntegerCanPayloadTranslator;
 
 /**
  * This class provides some example utility classes that might be useful in more
@@ -161,6 +162,7 @@ public class Utility {
 		//Front + Back = Both??
 		public Hallway getCurrentHallway() {
 			Hallway retval = Hallway.NONE;
+			int f = -1;
 			for (int i = 0; i < numFloors; i++) {
 				int floor = i + 1;
 				for (Hallway h : Hallway.replicationValues) {
@@ -172,9 +174,11 @@ public class Utility {
 						if (retval == Hallway.NONE) {
 							// this is the first true atFloor
 							retval = h;
-						} else if (retval != Hallway.NONE) {
-							// found a second floor that is different from the
-							// first one
+							f = floor;
+						} else if (f == floor) {
+							// at Floor is true at the same floor with both hallways 
+							retval = Hallway.BOTH;
+						}else if(f != floor){
 							throw new RuntimeException(
 									"AtFloor is true for more than one floor at "
 											+ Harness.getTime());
