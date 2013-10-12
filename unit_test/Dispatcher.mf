@@ -78,7 +78,7 @@
 
 ;#state 'S11.3 IDLE'
 +0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == BACK;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
 +0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;

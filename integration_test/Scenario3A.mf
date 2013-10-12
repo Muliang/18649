@@ -61,7 +61,7 @@
 +5.10s I CAR_BUTTON_CONTROL_PERIOD F CarCall 3 FRONT = true;
 
 ; #arc '3A/6'
-+0.50s A F CarLight 3 FRONT : lighted == true;
++1.50s A F CarLight 3 FRONT : lighted == true;
 
 ; #arc '3A/7'
 +0.50s A F DoorMotor FRONT LEFT : command == CLOSE;
