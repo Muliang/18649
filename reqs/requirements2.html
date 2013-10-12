@@ -351,7 +351,7 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" border="0" height="523"
+          width: 613px; height: 523px;" height="523" border="0"
           width="613"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
@@ -1052,7 +1052,7 @@
       width="975"><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="303">
+    <table height="303" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -1998,6 +1998,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -2663,11 +2664,11 @@
     CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" border="0"
-        height="420" width="449"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" height="420"
+        border="0" width="449"></a><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="148">
+    <table height="148" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2961,7 +2962,7 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="303"
+    <table height="303" border="1" cellpadding="2" cellspacing="2"
       width="319">
       <tbody>
         <tr>
@@ -3188,7 +3189,7 @@
     </table>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="80"
+    <table height="80" border="1" cellpadding="2" cellspacing="2"
       width="777">
       <tbody>
         <tr>
@@ -3436,8 +3437,8 @@
       src="CallButtonControl_state_chart_group9_wenhuih.png"
       height="518" width="443"><br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="148" width="801">
+    <table style="text-align: left;" height="148" border="1"
+      cellpadding="2" cellspacing="2" width="801">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -3473,7 +3474,7 @@
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
+    <table height="115" border="1" cellpadding="2" cellspacing="2"
       width="742">
       <tbody>
         <tr>
@@ -3500,6 +3501,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -4111,8 +4113,8 @@
       height="512" width="638"><br>
     <br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="80" width="902">
+    <table style="text-align: left;" height="80" border="1"
+      cellpadding="2" cellspacing="2" width="902">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4145,7 +4147,7 @@
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="73"
+    <table height="73" border="1" cellpadding="2" cellspacing="2"
       width="379">
       <tbody>
         <tr>
@@ -4169,7 +4171,7 @@
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="144"
+    <table height="144" border="1" cellpadding="2" cellspacing="2"
       width="388">
       <tbody>
         <tr>
@@ -4294,7 +4296,7 @@
     constant appropriate value for door open dwell.<br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="456" width="492"><br>
+      height="651" width="775"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
@@ -4307,19 +4309,37 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">Normal<br>
+          <td valign="top">NORMAL<br>
           </td>
           <td valign="top">When the elevator is running in a normal( in
             this case Sabbath mode) operating mode and has not
             encountered any emergency situations<br>
           </td>
-          <td valign="top">Set appropriate values for Target , always
-            stop at the Desired Floor and the Desired Hallway and set
-            mDesiredDwell to a proper constant value<br>
+          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
+            mDesiredFloor.d to Stop, mDesiredFloor.b to b. Set
+            mDesiredDwell to a proper constant value.<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">Emergency<br>
+          <td valign="top">BOTH_HALL<br>
+          </td>
+          <td valign="top">When the elevator stops at one floor that has
+            two hallways.<br>
+          </td>
+          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
+            mDesiredFloor.d to Stop, mDesiredFloor.b to Both. Set
+            mDesiredDwell to a proper constant value.</td>
+        </tr>
+        <tr>
+          <td valign="top">IDLE<br>
+          </td>
+          <td valign="top">The dispatcher does nothing.<br>
+          </td>
+          <td valign="top">The dispatcher doesn't update outputs.<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">EMERGENCY<br>
           </td>
           <td valign="top">When the elevator has doors that are not
             closed between floors.<br>
@@ -4334,7 +4354,6 @@
     </table>
     <br>
     <br>
-    <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
@@ -4344,11 +4363,31 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1<br>
+          <td valign="top">T11.1.*<br>
           </td>
-          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND mAtFloor[f,
-            b] &#8592; false<br>
+          <td valign="top">All mDoorClosed[b, r] &#8592; true AND all
+            mAtFloor[f, b] &#8592; false</td>
+        </tr>
+        <tr>
+          <td valign="top">T11.2<br>
           </td>
+          <td valign="top">mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f,
+            BACK] &#8592; true </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.3<br>
+          </td>
+          <td valign="top">(mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f,
+            BACK] &#8592; true)<br>
+            OR <br>
+            (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592; true)<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.4.*<br>
+          </td>
+          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND all
+            mAtFloor[f, b] &#8592; false</td>
         </tr>
       </tbody>
     </table>
@@ -4382,7 +4421,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.1 Normal<br>
+          <td valign="top">S11.1 NORMAL<br>
           </td>
           <td valign="top">x<br>
           </td>
@@ -4391,6 +4430,26 @@
           <td valign="top">x<br>
           </td>
           <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S11.2 BOTH_HALL<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4402,7 +4461,27 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">S11.2 Emergency<br>
+          <td valign="top">S11.3 IDLE<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S11.4 EMERGENCY<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4428,7 +4507,67 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1<br>
+          <td valign="top">T11.1.*<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.3<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.4.*<br>
           </td>
           <td valign="top"><br>
           </td>

@@ -1,0 +1,23 @@
+
+Simulator Parameters:
+Command line = -cf Scenario2A.cf -mf Scenario2A.mf
+RandomSeed = 1381527915542
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Message File = Scenario2A.mf
+Controller File = Scenario2A.cf
+
+Assertion Results:
+@12.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@a5c0f8f :: command ?== CLOSE PASSED
+@12.2s:  PASSED DoorControl[FRONT][LEFT]::checkState(STATE) ?== STATE_CLOSING PASSED
+@13.7s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@698a2d7d :: lighted ?== true PASSED
+@18.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@ca9f25 :: command ?== STOP PASSED
+
+
+******************Summary******************
+Passed:  4
+Failed:  0
+Total :  4
+
