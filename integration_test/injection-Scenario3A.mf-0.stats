@@ -1,7 +1,7 @@
 
 Simulator Parameters:
 Command line = -cf Scenario3A.cf -mf Scenario3A.mf
-RandomSeed = 1381527907239
+RandomSeed = 1381535864412
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -10,14 +10,14 @@ Message File = Scenario3A.mf
 Controller File = Scenario3A.cf
 
 Assertion Results:
-@1.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1c0a0847 :: command ?== STOP PASSED
+@1.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@36a11e4 :: command ?== STOP PASSED
 @1.0s:  PASSED DoorControl[FRONT][LEFT]::checkState(STATE) ?== STATE_CLOSED PASSED
-@2.6s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@22017a99 :: command ?== OPEN PASSED
+@2.6s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@757ecdf0 :: command ?== OPEN PASSED
 @2.6s:  PASSED DoorControl[FRONT][LEFT]::checkState(STATE) ?== STATE_OPENING PASSED
-@3.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@6eb09fac :: command ?== STOP PASSED
-@8.8s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@ca9f25 :: lighted ?== true PASSED
-@9.3s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@7fd6dad8 :: command ?== CLOSE PASSED
-@10.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@839c6c7 :: command ?== STOP PASSED
+@3.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@5a3184d8 :: command ?== STOP PASSED
+@9.8s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@246fee3a :: lighted ?== true PASSED
+@10.3s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@3dee2310 :: command ?== CLOSE PASSED
+@11.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@18a60d19 :: command ?== STOP PASSED
 
 
 ******************Summary******************
