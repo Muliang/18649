@@ -1999,6 +1999,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -3517,6 +3518,7 @@
 
 
 
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4347,7 +4349,7 @@
           <td valign="top">The Target is always set to Floor 1, and
             always stop at the DesiredFloor and DesiredFloor hallway is
             set to None.<br>
-            MDesiredDwell is set to a proper constant value<br>
+            mDesiredDwell is set to a proper constant value<br>
           </td>
         </tr>
       </tbody>
@@ -4371,16 +4373,18 @@
         <tr>
           <td valign="top">T11.2<br>
           </td>
-          <td valign="top">mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f,
-            BACK] &#8592; true </td>
+          <td valign="top"> Any mDoorClosed[b,r] &#8592; false AND<br>
+            &nbsp;((mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f, BACK] &#8592;
+            true)<br>
+            OR (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592;
+            true))<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">T11.3<br>
           </td>
-          <td valign="top">(mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f,
-            BACK] &#8592; true)<br>
-            OR <br>
-            (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592; true)<br>
+          <td valign="top">mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f,
+            BACK] &#8592; true<br>
           </td>
         </tr>
         <tr>

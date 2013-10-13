@@ -8,7 +8,6 @@ import simulator.framework.Hallway;
 import simulator.framework.ReplicationComputer;
 import simulator.payloads.CanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
-import simulator.payloads.translators.IntegerCanPayloadTranslator;
 
 /**
  * 
@@ -130,7 +129,16 @@ public class Dispatcher extends Controller {
 		//DO
 		// state actions
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(currentHallway);
+		switch(target){
+			case 1: 
+			case 7: mDesiredFloor.setHallway(Hallway.BOTH);break;
+			case 2: mDesiredFloor.setHallway(Hallway.BACK);break;
+			case 3: 
+			case 4:
+			case 5:
+			case 6:
+			case 8: mDesiredFloor.setHallway(Hallway.FRONT);break;
+		}
 		mDesiredFloor.setDirection(Direction.STOP);
 		mDesiredDwellFront.set(dwellTime);
 		mDesiredDwellBack.set(dwellTime);
@@ -178,15 +186,17 @@ public class Dispatcher extends Controller {
 		//NO actions at Idle, update state variables
 		currentFloor = mAtFloor.getCurrentFloor();
 		currentHallway = mAtFloor.getCurrentHallway();
-		target = currentFloor % maxFloors +1;
+		//target = currentFloor % maxFloors +1;
 		//#transition 'T11.2'
 		if(currentFloor != MessageDictionary.NONE){
-			if((mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
+			if((mDoorClosedArrayFront.getBothClosed()==false || 
+					mDoorClosedArrayBack.getBothClosed()==false)
+					&&((mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
 					mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == false)
 				|| (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == false &&
-				mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true))
+				mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true)))
 				currentState = State.STATE_NORMAL;
-		//#transition 'T11.3'
+			//#transition 'T11.3'
 			else if (mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
 				mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == true)
 				currentState = State.STATE_BOTH_HALL;
@@ -207,7 +217,5 @@ public class Dispatcher extends Controller {
 		mDesiredDwellFront.set(dwellTime);
 		mDesiredDwellBack.set(dwellTime);
 		target = 1;
-	}
-
-	
+	}	
 }
