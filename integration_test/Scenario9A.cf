@@ -10,4 +10,4 @@
 ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 DoorControl FRONT LEFT 10.0ms true;
-Dispatcher 50.0ms true;
+Dispatcher 8 50.0ms true;
