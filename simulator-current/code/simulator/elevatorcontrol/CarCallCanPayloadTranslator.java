@@ -1,12 +1,14 @@
 package simulator.elevatorcontrol;
 
+//import simulator.elevatormodules.BooleanCanTranslator;
 import simulator.framework.Hallway;
 import simulator.framework.ReplicationComputer;
 import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
+import simulator.payloads.translators.BooleanCanPayloadTranslator;
+//import simulator.payloads.translators.BooleanCanPayloadTranslator;
 
-
-public class CarCallCanPayloadTranslator extends BooleanCanTranslator {
+public class CarCallCanPayloadTranslator extends ByteBooleanCanPayloadTranslator {
 
 	
     /**
@@ -16,7 +18,7 @@ public class CarCallCanPayloadTranslator extends BooleanCanTranslator {
      * @param hallway replication index
      */
 	public CarCallCanPayloadTranslator(WriteableCanMailbox payload, int floor, Hallway hallway) {
-		super(payload, MessageDictionary.CAR_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarCall" + ReplicationComputer.computeReplicationId(floor, hallway));
+		super(payload, MessageDictionary.CAR_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarCall" + ReplicationComputer.makeReplicationString(floor, hallway));
 	}
 
     /**
@@ -26,7 +28,7 @@ public class CarCallCanPayloadTranslator extends BooleanCanTranslator {
      * @param hallway replication index
      */
 	public CarCallCanPayloadTranslator(ReadableCanMailbox payload, int floor, Hallway hallway) {
-		super(payload, MessageDictionary.CAR_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarCall" + ReplicationComputer.computeReplicationId(floor, hallway));
+		super(payload, MessageDictionary.CAR_CALL_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarCall" + ReplicationComputer.makeReplicationString(floor, hallway));
 	}
 
 }
