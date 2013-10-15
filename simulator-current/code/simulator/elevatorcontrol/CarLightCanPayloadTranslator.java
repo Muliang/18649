@@ -6,7 +6,7 @@ import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
 
 
-public class CarLightCanPayloadTranslator extends BooleanCanTranslator {
+public class CarLightCanPayloadTranslator extends ByteBooleanCanPayloadTranslator {
 
 	
     /**
@@ -28,5 +28,6 @@ public class CarLightCanPayloadTranslator extends BooleanCanTranslator {
 	public CarLightCanPayloadTranslator(ReadableCanMailbox payload, int floor, Hallway hallway) {
 		super(payload, MessageDictionary.CAR_LIGHT_BASE_CAN_ID + ReplicationComputer.computeReplicationId(floor, hallway), "CarLight" + ReplicationComputer.computeReplicationId(floor, hallway));
 	}
+	
 
 }
