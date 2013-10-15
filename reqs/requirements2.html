@@ -2000,6 +2000,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -3519,6 +3520,7 @@
 
 
 
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4303,42 +4305,42 @@
     <table border="1" cellpadding="2" cellspacing="2" width="100%">
       <tbody>
         <tr>
-          <td valign="top">State<br>
+          <td valign="top" width="20%">State<br>
           </td>
-          <td valign="top">Description<br>
+          <td valign="top" width="40%">Description<br>
           </td>
-          <td valign="top">Actions<br>
+          <td valign="top" width="40%">Actions<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">NORMAL<br>
+          <td valign="top">SET_TARGET<br>
           </td>
-          <td valign="top">When the elevator is running in a normal( in
-            this case Sabbath mode) operating mode and has not
-            encountered any emergency situations<br>
+          <td valign="top">When the door has opened and Dispatcher sets
+            a new Target<br>
           </td>
           <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.d to Stop, mDesiredFloor.b to b. Set
-            mDesiredDwell to a proper constant value.<br>
+            mDesiredFloor.d to Stop. Set mDesiredDwell to a proper
+            constant value.<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">BOTH_HALL<br>
+          <td valign="top">SET_HALLWAY<br>
           </td>
-          <td valign="top">When the elevator stops at one floor that has
-            two hallways.<br>
+          <td valign="top">When the elevator has just arrived at a floor
+            and the Dispatcher sets mDesiredFloor.b to the hallway to be
+            served.<br>
           </td>
-          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.d to Stop, mDesiredFloor.b to Both. Set
-            mDesiredDwell to a proper constant value.</td>
+          <td valign="top">Set mDesiredFloor.d to Stop, mDesiredFloor.b
+            to h. Set mDesiredDwell to a proper constant value.</td>
         </tr>
         <tr>
-          <td valign="top">IDLE<br>
+          <td valign="top">SET_BOTH_HALLWAY<br>
           </td>
-          <td valign="top">The dispatcher does nothing.<br>
-          </td>
-          <td valign="top">The dispatcher doesn't update outputs.<br>
-          </td>
+          <td valign="top">When the elevator has just arrived at a floor
+            with both hallways, and the Dispatcher sets mDesiredFloor.b
+            to BOTH&nbsp; </td>
+          <td valign="top">Set mDesiredFloor.d to Stop, mDesiredFloor.b
+            to BOTH. Set mDesiredDwell to a proper constant value. </td>
         </tr>
         <tr>
           <td valign="top">EMERGENCY<br>
@@ -4348,8 +4350,7 @@
           </td>
           <td valign="top">The Target is always set to Floor 1, and
             always stop at the DesiredFloor and DesiredFloor hallway is
-            set to None.<br>
-            mDesiredDwell is set to a proper constant value<br>
+            set to None. mDesiredDwell is set to a proper constant value<br>
           </td>
         </tr>
       </tbody>
@@ -4365,27 +4366,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1.*<br>
+          <td valign="top">T11.1<br>
           </td>
-          <td valign="top">All mDoorClosed[b, r] &#8592; true AND all
-            mAtFloor[f, b] &#8592; false</td>
+          <td valign="top">All mDoorClosed[b, r] &#8592; true AND <br>
+            ((mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f, BACK] &#8592; true)<br>
+            OR (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592;
+            true))</td>
         </tr>
         <tr>
           <td valign="top">T11.2<br>
           </td>
-          <td valign="top"> Any mDoorClosed[b,r] &#8592; false AND<br>
-            &nbsp;((mAtFloor[f, FRONT] &#8592; false AND mAtFloor[f, BACK] &#8592;
-            true)<br>
-            OR (mAtFloor[f, BACK] &#8592; false AND mAtFloor[f, FRONT] &#8592;
-            true))<br>
-          </td>
+          <td valign="top"> All mDoorClosed[b, r] &#8592; true AND<br>
+            mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f, BACK] &#8592; true </td>
         </tr>
         <tr>
-          <td valign="top">T11.3<br>
+          <td valign="top">T11.3.*<br>
           </td>
-          <td valign="top">mAtFloor[f, FRONT] &#8592; true AND mAtFloor[f,
-            BACK] &#8592; true<br>
-          </td>
+          <td valign="top">Any mDoorClosed[b, r] &#8592;false AND any
+            mAtFloor[f, b]&nbsp; &#8592; true </td>
         </tr>
         <tr>
           <td valign="top">T11.4.*<br>
