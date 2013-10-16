@@ -42,7 +42,7 @@ import simulator.payloads.translators.BooleanCanPayloadTranslator;
  * DriveSpeed
  * mAtFloor[f,b]
  * mLevel[d]
- * mCarLevelPosition[b,r]
+ * mCarLevelPosition[b,r]//not used
  * mDoorClosed[b,r]
  * mDoorMotor[b,r]// can't find translator
  * mEmergencyBrake
@@ -81,8 +81,6 @@ public class DriveControl extends Controller {
     private ReadableCanMailbox networkCarLevelPosition;
     private CarLevelPositionCanPayloadTranslator mCarLevelPosition;
     
-    //private ReadableCanMailbox networkDoorClosed;
-    //private DoorClosedCanPayloadTranslator mDoorClosed;
     private Utility.DoorClosedArray mDoorClosedArrayFront;
     private Utility.DoorClosedArray mDoorClosedArrayBack;
     
