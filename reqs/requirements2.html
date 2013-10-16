@@ -2001,6 +2001,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -2067,28 +2068,28 @@
         <tr>
           <td valign="top">T6.5<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; true AND DriveSpeed &lt;=
-            LEVEL_SPEED<br>
+          <td valign="top">(mLevel[UP] &#8592; true OR mCarLevelPosition
+            &gt;0) AND DriveSpeed &lt;= LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.6<br>
           </td>
-          <td valign="top">mLevel[UP] &#8592; false AND DriveSpeed &#8592;[Stop,
-            Stop]</td>
+          <td valign="top">(mLevel[UP] &#8592; false OR mCarLevelPosition &lt;
+            0) AND DriveSpeed &#8592;[Stop, Stop]</td>
         </tr>
         <tr>
           <td valign="top">T6.7<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; true AND DriveSpeed &lt;=
-            LEVEL_SPEED<br>
+          <td valign="top">(mLevel[DOWN] &#8592; true OR mCarLevelPosition
+            &lt;0) AND DriveSpeed &lt;= LEVEL_SPEED<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.8<br>
           </td>
-          <td valign="top">mLevel[DOWN] &#8592; false AND DriveSpeed &#8592;[Stop,
-            Stop]</td>
+          <td valign="top">(mLevel[DOWN] &#8592; false OR mCarLevelPosition
+            &gt; 0) AND DriveSpeed &#8592;[Stop, Stop]</td>
         </tr>
         <tr>
           <td valign="top">T6.9.*<br>
@@ -3503,6 +3504,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 

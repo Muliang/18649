@@ -242,7 +242,7 @@ public class DoorControl extends Controller {
 		localDoorMotor.set(DoorCommand.STOP);
 		// #transition 'T5.1'
 		if ((mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
-				&& (mDesiredFloor.getHallway() == hallway)
+				&& (mDesiredFloor.getHallway() == hallway || mDesiredFloor.getHallway() == Hallway.BOTH)
 				&& (mDriveSpeed.getDirection() == Direction.STOP || mDriveSpeed.getSpeed() == 0))
 			newState = State.STATE_OPENING;
 	}

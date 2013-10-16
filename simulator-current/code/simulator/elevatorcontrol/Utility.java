@@ -192,6 +192,7 @@ public class Utility {
 		//Front + Back = Both??
 		public Hallway getCurrentHallway() {
 			Hallway retval = Hallway.NONE;
+			int currentFloor = MessageDictionary.NONE;
 			for (int i = 0; i < numFloors; i++) {
 				int floor = i + 1;
 				for (Hallway h : Hallway.replicationValues) {
@@ -200,12 +201,18 @@ public class Utility {
 					AtFloorCanPayloadTranslator t = networkAtFloorsTranslators
 							.get(index);
 					if (t.getValue()) {
-						if (retval == Hallway.NONE) {
+						if (h == Hallway.FRONT) {
 							// this is the first true atFloor
-							retval = h;
-						} else if (retval != Hallway.NONE) {
-							// found a second floor that is different from the
-							// first one
+							retval = Hallway.FRONT;
+							currentFloor = floor;
+						} 
+						if (retval == Hallway.FRONT && h == Hallway.BACK)
+							retval = Hallway.BOTH;
+						else if (h == Hallway.BACK){
+							retval = Hallway.BACK;
+							currentFloor = floor;
+						}
+						if (currentFloor != floor){
 							throw new RuntimeException(
 									"AtFloor is true for more than one floor at "
 											+ Harness.getTime());

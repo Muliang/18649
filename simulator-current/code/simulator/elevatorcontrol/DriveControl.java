@@ -279,11 +279,13 @@ public class DriveControl extends Controller {
 				currentState = State.STATE_SLOW_DOWN;
 			//#transition 'T6.6'
 			
-			else if (mLevelUp.getValue() == false && localDriveSpeed.speed() == 0 
+			else if (mLevelUp.getValue() == false //|| mCarLevelPosition.getPosition()<0) 
+					&& localDriveSpeed.speed() == 0 
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_UP;
 			//#transition 'T6.8'
-			else if (mLevelDown.getValue() == false && localDriveSpeed.speed() == 0 
+			else if (mLevelDown.getValue() == false //|| mCarLevelPosition.getPosition()>0) 
+					&& localDriveSpeed.speed() == 0 
 					&& localDriveSpeed.direction() == Direction.STOP)
 				currentState = State.STATE_LEVEL_DOWN;
 			//#transition 'T6.9.1'
@@ -348,7 +350,8 @@ public class DriveControl extends Controller {
 			//add get currentFloor method
 			
 			//#transition 'T6.5'
-			if (mLevelUp.getValue()==true && localDriveSpeed.speed() <= LEVEL_SPEED)
+			if (mLevelUp.getValue()==true// || mCarLevelPosition.getPosition()>=0)
+				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
 			//#transition 'T6.9.4'
 			if (mEmergencyBrake.getValue() == true)
@@ -365,10 +368,9 @@ public class DriveControl extends Controller {
 			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
-			//add get currentFloor method
 			
 			//#transition 'T6.7'
-			if (mLevelDown.getValue()==true 
+			if (mLevelDown.getValue()==true //|| mCarLevelPosition.getPosition()<=0) 
 				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 				currentState = State.STATE_STOP;
 			//#transition 'T6.9.5'

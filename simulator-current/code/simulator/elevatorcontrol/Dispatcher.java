@@ -131,6 +131,18 @@ public class Dispatcher extends Controller {
 		// state actions
 		mDesiredFloor.setFloor(target);
 		mDesiredFloor.setHallway(Hallway.NONE);
+		//Trick
+		/*switch(target){
+			case 1:
+			case 7: mDesiredFloor.setHallway(Hallway.BOTH); break;
+			case 2: mDesiredFloor.setHallway(Hallway.BACK); break;
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 8:
+			default: mDesiredFloor.setHallway(Hallway.FRONT); break;
+		}*/
 		mDesiredFloor.setDirection(Direction.STOP);
 		mDesiredDwellFront.set(dwellTime);
 		mDesiredDwellBack.set(dwellTime);
@@ -163,8 +175,9 @@ public class Dispatcher extends Controller {
 
 	private void stateSetBothHallway() {
 		//Set hallway to currentHallway at Idle/SetNormalHallway, 
-		//currentFloor = mAtFloor.getCurrentFloor();
-		mDesiredFloor.setHallway(Hallway.BOTH);
+		currentFloor = mAtFloor.getCurrentFloor();
+		currentHallway = mAtFloor.getCurrentHallway();//the same as SET_HALLWAY
+		mDesiredFloor.setHallway(currentHallway);
 		//#transition 'T11.3.1'
 		if(currentFloor != MessageDictionary.NONE &&
 			(mDoorClosedArrayFront.getBothClosed()==false || 
@@ -175,7 +188,7 @@ public class Dispatcher extends Controller {
 
 	private void stateSetHallway() {
 		//Set hallway to currentHallway at Idle/SetNormalHallway, 
-		//currentFloor = mAtFloor.getCurrentFloor();
+		currentFloor = mAtFloor.getCurrentFloor();
 		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		//#transition 'T11.3.1'
