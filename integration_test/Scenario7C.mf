@@ -36,26 +36,18 @@
 ;#arc '7A/1'
 +0.50s A F DoorMotor FRONT LEFT : command == OPEN;
 
-;#arc '7A/3a'
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 
 +0.20s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = false;
 
-
-;#arc '7A/1'
-+0.50s A F DoorMotor FRONT LEFT : command == OPEN;
+;#arc '7A/3a'
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 
 ;#arc '7A/2a'
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = true;
 
-;#arc '7A/2b'
-+0.50s A F DoorMotor FRONT LEFT : command == STOP;
-
-;#arc '7A/3b'
-+0.50s A F CarLantern UP : lighted == true;
 
 ;#arc '7A/4'
 +2.50s A F DoorMotor FRONT LEFT : command == CLOSE;

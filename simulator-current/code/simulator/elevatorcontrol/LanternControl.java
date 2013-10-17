@@ -72,14 +72,13 @@ public class LanternControl extends Controller {
 			if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 				currentFloor = mAtFloor.getCurrentFloor();
 			// #transition 'T7.1'
-			if (//(currentFloor == mDesiredFloor.getFloor())
+			if (//(currentFloor == mDesiredFloor.getFloor())&&
 					 ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
-					&& (direction == mDesiredFloor.getDirection() || 
-					mDesiredFloor.getDirection()==Direction.STOP))
+					&& (direction == mDesiredFloor.getDirection()))
 				newState = State.STATE_ON;
 			// #transition 'T7.4'
-			else if (//(currentFloor == mDesiredFloor.getFloor())
+			else if (//(currentFloor == mDesiredFloor.getFloor())&&
 					 ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction != mDesiredFloor.getDirection()))

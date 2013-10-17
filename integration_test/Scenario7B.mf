@@ -54,9 +54,6 @@
 ;#arc '7A/2b'
 +0.50s A F DoorMotor FRONT LEFT : command == STOP;
 
-;#arc '7A/3b'
-+0.50s A F CarLantern UP : lighted == true;
-
 ;#arc '7A/4'
 +2.50s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;

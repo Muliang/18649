@@ -1,0 +1,152 @@
+
+Simulator Parameters:
+Command line = -pf proj7acceptance3.pass -monitor Proj7RuntimeMonitor
+RandomSeed = 1382035051683
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Acceptance Test File = proj7acceptance3.pass
+Monitors: Proj7RuntimeMonitor  
+
+STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
+-----------------------------------------------------
+
+The following passengers were stranded:
+Passenger 1: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 4: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 8: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 9: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 12: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 13: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 14: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 17: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 18: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 25: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 27: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 28: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 30: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 31: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 32: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 36: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 37: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 38: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 40: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 41: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 42: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 45: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 46: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 49: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 50: NOT_DELIVERED, WAITING_IN_HALL
+
+These passengers were delivered:
+Passenger 3: INJECTED AT 91.0s and DELIVERED in 72.886s
+  Satisfaction score: 100.0
+Passenger 7: INJECTED AT 154.7s and DELIVERED in 184.944s
+  Satisfaction score: 100.0
+Passenger 5: INJECTED AT 128.5s and DELIVERED in 213.022s
+  Satisfaction score: 100.0
+Passenger 0: INJECTED AT 60.0s and DELIVERED in 283.598s
+  Satisfaction score: 100.0
+Passenger 10: INJECTED AT 194.8s and DELIVERED in 149.18s
+  Satisfaction score: 100.0
+Passenger 11: INJECTED AT 206.5s and DELIVERED in 234.488s
+  Satisfaction score: 100.0
+Passenger 23: INJECTED AT 403.2s and DELIVERED in 119.684s
+  Satisfaction score: 100.0
+Passenger 19: INJECTED AT 342.4s and DELIVERED in 180.525s
+  Satisfaction score: 100.0
+Passenger 22: INJECTED AT 386.3s and DELIVERED in 311.744s
+  Satisfaction score: 100.0
+Passenger 26: INJECTED AT 436.5s and DELIVERED in 262.966s
+  Satisfaction score: 100.0
+Passenger 20: INJECTED AT 365.5s and DELIVERED in 358.654s
+  Satisfaction score: 100.0
+Passenger 39: INJECTED AT 663.8s and DELIVERED in 115.052s
+  Satisfaction score: 100.0
+Passenger 33: INJECTED AT 560.8s and DELIVERED in 299.581s
+  Satisfaction score: 100.0
+Passenger 43: INJECTED AT 724.3s and DELIVERED in 312.078s
+  Satisfaction score: 100.0
+Passenger 44: INJECTED AT 738.5s and DELIVERED in 299.444s
+  Satisfaction score: 100.0
+Passenger 29: INJECTED AT 499.2s and DELIVERED in 894.399s
+  Satisfaction score: 90.0
+    @874.320000000: 0.90 Repeated hall call press
+Passenger 47: INJECTED AT 784.9s and DELIVERED in 946.178s
+  Satisfaction score: 100.0
+Passenger 35: INJECTED AT 613.9s and DELIVERED in 1118.602s
+  Satisfaction score: 90.0
+    @1152.120000000: 0.90 Repeated hall call press
+Passenger 2: INJECTED AT 85.3s and DELIVERED in 1982.395s
+  Satisfaction score: 36.45
+    @765.520000000: 0.90 Repeated hall call press
+    @1124.920000000: 0.90 Repeated hall call press
+    @1462.120000000: 0.90 Repeated hall call press
+    @1785.015000000: 0.50 After the car came by 4 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 15: INJECTED AT 293.9s and DELIVERED in 1773.907s
+  Satisfaction score: 36.45
+    @792.720000000: 0.90 Repeated hall call press
+    @1152.120000000: 0.90 Repeated hall call press
+    @1489.320000000: 0.90 Repeated hall call press
+    @1812.227000000: 0.50 After the car came by 4 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 24: INJECTED AT 408.4s and DELIVERED in 1661.338s
+  Satisfaction score: 32.80500000000001
+    @482.720000000: 0.90 Repeated hall call press
+    @819.920000000: 0.90 Repeated hall call press
+    @1179.320000000: 0.90 Repeated hall call press
+    @1516.520000000: 0.90 Repeated hall call press
+    @1840.058000000: 0.50 After the car came by 4 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 16: INJECTED AT 303.6s and DELIVERED in 1766.227s
+  Satisfaction score: 36.45
+    @874.320000000: 0.90 Repeated hall call press
+    @1233.720000000: 0.90 Repeated hall call press
+    @1570.920000000: 0.90 Repeated hall call press
+    @1895.287000000: 0.50 After the car came by 4 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 6: INJECTED AT 151.4s and DELIVERED in 1920.064s
+  Satisfaction score: 32.80500000000001
+    @537.120000000: 0.90 Repeated hall call press
+    @874.320000000: 0.90 Repeated hall call press
+    @1233.720000000: 0.90 Repeated hall call press
+    @1570.920000000: 0.90 Repeated hall call press
+    @1896.824000000: 0.50 After the car came by 5 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 21: INJECTED AT 366.0s and DELIVERED in 1705.753s
+  Satisfaction score: 32.80500000000001
+    @509.920000000: 0.90 Repeated hall call press
+    @847.120000000: 0.90 Repeated hall call press
+    @1206.520000000: 0.90 Repeated hall call press
+    @1543.720000000: 0.90 Repeated hall call press
+    @1867.133000000: 0.50 After the car came by 4 times without showing arrows compatible with DOWN, finally gave up and got on anyway.
+Passenger 48: INJECTED AT 806.0s and DELIVERED in 1266.622s
+  Satisfaction score: 90.0
+    @1434.940000000: 0.90 Repeated hall call press
+Passenger 34: INJECTED AT 587.6s and DELIVERED in 1485.759s
+  Satisfaction score: 81.0
+    @1233.720000000: 0.90 Repeated hall call press
+    @1570.920000000: 0.90 Repeated hall call press
+
+Passenger Delivery Summary
+Delivered: 26
+Stranded: 25
+Total: 51
+
+Deliver Stats (lower is better):
+Average_delivery_time: n/a
+Maximum_delivery_time:  n/a
+Delivery_performance_score:  2147483647
+
+Satisfaction Stats (higher is better):
+Average_satisfaction_score: n/a
+Min_satisfaction_score:  n/a
+Satisfaction_performance_score:  0.000
+
+
+
+Monitors Warning Results: 
+RuntimeMonitor generated 0 warnings.
+
+Monitors Summmary Results: 
+Overweight Count = 0
+Total number of Wasted Openings = 1149
+Total time spent in Door Reversals = null
+
