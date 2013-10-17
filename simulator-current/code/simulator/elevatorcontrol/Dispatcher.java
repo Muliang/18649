@@ -130,7 +130,8 @@ public class Dispatcher extends Controller {
 		// stops at floor and doors not closed, set new target
 		// state actions
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(Hallway.NONE);
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		//Trick
 		/*switch(target){
 			case 1:

@@ -1,0 +1,22 @@
+
+Simulator Parameters:
+Command line = -cf Scenario11A.cf -mf Scenario11A.mf -rt 0s
+RandomSeed = 1382022258876
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = 0.0s
+Real time rate = null
+Message File = Scenario11A.mf
+Controller File = Scenario11A.cf
+
+Assertion Results:
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@3b9c5ce6 :: getFloor ?== 1 PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@1b5ae101 :: getHallway ?== NONE PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@1f7309a :: getDirection ?== STOP PASSED
+
+
+******************Summary******************
+Passed:  3
+Failed:  0
+Total :  3
+
