@@ -1,3 +1,10 @@
+/*
+ * 18649 Fall 2013
+ * group 9
+ * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Author: Yichao Xue
+ */
+
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -121,8 +128,7 @@ public class DoorControl extends Controller {
 				.getWriteableCanMailbox(MessageDictionary.DOOR_MOTOR_COMMAND_BASE_CAN_ID
 						+ ReplicationComputer.computeReplicationId(
 								this.hallway, this.side));
-		// no doormotor translator.......
-
+		
 		// initialize mAtFloor
 		mAtFloor = new Utility.AtFloorArray(canInterface);
         
@@ -242,7 +248,7 @@ public class DoorControl extends Controller {
 		localDoorMotor.set(DoorCommand.STOP);
 		// #transition 'T5.1'
 		if ((mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
-				&& (mDesiredFloor.getHallway() == hallway)
+				&& (mDesiredFloor.getHallway() == hallway || mDesiredFloor.getHallway() == Hallway.BOTH)
 				&& (mDriveSpeed.getDirection() == Direction.STOP || mDriveSpeed.getSpeed() == 0))
 			newState = State.STATE_OPENING;
 	}
@@ -260,7 +266,7 @@ public class DoorControl extends Controller {
 	private void StateOpen() {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
-		// countdown decremented
+		// countDown decremented
 		countDown = SimTime.subtract(countDown, period);
 		// #transition 'T5.3'
 		if (countDown.isLessThanOrEqual(SimTime.ZERO)){

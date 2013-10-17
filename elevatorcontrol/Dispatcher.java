@@ -1,3 +1,10 @@
+/*
+ * 18649 Fall 2013
+ * group 9
+ * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Author: Yujia Wang
+ */
+
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -21,9 +28,9 @@ import simulator.payloads.CanMailbox.WriteableCanMailbox;
  * Sink of:
  * mAtFloor[f,b]
  * mDoorClosed[b,r]
- * mHallCall[f,b,d] // not used
- * mCarCall[f,b] // not used
- * mCarWeight // not used
+ * mHallCall[f,b,d] 
+ * mCarCall[f,b] 
+ * mCarWeight 
  * @author Yujia Wang
  * 
  */
@@ -56,7 +63,6 @@ public class Dispatcher extends Controller {
 	//enumerate states
     private static enum State {
         STATE_SET_TARGET,
-        STATE_SET_BOTH_HALLWAY,
         STATE_SET_HALLWAY,
         STATE_EMERGENCY
     }
@@ -110,7 +116,6 @@ public class Dispatcher extends Controller {
 		State oldState = currentState;
         switch (currentState) {
             case STATE_SET_TARGET: 	stateSetTarget();		break;
-            case STATE_SET_BOTH_HALLWAY: stateSetBothHallway();	break;
             case STATE_SET_HALLWAY: stateSetHallway();			break;
             case STATE_EMERGENCY: stateEmergency();	break;
             default:
@@ -130,7 +135,8 @@ public class Dispatcher extends Controller {
 		// stops at floor and doors not closed, set new target
 		// state actions
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(Hallway.NONE);
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
 		mDesiredDwellFront.set(dwellTime);
 		mDesiredDwellBack.set(dwellTime);
@@ -139,12 +145,6 @@ public class Dispatcher extends Controller {
 		//currentHallway = mAtFloor.getCurrentHallway();
 		target = currentFloor % maxFloors +1;
 		
-		//#transition 'T11.2'
-		if((mDoorClosedArrayFront.getBothClosed()==true && 
-			mDoorClosedArrayBack.getBothClosed()==true) &&
-			(mAtFloor.isAtFloor(currentFloor, Hallway.FRONT) == true &&
-			mAtFloor.isAtFloor(currentFloor, Hallway.BACK) == true))
-			currentState = State.STATE_SET_BOTH_HALLWAY;
 		//#transition 'T11.1'
 		if((mDoorClosedArrayFront.getBothClosed()==true && 
 			mDoorClosedArrayBack.getBothClosed()==true) &&
@@ -154,37 +154,26 @@ public class Dispatcher extends Controller {
 			mAtFloor.isAtFloor(currentFloor, Hallway.BACK)==true)))
 			currentState = State.STATE_SET_HALLWAY;
 		
-		//#transition 'T11.4.1'
+		//#transition 'T11.3.1'
 		if ((mDoorClosedArrayFront.getBothClosed()==false || 
 			mDoorClosedArrayBack.getBothClosed()==false) &&
 			mAtFloor.getCurrentFloor() == MessageDictionary.NONE)
 			currentState = State.STATE_EMERGENCY;			
 	}
 
-	private void stateSetBothHallway() {
-		//Set hallway to currentHallway at Idle/SetNormalHallway, 
-		//currentFloor = mAtFloor.getCurrentFloor();
-		mDesiredFloor.setHallway(Hallway.BOTH);
-		//#transition 'T11.3.1'
-		if(currentFloor != MessageDictionary.NONE &&
-			(mDoorClosedArrayFront.getBothClosed()==false || 
-			mDoorClosedArrayBack.getBothClosed()==false)){
-			currentState = State.STATE_SET_TARGET;
-		}
-	}
 
 	private void stateSetHallway() {
 		//Set hallway to currentHallway at Idle/SetNormalHallway, 
-		//currentFloor = mAtFloor.getCurrentFloor();
+		currentFloor = mAtFloor.getCurrentFloor();
 		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
-		//#transition 'T11.3.1'
+		//#transition 'T11.2'
 		if(currentFloor != MessageDictionary.NONE &&
 			(mDoorClosedArrayFront.getBothClosed()==false || 
 			mDoorClosedArrayBack.getBothClosed()==false)){
 			currentState = State.STATE_SET_TARGET;
 		}
-		//#transition 'T11.4.3'
+		//#transition 'T11.3.1'
 		if ((mDoorClosedArrayFront.getBothClosed()==false || 
 			mDoorClosedArrayBack.getBothClosed()==false) &&
 			mAtFloor.getCurrentFloor() == MessageDictionary.NONE)

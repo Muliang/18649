@@ -1,3 +1,10 @@
+/*
+ * 18649 Fall 2013
+ * group 9
+ * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Author: Yujia Wang
+ */
+
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -138,49 +145,16 @@ public class DriveControl extends Controller {
 		this.currentState = State.STATE_STOP;
 
 		//initialize physical state
-        //create a payload object for this floor,hallway,direction using the
-        //static factory method in HallCallPayload.
         localDriveSpeed = DriveSpeedPayload.getReadablePayload();
-        //register the payload with the physical interface (as in input) -- it will be updated
-        //periodically when the hall call button state is modified.
         physicalInterface.registerTimeTriggered(localDriveSpeed);
-        
-        //create a payload object for this floor,hallway,direction
-        //this is an output, so it is created with the Writeable static factory method
-        localDrive = DrivePayload.getWriteablePayload();
-        //register the payload to be sent periodically -- whatever value is stored
-        //in the localHallLight object will be sent out periodically with the period
-        //specified by the period parameter.
+        localDrive = DrivePayload.getWriteablePayload();   
         physicalInterface.sendTimeTriggered(localDrive, period);
 
         //initialize network interface        
-        //create a can mailbox - this object has the binary representation of the message data
-        //the CAN message ids are declared in the MessageDictionary class.  The ReplicationComputer
-        //class provides utility methods for computing offsets for replicated controllers
-        networkDriveSpeedOut = CanMailbox.getWriteableCanMailbox(MessageDictionary.DRIVE_SPEED_CAN_ID);
-        /*
-         * Create a translator with a reference to the CanMailbox.  Use the 
-         * translator to read and write values to the mailbox
-         * 
-         * Note the use of the BooleanCanPayloadTranslator.  This translator, along with
-         * IntegerCanPayloadTranslator, are provided for your use.  They are not
-         * very bandwidth efficient, but they will be adequate for the first part
-         * of the course.  When we get to network scheduling, you may wish to write
-         * your own translators, although you can do so at any time.
-         */
+           networkDriveSpeedOut = CanMailbox.getWriteableCanMailbox(MessageDictionary.DRIVE_SPEED_CAN_ID);
+        
         mDriveSpeed = new DriveSpeedCanPayloadTranslator(networkDriveSpeedOut);
-        //register the mailbox to have its value broadcast on the network periodically
-        //with a period specified by the period parameter.
         canInterface.sendTimeTriggered(networkDriveSpeedOut, period);
-
-        /*
-         * Registration for the DoorClosed message is similar to the mHallLight message
-         * 
-         * To register for network messages from the smart sensors or other objects
-         * defined in elevator modules, use the translators already defined in
-         * elevatormodules package.  These translators are specific to one type
-         * of message.
-         */
         
         mAtFloor = new Utility.AtFloorArray(canInterface);
         
@@ -216,11 +190,7 @@ public class DriveControl extends Controller {
         mCarWeight = new CarWeightCanPayloadTranslator(networkCarWeight);
         canInterface.registerTimeTriggered(networkCarWeight);
         		
-        /* issuing the timer start method with no callback data means a NULL value 
-         * will be passed to the callback later.  Use the callback data to distinguish
-         * callbacks from multiple calls to timer.start() (e.g. if you have multiple
-         * timers.
-         */
+        
         timer.start(period);
 		
 	}
@@ -265,8 +235,6 @@ public class DriveControl extends Controller {
 			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
-			//add get currentFloor method
-			
 			//#transition 'T6.1'
 			if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor > currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
@@ -303,8 +271,6 @@ public class DriveControl extends Controller {
 			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
-			//add get currentFloor method
-			
 			//#transition 'T6.3'
 			if (commitPoint(desiredFloor) == Commit.REACHED 
 					&& localDriveSpeed.speed() <= SLOW_SPEED 
@@ -325,8 +291,6 @@ public class DriveControl extends Controller {
 			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
 			
-			//add get currentFloor method
-			
 			//#transition 'T6.4'
 			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED 
 					&& localDriveSpeed.speed() <= SLOW_SPEED 
@@ -346,8 +310,6 @@ public class DriveControl extends Controller {
 			DesiredDirection = Direction.UP;
 			desiredFloor = mDesiredFloor.getFloor();
 			currentFloor = mAtFloor.getCurrentFloor();
-			
-			//add get currentFloor method
 			
 			//#transition 'T6.5'
 			if (mLevelUp.getValue()==true// || mCarLevelPosition.getPosition()>=0)
