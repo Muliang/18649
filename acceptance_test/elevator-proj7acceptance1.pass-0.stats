@@ -1,7 +1,7 @@
 
 Simulator Parameters:
 Command line = -pf proj7acceptance1.pass -monitor Proj7RuntimeMonitor
-RandomSeed = 1382040749959
+RandomSeed = 1382042755323
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -14,51 +14,51 @@ STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
 
 
 These passengers were delivered:
-Passenger 0: INJECTED AT 600.0s and DELIVERED in 436.134s
+Passenger 0: INJECTED AT 600.0s and DELIVERED in 436.432s
   Satisfaction score: 50.0
-    @1005.950000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 2: INJECTED AT 974.6s and DELIVERED in 451.254s
+    @1006.150000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 1: INJECTED AT 905.7s and DELIVERED in 520.24s
   Satisfaction score: 50.0
-    @1301.550000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 1: INJECTED AT 905.7s and DELIVERED in 521.715s
+    @1301.800000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 2: INJECTED AT 974.6s and DELIVERED in 452.506s
   Satisfaction score: 50.0
-    @1301.550000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 3: INJECTED AT 1531.4s and DELIVERED in 204.482s
+    @1301.800000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 3: INJECTED AT 1531.4s and DELIVERED in 203.66s
   Satisfaction score: 100.0
-Passenger 5: INJECTED AT 2217.5s and DELIVERED in 295.369s
+Passenger 5: INJECTED AT 2217.5s and DELIVERED in 295.906s
   Satisfaction score: 100.0
-Passenger 4: INJECTED AT 2082.0s and DELIVERED in 604.866s
+Passenger 4: INJECTED AT 2082.0s and DELIVERED in 605.269s
   Satisfaction score: 100.0
-Passenger 6: INJECTED AT 2805.4s and DELIVERED in 351.858s
+Passenger 6: INJECTED AT 2805.4s and DELIVERED in 351.725s
   Satisfaction score: 50.0
-    @2939.550000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 7: INJECTED AT 3269.2s and DELIVERED in 424.178s
+    @2939.350000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 7: INJECTED AT 3269.2s and DELIVERED in 424.322s
   Satisfaction score: 100.0
-Passenger 8: INJECTED AT 3705.3s and DELIVERED in 378.017s
+Passenger 8: INJECTED AT 3705.3s and DELIVERED in 377.628s
   Satisfaction score: 50.0
-    @4006.350000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 9: INJECTED AT 4204.2s and DELIVERED in 323.564s
+    @4005.950000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 9: INJECTED AT 4204.2s and DELIVERED in 324.662s
   Satisfaction score: 100.0
-Passenger 10: INJECTED AT 4487.2s and DELIVERED in 602.828s
+Passenger 10: INJECTED AT 4487.2s and DELIVERED in 602.46s
   Satisfaction score: 50.0
-    @5013.350000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 12: INJECTED AT 5104.0s and DELIVERED in 375.92s
+    @5012.950000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 11: INJECTED AT 4917.5s and DELIVERED in 561.889s
   Satisfaction score: 50.0
-    @5308.950000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 11: INJECTED AT 4917.5s and DELIVERED in 564.154s
+    @5308.550000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 12: INJECTED AT 5104.0s and DELIVERED in 377.473s
   Satisfaction score: 50.0
-    @5308.950000000: 0.50 Car passed passenger's destination floor without servicing it
-Passenger 13: INJECTED AT 5553.4s and DELIVERED in 181.465s
+    @5308.550000000: 0.50 Car passed passenger's destination floor without servicing it
+Passenger 13: INJECTED AT 5553.4s and DELIVERED in 180.759s
   Satisfaction score: 100.0
-Passenger 14: INJECTED AT 5713.7s and DELIVERED in 157.752s
+Passenger 14: INJECTED AT 5713.7s and DELIVERED in 156.564s
   Satisfaction score: 100.0
-Passenger 15: INJECTED AT 6184.5s and DELIVERED in 247.783s
+Passenger 15: INJECTED AT 6184.5s and DELIVERED in 248.12s
   Satisfaction score: 100.0
-Passenger 16: INJECTED AT 6407.5s and DELIVERED in 495.089s
+Passenger 16: INJECTED AT 6407.5s and DELIVERED in 494.786s
   Satisfaction score: 100.0
-Passenger 17: INJECTED AT 6866.1s and DELIVERED in 237.707s
+Passenger 17: INJECTED AT 6866.1s and DELIVERED in 237.088s
   Satisfaction score: 50.0
-    @7026.550000000: 0.50 Car passed passenger's destination floor without servicing it
+    @7026.350000000: 0.50 Car passed passenger's destination floor without servicing it
 
 Passenger Delivery Summary
 Delivered: 18
@@ -66,9 +66,9 @@ Stranded: 0
 Total: 18
 
 Deliver Stats (lower is better):
-Average_delivery_time: 380.785
-Maximum_delivery_time:  604.866
-Delivery_performance_score:  2128.007
+Average_delivery_time: 380.638
+Maximum_delivery_time:  605.269
+Delivery_performance_score:  2127.822
 
 Satisfaction Stats (higher is better):
 Average_satisfaction_score: 75.000
