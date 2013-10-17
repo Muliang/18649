@@ -1,0 +1,14 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario7A.cf		author: Yujia Wang(yujiaw)
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           Scenario7A.cf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dispatcher 8 50.0ms false;
+DoorControl FRONT LEFT 10.0ms false;
+LanternControl UP 200.0ms true;

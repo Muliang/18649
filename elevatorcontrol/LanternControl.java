@@ -23,6 +23,7 @@ public class LanternControl extends Controller {
 
 	private static final State INIT_STATE = State.STATE_IDLE;
 
+	private int currentFloor;
 	private Direction direction;
 	private State state;
 	private State newState;
@@ -68,17 +69,17 @@ public class LanternControl extends Controller {
 		case STATE_IDLE:
 			// do:
 			localCarLantern.set(false);
+			if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
+				currentFloor = mAtFloor.getCurrentFloor();
 			// #transition 'T7.1'
-			if (((mAtFloor.isAtFloor(mDesiredFloor.getFloor(), Hallway.FRONT)) || (mAtFloor
-					.isAtFloor(mDesiredFloor.getFloor(), Hallway.BACK)))
-					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
+			if (//(currentFloor == mDesiredFloor.getFloor())&&
+					 ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction == mDesiredFloor.getDirection()))
 				newState = State.STATE_ON;
 			// #transition 'T7.4'
-			if (((mAtFloor.isAtFloor(mDesiredFloor.getFloor(), Hallway.FRONT)) || (mAtFloor
-					.isAtFloor(mDesiredFloor.getFloor(), Hallway.BACK)))
-					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
+			else if (//(currentFloor == mDesiredFloor.getFloor())&&
+					 ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction != mDesiredFloor.getDirection()))
 				newState = State.STATE_OFF;
