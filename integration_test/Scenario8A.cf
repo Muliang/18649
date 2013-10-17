@@ -1,0 +1,16 @@
+; 18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario8A.cf	Author: Wenhui Hu
+
+;**************************************
+;
+;	     Scenario8A.cf
+;	 Integration test for scenario 8A:
+;
+;**************************************
+
+
+DoorControl FRONT LEFT 10.0ms true;
+DriveControl 10.0ms true;
+Dispatcher 8 50.0ms true;
