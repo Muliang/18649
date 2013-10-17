@@ -183,7 +183,20 @@
           <td>~</td>
         </tr>
         <tr>
-          <td>5.9 countdown expired --&gt; nudge door<br>
+          <td valign="top">5.9 countdown expired --&gt; close door</td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td>5.10 countdown expired --&gt; nudge door<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
@@ -196,18 +209,18 @@
           </td>
         </tr>
         <tr>
-          <td>5.10 overweight --&gt; reopen<br>
+          <td>5.11 overweight --&gt; reopen<br>
           </td>
           <td style="vertical-align: top;">~</td>
           <td style="vertical-align: top;">~</td>
           <td style="vertical-align: top;">~<br>
           </td>
           <td style="vertical-align: top;">X</td>
-          <td>~<br>
+          <td>X<br>
           </td>
         </tr>
         <tr>
-          <td> 5.11 Set dwell<br>
+          <td> 5.12 Set dwell<br>
           </td>
           <td style="vertical-align: top;">~</td>
           <td style="vertical-align: top;">~<br>
@@ -219,7 +232,7 @@
           </td>
         </tr>
         <tr>
-          <td> 5.12 Set mDoorMotor<br>
+          <td> 5.13 Set mDoorMotor<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
@@ -230,6 +243,20 @@
           <td style="vertical-align: top;">~<br>
           </td>
           <td>~<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">5.14 reversal --&gt; open door<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
           </td>
         </tr>
         <tr>
@@ -265,13 +292,40 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">6.6 Set DriveSpeed<br>
+          <td style="vertical-align: top;">6.6 Set mDriveSpeed same to
+            DriveSpeed<br>
+          </td>
+          <td style="vertical-align: top;">~</td>
+          <td style="vertical-align: top;">~</td>
+          <td style="vertical-align: top;">~</td>
+          <td style="vertical-align: top;">~<br>
+          </td>
+          <td style="vertical-align: top;">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">6.7 Set Drive to slow<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
           <td style="vertical-align: top;">~<br>
+          </td>
+          <td style="vertical-align: top;">~<br>
+          </td>
+          <td style="vertical-align: top;">X<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">6.8 not level and Drive is
+            stop --&gt; level <br>
+          </td>
+          <td style="vertical-align: top;">~<br>
+          </td>
+          <td style="vertical-align: top;">~<br>
+          </td>
+          <td style="vertical-align: top;">X<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
@@ -279,33 +333,92 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">6.7 Car is at desired floor
-            --&gt; Stop<br>
+          <td valign="top">6.9 reach commit point and slow &gt; drive
+            speed &gt; level --&gt; level <br>
           </td>
-          <td style="vertical-align: top;">X<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">X<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">X<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">6.8 Car goes to a different
-            floor --&gt;Slow<br>
+          <td valign="top">6.10 reach commit point and drive speed &lt;
+            level speed --&gt; level<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">X<br>
+          <td valign="top">X<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
           </td>
-          <td style="vertical-align: top;">~<br>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6.11 drive speed = level and mLevel = true
+            --&gt; set drive to stop<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6.12 door not closed --&gt; set drive to stop<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6.13 mDoorMotor is open --&gt;set drive to
+            stop<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6.14 mEmergencyBrake is on --&gt; set drive
+            to stop<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
           </td>
         </tr>
         <tr>
