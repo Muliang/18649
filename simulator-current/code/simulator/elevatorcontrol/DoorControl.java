@@ -2,10 +2,8 @@ package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
 import jSimPack.SimTime.SimTimeUnit;
-import simulator.elevatormodules.AtFloorCanPayloadTranslator;
 import simulator.elevatormodules.CarWeightCanPayloadTranslator;
 import simulator.elevatormodules.DoorClosedCanPayloadTranslator;
-import simulator.elevatormodules.DoorMotor;
 import simulator.elevatormodules.DoorOpenedCanPayloadTranslator;
 import simulator.elevatormodules.DoorReversalCanPayloadTranslator;
 import simulator.framework.Controller;
@@ -19,9 +17,7 @@ import simulator.payloads.CanMailbox;
 import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CanMailbox.WriteableCanMailbox;
 import simulator.payloads.DoorMotorPayload;
-import simulator.payloads.DoorMotorPayload.ReadableDoorMotorPayload;
 import simulator.payloads.DoorMotorPayload.WriteableDoorMotorPayload;
-import simulator.payloads.translators.BooleanCanPayloadTranslator;
 
 /*
  * Input Interface:
@@ -71,7 +67,8 @@ public class DoorControl extends Controller {
 	private WriteableDoorMotorPayload localDoorMotor;
 	// output network message
 	private WriteableCanMailbox networkDoorMotor;
-	// no DoorMotor translator
+	//mDoorMotor
+	private DoorMotorCommandCanPayloadTranslator mDoorMotor;
 
 	// input network message
 	private Utility.AtFloorArray mAtFloor;
@@ -122,6 +119,7 @@ public class DoorControl extends Controller {
 						+ ReplicationComputer.computeReplicationId(
 								this.hallway, this.side));
 		// no doormotor translator.......
+		mDoorMotor = new DoorMotorCommandCanPayloadTranslator(networkDoorMotor, this.hallway, this.side);
 
 		// initialize mAtFloor
 		mAtFloor = new Utility.AtFloorArray(canInterface);
@@ -240,6 +238,7 @@ public class DoorControl extends Controller {
 	private void StateClosed() {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
+		mDoorMotor.set(DoorCommand.STOP);
 		// #transition 'T5.1'
 		if ((mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
 				&& (mDesiredFloor.getHallway() == hallway || mDesiredFloor.getHallway() == Hallway.BOTH)
@@ -250,6 +249,7 @@ public class DoorControl extends Controller {
 	private void StateOpening() {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
+		mDoorMotor.set(DoorCommand.OPEN);
 		// set countDown
 		countDown = DWELL;
 		// #transition 'T5.2'
@@ -260,6 +260,7 @@ public class DoorControl extends Controller {
 	private void StateOpen() {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
+		mDoorMotor.set(DoorCommand.STOP);
 		// countdown decremented
 		countDown = SimTime.subtract(countDown, period);
 		// #transition 'T5.3'
@@ -272,6 +273,7 @@ public class DoorControl extends Controller {
 	private void StateClosing() {
 		// do:
 		localDoorMotor.set(DoorCommand.CLOSE);
+		mDoorMotor.set(DoorCommand.CLOSE);
 		// #transition 'T5.4'
 		if (mDoorClosed.getValue() == true){
 			newState = State.STATE_CLOSED;
@@ -290,6 +292,7 @@ public class DoorControl extends Controller {
 	private void StateReopening() {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
+		mDoorMotor.set(DoorCommand.OPEN);
 		countDown = DWELL;
 		// #transition 'T5.7'
 		if (mDoorOpened.getValue() == true)
@@ -299,6 +302,7 @@ public class DoorControl extends Controller {
 	private void StateReopen() {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
+		mDoorMotor.set(DoorCommand.STOP);
 		// countdown decremented
 		countDown = SimTime.subtract(countDown, period);
 		// #transition 'T5.8'
@@ -310,6 +314,7 @@ public class DoorControl extends Controller {
 	private void StateNudging() {
 		// do:
 		localDoorMotor.set(DoorCommand.NUDGE);
+		mDoorMotor.set(DoorCommand.NUDGE);
 		// #transition 'T5.9'
 		if (mDoorReversal.getValue() == true)
 			newState = State.STATE_REOPENING;

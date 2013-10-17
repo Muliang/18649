@@ -645,36 +645,25 @@
       </ul>
       <h3> Scenario: </h3>
       <ol start="1" type="1">
+        <li>mAtFloor f is true, and is not the same as mDesiredFloor g.<br>
+        </li>
         <li>Door[<b>b</b>,<b>r</b>] starts closing. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes closing. </li>
-        <li> Dispatcher sets mDesiredFloor[g,c,d] as true.</li>
-        <li> Car is not at floor[g,c]</li>
-        <li>Drive() is set to <b>Slow</b> for direction <b>d</b>. </li>
+        <li>Drive is set to <b>Slow</b> for direction <b>d</b>. </li>
         <li>Car starts moving towards floor <b>g</b>, DriveSpeed is
           between Stop and Slow for direction d. </li>
         <li>Car arrives at floor <b>g</b>. </li>
-        <li>Drive() is set to <b>Stop</b> for diresction <b>Stop</b>.&nbsp;
-
-
-
-
-
-
-
-
-
-
-
+        <li>Drive is set to <b>Level</b> for direction <b>Up</b>. <br>
         </li>
       </ol>
       <h3> Post-Conditions: </h3>
       <ul type="disc">
         <li>Elevator is at floor <b>g</b>. </li>
-        <li>Drive is <b>Stop</b>. </li>
+        <li>Drive is <b>Leveling</b>. </li>
         <li>All doors are closed. </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="Wenhui_8.png" height="300" width="800"><br>
+      <img alt="8a" src="Wenhui_8.png" height="320" width="1005"><br>
       <h3></h3>
       <p> <a href="Wenhui_8.png"><br>
         </a> </p>
