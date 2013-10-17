@@ -4,7 +4,7 @@ Group 9 - Yichao Xue         yichaox
           Wenhui Hu         wenhuih
           Yujia Wang         yujiaw 
 
- <sequence diagram 1A> <Scenario1A.cf>  <Scenario1A.mf>
+<sequence diagram 1A> <Scenario1A.cf>  <Scenario1A.mf>
 <sequence diagram 1B> <Scenario1B.cf>  <Scenario1B.mf>
 <sequence diagram 1C> <Scenario1C.cf>  <Scenario1C.mf>
 <sequence diagram 2A> <Scenario2A.cf>  <Scenario2A.mf>
@@ -14,5 +14,11 @@ Group 9 - Yichao Xue         yichaox
 <sequence diagram 4A> <Scenario4A.cf>  <Scenario4A.mf>
 <sequence diagram 5A> <Scenario5A.cf>  <Scenario5A.mf>
 <sequence diagram 5B> <Scenario5B.cf>  <Scenario5B.mf>
- <sequence diagram 6A> <Scenario6A.cf>  <Scenario6A.mf>
+<sequence diagram 6A> <Scenario6A.cf>  <Scenario6A.mf>
 <sequence diagram 9A> <Scenario9A.cf>  <Scenario9A.mf>
+<sequence diagram 7A> <Scenario7A.cf>  <Scenario7A.mf>
+<sequence diagram 7B> <Scenario7B.cf>  <Scenario7B.mf>
+<sequence diagram 7C> <Scenario7C.cf>  <Scenario7C.mf>
+<sequence diagram 8A> <Scenario8A.cf>  <Scenario8A.mf>
+<sequence diagram 10A> <Scenario10A.cf>  <Scenario10A.mf>
+<sequence diagram 11A> <Scenario11A.cf>  <Scenario11A.mf>
