@@ -1,10 +1,3 @@
-/*
- * 18649 Fall 2013
- * group 9
- * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
- * Author: Wenhui Hu (wenhuih)
- */
-
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -130,7 +123,8 @@ public class CarButtonControl extends Controller {
 		mCarCall.set(true);
 		
 		// #transition 'T9.1'
-		if (mDesiredFloor.getFloor() == floor && mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
+		if (//mDesiredFloor.getFloor() == floor && 
+				mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 			state = State.STATE_OFF;
 		}
 		
