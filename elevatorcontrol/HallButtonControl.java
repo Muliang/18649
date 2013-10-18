@@ -1,3 +1,9 @@
+/*
+ * 18649 Fall 2013
+ * group 9
+ * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ */
+
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -7,9 +13,8 @@ import simulator.framework.Hallway;
 import simulator.framework.ReplicationComputer;
 import simulator.payloads.HallCallPayload.ReadableHallCallPayload;
 import simulator.payloads.HallLightPayload.WriteableHallLightPayload;
+
 /*
- * 18-649 Fall-2013
- * Team#9
  * author:priyam
  */
 

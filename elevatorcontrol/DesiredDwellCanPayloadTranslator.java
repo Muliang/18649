@@ -1,3 +1,10 @@
+/*
+ * 18649 Fall 2013
+ * group 9
+ * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * 
+ */
+
 package simulator.elevatorcontrol;
 
 import simulator.framework.Hallway;
