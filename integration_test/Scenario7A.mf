@@ -1,7 +1,7 @@
 ; 18649 Fall 2013
 ; group 9
 ; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
-; Scenario7A.mf 	Author: Yujia Wang(yujiaw)
+; Scenario7A.cf 	Author: Yujia Wang(yujiaw)
 
 ;**************************************
 ;
@@ -11,15 +11,13 @@
 
 #INCLUDE ElevatorDefines.mf
 
+;Start setting up Pre-conditions
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
 
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
-+0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT UP;
-
-;#arc '7A/3a'
 +0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT UP;
 
 ;#arc '7A/1'
@@ -30,7 +28,7 @@
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = false;
 
-
+;End setting up Pre-conditions
 ;#arc '7A/1'
 +0.50s A F DoorMotor FRONT LEFT : command == OPEN;
 
@@ -39,6 +37,9 @@
 
 ;#arc '7A/2b'
 +0.50s A F DoorMotor FRONT LEFT : command == STOP;
+
+;#arc '7A/3a'
++0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT UP;
 
 ;#arc '7A/3b'
 +0.50s A F CarLantern UP : lighted == true;

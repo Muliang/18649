@@ -20,8 +20,7 @@
 
 #DEFINE LEVEL_SPEED 0.10
 #DEFINE SLOW_SPEED 0.25
-
-; Intialize car stopp at Lobby
+;Start setting up Pre-conditions
 0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor FLOOR HALLWAY = true;
 
 0.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = false;
@@ -39,6 +38,7 @@
 +1.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall NEXT_FLOOR HALLWAY = true;
 
 +0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = NEXT_FLOOR FRONT STOP;
+;End setting up Pre-conditions
 
 ; #arc '6A/1'
 +0.00s A F CarPositionIndicator : floor == 1;

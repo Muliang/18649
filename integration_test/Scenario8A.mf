@@ -11,7 +11,7 @@
 #INCLUDE ElevatorDefines.mf
 
 
-; DoorControl initial conditions
+;Start Setting Up Pre-conditions
 
 0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 
@@ -43,22 +43,10 @@
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
 
-; go to open
-;speed = 0
 +0.50s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor 2 BACK = false;
 +0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
-;+0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = UP 0;
 
-;check state opening
-
-+0.50s A F DoorMotor FRONT LEFT : command == OPEN;
-+0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
-+0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_OPENING;
-
-+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = false;
++0.50s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = false;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = false;
@@ -66,15 +54,10 @@
 ;#transition 'T5.2' 
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = true;
 
-;#state 'S5.3 Open'
++0.50s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 
-+0.50s A F DoorMotor FRONT LEFT : command == STOP;
-+0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_OPEN;
+;End Setting Up Pre-conditions
 
-;#transition 'T5.3'
-
-;#state 'S5.4 Closing'
-+0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 ;#arc '8A/1'
 +2.50s A F DoorMotor FRONT LEFT : command == CLOSE;
 
