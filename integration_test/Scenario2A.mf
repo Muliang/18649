@@ -9,6 +9,8 @@
 ;
 ;**************************************
 #INCLUDE ElevatorDefines.mf
+
+;Start setting up Pre-conditions
 0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
@@ -48,6 +50,7 @@
 
 
 +5.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
+;Start setting up Pre-conditions
 ; #arc '2A/1a'
 +5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;

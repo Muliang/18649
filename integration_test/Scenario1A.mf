@@ -4,8 +4,7 @@
 ; Scenario1A.mf  author: Wenhui Hu
 
 #INCLUDE ElevatorDefines.mf
-
-; Initialize to STATE_OFF
+;Start set up Pre-conditions
 
 0.00s I HALL_BUTTON_CONTROL_PERIOD F HallCall 3 FRONT UP = false;
 0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT  = false;
@@ -14,7 +13,7 @@
 0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
 0.00s I	DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
-
+; End set up Pre-conditions
 
 ;#arc '1A/1b'
 

@@ -1,18 +1,18 @@
 
 Simulator Parameters:
-Command line = -cf Scenario10A.cf -mf Scenario10A.mf -rt 0s
-RandomSeed = 1382022252765
+Command line = -cf Scenario10A.cf -mf Scenario10A.mf
+RandomSeed = 1382054164963
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
-Run Time = 0.0s
+Run Time = null
 Real time rate = null
 Message File = Scenario10A.mf
 Controller File = Scenario10A.cf
 
 Assertion Results:
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@1f7309a :: getFloor ?== 3 PASSED
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@1bb5d53a :: getHallway ?== BACK PASSED
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@2a9dfb04 :: getDirection ?== STOP PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@622d8a59 :: getFloor ?== 3 PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@1876a6d :: getHallway ?== BACK PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@65e95f04 :: getDirection ?== STOP PASSED
 
 
 ******************Summary******************

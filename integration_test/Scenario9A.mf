@@ -9,6 +9,7 @@
 ;**************************************
 #INCLUDE ElevatorDefines.mf
 
+;Start setting up Pre-conditions
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
@@ -34,6 +35,7 @@
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
 +0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = UP 0;
 
+;End setting up Pre-conditions
 ;#arc '9A/1'
 +0.50s A F DoorMotor FRONT LEFT : command == OPEN;
 
