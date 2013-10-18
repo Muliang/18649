@@ -81,51 +81,54 @@
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">Priya Mahajan andrewID: priyam</span>
     <hr style="width: 100%; height: 2px;">This page lists and describes
-    the
-    java files in your elevatorcontrol package.&nbsp; Update this
-    document
-    to reflect your implementation and add your java files to the
-    elevatorcontrol folder.<br>
+    the java files in your elevatorcontrol package.&nbsp; Update this
+    document to reflect your implementation and add your java files to
+    the elevatorcontrol folder.<br>
     <span style="font-weight: bold;"><br>
       Note:&nbsp; In order for your portfolio to be complete, the code
-      files
-      in the elevatorcontrol folder must compiled and run if copied into
-      the
-      elevatorcontrol package (overwriting any duplicates) of a clean
-      version
-      of the latest required simulator release.</span><br>
+      files in the elevatorcontrol folder must compiled and run if
+      copied into the elevatorcontrol package (overwriting any
+      duplicates) of a clean version of the latest required simulator
+      release.</span><br>
     <h2>Controller files</h2>
-    <p>Links and descriptions to all
-      controllers.</p>
+    <p>Links and descriptions to all controllers.</p>
     <ul>
       <li><a href="CarButtonControl.java">CarButtonControl.java</a> -
-        This is controller for Car Button.<br>
+        Car Button controller switches on CarLight whenever user makes a
+        car call.<br>
       </li>
       <li><a href="CarPositionControl.java">CarPositionControl.java</a>
-        - This is controller for Car Position Indicator.<br>
+        - Car Position controller displays current floor.<br>
       </li>
-      <li><a href="Dispatcher.java">Dispatcher.java</a> - The dispatcher
-        determine the elevator's future destinations.<a
+      <li><a href="Dispatcher.java">Dispatcher.java</a> - Dispatcher
+        determines the elevator's future destination.<a
           href="Dispatcher.java"><br>
         </a></li>
-      <li><a href="DoorControl.java">DoorControl.java</a> - This is door
-        operation controller.<a href="DoorControl.java"><br>
+      <li><a href="DoorControl.java">DoorControl.java</a> - Door
+        controller operates door opening/closing/nudging.<a
+          href="DoorControl.java"><br>
         </a></li>
-      <li><a href="DriveControl.java">DriveControl.java</a> - This is
-        controller for elevator drive.<a href="DriveControl.java"><br>
+      <li><a href="DriveControl.java">DriveControl.java</a> - Drive
+        controller determines the elevator's moving speed with
+        direction.<a href="DriveControl.java"><br>
         </a></li>
       <li><a href="HallButtonControl.java">HallButtonContol.java</a> -
-        This is controller for Hall Button. <a
-          href="HallButtonControl.java"><br>
+        Hall Button controller switches on HallLight whenever user makes
+        a hall call. <a href="HallButtonControl.java"><br>
         </a></li>
-      <li><a href="LanternControl.java">LanternControl.java</a> - This
-        is controller for Car Lantern.<br>
+      <li><a href="LanternControl.java">LanternControl.java</a> -
+        Lantern controller displays elevator's immediate moving
+        direction.<br>
       </li>
     </ul>
     <h2>Translator files</h2>
     Links and descriptions to all message translators used by the
     controllers.<br>
     <ul>
+      <li><a href="ByteBooleanCanPayloadTranslator.java">ByteBooleanCanPayloadTranslator.java</a>
+        CAN translator which can be extended by
+        CarCallCanPayloadTranslator and HallCallCanPayloadTranslator.<br>
+      </li>
       <li><a href="CarCallCanPayloadTranslator.java">CarCallCanPayloadTranslator.java</a>
         - CAN translator for messages from CarCall sensors.<br>
       </li>
@@ -134,19 +137,21 @@
           href="CarLightCanPayloadTranslator.java"><br>
         </a></li>
       <li><a href="DesiredDwellCanPayloadTranslator.java">DesiredDwellCanPayloadTranslator.java</a>
-        - CAN translator for mDesiredDwell<a
+        - CAN translator for mDesiredDwell messages.<a
           href="DesiredDwellCanPayloadTranslator.java"><br>
         </a></li>
       <li><a href="DesiredFloorCanPayloadTranslator.java">DesiredFloorCanPayloadTranslator.java</a>
-        - CAN translator for mDesiredFloor<a
-          href="DesiredFloorCanPayloadTranslator.java"><br>
-        </a></li>
+        - CAN translator for mDesiredFloor messages.<br>
+      </li>
+      <li><a href="DoorMotorCommandCanPayloadTranslator.java">DoorMotorCommandCanPayloadTranslator.java</a>
+        - CAN translator for mDoorMotor messages.<br>
+      </li>
       <li><a href="DriveCommandCanPayloadTranslator.java">DriveCommandCanPayloadTranslator.java</a>
-        - CAN translator for mDriveCommand messages<a
+        - CAN translator for mDriveCommand messages.<a
           href="DriveCommandCanPayloadTranslator.java"><br>
         </a></li>
       <li><a href="DriveSpeedCanPayloadTranslator.java">DriveSpeedCanPayloadTranslator.java</a>
-        - CAN translator for mDriveSpeed messages<a
+        - CAN translator for mDriveSpeed messages.<a
           href="DriveSpeedCanPayloadTranslator.java"><br>
         </a></li>
       <li><a href="HallCallCanPayloadTranslator.java">HallCallCanPayloadTranslator.java</a>
