@@ -300,7 +300,10 @@ public class DoorControl extends Controller {
 			newState = State.STATE_OPENING;
 
 		// #transition 'T5.6'
-		if (mDoorReversalLeft.getValue() == true || 
+		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
+				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))
+				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))
+				|| mDoorReversalLeft.getValue() == true || 
 				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
 	}
@@ -329,7 +332,10 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.NUDGE);
 		// #transition 'T5.9'
-		if (mDoorReversalLeft.getValue() == true || 
+		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
+				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))
+				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))
+				||	mDoorReversalLeft.getValue() == true || 
 				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
 		// #transition 'T5.10'

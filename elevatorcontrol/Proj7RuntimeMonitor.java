@@ -1,11 +1,3 @@
-/*
- * 18649 Fall 2013
- * group 9
- * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
- * 
- */
-
-
 package simulator.elevatorcontrol;
 
 /*
@@ -59,27 +51,45 @@ public class Proj7RuntimeMonitor extends RuntimeMonitor {
 		atFloorStateMachine atFloorState = new atFloorStateMachine();
 		Stopwatch reversal_time = new Stopwatch();
 		
-		boolean hasMoved = false;
-		boolean wasOverweight = false;
-		boolean isWastedOpening = false;
-		boolean isdoorReversal = false;
-		boolean floor_changed = false;
-		boolean call_flag = false;
+		private static boolean hasMoved ;
+		private static boolean wasOverweight ;
+		private static boolean isWastedOpening ;
+		private static boolean isdoorReversal ;
+		private static boolean floor_changed ;
+		private static boolean call_flag ;
 		//boolean call_flag(Hallway hallway, int floor) = false;
 		
-		int old_pending_calls = 0;
-		int overWeightCount = 0;
-		int wastedOpeningCount = 0;
-		int doorOpeningCount = 0;
-		int call_counter=0;
-		int atFloor_counter = 0;
+		private static int old_pending_calls;
+		private static int overWeightCount ;
+		private static int wastedOpeningCount ;
+		private static int doorOpeningCount ;
+		private static int call_counter;
+		private static int atFloor_counter ;
 		
-		SimTime total_reversal_time = null;
-		SimTime period ;
+		SimTime total_reversal_time ;
 		
 		
+	
 
 		public Proj7RuntimeMonitor(){
+			 
+			 hasMoved = false;
+			 wasOverweight = false;
+			 isWastedOpening = false;
+			 isdoorReversal = false;
+			 floor_changed = false;
+			 call_flag = false;
+			
+			 old_pending_calls = 0;
+			 overWeightCount = 0;
+			 wastedOpeningCount = 0;
+			 doorOpeningCount = 0;
+			 call_counter =0;
+			 atFloor_counter = 0;
+				
+			 total_reversal_time = SimTime.ZERO;
+			 
+			
 		}
 		
 		/**************************************************************************
@@ -171,7 +181,6 @@ public class Proj7RuntimeMonitor extends RuntimeMonitor {
 	    	if(doorState.anyDoorOpen()){
     	    	if(isWastedOpening == true) {
     	    	
-    	    		message("WastedOpening");
     				wastedOpeningCount++;
     	    	}
     	    	}
@@ -203,7 +212,6 @@ public class Proj7RuntimeMonitor extends RuntimeMonitor {
 	    	for(int i=0;i<Elevator.numFloors;i++){
 	    		if(callState.anyCarCall(i+1) || callState.anyHallCall(i+1)){
 	    			new_pending_calls++;
-	    			//message("Pending calls"+new_pending_calls);
 	    		}
 	    	}
 	    	
