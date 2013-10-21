@@ -94,8 +94,11 @@ public class DoorControl extends Controller {
 	private ReadableCanMailbox networkDoorOpened;
 	private DoorOpenedCanPayloadTranslator mDoorOpened;
 
-	private ReadableCanMailbox networkDoorReversal;
-	private DoorReversalCanPayloadTranslator mDoorReversal;
+	private ReadableCanMailbox networkDoorReversalLeft;
+	private DoorReversalCanPayloadTranslator mDoorReversalLeft;
+	
+	private ReadableCanMailbox networkDoorReversalRight;
+	private DoorReversalCanPayloadTranslator mDoorReversalRight;
 
 	// private ReadableCanMailbox networkCarCall;
 	private Utility.CarCallArray mCarCall;
@@ -164,13 +167,21 @@ public class DoorControl extends Controller {
 		canInterface.registerTimeTriggered(networkDoorOpened);
         
 		// initialize mDoorReversal
-		networkDoorReversal = CanMailbox
+		networkDoorReversalLeft = CanMailbox
 				.getReadableCanMailbox(MessageDictionary.DOOR_REVERSAL_SENSOR_BASE_CAN_ID
 						+ ReplicationComputer.computeReplicationId(
-								this.hallway, this.side));
-		mDoorReversal = new DoorReversalCanPayloadTranslator(
-				networkDoorReversal, this.hallway, this.side);
-		canInterface.registerTimeTriggered(networkDoorReversal);
+								this.hallway, Side.LEFT));
+		mDoorReversalLeft = new DoorReversalCanPayloadTranslator(
+				networkDoorReversalLeft, this.hallway, Side.LEFT);
+		canInterface.registerTimeTriggered(networkDoorReversalLeft);
+		
+		networkDoorReversalRight = CanMailbox
+				.getReadableCanMailbox(MessageDictionary.DOOR_REVERSAL_SENSOR_BASE_CAN_ID
+						+ ReplicationComputer.computeReplicationId(
+								this.hallway, Side.RIGHT));
+		mDoorReversalRight = new DoorReversalCanPayloadTranslator(
+				networkDoorReversalRight, this.hallway, Side.RIGHT);
+		canInterface.registerTimeTriggered(networkDoorReversalRight);
 
 		// initialize mCarCall
 		mCarCall = new Utility.CarCallArray(canInterface);
@@ -289,7 +300,8 @@ public class DoorControl extends Controller {
 			newState = State.STATE_OPENING;
 
 		// #transition 'T5.6'
-		if (mDoorReversal.getValue() == true)
+		if (mDoorReversalLeft.getValue() == true || 
+				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
 	}
 
@@ -317,7 +329,8 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.NUDGE);
 		// #transition 'T5.9'
-		if (mDoorReversal.getValue() == true)
+		if (mDoorReversalLeft.getValue() == true || 
+				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
 		// #transition 'T5.10'
 		if (mDoorClosed.getValue() == true)
