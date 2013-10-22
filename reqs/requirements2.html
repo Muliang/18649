@@ -351,7 +351,7 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" height="523" border="0"
+          width: 613px; height: 523px;" border="0" height="523"
           width="613"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
@@ -1015,9 +1015,9 @@
     5.5&nbsp;&nbsp;&nbsp; If CarWeight(x) &gt;= MaxCarCapacity, the
     doors shall open completely until the car is no longer overloaded.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    5.6 &nbsp;&nbsp; If any mAtFloor[f, b] is True and f equals
-    mDesiredFloor.f, and mDriveSpeed = (0, d) or mDriveSpeed = (s, Stop)
-    then: <br>
+    5.6 &nbsp;&nbsp; If (any mAtFloor[f, b] is True or mAtFloor[f, BOTH]
+    is true) and f equals mDesiredFloor.f, and mDriveSpeed = (0, d) or
+    mDriveSpeed = (s, Stop) then: <br>
     &nbsp;&nbsp;&nbsp; 5.6.1&nbsp; DoorMotor[b, r] shall be commanded to
     Open; <br>
     &nbsp;&nbsp;&nbsp; 5.6.2&nbsp; CountDown shall be set to Dwell.<br>
@@ -1043,7 +1043,7 @@
       orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
-      !important; float: none;">mDoorReversal[b,r] is true, then
+      !important; float: none;">mDoorReversal[b,*] is true, then
       DoorMotor[b,r] shall be commanded open.</span><br>
     <br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
@@ -1052,7 +1052,7 @@
       width="975"><br>
     <br>
     <br>
-    <table height="303" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="303">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -1070,15 +1070,38 @@
               start; text-indent: 0px; text-transform: none;
               white-space: normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">Any mAtFloor[f, b] </span><span
+              !important; float: none;">(mAtFloor[f, b] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
               normal; orphans: auto; text-align: start; text-indent:
               0px; text-transform: none; white-space: normal; widows:
               auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; True AND f
-              equals mDesiredFloor.f, AND mDriveSpeed = (0, d) OR
+              display: inline !important; float: none;">&#8592; True OR
+              mAtFloor[f, BOTH] </span><span style="color: rgb(0, 0,
+              0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: start; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: start; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;"></span><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: start;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;">&#8592; </span>True) <br>
+              AND f equals mDesiredFloor.f, AND mDriveSpeed = (0, d) OR
               mDriveSpeed = (s, Stop)</span></td>
         </tr>
         <tr>
@@ -1123,8 +1146,8 @@
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; True OR
-              mHallCall[this floor,b,desiredDirection] </span><span
+              display: inline !important; float: none;">&#8592; True <br>
+              OR mHallCall[this floor,b,desiredDirection] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -1144,7 +1167,7 @@
               left; text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDoorReversal[b,r] </span><span
+              !important; float: none;">mDoorReversal[b,*] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -1170,14 +1193,47 @@
               left; text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDoorReversal[b,r] </span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; True</span></td>
+              !important; float: none;"><span style="color: rgb(0, 0,
+                0); font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">mCarWeight(g)
+                &gt;= MaxCarCapacity OR </span><span style="color:
+                rgb(0, 0, 0); font-family: Times; font-size: medium;
+                font-style: normal; font-variant: normal; font-weight:
+                normal; letter-spacing: normal; line-height: normal;
+                orphans: auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">mCarCall[this
+                floor,b] </span><span style="color: rgb(0, 0, 0);
+                font-family: Times; font-size: medium; font-style:
+                normal; font-variant: normal; font-weight: normal;
+                letter-spacing: normal; line-height: normal; orphans:
+                auto; text-align: left; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">&#8592; True <br>
+                OR mHallCall[this floor,b,desiredDirection] </span><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;">&#8592; True OR </span>mDoorReversal[b,*]
+            </span><span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: left;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; True</span></td>
         </tr>
         <tr>
           <td valign="top">T5.10</td>
@@ -2003,6 +2059,7 @@
 
 
 
+
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
@@ -2668,11 +2725,11 @@
     CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" height="420"
-        border="0" width="449"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" border="0"
+        height="420" width="449"></a><br>
     <br>
     <br>
-    <table height="148" border="1" cellpadding="2" cellspacing="2">
+    <table border="1" cellpadding="2" cellspacing="2" height="148">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2897,7 +2954,7 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table height="303" border="1" cellpadding="2" cellspacing="2"
+    <table border="1" cellpadding="2" cellspacing="2" height="303"
       width="319">
       <tbody>
         <tr>
@@ -3063,8 +3120,8 @@
     <h3>TIME-TRIGGERED BEHAVIORS: </h3>
     8.3&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall be
     set to False.<br>
-    8.4&nbsp; If CurrentFloor is f and mDesiredFloor is also f and any
-    mDoorClosed[b,*] = False, then<br>
+    8.4&nbsp; If CurrentFloor is f and any mDoorClosed[b,*] = False,
+    then<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.1 HallLight[f,b,d] shall
     be set to OFF<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.2 mHallCall[f,b,d] shall
@@ -3124,7 +3181,7 @@
     </table>
     <br>
     <br>
-    <table height="80" border="1" cellpadding="2" cellspacing="2"
+    <table border="1" cellpadding="2" cellspacing="2" height="80"
       width="777">
       <tbody>
         <tr>
@@ -3170,14 +3227,14 @@
               auto; text-align: left; text-indent: 0px; text-transform:
               none; white-space: normal; widows: auto; word-spacing:
               0px; -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; f AND mDesiredFloor.f </span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
+              !important; float: none;">&#8592; f </span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; f AND any
+              display: inline !important; float: none;">AND any
               mDoorClosed[b,*] = false</span><br>
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -3355,8 +3412,7 @@
       false.<br>
     </p>
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
-    <p>9.1&nbsp; If CurrentFloor is f and mDesiredFloor is f and
-      mDoorClosed[b,r] is False<br>
+    <p>9.1&nbsp; If CurrentFloor is f and mDoorClosed[b,r] is False<br>
       &nbsp;&nbsp;&nbsp; 9.1.1 CarLight[f,b] shall be set to Off.<br>
       &nbsp;&nbsp;&nbsp; 9.1.2 mCarLight[f,b] shall be set to False.<br>
     </p>
@@ -3372,8 +3428,8 @@
       src="CallButtonControl_state_chart_group9_wenhuih.png"
       height="518" width="443"><br>
     <br>
-    <table style="text-align: left;" height="148" border="1"
-      cellpadding="2" cellspacing="2" width="801">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" height="148" width="801">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -3409,7 +3465,7 @@
       </tbody>
     </table>
     <br>
-    <table height="115" border="1" cellpadding="2" cellspacing="2"
+    <table border="1" cellpadding="2" cellspacing="2" height="115"
       width="742">
       <tbody>
         <tr>
@@ -3436,6 +3492,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -3538,14 +3595,14 @@
               text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; f AND mDesiredFloor </span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
+              !important; float: none;">&#8592; f </span><span style="color:
+              rgb(0, 0, 0); font-family: Times; font-size: medium;
+              font-style: normal; font-variant: normal; font-weight:
+              normal; letter-spacing: normal; line-height: normal;
+              orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; f AND
+              display: inline !important; float: none;">AND
               mDoorClosed[f,b] </span><span style="color: rgb(0, 0, 0);
               font-family: Times; font-size: medium; font-style: normal;
               font-variant: normal; font-weight: normal; letter-spacing:
@@ -4052,8 +4109,8 @@
       height="512" width="638"><br>
     <br>
     <br>
-    <table style="text-align: left;" height="80" border="1"
-      cellpadding="2" cellspacing="2" width="902">
+    <table style="text-align: left;" border="1" cellpadding="2"
+      cellspacing="2" height="80" width="902">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4086,7 +4143,7 @@
       </tbody>
     </table>
     <br>
-    <table height="73" border="1" cellpadding="2" cellspacing="2"
+    <table border="1" cellpadding="2" cellspacing="2" height="73"
       width="379">
       <tbody>
         <tr>
@@ -4110,7 +4167,7 @@
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table height="144" border="1" cellpadding="2" cellspacing="2"
+    <table border="1" cellpadding="2" cellspacing="2" height="144"
       width="388">
       <tbody>
         <tr>
@@ -4254,8 +4311,8 @@
             a new Target<br>
           </td>
           <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.d to Stop. Set mDesiredDwell to a proper
-            constant value.<br>
+            mDesiredFloor.b to b, mDesiredFloor.d to Stop. Set
+            mDesiredDwell to a proper constant value.<br>
           </td>
         </tr>
         <tr>
@@ -4266,7 +4323,7 @@
             served.<br>
           </td>
           <td valign="top">Set mDesiredFloor.d to Stop, mDesiredFloor.b
-            to h. Set mDesiredDwell to a proper constant value.</td>
+            to b. Set mDesiredDwell to a proper constant value.</td>
         </tr>
         <tr>
           <td valign="top">EMERGENCY<br>
