@@ -58,14 +58,13 @@
         <ul>
           <li><a href="#scenario7c">Scenario 7C</a> </li>
         </ul>
-        <li><a href="#usecase8">8. Move Car to Next Floor</a> </li>
-        <li><a href="#usecase9">9. Cycle Doors</a></li>
-        <li><a href="#UC10">10. Determine Next Floor</a></li>
-        <li><a href="#UC11">11. Emergency</a></li>
+        <li><a href="#usecase8">8. Move Car to Next Floor</a></li>
         <ul>
-          <li><a href="#Scen_11A">Scenario 11A</a><br>
+          <li><a href="#Scenario_8A">Scenario 8A</a></li>
+          <li><a href="#Scenario_8B">Scenario 8B</a><br>
           </li>
         </ul>
+        <li><a href="#usecase9">9. Cycle Doors</a></li>
       </ul>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
@@ -206,7 +205,7 @@
       </ul>
       <h3> Sequence Diagram:</h3>
       <a href="scenario2a.png"><img alt="2A" src="scenario2a.png"
-          height="337" border="0" width="987"></a>
+          border="0" height="337" width="987"></a>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario2b" id="scenario2b"></a>2B: Passenger is in
@@ -255,7 +254,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="SD_2b_yichaoxue.png"><img alt="2B"
-          src="SD_2b_yichaoxue.png" height="337" border="0" width="576"></a><br>
+          src="SD_2b_yichaoxue.png" border="0" height="337" width="576"></a><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; <br>
@@ -354,7 +353,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario3a.png"><img alt="3A" src="scenario3a.png"
-          height="402" border="0" width="1127"></a>
+          border="0" height="402" width="1127"></a>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
@@ -502,8 +501,8 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <a href="Priya_6A.png"><img alt="6A" src="Priya_6A.png"
-          height="425" border="0" width="992"></a><br>
+      <a href="Priya_6A.png"><img alt="6A" src="Priya_6A.png" border="0"
+          height="425" width="992"></a><br>
       <p> <a href="proj2_scenario6.gif"><br>
         </a> </p>
       <div align="center">
@@ -592,7 +591,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="SD_7B_YujiaWang.png"><img alt="7B"
-          src="SD_7B_YujiaWang.png" height="359" border="0" width="1136"></a><br>
+          src="SD_7B_YujiaWang.png" border="0" height="359" width="1136"></a><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -624,15 +623,11 @@
       <h3> </h3>
       <h3> Sequence Diagram:</h3>
       <img alt="" src="SD_7C_YujiaWang.png" height="295" width="781"><br>
-      <h3></h3>
-      <p> <a href="proj2_scenario7c.gif"><br>
-        </a> </p>
       <div align="center">
-        <hr align="center" size="2" width="100%"> </div>
-      <p> &nbsp; </p>
+        <hr align="center" size="2" width="100%"></div>
       <h2><a name="usecase8"></a> Use Case 8: Move Car to Next Floor </h2>
       <h3> </h3>
-      <h3><a name="scenario8a" id="usecase8"></a> Scenario 8A: Elevator
+      <h3><a name="Scenario_8A" id="usecase8"></a> Scenario 8A: Elevator
         moves from {floor f, hallway b} to {floor g, hallway c} in
         direction d. </h3>
       <p> Note: You will want to create other scenarios that involve
@@ -665,13 +660,30 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <img alt="8a" src="Wenhui_8.png" height="320" width="1005"><br>
-      <h3></h3>
-      <p> <a href="Wenhui_8.png"><br>
-        </a> </p>
+      <p> </p>
+      <hr size="2" width="100%">
+      <h3><a name="Scenario_8B"></a>Scenario 8B: Elevator Door[f, b] is
+        open between floors<br>
+      </h3>
+      <h3>Author name: Yujia Wang(yujiaw@andrew.cmu.edu)</h3>
+      <b>Pre-Conditions:</b><br>
+      <ul>
+        <li>Car is moving between floors</li>
+        <li>Door[f, b] has already opened</li>
+      </ul>
+      <b>Scenario:</b><br>
+      <ol>
+        <li>Dispatcher sets the mDesirdFloor to [1, None, d]</li>
+        <li>Car stops</li>
+      </ol>
+      <b>Post-Conditions:</b><br>
+      <ul>
+        <li>Car is stoppe<b>d</b></li>
+      </ul>
+      <b>Sequence Diagram:</b><br>
+      <img alt="" src="SD_8B_YujiaWang.png" height="206" width="510"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
-      <p> &nbsp; <br>
-      </p>
       <h2><a name="usecase9"></a> Use Case 9: Cycle Doors<br>
       </h2>
       <h3> </h3>
@@ -694,7 +706,7 @@
       <ol start="1" type="1">
         <li>Door[<b>b</b>,<b>r</b>] starts opening. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes opening. </li>
-        <li>mDesiredFloor.floor is set to f+1.<br>
+        <li>mDesiredFloor.floor is set to ((f mod MaxFloors)+1).<br>
         </li>
         <li>Door[<b>b</b>,<b>r</b>] starts closing. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes closing. </li>
@@ -706,56 +718,8 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <h3> </h3>
-      &nbsp; <a href="SD_9A_wenhui.png"><img alt="9A"
-          src="SD_9A_wenhui.png" height="357" border="0" width="778"></a><br>
-      <h3></h3>
-      <div align="center">
-        <hr align="center" size="2" width="100%"><br>
-      </div>
-      <h2><a name="UC10"></a>Use Case 10: Determine Next Floor</h2>
-      <h3><a name="Scen_10A"></a>Scenario 10A: Elevator stops at floor
-        f, and the dispatcher set the next desired floor.</h3>
-      <h3>Author name: Yujia Wang(yujiaw@andrew.cmu.edu)</h3>
-      <b>Pre-Conditions:</b><br>
-      <ul>
-        <li>Car is stopped.</li>
-        <li>Door[f, b] is about to open.</li>
-      </ul>
-      <b>Scenario:</b><br>
-      <ol>
-        <li>Door[f, b] starts opening.</li>
-        <li>Dispatcher set the mDesiredFloor to [((f mod MaxFloors) +
-          1), b, d]</li>
-      </ol>
-      <b>Post-Conditions:</b><br>
-      <ul>
-        <li>Door[f, b] is fully opened.</li>
-      </ul>
-      <b>Sequence Diagrams:</b><br>
-      <img alt="" src="SD_10A_YujiaWang.png" height="138" width="644"><br>
-      <hr size="2" width="100%">
-      <h2><a name="UC11"></a>Use Case 11: Emergency</h2>
-      <h3><a name="Scen_11A"></a>Scenario 11A: Elevator Door[f, b] is
-        open between floors<br>
-      </h3>
-      <h3>Author name: Yujia Wang(yujiaw@andrew.cmu.edu)</h3>
-      <b>Pre-Conditions:</b><br>
-      <ul>
-        <li>Car is moving between floors</li>
-        <li>Door[f, b] has already opened</li>
-      </ul>
-      <b>Scenario:</b><br>
-      <ol>
-        <li>Dispatcher sets the mDesirdFloor to [1, None, d]</li>
-        <li>Car stops</li>
-      </ol>
-      <b>Post-Conditions:</b><br>
-      <ul>
-        <li>Car is stoppe<b>d</b></li>
-      </ul>
-      <b>Sequence Diagram:</b><br>
-      <img alt="" src="SD_11A_YujiaWang.png" height="206" width="510"><br>
-      <h3> </h3>
+      &nbsp; <img alt="" src="SD_9A_wenhui.png" height="359"
+        width="764"><br>
     </div>
   </body>
 </html>
