@@ -300,10 +300,7 @@ public class DoorControl extends Controller {
 			newState = State.STATE_OPENING;
 
 		// #transition 'T5.6'
-		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
-				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))
-				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))
-				|| mDoorReversalLeft.getValue() == true || 
+		if (mDoorReversalLeft.getValue() == true || 
 				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
 	}
