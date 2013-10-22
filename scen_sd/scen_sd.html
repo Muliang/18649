@@ -49,7 +49,11 @@
           <li><a href="#scenario5a">Scenario 5A</a> </li>
           <li><a href="#scenario5b">Scenario 5B</a></li>
         </ul>
-        <li><a href="#usecase6">6. Determine Car Position</a> </li>
+        <li><a href="#usecase6">6. Determine Car Position</a></li>
+        <ul>
+          <li><a href="#Scenario_6A">Scenario 6A</a> </li>
+          <li><a href="#Scenario_6B">Scenario 6B</a></li>
+        </ul>
         <li><a href="#usecase7">7. Determine Car Direction</a> </li>
         <ul>
           <li><a href="#scenario7a">Scenario 7A</a> </li>
@@ -192,7 +196,9 @@
         <li>Door[b, r] starts closing.</li>
         <li>The passenger presses the car call button CarCall[f, b] for
           desired destination [f, b].</li>
-        <li>The CarLight[f,b] turns on.</li>
+        <ol>
+          <li>The CarLight[f,b] turns on.</li>
+        </ol>
         <li>Doors complete closing.</li>
       </ol>
       <h3> Post-Conditions: </h3>
@@ -516,6 +522,8 @@
         <li>Car Call Button[<b>f, b</b>] is already lit.<br>
         </li>
         <li>Car is moving in hoistway at slow speed. </li>
+        <li>All doors are closed.<br>
+        </li>
       </ul>
       <h3> Scenario: </h3>
       <ol>
@@ -524,16 +532,21 @@
         <li>Car moves at level speed.<br>
         </li>
         <li>Car stops at floor f.</li>
+        <li>mAtFloor[f,b] is true and mDesiredFloor.f is the same as f.<br>
+        </li>
+        <li>Door[b, r] starts opening.<br>
+        </li>
       </ol>
       <h3> Post-Conditions: </h3>
       <ul>
         <li>Car stopped at floor f.</li>
+        <li>Doors are opening.<br>
+        </li>
       </ul>
-      <h3> Sequence Diagram: </h3>
-      <p><br>
-      </p>
-      <p><br>
-        <a href="proj2_scenario6.gif"> </a> </p>
+      <h3> Sequence Diagram:</h3>
+      <a href="SD_6B_YujiaWang.png"><img alt="6B"
+          src="SD_6B_YujiaWang.png" border="0" height="396" width="1126"></a><br>
+      <br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
