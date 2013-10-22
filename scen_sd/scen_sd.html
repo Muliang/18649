@@ -462,8 +462,9 @@
       <p> &nbsp; </p>
       <h2> <a name="usecase6" id="usecase6"></a>Use Case 6: Determine
         Car Position </h2>
-      <h3> Scenario 6A: Car moves from hallway f on floor x to adjacent
-        hallway g on floor y and stops. </h3>
+      <h3> <a name="Scenario_6A"></a>Scenario 6A: Car moves from
+        hallway f on floor x to adjacent hallway g on floor y and stops.
+      </h3>
       <p> Note: Recall that the Drive of the&nbsp;elevator we provided
         is never commanded to go Fast, so the elevator only moves Slow
         and can therefore stop right away when it sees the appropriate
@@ -503,8 +504,36 @@
       <h3> Sequence Diagram: </h3>
       <a href="Priya_6A.png"><img alt="6A" src="Priya_6A.png" border="0"
           height="425" width="992"></a><br>
-      <p> <a href="proj2_scenario6.gif"><br>
-        </a> </p>
+      <p> </p>
+      <hr size="2" width="100%">
+      <h3><a name="Scenario_6B"></a>Scenario 6B: Car Stops at Floor f,
+        Hallway b where there is a pending Car Call. </h3>
+      <h3> Author name: Yujia Wang(yujiaw@andrew.cmu.edu)<br>
+      </h3>
+      <h3> Pre-Conditions: </h3>
+      <ul type="disc">
+        <li>Car reaches commit point of hallway [<b>f, b</b>] </li>
+        <li>Car Call Button[<b>f, b</b>] is already lit.<br>
+        </li>
+        <li>Car is moving in hoistway at slow speed. </li>
+      </ul>
+      <h3> Scenario: </h3>
+      <ol>
+        <li>Car speed decreases.<br>
+        </li>
+        <li>Car moves at level speed.<br>
+        </li>
+        <li>Car stops at floor f.</li>
+      </ol>
+      <h3> Post-Conditions: </h3>
+      <ul>
+        <li>Car stopped at floor f.</li>
+      </ul>
+      <h3> Sequence Diagram: </h3>
+      <p><br>
+      </p>
+      <p><br>
+        <a href="proj2_scenario6.gif"> </a> </p>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
