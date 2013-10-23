@@ -892,22 +892,10 @@
     3.5 &nbsp;&nbsp; Drive(Fast,d), where d is not Stop, shall move the
     elevator at maximum possible speed in the direction d as determined
     by a velocity profile.<br>
-    3.6&nbsp;&nbsp;&nbsp;
-    <meta charset="utf-8">
-    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: left; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">The Drive shall be commanded to fast speed to the maximum
-      degree practicable.</span><br>
-    3.7 &nbsp;&nbsp; Drive command shall always be set to adjacent or
-    the same value to current DriveSpeed value. <br>
-    3.8 &nbsp;&nbsp; CarPosition shall be updated according to
+    3.6 &nbsp;&nbsp; CarPosition shall be updated according to
     integration of Car speed as determined by Drive() commands and an
     acceleration profile.<br>
-    3.9 &nbsp;&nbsp; Cable slip may cause CarPosition to change while
+    3.7 &nbsp;&nbsp; Cable slip may cause CarPosition to change while
     the Drive is commanded to Stop,<br>
     <h2><a name="doormotor"></a> 4. DoorMotor[b, r] </h2>
     <h3> Replication: </h3>
@@ -1238,6 +1226,7 @@
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
                 !important; float: none;">&#8592; True OR </span>mDoorReversal[b,*]
+
 
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -2051,12 +2040,22 @@
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
     6.6 mDriveSpeed shall be set to the same value as DriveSpeed <br>
     6.7 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
-    AND DesiredDirection is Up or Down AND CommitPoint[f] = NotReached,
-    then Drive[s,d] shall be set to [Slow, DesiredDirection]<br>
-    6.8 If any mLevel[d] = false AND DriveSpeed(s,d) = [Stop, Stop],
+    AND DesiredDirection is Up or Down AND CommitPoint[f] = NotReached
+    AND DriveSpeed.s &lt; SlowSpeed, then Drive[s,d] shall be set to
+    [Slow, DesiredDirection]<br>
+    6.8 If mDoorClosed[f, b]=true AND mCarWeight(x) &lt; MaxCarCapacity
+    AND DesiredDirection is Up or Down AND CommitPoint[f] = NotReached
+    AND FastSpeed &gt; DriveSpeed.s &gt; SlowSpeed, then Drive[s,d]
+    shall be set to [Fast, DesiredDirection]<br>
+    6.9 If any mLevel[d] = false AND DriveSpeed(s,d) = [Stop, Stop],
     then Drive shall be set to [Level, d]<br>
-    6.9 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
+    6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+    SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
+    shall be set to [Slow, d]<br>
+    6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
+    CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
 
 
 
@@ -2076,17 +2075,18 @@
 
     LevelSpeed AND DriveSpeed.s &lt;=&nbsp; SlowSpeed, then Drive(s,d)
     shall be set to [Level, d]<br>
-    6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
+    6.12 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND DriveSpeed.s &lt;= LevelSpeed , then
     Drive(s,d) shall be set to [Stop, Stop]<br>
-    6.11 If any mLevel[d] = true AND DriveSpeed(s,d) = [Level, d], then
+    6.13 If any mLevel[d] = true AND DriveSpeed(s,d) = [Level, d], then
     Drive shall be set to [Stop, Stop]<br>
-    6.12 If any mDoorClosed[b, r] is False, then Drive(s,d) shall be set
+    6.14 If any mDoorClosed[b, r] is False, then Drive(s,d) shall be set
     to [Stop, Stop].<br>
-    6.13 If any mDoorMotor[b, r] is Open,&nbsp; then Drive speed shall
+    6.15 If any mDoorMotor[b, r] is Open,&nbsp; then Drive speed shall
     be set to [Stop, Stop].<br>
-    6.14 If mEmergencyBrake(b) is ON, then Drive speed shall be set to
+    6.16 If mEmergencyBrake(b) is ON, then Drive speed shall be set to
     [Stop, Stop].<br>
+    <br>
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
     <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
@@ -3506,6 +3506,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
