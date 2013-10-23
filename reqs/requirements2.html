@@ -1226,6 +1226,7 @@
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
                 !important; float: none;">&#8592; True OR </span>mDoorReversal[b,*]
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2044,6 +2045,7 @@
     then Drive shall be set to [Level, d]<br>
     6.9 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
 
 
 
@@ -3513,6 +3515,7 @@
 
 
 
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4253,6 +4256,25 @@
       <li>mHallCall[f, b, d]&nbsp;&nbsp; </li>
       <li>mCarCall[f, b]&nbsp;&nbsp;&nbsp; </li>
       <li>mCarWeight </li>
+      <li>
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+          medium; font-style: normal; font-variant: normal; font-weight:
+          normal; letter-spacing: normal; line-height: normal; orphans:
+          auto; text-align: left; text-indent: 0px; text-transform:
+          none; white-space: normal; widows: auto; word-spacing: 0px;
+          -webkit-text-stroke-width: 0px; display: inline !important;
+          float: none;">mDriveSpeed<br>
+        </span></li>
+      <li><span style="color: rgb(0, 0, 0); font-family: Times;
+          font-size: medium; font-style: normal; font-variant: normal;
+          font-weight: normal; letter-spacing: normal; line-height:
+          normal; orphans: auto; text-align: left; text-indent: 0px;
+          text-transform: none; white-space: normal; widows: auto;
+          word-spacing: 0px; -webkit-text-stroke-width: 0px; display:
+          inline !important; float: none;">mCarLevelPosition</span></li>
     </ul>
     <h3> Output Interface: </h3>
     <ul>
@@ -4272,24 +4294,91 @@
     11.3&nbsp;&nbsp;&nbsp; The desired direction d of mDesiredFloor(f,
     b, d) shall not be Down when f = 1.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
+    <meta charset="utf-8">
+    <ul style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px;">
+      <li style="font-weight: bold;">The<span
+          class="Apple-converted-space">&nbsp;</span><span
+          style="font-style: italic;">f</span><span
+          class="Apple-converted-space">&nbsp;</span>field (desired
+        floor) value must change to the next floor by the time the doors
+        are fully open.</li>
+      <li style="font-weight: bold;">The<span
+          class="Apple-converted-space">&nbsp;</span><span
+          style="font-style: italic;">d</span><span
+          class="Apple-converted-space">&nbsp;</span>field (desired
+        direction) value must not change while the doors are open.</li>
+    </ul>
+    <br>
     11.4&nbsp;&nbsp;&nbsp; mDesiredFloor.f shall always be set to
     Target.<br>
-    11.5&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall always be set to Stop.<br>
-    11.6&nbsp;&nbsp;&nbsp; Whenever any mDoorClosed [b, r] is False,
-    then<br>
-    &nbsp;&nbsp; 11.6.1&nbsp; Target shall be set equal to ((f mod
-    MaxFloors) + 1) <br>
-    &nbsp;&nbsp; 11.6.2 &nbsp; mDesiredFloor.b shall be set to b, where
-    f, b is whichever mAtFloor[f, b] is True<br>
-    11.7&nbsp; If all mAtFloor[f, b] are False AND any mDoorClosed [b,
-    r] is False (which means doors are not closed between floors!); then<br>
-    &nbsp;&nbsp;&nbsp; 11.7.1&nbsp;&nbsp; Target shall be set to 1<br>
-    &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp; mDesiredFloor.b shall be set
-    to None.<br>
-    11.8 &nbsp; If two mAtFloor[f, b] values are True with the same
+    11.5&nbsp;&nbsp;&nbsp; Whenever any mCarCall[f,b] is False AND
+    mHallCall[f,b,d] is False, then<br>
+    &nbsp;&nbsp;&nbsp; 11.5.1&nbsp;&nbsp;&nbsp; Target shall be set to
+    f, where f is whichever mAtFloor[f,b] is True<br>
+    &nbsp;&nbsp;&nbsp; 11.5.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
+    set to Stop.<br>
+    11.6&nbsp;&nbsp;&nbsp; If mAtFoor[f,b] is True AND <span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; orphans: auto;
+      text-align: left; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">mDriveSpeed[0, Stop] is True AND </span>there is one
+    mCarCall[f,b] which is True AND any mHallCall[f,b,d] is False, then<br>
+    &nbsp;&nbsp;&nbsp; 11.6.1&nbsp;&nbsp;&nbsp; Target shall be set to f<br>
+    &nbsp;&nbsp;&nbsp; 11.6.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
+    set to Stop.<br>
+    11.7&nbsp;&nbsp;&nbsp; If mAtFoor[f,b] is True AND <span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; orphans: auto;
+      text-align: left; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">mDriveSpeed[0, Stop] is True AND </span>there is one
+    mHallCall[f,b,d] which is True AND any mCarCall[f,b] is False, then<br>
+    &nbsp;&nbsp;&nbsp; 11.7.1&nbsp;&nbsp;&nbsp; Target shall be set to f<br>
+    &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
+    set to d.<br>
+    11.8&nbsp;&nbsp;&nbsp; Whenever mAtFloor[f,b] is True AND any
+    mDoorClosed[b,r] is False AND any mCarCall[f,b] is True for <br>
+    <br>
+    <br>
+    11.9 &nbsp; Whenever ant mDoorClosed[b,r] is False, then
+    mDesiredFloor.b shall be set to b, where b is whichever mAtFloor[f,
+    b] is True<br>
+    11.10 &nbsp; If two mAtFloor[f,b] values are True with the same
     value f, then mDesiredFloor.b shall be set to Both.<br>
-    11.9&nbsp;&nbsp;&nbsp; mDesiredDwell shall always be set to a
-    constant appropriate value for door open dwell.<br>
+    11.11&nbsp; If all mAtFloor[f, b] are False AND any mDoorClosed [b,
+    r] is False (which means doors are not closed between floors!); then<br>
+    &nbsp;&nbsp;&nbsp; 11.11.1&nbsp;&nbsp; Target shall be set to 1.<br>
+    &nbsp;&nbsp;&nbsp; 11.11.2&nbsp;&nbsp; mDesiredFloor.b shall be set
+    to None.<br>
+    &nbsp;&nbsp;&nbsp; 11.11.3&nbsp;&nbsp; mDesiredFloor.d shall be set
+    to Stop.<br>
+    11.12 &nbsp;&nbsp; mDesiredDwell shall always be set to a constant
+    appropriate value for door open dwell.\<br>
+    11.13 If mCarWeight &gt;
+    <meta charset="utf-8">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: left; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">MaxCarCapacity, then<br>
+      &nbsp;&nbsp;&nbsp; 11.13.1 Target shall be set to f, where f is
+      whichever mAtFloor[f,b] is True<br>
+      &nbsp;&nbsp;&nbsp; 11.13.2 mDesiredFloor.b shall be set to b,
+      where b is whichever mAtFloor[f,b] is True<br>
+      &nbsp;&nbsp;&nbsp; 11.13.3 mDesiredFloor.d shall be set to Stop.<br>
+    </span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
       height="529" width="663"><br>
