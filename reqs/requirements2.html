@@ -892,11 +892,23 @@
     3.5 &nbsp;&nbsp; Drive(Fast,d), where d is not Stop, shall move the
     elevator at maximum possible speed in the direction d as determined
     by a velocity profile.<br>
-    3.6 &nbsp;&nbsp; CarPosition shall be updated according to
+    3.6&nbsp;&nbsp;&nbsp;
+    <meta charset="utf-8">
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: left; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">The Drive shall be commanded to fast speed to the maximum
+      degree practicable.</span><br>
+    3.7 &nbsp;&nbsp; Drive command shall always be set to adjacent or
+    the same value to current DriveSpeed value. <br>
+    3.8 &nbsp;&nbsp; CarPosition shall be updated according to
     integration of Car speed as determined by Drive() commands and an
     acceleration profile.<br>
-    3.7&nbsp;&nbsp; Cable slip may cause CarPosition to change while the
-    Drive is commanded to Stop,<br>
+    3.9 &nbsp;&nbsp; Cable slip may cause CarPosition to change while
+    the Drive is commanded to Stop,<br>
     <h2><a name="doormotor"></a> 4. DoorMotor[b, r] </h2>
     <h3> Replication: </h3>
     <ul>
