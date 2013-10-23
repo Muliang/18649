@@ -65,7 +65,8 @@
         <li><a href="#usecase8">8. Move Car to Next Floor</a></li>
         <ul>
           <li><a href="#Scenario_8A">Scenario 8A</a></li>
-          <li><a href="#Scenario_8B">Scenario 8B</a><br>
+          <li><a href="#Scenario_8B">Scenario 8B</a></li>
+          <li><a href="Scenario_8C">Scenario 8C</a><br>
           </li>
         </ul>
         <li><a href="#usecase9">9. Cycle Doors</a></li>
@@ -211,7 +212,7 @@
       </ul>
       <h3> Sequence Diagram:</h3>
       <a href="scenario2a.png"><img alt="2A" src="scenario2a.png"
-          border="0" height="337" width="987"></a>
+          height="337" border="0" width="987"></a>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario2b" id="scenario2b"></a>2B: Passenger is in
@@ -260,7 +261,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="SD_2b_yichaoxue.png"><img alt="2B"
-          src="SD_2b_yichaoxue.png" border="0" height="337" width="576"></a><br>
+          src="SD_2b_yichaoxue.png" height="337" border="0" width="576"></a><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; <br>
@@ -359,7 +360,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="scenario3a.png"><img alt="3A" src="scenario3a.png"
-          border="0" height="402" width="1127"></a>
+          height="402" border="0" width="1127"></a>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <p> &nbsp; </p>
@@ -508,8 +509,8 @@
         </li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <a href="Priya_6A.png"><img alt="6A" src="Priya_6A.png" border="0"
-          height="425" width="992"></a><br>
+      <a href="Priya_6A.png"><img alt="6A" src="Priya_6A.png"
+          height="425" border="0" width="992"></a><br>
       <p> </p>
       <hr size="2" width="100%">
       <h3><a name="Scenario_6B"></a>Scenario 6B: Car Stops at Floor f,
@@ -545,7 +546,7 @@
       </ul>
       <h3> Sequence Diagram:</h3>
       <a href="SD_6B_YujiaWang.png"><img alt="6B"
-          src="SD_6B_YujiaWang.png" border="0" height="396" width="1126"></a><br>
+          src="SD_6B_YujiaWang.png" height="396" border="0" width="1126"></a><br>
       <br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
@@ -634,7 +635,7 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <a href="SD_7B_YujiaWang.png"><img alt="7B"
-          src="SD_7B_YujiaWang.png" border="0" height="359" width="1136"></a><br>
+          src="SD_7B_YujiaWang.png" height="359" border="0" width="1136"></a><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -725,11 +726,10 @@
       </ul>
       <b>Sequence Diagram:</b><br>
       <img alt="" src="SD_8B_YujiaWang.png" height="206" width="510"><br>
-      <br>
-      <br>
-      <h3>Scenario 8C: Elevator moves to {floor g, hallway c} first when
-        there is car call for both {floor g, hallway c} and {floor f,
-        hallway b}</h3>
+      <hr size="2" width="100%">
+      <h3><a name="Scenario_8C"></a>Scenario 8C: Elevator moves to
+        {floor g, hallway c} first when there is car call for both
+        {floor g, hallway c} and {floor f, hallway b}</h3>
       <h3>Author name: Wenhui Hu(wenhuih@andrew.cmu.edu)</h3>
       <p><b>Pre-Conditions:</b><br>
       </p>
@@ -762,9 +762,39 @@
       </ul>
       <b>Sequence Diagram:<br>
         <img alt="8c" src="SD_8C_wenhui.png" height="320" width="1005"><br>
+        <br>
       </b>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
+      <h3><a name="Scenario_8D"></a>Scenario 8D: Elevator moves towards
+        {floor f, hallway b} at fast speed.<br>
+      </h3>
+      <h3>Author name: Yujia Wang(yujiaw@andrew.cmu.edu)</h3>
+      <b>Pre-Conditions:</b><br>
+      <ul>
+        <li>Car is moving at speed (Slow Speed, d).</li>
+        <li>mDesiredFloor.f has been set to f.</li>
+        <li>Car hasn't reached commit point of floor f.<br>
+        </li>
+      </ul>
+      <b>Scenario:</b><br>
+      <ol>
+        <li>DriveControl sets drive to (Fast, d).<br>
+        </li>
+        <li>Car moves at speed (Fast Speed, d).</li>
+        <li>Car reaches commit point of floor f for Fast Speed.</li>
+        <li>DriveControl sets drive to (Slow, d).<br>
+        </li>
+        <li>Car moves at speed (Slow Speed, d).</li>
+      </ol>
+      <p><b>Post-Conditions:</b><br>
+      </p>
+      <ul>
+        <li>Car is moving at speed (Slow, d).</li>
+        <li>Car has reached commit point of floor f.</li>
+      </ul>
+      Sequence Diagram:<br>
+      <img alt="" src="SD_8D_YujiaWang.png" height="343" width="494"><br>
       <h2><a name="usecase9"></a> Use Case 9: Cycle Doors<br>
       </h2>
       <h3> </h3>
