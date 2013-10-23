@@ -725,6 +725,42 @@
       </ul>
       <b>Sequence Diagram:</b><br>
       <img alt="" src="SD_8B_YujiaWang.png" height="206" width="510"><br>
+      <br>
+      <br>
+      <h3>Scenario 8C: Elevator moves to {floor g, hallway c} first when
+        there is car call for both {floor g, hallway c} and {floor f,
+        hallway b}</h3>
+      <h3>Author name: Wenhui Hu(wenhuih@andrew.cmu.edu)</h3>
+      <p><b>Pre-Conditions:</b><br>
+      </p>
+      <ul>
+        <li>Car stops at floor f0.</li>
+        <li>All doors are open.</li>
+        <li>CarLantern[d] is On.</li>
+        <li>There is car call for both {floor g, hallway c} and {floor
+          f, hallway b}.</li>
+        <li>{floor g, hallway c} has the same direction as d.</li>
+        <li>{floor f, hallway b} has the different direction as d.</li>
+      </ul>
+      <b>Scenario:</b><br>
+      <ol>
+        <li>Dispatcher sets mDesiredFloor.floor as g.<br>
+        </li>
+        <li>Door[b,r] starts closing.</li>
+        <li>Door[b,r] completes closing.</li>
+        <li>Drive is set to <b>Slow</b> for direction <b>d</b>. </li>
+        <li>Car starts moving towards g,&nbsp; DriveSpeed is between
+          Stop and Slow for direction d. </li>
+        <li>Car arrives at floor g.</li>
+        <li>Drive is set to Level for direction d.</li>
+      </ol>
+      <b>Post-Conditions:</b><br>
+      <ul>
+        <li>Car is at floor g.</li>
+        <li>All doors are closed.<br>
+        </li>
+      </ul>
+      <b>Sequence Diagram:</b>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h2><a name="usecase9"></a> Use Case 9: Cycle Doors<br>
