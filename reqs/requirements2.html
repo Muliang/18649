@@ -351,7 +351,7 @@
         href="passenger_state_diagram.png"><img
           alt="passenger_state_diagram.png"
           src="passenger_state_diagram.png" style="border: 0px solid ;
-          width: 613px; height: 523px;" border="0" height="523"
+          width: 613px; height: 523px;" height="523" border="0"
           width="613"></a><br>
     </div>
     <table style="text-align: left; width: 800px;" border="1"
@@ -1052,7 +1052,7 @@
       width="975"><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="303">
+    <table height="303" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -1226,6 +1226,7 @@
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
                 !important; float: none;">&#8592; True OR </span>mDoorReversal[b,*]
+
 
 
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
@@ -2051,10 +2052,12 @@
     then Drive shall be set to [Level, d]<br>
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
 
 
 
@@ -2739,11 +2742,11 @@
     CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART</h3>
     <a href="LanternControl_state_chart_group9_yichaox.png"><img alt=""
-        src="LanternControl_state_chart_group9_yichaox.png" border="0"
-        height="420" width="449"></a><br>
+        src="LanternControl_state_chart_group9_yichaox.png" height="420"
+        border="0" width="449"></a><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="148">
+    <table height="148" border="1" cellpadding="2" cellspacing="2">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -2968,7 +2971,7 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="303"
+    <table height="303" border="1" cellpadding="2" cellspacing="2"
       width="319">
       <tbody>
         <tr>
@@ -3195,7 +3198,7 @@
     </table>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="80"
+    <table height="80" border="1" cellpadding="2" cellspacing="2"
       width="777">
       <tbody>
         <tr>
@@ -3442,8 +3445,8 @@
       src="CallButtonControl_state_chart_group9_wenhuih.png"
       height="518" width="443"><br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="148" width="801">
+    <table style="text-align: left;" height="148" border="1"
+      cellpadding="2" cellspacing="2" width="801">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -3479,7 +3482,7 @@
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
+    <table height="115" border="1" cellpadding="2" cellspacing="2"
       width="742">
       <tbody>
         <tr>
@@ -3506,6 +3509,7 @@
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -4125,8 +4129,8 @@
       height="512" width="638"><br>
     <br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="80" width="902">
+    <table style="text-align: left;" height="80" border="1"
+      cellpadding="2" cellspacing="2" width="902">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4159,7 +4163,7 @@
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="73"
+    <table height="73" border="1" cellpadding="2" cellspacing="2"
       width="379">
       <tbody>
         <tr>
@@ -4183,7 +4187,7 @@
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="144"
+    <table height="144" border="1" cellpadding="2" cellspacing="2"
       width="388">
       <tbody>
         <tr>
@@ -4297,7 +4301,18 @@
     <h3> State: </h3>
     <ul>
       <li>Target: an integer Floor number for desired Floor, initialized
-        to Lobby = 1. </li>
+        to Lobby = 1.</li>
+      <li>CommitPoint[f](v); v = {Reached, NotReached} calculated based
+        on car's acceleration profile, current speed, and distance from
+        the floor f, to determine whether or not the car can still stop
+        at the next floor. </li>
+      <li>CurrentFloor, is a shorthand notation for the value of
+        whichever mAtFloor[f, b] is True, if any. Updated whenever
+        elevator reaches a floor.<br>
+      </li>
+      <li>CurrentDirection, a shorthand notation for current Elevator's
+        moving direction. Updated whenever mDriveSpeed.d != STOP.<br>
+      </li>
     </ul>
     <h3> CONSTRAINTS: </h3>
     11.1&nbsp;&nbsp;&nbsp; Target shall be a valid Floor number from 1
@@ -4307,32 +4322,12 @@
     11.3&nbsp;&nbsp;&nbsp; The desired direction d of mDesiredFloor(f,
     b, d) shall not be Down when f = 1.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    <meta charset="utf-8">
-    <ul style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px;">
-      <li style="font-weight: bold;">The<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-style: italic;">f</span><span
-          class="Apple-converted-space">&nbsp;</span>field (desired
-        floor) value must change to the next floor by the time the doors
-        are fully open.</li>
-      <li style="font-weight: bold;">The<span
-          class="Apple-converted-space">&nbsp;</span><span
-          style="font-style: italic;">d</span><span
-          class="Apple-converted-space">&nbsp;</span>field (desired
-        direction) value must not change while the doors are open.</li>
-    </ul>
-    <br>
     11.4&nbsp;&nbsp;&nbsp; mDesiredFloor.f shall always be set to
     Target.<br>
-    11.5&nbsp;&nbsp;&nbsp; Whenever any mCarCall[f,b] is False AND
+    11.5&nbsp;&nbsp;&nbsp; If any mCarCall[f,b] is False AND
     mHallCall[f,b,d] is False, then<br>
     &nbsp;&nbsp;&nbsp; 11.5.1&nbsp;&nbsp;&nbsp; Target shall be set to
-    f, where f is whichever mAtFloor[f,b] is True<br>
+    None, where f is whichever mAtFloor[f,b] is True<br>
     &nbsp;&nbsp;&nbsp; 11.5.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
     set to Stop.<br>
     11.6&nbsp;&nbsp;&nbsp; If mAtFoor[f,b] is True AND <span
@@ -4342,7 +4337,7 @@
       text-align: left; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">mDriveSpeed[0, Stop] is True AND </span>there is one
+      none;">mDriveSpeed = (0, Stop) AND </span>there is one
     mCarCall[f,b] which is True AND any mHallCall[f,b,d] is False, then<br>
     &nbsp;&nbsp;&nbsp; 11.6.1&nbsp;&nbsp;&nbsp; Target shall be set to f<br>
     &nbsp;&nbsp;&nbsp; 11.6.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
@@ -4354,30 +4349,104 @@
       text-align: left; text-indent: 0px; text-transform: none;
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">mDriveSpeed[0, Stop] is True AND </span>there is one
+      none;">mDriveSpeed = (0, Stop)</span><span style="color: rgb(0, 0,
+      0); font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: left; text-indent:
+      0px; text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"> AND </span>there is one
     mHallCall[f,b,d] which is True AND any mCarCall[f,b] is False, then<br>
     &nbsp;&nbsp;&nbsp; 11.7.1&nbsp;&nbsp;&nbsp; Target shall be set to f<br>
     &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
     set to d.<br>
-    11.8&nbsp;&nbsp;&nbsp; Whenever mAtFloor[f,b] is True AND any
-    mDoorClosed[b,r] is False AND any mCarCall[f,b] is True for <br>
-    <br>
-    <br>
-    11.9 &nbsp; Whenever ant mDoorClosed[b,r] is False, then
-    mDesiredFloor.b shall be set to b, where b is whichever mAtFloor[f,
-    b] is True<br>
-    11.10 &nbsp; If two mAtFloor[f,b] values are True with the same
+    11.8&nbsp;&nbsp;&nbsp; If only one mCarCall[f1,b] is True, where f1
+    is different from f, then Target shall be set to f1 AND
+    CommitPoint[f1] = NotReached. <br>
+    11.9 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn, bn],
+    differnt from CurrentFloor, are True AND only one of them [fi, bi]
+    is on the same direction as CurrentDirection AND Target is not on
+    the same direction as CurrentDirection AND CommitPoint[fi] =
+    NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.9.1&nbsp;&nbsp;&nbsp; Target shall be set to
+    fi.<br>
+    &nbsp;&nbsp;&nbsp; 11.9.2&nbsp; &nbsp; mDesiredFloor.d shall be set
+    to ~CurrentDirection.<br>
+    11.10 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn,
+    bn], differnt from CurrentFloor, are True AND only one of them [fi,
+    bi] is on the same direction as CurrentDirection AND Target is on
+    the same direction as CurrentDirection AND CommitPoint[fi] =
+    NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.10.1&nbsp;&nbsp;&nbsp; Target shall be set to
+    fi.<br>
+    &nbsp;&nbsp;&nbsp; 11.10.2&nbsp; &nbsp; mDesiredFloor.d shall be set
+    to CurrentDirection.<br>
+    11.11 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn,
+    bn], differnt from CurrentFloor, are True AND more than one of them
+    is on the same direction as CurrentDirection AND fi is nearer than
+    Target AND CommitPoint[fi] = NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.11.1 &nbsp;&nbsp; Target shall be set to fi,
+    where fi is the nearest floor to CurrentFloor.<br>
+    &nbsp;&nbsp;&nbsp; 11.11.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to CurrentDirection.<br>
+    11.12 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn,
+    bn], differnt from CurrentFloor, are True AND none is on the same
+    direction as CurrentDirection AND Target is not on the same
+    direction as CurrentDirection AND fi is nearer than Target AND
+    CommitPoint[fi] = NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.12.1 &nbsp;&nbsp; Target shall be set to fi,
+    where fi is the nearest floor to CurrentFloor.<br>
+    &nbsp;&nbsp;&nbsp; 11.12.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to ~CurrentDirection.<br>
+    11.13 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn,
+    bn], differnt from CurrentFloor, are True AND none is on the same
+    direction as CurrentDirection AND Target is on the same direction as
+    CurrentDirection AND CommitPoint[Target] = NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.13.1 &nbsp;&nbsp; Target shall not change.<br>
+    &nbsp;&nbsp;&nbsp; 11.13.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to ~CurrentDirection.<br>
+    11.14 &nbsp;&nbsp; If one or more mHallCall[f1, b1, d1], [f2, b2,
+    d2]...[fn, bn, dn], differnt from CurrentFloor, are True AND at
+    least one of them [fi, bi, di] is on the same direction as
+    CurrentDirection AND fi is nearer than Target AND CommitPoint[fi] =
+    NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.14.1&nbsp;&nbsp;&nbsp; Target shall be set to
+    fi, where fi is the nearest floor to CurrentFloor.<br>
+    &nbsp;&nbsp;&nbsp; 11.14.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to CurrentDirection.<br>
+    11.15 &nbsp;&nbsp; If multiple mHallCall[f1, b1, d1], [f2, b2,
+    d2]...[fn, bn, dn], differnt from CurrentFloor, are True AND none is
+    on the same direction as CurrentDirection AND Target is not on the
+    same direction as CurrentDirection AND fi is nearer than Target AND
+    CommitPoint[fi] = NotReached, then<br>
+    &nbsp;&nbsp;&nbsp; 11.15.1 &nbsp;&nbsp; Target shall be set to fi,
+    where fi is the nearest floor to CurrentFloor.<br>
+    &nbsp;&nbsp;&nbsp; 11.15.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to ~CurrentDirection. <br>
+    11.16 &nbsp;&nbsp; If multiple mHallCall[f1, b1, d1], [f2, b2,
+    d2]...[fn, bn, dn], differnt from CurrentFloor, are True AND none is
+    on the same direction as CurrentDirection AND Target is on the same
+    direction as CurrentDirection AND CommitPoint[Target] = NotReached,
+    then<br>
+    &nbsp;&nbsp;&nbsp; 11.16.1 &nbsp;&nbsp; Target shall not change.<br>
+    &nbsp;&nbsp;&nbsp; 11.16.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
+    be set to ~CurrentDirection. <br>
+    11.17 &nbsp;&nbsp; If any mDoorClosed[b, r] is false, then the
+    mDesiredFloor.d shall not be changed.<br>
+    11.18&nbsp; mDesiredFloor.b shall always be set to b, where b is
+    whichever mAtFloor[f, b] is True<br>
+    11.19 &nbsp; If two mAtFloor[f,b] values are True with the same
     value f, then mDesiredFloor.b shall be set to Both.<br>
-    11.11&nbsp; If all mAtFloor[f, b] are False AND any mDoorClosed [b,
+    11.20&nbsp; If all mAtFloor[f, b] are False AND any mDoorClosed [b,
     r] is False (which means doors are not closed between floors!); then<br>
-    &nbsp;&nbsp;&nbsp; 11.11.1&nbsp;&nbsp; Target shall be set to 1.<br>
-    &nbsp;&nbsp;&nbsp; 11.11.2&nbsp;&nbsp; mDesiredFloor.b shall be set
+    &nbsp;&nbsp;&nbsp; 11.20.1&nbsp;&nbsp; Target shall be set to 1.<br>
+    &nbsp;&nbsp;&nbsp; 11.20.2&nbsp;&nbsp; mDesiredFloor.b shall be set
     to None.<br>
-    &nbsp;&nbsp;&nbsp; 11.11.3&nbsp;&nbsp; mDesiredFloor.d shall be set
+    &nbsp;&nbsp;&nbsp; 11.20.3&nbsp;&nbsp; mDesiredFloor.d shall be set
     to Stop.<br>
-    11.12 &nbsp;&nbsp; mDesiredDwell shall always be set to a constant
-    appropriate value for door open dwell.\<br>
-    11.13 If mCarWeight &gt;
+    11.21 &nbsp;&nbsp; mDesiredDwell shall always be set to a constant
+    appropriate value for door open dwell.<br>
+    11.22 If mCarWeight &gt;
     <meta charset="utf-8">
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
       medium; font-style: normal; font-variant: normal; font-weight:
@@ -4386,12 +4455,11 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">MaxCarCapacity, then<br>
-      &nbsp;&nbsp;&nbsp; 11.13.1 Target shall be set to f, where f is
+      &nbsp;&nbsp;&nbsp; 11.22.1 Target shall be set to f, where f is
       whichever mAtFloor[f,b] is True<br>
-      &nbsp;&nbsp;&nbsp; 11.13.2 mDesiredFloor.b shall be set to b,
+      &nbsp;&nbsp;&nbsp; 11.22.2 mDesiredFloor.b shall be set to b,
       where b is whichever mAtFloor[f,b] is True<br>
-      &nbsp;&nbsp;&nbsp; 11.13.3 mDesiredFloor.d shall be set to Stop.<br>
-    </span><br>
+      &nbsp;&nbsp;&nbsp; 11.22.3 mDesiredFloor.d shall be set to Stop.</span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
       height="529" width="663"><br>
