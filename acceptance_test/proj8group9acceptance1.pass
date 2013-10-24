@@ -1,0 +1,59 @@
+;18649 Fall 2013
+; group 9
+; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; author: Priya Mahajan (priyam)
+;**************************************
+;
+;	Project 8 acceptance test 1
+;
+;**************************************
+
+;SCENARIO :Conference at 5th floor just ended
+;more than 20 passengers in less than 2 minutes
+
+
+;Time	Start Floor	Start Hallway	End Floor	End Hallway
+
+12.4s	5	FRONT	8	FRONT
+26.3s	1	BACK	4	FRONT
+28.3s	5	FRONT	6	FRONT
+31.5s	5	FRONT	3	FRONT
+38.2s	4	FRONT	1	FRONT
+42.3s	5	FRONT	2	BACK
+47.5s	7	BACK	5	FRONT
+49.7s	5	FRONT	7	FRONT
+52.9s	5	FRONT	5	FRONT
+53.2s	5	FRONT	7	BACK
+53.2s	5	FRONT	3	FRONT
+54.2s	6	FRONT	4	FRONT
+54.6s	7	FRONT	3	FRONT
+58.3s	5	FRONT	1	FRONT
+60.6s	5	FRONT	6	FRONT
+68.9s	5	FRONT	1	FRONT
+68.9s	5	FRONT	5	FRONT
+69.8s	2	BACK	1	FRONT
+72.7s	3	FRONT	1	BACK
+85.8s	5	FRONT	7	FRONT
+93.3s	5	FRONT	2	BACK
+99.4s	5	FRONT	7	BACK
+103.1s	5	FRONT	6	FRONT
+103.2s	5	FRONT	8	FRONT
+103.9s	5	FRONT	7	BACK
+105.6s	5	FRONT	2	BACK
+105.8s	5	FRONT	7	BACK
+104.1s	5	FRONT	3	FRONT
+104.3s	5	FRONT	1	FRONT
+104.6s	5	FRONT	6	FRONT
+106.9s	5	FRONT	1	FRONT
+106.9s	5	FRONT	5	FRONT
+107.8s	1	BACK	1	FRONT
+108.7s	5	FRONT	7	BACK
+109.8s	8	FRONT	1	BACK
+110.8s	5	FRONT	2	BACK
+111.4s	5	FRONT	7	BACK
+112.3s	5	FRONT	6	FRONT
+112.9s	5	FRONT	8	FRONT
+115.9s	5	FRONT	7	BACK
+116.6s	5	FRONT	2	BACK
+117.8s	5	FRONT	1	BACK
+119.1s	5	FRONT	3	FRONT
