@@ -1,13 +1,13 @@
 ; 18649 Fall 2013
 ; group 9
 ; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
-; Scenario2C.cf	Author: Yujia
+; Scenario3A.cf	Author: Yujia
 
 ;**************************************
 ;
-;	     Scenario2C.cf
+;	     Scenario3A.cf
 ;
 ;**************************************
 
 DoorControl FRONT LEFT 10.0ms true;
-CarButtonControl 3 FRONT 100.0ms true;
+CarButtonControl 4 FRONT 100.0ms true;
