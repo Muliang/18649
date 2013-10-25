@@ -10,4 +10,4 @@
 ;**************************************
 
 DoorControl FRONT LEFT 10.0ms true;
-HallButtonControl 3 FRONT UP 100.0ms true;
+HallButtonControl 4 FRONT UP 100.0ms true;

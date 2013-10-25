@@ -1,7 +1,7 @@
 
 Simulator Parameters:
 Command line = -cf Scenario1C.cf -mf Scenario1C.mf
-RandomSeed = 1381535465942
+RandomSeed = 1382669058642
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -10,9 +10,9 @@ Message File = Scenario1C.mf
 Controller File = Scenario1C.cf
 
 Assertion Results:
-@6.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@2342d884 :: command ?== CLOSE PASSED
-@7.7s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@19f71b53 :: lighted ?== true PASSED
-@12.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@39242445 :: command ?== STOP PASSED
+@6.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@77158bbe :: command ?== CLOSE PASSED
+@7.7s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@3d6f9a31 :: lighted ?== true PASSED
+@12.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1c0a0847 :: command ?== STOP PASSED
 
 
 ******************Summary******************

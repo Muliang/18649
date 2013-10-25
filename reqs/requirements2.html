@@ -1229,6 +1229,8 @@
 
 
 
+
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2053,10 +2055,14 @@
     6.10 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
 
+
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
+
 
 
 
@@ -3533,6 +3539,8 @@
 
 
 
+
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4361,8 +4369,11 @@
     &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
     set to d.<br>
     11.8&nbsp;&nbsp;&nbsp; If only one mCarCall[f1,b] is True, where f1
-    is different from f, then Target shall be set to f1 AND
-    CommitPoint[f1] = NotReached. <br>
+    is different from CurrentFloor, AND CommitPoint[f1] = NotReached,
+    then <br>
+    &nbsp;&nbsp;&nbsp; 11.8.1 &nbsp;&nbsp; Target shall be set to f1.<br>
+    &nbsp;&nbsp;&nbsp; 11.8.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
+    set to Stop.<br>
     11.9 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn, bn],
     differnt from CurrentFloor, are True AND only one of them [fi, bi]
     is on the same direction as CurrentDirection AND Target is not on
@@ -4430,13 +4441,13 @@
     then<br>
     &nbsp;&nbsp;&nbsp; 11.16.1 &nbsp;&nbsp; Target shall not change.<br>
     &nbsp;&nbsp;&nbsp; 11.16.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
-    be set to ~CurrentDirection. <br>
-    11.17 &nbsp;&nbsp; If any mDoorClosed[b, r] is false, then the
+    be set to ~CurrentDirection.<br>
+    11.17&nbsp; If any mDoorClosed[b, r] is false, then the
     mDesiredFloor.d shall not be changed.<br>
     11.18&nbsp; mDesiredFloor.b shall always be set to b, where b is
     whichever mAtFloor[f, b] is True<br>
-    11.19 &nbsp; If two mAtFloor[f,b] values are True with the same
-    value f, then mDesiredFloor.b shall be set to Both.<br>
+    11.19&nbsp; If two mAtFloor[f,b] values are True with the same value
+    f, then mDesiredFloor.b shall be set to Both.<br>
     11.20&nbsp; If all mAtFloor[f, b] are False AND any mDoorClosed [b,
     r] is False (which means doors are not closed between floors!); then<br>
     &nbsp;&nbsp;&nbsp; 11.20.1&nbsp;&nbsp; Target shall be set to 1.<br>
