@@ -55,9 +55,9 @@
 +5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 ; #arc '2A/2b'
-+1.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall 3 FRONT = true;
++1.00s I CAR_BUTTON_CONTROL_PERIOD F CarCall 4 FRONT = true;
 ; #arc '2A/3'
-+0.50s A F CarLight 3 FRONT : lighted == true;
++0.50s A F CarLight 4 FRONT : lighted == true;
 ; #arc '2A/4a'
 +0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;

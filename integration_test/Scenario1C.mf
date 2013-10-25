@@ -52,9 +52,9 @@
 ; #arc '1C/1a'
 +5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 ; #arc '1C/3b'
-+1.00s I HALL_BUTTON_CONTROL_PERIOD F HallCall 3 FRONT UP = true;
++1.00s I HALL_BUTTON_CONTROL_PERIOD F HallCall 4 FRONT UP = true;
 ; #arc '1C/4'
-+0.50s A F HallLight 3 FRONT UP : lighted == true;
++0.50s A F HallLight 4 FRONT UP : lighted == true;
 ; #arc '1C/5a'
 +0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
