@@ -785,7 +785,7 @@
         </tr>
         <tr>
           <td valign="top">11.8.1 one car call at different floor -&gt;
-            set desired direction to target direction <br>
+            set desired floor to target floor<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -800,7 +800,7 @@
         </tr>
         <tr>
           <td valign="top">11.8.2 one car call at different floor -&gt;
-            set <br>
+            set desired direction to Stop<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -814,9 +814,11 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.9.1 multiple car call and one of them has
-            same direction as current direction -&gt; set desired
-            direction not changed <br>
+          <td valign="top">11.9.1 one of car calls C has same direction
+            as current direction and current target floor has different
+            desired direction from current direction and car hasn't
+            reached commit point for C's desired floor -&gt; set desired
+            floor to this C's desired floor<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -830,8 +832,29 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.9.2 multiple car call and one of them has
-            same direction as current direction -&gt; set desired <br>
+          <td valign="top">11.9.2&nbsp;one of car calls C has same
+            direction as current direction and current target floor has
+            different desired direction from current direction and car
+            hasn't reached commit point for C's desired floor -&gt; set
+            desired direction to the opposite of current direction. </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.10.1 one of car calls C has same direction
+            as current direction and current target floor has same
+            desired direction as current direction and C is nearer to
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired floor to C's desired
+            floor<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -845,7 +868,31 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.10.1<br>
+          <td valign="top">11.10.2 one of car calls C has same direction
+            as current direction and current target floor has same
+            desired direction as current direction and C is nearer to
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired direction the same as
+            before </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.11.1 multiple car calls have same
+            direction as current direction and current target floor has
+            same desired direction as current direction and C is the
+            nearest floor to current floor among all car calls and
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired floor to C's desired
+            floor<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -859,7 +906,32 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.10.2<br>
+          <td valign="top">11.11.2 multiple car calls have same
+            direction as current direction and current target floor has
+            same desired direction as current direction and C is the
+            nearest floor to current floor among all car calls and
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired direction the same as
+            before </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.12.1 multiple car calls have different
+            direction as current direction and current target floor also
+            has different direction as current direction and C is the
+            nearest floor to current floor among all car calls and
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired floor to C's desired
+            floor<br>
           </td>
           <td valign="top"><br>
           </td>
@@ -873,8 +945,13 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.11.1<br>
-          </td>
+          <td valign="top">11.12.2 multiple car calls have different
+            direction as current direction and current target floor also
+            has different direction as current direction and C is the
+            nearest floor to current floor among all car calls and
+            current target floor and car hasn't reached commit point for
+            C's desired floor -&gt; set desired direction to the
+            opposite of current direction&nbsp; </td>
           <td valign="top"><br>
           </td>
           <td valign="top"><br>
@@ -887,8 +964,11 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.11.2<br>
-          </td>
+          <td valign="top">11.13.1 multiple car calls have different
+            direction as current direction and current target floor has
+            same direction as current direction and car hasn't reached
+            commit point for target floor -&gt; set target floor the
+            same as before </td>
           <td valign="top"><br>
           </td>
           <td valign="top"><br>
@@ -901,8 +981,11 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.12.1<br>
-          </td>
+          <td valign="top">11.13.2 multiple car calls have different
+            direction as current direction and current target floor has
+            same direction as current direction and car hasn't reached
+            commit point for target floor -&gt;set desired direction the
+            opposite of current direction </td>
           <td valign="top"><br>
           </td>
           <td valign="top"><br>
@@ -915,49 +998,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.12.2<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.13.1<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.13.2<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.14.1<br>
+          <td valign="top">11.14.1 <br>
           </td>
           <td valign="top"><br>
           </td>
