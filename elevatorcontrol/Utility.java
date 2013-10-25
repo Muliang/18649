@@ -45,32 +45,36 @@ import simulator.payloads.translators.IntegerCanPayloadTranslator;
  * @author justinr2
  */
 public class Utility {
-	
-    public static class CarPositionIndicator extends IntegerCanPayloadTranslator {
-    	PhysicalConnection physicalInterface;
-    	SimTime period;
-		
-        public CarPositionIndicator(CANNetwork.CanConnection conn, PhysicalConnection physicalInterface, SimTime period) {
+
+	public static class CarPositionIndicator extends
+			IntegerCanPayloadTranslator {
+		PhysicalConnection physicalInterface;
+		SimTime period;
+
+		public CarPositionIndicator(CANNetwork.CanConnection conn,
+				PhysicalConnection physicalInterface, SimTime period) {
 			super(getMailbox(conn, period));
-			
-        	this.physicalInterface = physicalInterface;
-        	this.period = period;
-        }
-        
-        private static WriteableCanMailbox getMailbox(CANNetwork.CanConnection conn, SimTime period)
-        {
-			WriteableCanMailbox canMailbox = CanMailbox.getWriteableCanMailbox(MessageDictionary.CAR_POSITION_CAN_ID);
+
+			this.physicalInterface = physicalInterface;
+			this.period = period;
+		}
+
+		private static WriteableCanMailbox getMailbox(
+				CANNetwork.CanConnection conn, SimTime period) {
+			WriteableCanMailbox canMailbox = CanMailbox
+					.getWriteableCanMailbox(MessageDictionary.CAR_POSITION_CAN_ID);
 			conn.sendTimeTriggered(canMailbox, period);
 			return canMailbox;
-        }
-        
-        public static WriteableCarPositionIndicatorPayload Writeable(PhysicalConnection physicalInterface, SimTime period) {
-			WriteableCarPositionIndicatorPayload CarPositionIndicator = CarPositionIndicatorPayload.getWriteablePayload();
+		}
+
+		public static WriteableCarPositionIndicatorPayload Writeable(
+				PhysicalConnection physicalInterface, SimTime period) {
+			WriteableCarPositionIndicatorPayload CarPositionIndicator = CarPositionIndicatorPayload
+					.getWriteablePayload();
 			physicalInterface.sendTimeTriggered(CarPositionIndicator, period);
 			return CarPositionIndicator;
-        }
+		}
 	}
-	
 
 	public static class DesiredFloor extends DesiredFloorCanPayloadTranslator {
 
@@ -101,8 +105,6 @@ public class Utility {
 		}
 
 	}
-	
-
 
 	public static class DoorClosedArray {
 
@@ -159,9 +161,14 @@ public class Utility {
 		}
 
 		public boolean isAtFloor(int floor, Hallway hallway) {
+			if(floor == -1){
+				return false;
+				
+			}else{
 			return networkAtFloorsTranslators.get(
 					ReplicationComputer.computeReplicationId(floor, hallway))
 					.getValue();
+			}
 		}
 
 		public int getCurrentFloor() {
@@ -189,9 +196,8 @@ public class Utility {
 			}
 			return retval;
 		}
-		
-		
-		//Front + Back = Both??
+
+		// Front + Back = Both??
 		public Hallway getCurrentHallway() {
 			Hallway retval = Hallway.NONE;
 			int currentFloor = MessageDictionary.NONE;
@@ -207,14 +213,14 @@ public class Utility {
 							// this is the first true atFloor
 							retval = Hallway.FRONT;
 							currentFloor = floor;
-						} 
+						}
 						if (retval == Hallway.FRONT && h == Hallway.BACK)
 							retval = Hallway.BOTH;
-						else if (h == Hallway.BACK){
+						else if (h == Hallway.BACK) {
 							retval = Hallway.BACK;
 							currentFloor = floor;
 						}
-						if (currentFloor != floor){
+						if (currentFloor != floor) {
 							throw new RuntimeException(
 									"AtFloor is true for more than one floor at "
 											+ Harness.getTime());
@@ -228,7 +234,6 @@ public class Utility {
 
 	public static class HallCallArray {
 		private HashMap<Integer, HallCallCanPayloadTranslator> networkHallCallTranslators = new HashMap<Integer, HallCallCanPayloadTranslator>();
-
 
 		public HallCallArray(CANNetwork.CanConnection conn) {
 
@@ -251,22 +256,24 @@ public class Utility {
 		}
 
 		// any hall call button is pressed at a floor
-		public boolean isAnyPressed(int floor, Hallway hallway){
-			int upIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.UP);
-			int downIndex = ReplicationComputer.computeReplicationId(floor, hallway, Direction.DOWN);
+		public boolean isAnyPressed(int floor, Hallway hallway) {
+			// no atFloor is true
+			if (floor == -1) {
+				return false;
+			} else {
+				int upIndex = ReplicationComputer.computeReplicationId(floor,
+						hallway, Direction.UP);
+				int downIndex = ReplicationComputer.computeReplicationId(floor,
+						hallway, Direction.DOWN);
 
-			return networkHallCallTranslators.get(upIndex).getValue() || networkHallCallTranslators.get(downIndex).getValue();
+				return networkHallCallTranslators.get(upIndex).getValue()
+						|| networkHallCallTranslators.get(downIndex).getValue();
+			}
 		}
 	}
 
-
-
-
-
-
 	public static class CarCallArray {
 		private HashMap<Integer, CarCallCanPayloadTranslator> networkCarCallTranslators = new HashMap<Integer, CarCallCanPayloadTranslator>();
-
 
 		public CarCallArray(CANNetwork.CanConnection conn) {
 			for (int i = 0; i < Elevator.numFloors; i++) {
@@ -285,18 +292,21 @@ public class Utility {
 			}
 		}
 
-
 		public boolean isPressed(int floor, Hallway hallway) {
-			int index = ReplicationComputer
-					.computeReplicationId(floor, hallway);
-			return networkCarCallTranslators.get(index).getValue();
+			// no atFloor is true
+			if (floor == -1) {
+				return false;
+			} else {
+				int index = ReplicationComputer.computeReplicationId(floor,
+						hallway);
+				return networkCarCallTranslators.get(index).getValue();
+			}
 		}
 
 	}
 
-		public static class CarLightArray {
+	public static class CarLightArray {
 		private HashMap<Integer, CarLightCanPayloadTranslator> networkCarLightTranslators = new HashMap<Integer, CarLightCanPayloadTranslator>();
-
 
 		public CarLightArray(CANNetwork.CanConnection conn) {
 			for (int i = 0; i < Elevator.numFloors; i++) {
@@ -315,51 +325,59 @@ public class Utility {
 			}
 		}
 
-
 		public boolean isLighted(int floor, Hallway hallway) {
-			int index = ReplicationComputer
-					.computeReplicationId(floor, hallway);
-			return networkCarLightTranslators.get(index).getValue();
+			// no atFloor is true
+			if (floor == -1) {
+				return false;
+
+			} else {
+				int index = ReplicationComputer.computeReplicationId(floor,
+						hallway);
+				return networkCarLightTranslators.get(index).getValue();
+			}
 		}
 
 	}
 
-		public static class HallCall extends HallCallCanPayloadTranslator{
+	public static class HallCall extends HallCallCanPayloadTranslator {
 
-			private int floor;
-			private Hallway hallway;
-			private Direction direction;
-			private SimTime period;
-			
-			public HallCall(CANNetwork.CanConnection conn, SimTime period,int floor, Hallway hallway, Direction direction) {
-				super(getMailbox(conn, period, floor, hallway, direction), floor, hallway, direction);
-				
-				this.floor = floor;
-				this.hallway = hallway;
-				this.direction  = direction;
-				this.period = period;
-				
-			}
-			
-			private static WriteableCanMailbox getMailbox(
-					CANNetwork.CanConnection conn, SimTime period, int floor,
-					Hallway hallway, Direction direction) {
-				int id = ReplicationComputer.computeReplicationId(floor, hallway, direction);
-				WriteableCanMailbox canMailbox = CanMailbox
-						.getWriteableCanMailbox(MessageDictionary.HALL_CALL_BASE_CAN_ID
-								+ id);
-				conn.sendTimeTriggered(canMailbox, period);
-				return canMailbox;
-			}
-			
-			public ReadableHallCallPayload Readable(
-					PhysicalConnection physicalInterface) {
-				ReadableHallCallPayload HallCall = HallCallPayload.getReadablePayload(
-						floor, hallway, direction);
-				physicalInterface.registerTimeTriggered(HallCall);
-				return HallCall;
-			}
+		private int floor;
+		private Hallway hallway;
+		private Direction direction;
+		private SimTime period;
+
+		public HallCall(CANNetwork.CanConnection conn, SimTime period,
+				int floor, Hallway hallway, Direction direction) {
+			super(getMailbox(conn, period, floor, hallway, direction), floor,
+					hallway, direction);
+
+			this.floor = floor;
+			this.hallway = hallway;
+			this.direction = direction;
+			this.period = period;
+
 		}
+
+		private static WriteableCanMailbox getMailbox(
+				CANNetwork.CanConnection conn, SimTime period, int floor,
+				Hallway hallway, Direction direction) {
+			int id = ReplicationComputer.computeReplicationId(floor, hallway,
+					direction);
+			WriteableCanMailbox canMailbox = CanMailbox
+					.getWriteableCanMailbox(MessageDictionary.HALL_CALL_BASE_CAN_ID
+							+ id);
+			conn.sendTimeTriggered(canMailbox, period);
+			return canMailbox;
+		}
+
+		public ReadableHallCallPayload Readable(
+				PhysicalConnection physicalInterface) {
+			ReadableHallCallPayload HallCall = HallCallPayload
+					.getReadablePayload(floor, hallway, direction);
+			physicalInterface.registerTimeTriggered(HallCall);
+			return HallCall;
+		}
+	}
 
 	public static class CarCall extends CarCallCanPayloadTranslator {
 		private int floor;
@@ -395,14 +413,12 @@ public class Utility {
 		}
 	}
 
-
-
-	public static class HallLight extends BooleanCanPayloadTranslator{
+	public static class HallLight extends BooleanCanPayloadTranslator {
 		/*
 		 * author priyam
 		 */
 
-		//global variables
+		// global variables
 		private int floor;
 		private Hallway hallway;
 		private Direction direction;
@@ -416,11 +432,12 @@ public class Utility {
 			this.period = period;
 			this.direction = direction;
 		}
-		
+
 		private static WriteableCanMailbox getMailbox(
 				CANNetwork.CanConnection conn, SimTime period, int floor,
 				Hallway hallway, Direction direction) {
-			int id = ReplicationComputer.computeReplicationId(floor, hallway, direction);
+			int id = ReplicationComputer.computeReplicationId(floor, hallway,
+					direction);
 			WriteableCanMailbox canMailbox = CanMailbox
 					.getWriteableCanMailbox(MessageDictionary.HALL_LIGHT_BASE_CAN_ID
 							+ id);
@@ -428,16 +445,15 @@ public class Utility {
 			return canMailbox;
 		}
 
-		
 		public static WriteableHallLightPayload Writeable(
 				PhysicalConnection physicalInterface, SimTime period,
 				int floor, Hallway hallway, Direction direction) {
 			WriteableHallLightPayload HallLight = HallLightPayload
-					.getWriteablePayload(floor, hallway , direction);
+					.getWriteablePayload(floor, hallway, direction);
 			physicalInterface.sendTimeTriggered(HallLight, period);
 			return HallLight;
 		}
-		
+
 	}
 
 	public static class CarLight extends BooleanCanPayloadTranslator {

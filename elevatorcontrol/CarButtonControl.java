@@ -137,6 +137,8 @@ public class CarButtonControl extends Controller {
 		
 		// #transition 'T9.2'
 		if(CarCall.isPressed()) {
+//			boolean b =
+//			log("isPressed value", )
 			state = State.STATE_ON;
 		}
 		

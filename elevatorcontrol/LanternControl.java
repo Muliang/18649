@@ -23,7 +23,6 @@ public class LanternControl extends Controller {
 
 	private static final State INIT_STATE = State.STATE_IDLE;
 
-	private int currentFloor;
 	private Direction direction;
 	private State state;
 	private State newState;
@@ -69,8 +68,7 @@ public class LanternControl extends Controller {
 		case STATE_IDLE:
 			// do:
 			localCarLantern.set(false);
-			if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
-				currentFloor = mAtFloor.getCurrentFloor();
+			
 			// #transition 'T7.1'
 			if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
