@@ -318,7 +318,21 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">6.8 not level and Drive is
+          <td valign="top">6.8 Set Drive to Fast<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">6.9 not level and Drive is
             stop --&gt; level <br>
           </td>
           <td style="vertical-align: top;">~<br>
@@ -333,7 +347,21 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.9 reach commit point and slow &gt; drive
+          <td valign="top">6.10 reach commit point and fast &gt;= drive
+            speed &gt; slow --&gt; slow </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">X<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">6.11 reach commit point and slow &gt;= drive
             speed &gt; level --&gt; level <br>
           </td>
           <td valign="top">~<br>
@@ -348,7 +376,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.10 reach commit point and drive speed &lt;
+          <td valign="top">6.12 reach commit point and drive speed &lt;
             level speed --&gt; level<br>
           </td>
           <td valign="top">~<br>
@@ -363,7 +391,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.11 drive speed = level and mLevel = true
+          <td valign="top">6.13 drive speed = level and mLevel = true
             --&gt; set drive to stop<br>
           </td>
           <td valign="top">~<br>
@@ -378,7 +406,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.12 door not closed --&gt; set drive to stop<br>
+          <td valign="top">6.14 door not closed --&gt; set drive to stop<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -392,7 +420,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.13 mDoorMotor is open --&gt;set drive to
+          <td valign="top">6.15 mDoorMotor is open --&gt;set drive to
             stop<br>
           </td>
           <td valign="top">~<br>
@@ -407,7 +435,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">6.14 mEmergencyBrake is on --&gt; set drive
+          <td valign="top">6.16 mEmergencyBrake is on --&gt; set drive
             to stop<br>
           </td>
           <td valign="top">~<br>
@@ -652,7 +680,7 @@
         </tr>
         <tr>
           <td style="vertical-align: top;">11.4&nbsp; Set
-            mDesiredFloor.f<br>
+            mDesiredFloor.f to target floor<br>
           </td>
           <td style="vertical-align: top;">X<br>
           </td>
@@ -666,7 +694,8 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">11.5 Set DesiredFloor.d <br>
+          <td style="vertical-align: top;">11.5.1 no call -&gt; set
+            desired floor to None<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
@@ -680,8 +709,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.1 Doors not closed --&gt; Target = ((f
-            mod MaxFloors)+1)<br>
+          <td valign="top">11.5.2 no call -&gt;set desired direction to
+            Stop<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -695,8 +724,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.2 Doors not closed --&gt;
-            mDesiredFloor.b = b<br>
+          <td valign="top">11.6.1 one car call at current floor -&gt;
+            set desired floor to current floor<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -710,8 +739,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.7.1 Doors not closed between floors --
-            &gt; set Target = 1<br>
+          <td valign="top">11.6.2 one car call at current floor -&gt;
+            set desired direction to Stop<br>
           </td>
           <td valign="top">X<br>
           </td>
@@ -725,8 +754,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.7.2 Doors not closed between floors --
-            &gt; set mDesiredFloor.b = None<br>
+          <td valign="top">11.7.1 one hall call at current floor -&gt;
+            set desired floor to current floor<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -740,8 +769,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.8 two AtFloor[f,b] values are true for the
-            same f --&gt; mDesiredFloor.b = Both<br>
+          <td valign="top">11.7.2 one hall call at current floor -&gt;
+            set desired direction to target direction<br>
           </td>
           <td valign="top">~<br>
           </td>
@@ -755,13 +784,396 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.9 set mDesiredDwell<br>
+          <td valign="top">11.8.1 one car call at different floor -&gt;
+            set desired direction to target direction <br>
           </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.8.2 one car call at different floor -&gt;
+            set <br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.9.1 multiple car call and one of them has
+            same direction as current direction -&gt; set desired
+            direction not changed <br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.9.2 multiple car call and one of them has
+            same direction as current direction -&gt; set desired <br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.10.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.10.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.11.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.11.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.12.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.12.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.13.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.13.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.14.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.14.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.15.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.15.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.16.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.16.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.17<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.18<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.19<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.20.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.20.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.20.3<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.21<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.22.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.22.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.22.3<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
