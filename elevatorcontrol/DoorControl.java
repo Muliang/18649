@@ -330,8 +330,8 @@ public class DoorControl extends Controller {
 		localDoorMotor.set(DoorCommand.NUDGE);
 		// #transition 'T5.9'
 		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
-				|| (mAtFloor.getCurrentFloor()!=-1 && mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
-				|| (mAtFloor.getCurrentFloor()!=-1 && mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
+				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
+				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
 				||	mDoorReversalLeft.getValue() == true || 
 				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;
