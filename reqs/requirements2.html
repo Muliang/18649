@@ -4369,8 +4369,11 @@
     &nbsp;&nbsp;&nbsp; 11.7.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
     set to d.<br>
     11.8&nbsp;&nbsp;&nbsp; If only one mCarCall[f1,b] is True, where f1
-    is different from f, AND CommitPoint[f1] = NotReached, then Target
-    shall be set to f1. <br>
+    is different from CurrentFloor, AND CommitPoint[f1] = NotReached,
+    then <br>
+    &nbsp;&nbsp;&nbsp; 11.8.1 &nbsp;&nbsp; Target shall be set to f1.<br>
+    &nbsp;&nbsp;&nbsp; 11.8.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall be
+    set to Stop.<br>
     11.9 &nbsp;&nbsp; If multiple mCarCall[f1, b1], [f2, b2]...[fn, bn],
     differnt from CurrentFloor, are True AND only one of them [fi, bi]
     is on the same direction as CurrentDirection AND Target is not on
@@ -4438,7 +4441,7 @@
     then<br>
     &nbsp;&nbsp;&nbsp; 11.16.1 &nbsp;&nbsp; Target shall not change.<br>
     &nbsp;&nbsp;&nbsp; 11.16.2&nbsp;&nbsp;&nbsp; mDesiredFloor.d shall
-    be set to ~CurrentDirection. <br>
+    be set to ~CurrentDirection.<br>
     11.17&nbsp; If any mDoorClosed[b, r] is false, then the
     mDesiredFloor.d shall not be changed.<br>
     11.18&nbsp; mDesiredFloor.b shall always be set to b, where b is
