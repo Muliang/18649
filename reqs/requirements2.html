@@ -1234,6 +1234,7 @@
 
 
 
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2063,10 +2064,12 @@
 
 
 
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
 
 
 
@@ -3553,6 +3556,7 @@
 
 
 
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4484,54 +4488,9 @@
       where b is whichever mAtFloor[f,b] is True<br>
       &nbsp;&nbsp;&nbsp; 11.22.3 mDesiredFloor.d shall be set to Stop.</span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
-    &nbsp; <img alt="" src="statechart-Dispatcher_group9_yujiaw.png"
-      height="529" width="663"><br>
-    <br>
-    <table border="1" cellpadding="2" cellspacing="2" width="100%">
-      <tbody>
-        <tr>
-          <td valign="top" width="20%">State<br>
-          </td>
-          <td valign="top" width="40%">Description<br>
-          </td>
-          <td valign="top" width="40%">Actions<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">SET_TARGET<br>
-          </td>
-          <td valign="top">When the door has opened and Dispatcher sets
-            a new Target<br>
-          </td>
-          <td valign="top">Set Target to ((f mod MaxFloors) + 1),
-            mDesiredFloor.b to b, mDesiredFloor.d to Stop. Set
-            mDesiredDwell to a proper constant value.<br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">SET_HALLWAY<br>
-          </td>
-          <td valign="top">When the elevator has just arrived at a floor
-            and the Dispatcher sets mDesiredFloor.b to the hallway to be
-            served.<br>
-          </td>
-          <td valign="top">Set mDesiredFloor.d to Stop, mDesiredFloor.b
-            to b. Set mDesiredDwell to a proper constant value.</td>
-        </tr>
-        <tr>
-          <td valign="top">EMERGENCY<br>
-          </td>
-          <td valign="top">When the elevator has doors that are not
-            closed between floors.<br>
-          </td>
-          <td valign="top">The Target is always set to Floor 1, and
-            always stop at the DesiredFloor and DesiredFloor hallway is
-            set to None. mDesiredDwell is set to a proper constant value<br>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
+    &nbsp; <img alt=""
+      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="427"
+      width="940"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
