@@ -4509,14 +4509,70 @@
         <tr>
           <td valign="top">T11.2<br>
           </td>
-          <td valign="top">Any mDoorClosed[b, r] &#8592;false AND any
-            mAtFloor[f, b]&nbsp; &#8592; true </td>
+          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; mCarCall[f,
+            b] &#8592; true AND all other mCarCall &#8592; false<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">T11.3.*<br>
           </td>
-          <td valign="top">Any mDoorClosed[b, r] &#8592; false AND all
-            mAtFloor[f, b] &#8592; false</td>
+          <td valign="top">CurrentDIrection &#8592; UP AND&nbsp; <br>
+            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
+            mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &lt;= f1 &lt;
+            f2) OR<br>
+            (mHallCall[f1, b1, UP] &#8592; true AND CurrentFloor &lt;= f1))<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.4<br>
+          </td>
+          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; <br>
+            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
+            mHallCall[f2, b2, *] &#8592; true) AND f2 &lt; CurrentFloor &lt;=
+            f1 AND other mCarCall or mHallCall above CurrentFloor &#8592;
+            false) OR<br>
+            (mCarCall[f1, b1] &#8592; true AND mHallCall[f2, b2, DOWN] &#8592; true)
+            AND f2 &lt; f1 AND f1 &gt; CurrentFloor AND other mCarCall
+            or mHallCall above CurrentFloor &#8592; false) OR<br>
+            (mHallCall[f1, b1, DOWN] &#8592; true AND CurrentFloor &lt;= f1
+            AND other mCarCall or mHallCall above CurrentFloor &#8592; false))<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.5<br>
+          </td>
+          <td valign="top">CurrentDirection &#8592; DOWN AND mCarCall[f, b] &#8592;
+            true AND all other mCarCall &#8592; false</td>
+        </tr>
+        <tr>
+          <td valign="top">T11.6.*<br>
+          </td>
+          <td valign="top">CurrentDIrection &#8592; DOWN AND&nbsp; <br>
+            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
+            mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &gt;= f1 &gt;
+            f2) OR<br>
+            (mHallCall[f1, b1, DOWN] &#8592; true AND CurrentFloor &gt;= f1))</td>
+        </tr>
+        <tr>
+          <td valign="top">T11.7<br>
+          </td>
+          <td valign="top">CurrentDirection &#8592; DOWN AND&nbsp; <br>
+            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
+            mHallCall[f2, b2, *] &#8592; true) AND f2 &gt; CurrentFloor &gt;=
+            f1 AND other mCarCall or mHallCall below CurrentFloor &#8592;
+            false) OR<br>
+            (mCarCall[f1, b1] &#8592; true AND mHallCall[f2, b2, UP] &#8592; true)
+            AND f2 &gt; f1 AND f1 &lt; CurrentFloor AND other mCarCall
+            or mHallCall below CurrentFloor &#8592; false) OR<br>
+            (mHallCall[f1, b1, UP] &#8592; true AND CurrentFloor &gt;= f1 AND
+            other mCarCall or mHallCall below CurrentFloor &#8592; false))</td>
+        </tr>
+        <tr>
+          <td valign="top">T11.8.*<br>
+          </td>
+          <td valign="top">mDriveSpeed &#8592; (0, STOP) AND any
+            mDoorClosed[b,r] &#8592; false<br>
+          </td>
         </tr>
       </tbody>
     </table>
