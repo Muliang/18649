@@ -2110,8 +2110,8 @@
     <br>
     <h3>TIME-TRIGGERED STATECHART:<br>
     </h3>
-    <img alt="" src="statechart-DriveControl_group9_yujiaw.png"
-      height="665" width="1189"><br>
+    <img alt="" src="DriveControl_state_chart_group9_yujiaw_new.png"
+      height="665" width="922"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -2143,8 +2143,8 @@
         <tr>
           <td valign="top">T6.3<br>
           </td>
-          <td valign="top">mDesiredFloor.f &#8592; g AND&nbsp; CommitPoint[g]
-            &#8592; Reached AND<br>
+          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
+            Reached AND<br>
             DriveSpeed &lt;= SLOW_SPEED AND currentFloor &#8592;
             DestinationFloor<br>
           </td>
@@ -2185,10 +2185,37 @@
             Stop]</td>
         </tr>
         <tr>
-          <td valign="top">T6.9.*<br>
+          <td valign="top">T6.9<br>
           </td>
-          <td valign="top">mEmergencyBrake &#8592; true<br>
+          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
+            Reached AND<br>
+            SLOW_SPEED &lt; DriveSpeed &lt;= FAST_SPEED </td>
+        </tr>
+        <tr>
+          <td valign="top">T6.10<br>
           </td>
+          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
+            NotReached AND<br>
+            DriveSpeed &lt;= SLOW_SPEED</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.11<br>
+          </td>
+          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
+            Reached AND<br>
+            SLOW_SPEED &lt; DriveSpeed &lt;= FAST_SPEED</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.12<br>
+          </td>
+          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
+            NotReached AND<br>
+            DriveSpeed &lt;= SLOW_SPEED</td>
+        </tr>
+        <tr>
+          <td valign="top">T6.13.*<br>
+          </td>
+          <td valign="top">mEmergencyBrake &#8592; true</td>
         </tr>
       </tbody>
     </table>
