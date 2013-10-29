@@ -4524,7 +4524,7 @@
         <tr>
           <td valign="top">Transition #<br>
           </td>
-          <td valign="top">Guard<br>
+          <td valign="top">Guard <br>
           </td>
         </tr>
         <tr>
@@ -4543,7 +4543,7 @@
         <tr>
           <td valign="top">T11.3.*<br>
           </td>
-          <td valign="top">CurrentDIrection &#8592; UP AND&nbsp; <br>
+          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
             mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &lt;= f1 &lt;
             f2) OR<br>
@@ -4554,10 +4554,9 @@
           <td valign="top">T11.4<br>
           </td>
           <td valign="top">CurrentDirection &#8592; UP AND&nbsp; <br>
-            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
-            mHallCall[f2, b2, *] &#8592; true) AND f2 &lt; CurrentFloor &lt;=
-            f1 AND other mCarCall or mHallCall above CurrentFloor &#8592;
-            false) OR<br>
+            ((mCarCall[f1, b1] &#8592; true AND mCarCall[f2, b2] &#8592; true AND f2
+            &lt; CurrentFloor &lt;= f1 AND other mCarCall or mHallCall
+            above CurrentFloor &#8592; false) OR<br>
             (mCarCall[f1, b1] &#8592; true AND mHallCall[f2, b2, DOWN] &#8592; true)
             AND f2 &lt; f1 AND f1 &gt; CurrentFloor AND other mCarCall
             or mHallCall above CurrentFloor &#8592; false) OR<br>
@@ -4584,10 +4583,9 @@
           <td valign="top">T11.7<br>
           </td>
           <td valign="top">CurrentDirection &#8592; DOWN AND&nbsp; <br>
-            ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
-            mHallCall[f2, b2, *] &#8592; true) AND f2 &gt; CurrentFloor &gt;=
-            f1 AND other mCarCall or mHallCall below CurrentFloor &#8592;
-            false) OR<br>
+            ((mCarCall[f1, b1] &#8592; true AND mCarCall[f2, b2] &#8592; true AND f2
+            &gt; CurrentFloor &gt;= f1 AND other mCarCall or mHallCall
+            below CurrentFloor &#8592; false) OR<br>
             (mCarCall[f1, b1] &#8592; true AND mHallCall[f2, b2, UP] &#8592; true)
             AND f2 &gt; f1 AND f1 &lt; CurrentFloor AND other mCarCall
             or mHallCall below CurrentFloor &#8592; false) OR<br>
