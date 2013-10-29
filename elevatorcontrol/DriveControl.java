@@ -12,6 +12,7 @@ import simulator.elevatormodules.AtFloorCanPayloadTranslator;
 import simulator.elevatormodules.CarLevelPositionCanPayloadTranslator;
 import simulator.elevatormodules.CarWeightCanPayloadTranslator;
 import simulator.elevatormodules.DoorClosedCanPayloadTranslator;
+import simulator.elevatormodules.DriveObject;
 import simulator.elevatormodules.HoistwayLimitSensorCanPayloadTranslator;
 import simulator.elevatormodules.LevelingCanPayloadTranslator;
 import simulator.elevatormodules.SafetySensorCanPayloadTranslator;
@@ -49,7 +50,7 @@ import simulator.payloads.translators.BooleanCanPayloadTranslator;
  * DriveSpeed
  * mAtFloor[f,b]
  * mLevel[d]
- * mCarLevelPosition[b,r]//not used
+ * mCarLevelPosition[b,r]
  * mDoorClosed[b,r]
  * mDoorMotor[b,r]// can't find translator
  * mEmergencyBrake
@@ -76,8 +77,6 @@ public class DriveControl extends Controller {
     // translator for the hall light message -- this is a generic translator
     private DriveSpeedCanPayloadTranslator mDriveSpeed; //added mDriveSpeedTranslator
     
-    //private ReadableCanMailbox networkAtFloor;
-    //private AtFloorCanPayloadTranslator mAtFloor;
     private Utility.AtFloorArray mAtFloor;
     
     private ReadableCanMailbox networkLevelUp;
@@ -110,19 +109,20 @@ public class DriveControl extends Controller {
     //additional internal state variables
     //private SimTime counter = SimTime.ZERO;
 
-	private static final double LEVEL_SPEED					= .10;	// in m/s
-	private static final double SLOW_SPEED					= .25;	// in m/s
-	
-    //internal constant declarations
-    //if the flash is one period, then each on/off portion should be 500ms
-    //private final static SimTime flashHalfPeriod = new SimTime(500, SimTime.SimTimeUnit.MILLISECOND);
-
+	private static final double LEVEL_SPEED		= DriveObject.LevelingSpeed;	// in m/s
+	private static final double SLOW_SPEED		= DriveObject.SlowSpeed;		// in m/s
+	private static final double FAST_SPEED		= DriveObject.FastSpeed;	 // in m/s
+	private static final double ACCELERATION	= DriveObject.Acceleration;  // in m/s^2
+	private static final double DECELERATION 	= DriveObject.Deceleration;  // in m/s^2
+	private static final double ONETOMILLI		= 1000.0;
 	
 	//enumerate states
     private static enum State {
         STATE_STOP,
         STATE_SLOW_UP,
+        STATE_FAST_UP,
         STATE_SLOW_DOWN,
+        STATE_FAST_DOWN,
         STATE_LEVEL_UP,
         STATE_LEVEL_DOWN,
         STATE_EMERGENCY
@@ -136,6 +136,7 @@ public class DriveControl extends Controller {
   //store the period for the controller
     private SimTime period;
     private State currentState;
+    private double allowance;
 	
 	public DriveControl(SimTime period, boolean verbose) {
 		super("DriveControl", verbose);
@@ -143,6 +144,7 @@ public class DriveControl extends Controller {
 		//initialize state
 		this.period = period;
 		this.currentState = State.STATE_STOP;
+		this.allowance = 100+2*FAST_SPEED*period.getFracMilliseconds();
 
 		//initialize physical state
         localDriveSpeed = DriveSpeedPayload.getReadablePayload();
@@ -151,7 +153,7 @@ public class DriveControl extends Controller {
         physicalInterface.sendTimeTriggered(localDrive, period);
 
         //initialize network interface        
-           networkDriveSpeedOut = CanMailbox.getWriteableCanMailbox(MessageDictionary.DRIVE_SPEED_CAN_ID);
+        networkDriveSpeedOut = CanMailbox.getWriteableCanMailbox(MessageDictionary.DRIVE_SPEED_CAN_ID);
         
         mDriveSpeed = new DriveSpeedCanPayloadTranslator(networkDriveSpeedOut);
         canInterface.sendTimeTriggered(networkDriveSpeedOut, period);
@@ -195,11 +197,30 @@ public class DriveControl extends Controller {
 		
 	}
 	
-	private Commit commitPoint(int floor){
-		if(currentFloor == floor)
-			return Commit.REACHED;
-		else
-			return Commit.NOTREACHED;
+	//CarLevelPosition in millimeter, speed in m/s
+	private Commit commitPoint(int floor, int CarLevelPosition, double speed, Direction d){
+		double floorPosition = (floor-1)*5*ONETOMILLI;
+		double brakeDistance = speed*speed/(2*DECELERATION)*ONETOMILLI;
+		switch(d){
+			case STOP:	return Commit.NOTREACHED;
+			case UP:{
+				int estimatedPosition = (int) (floorPosition - brakeDistance - allowance);
+				if (estimatedPosition > CarLevelPosition){
+					return Commit.NOTREACHED;
+				}else{
+					return Commit.REACHED;
+				}
+			}
+			case DOWN:{
+				int estimatedPosition = (int) (floorPosition + brakeDistance + allowance);
+				if (estimatedPosition < CarLevelPosition){
+					return Commit.NOTREACHED;
+				}else{
+					return Commit.REACHED;
+				}
+			}
+			default: return Commit.NOTREACHED;
+		}
 	} 
 
 	@Override
@@ -209,6 +230,8 @@ public class DriveControl extends Controller {
             case STATE_STOP: 	stateStop();		break;
             case STATE_SLOW_UP: stateSlowUp();		break;
             case STATE_SLOW_DOWN: stateSlowDown();	break;
+            case STATE_FAST_UP: stateFastUp();		break;
+            case STATE_FAST_DOWN: stateFastDown();	break;
             case STATE_LEVEL_UP: stateLevelUp();	break;
             case STATE_LEVEL_DOWN: stateLevelDown();break;
             case STATE_EMERGENCY: stateEmergency();	break;
@@ -225,6 +248,38 @@ public class DriveControl extends Controller {
         timer.start(period);
 	}
 	
+		private void stateFastUp() {
+		// TODO Auto-generated method stub
+			localDrive.set(Speed.FAST, Direction.UP);
+			mDriveSpeed.setSpeed(localDriveSpeed.speed());
+			mDriveSpeed.setDirection(localDriveSpeed.direction());
+			DesiredDirection = Direction.UP;
+			desiredFloor = mDesiredFloor.getFloor();
+			currentFloor = mAtFloor.getCurrentFloor();
+			//#transition 'T6.9'
+			if(SLOW_SPEED < localDriveSpeed.speed() 
+				&&	localDriveSpeed.speed() <= FAST_SPEED
+				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
+				localDriveSpeed.speed(), localDriveSpeed.direction())==Commit.REACHED)
+				currentState = State.STATE_SLOW_UP;
+		}
+		
+		private void stateFastDown() {
+			// TODO Auto-generated method stub
+			localDrive.set(Speed.FAST, Direction.DOWN);
+			mDriveSpeed.setSpeed(localDriveSpeed.speed());
+			mDriveSpeed.setDirection(localDriveSpeed.direction());
+			DesiredDirection = Direction.DOWN;
+			desiredFloor = mDesiredFloor.getFloor();
+			currentFloor = mAtFloor.getCurrentFloor();
+			//#transition 'T6.11'
+			if(SLOW_SPEED < localDriveSpeed.speed() 
+				&&	localDriveSpeed.speed() <= FAST_SPEED
+				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
+				localDriveSpeed.speed(), localDriveSpeed.direction())==Commit.REACHED)
+				currentState = State.STATE_SLOW_DOWN;
+		}
+
 		private void stateStop(){
 			//DO
 			// state actions
@@ -236,12 +291,16 @@ public class DriveControl extends Controller {
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//#transition 'T6.1'
-			if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor > currentFloor
+			if (commitPoint(desiredFloor, mCarLevelPosition.getPosition(), 
+					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED 
+					&& desiredFloor > currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_UP;
 			//#transition 'T6.2'
-			else if (commitPoint(desiredFloor) == Commit.NOTREACHED && desiredFloor < currentFloor
+			else if (commitPoint(desiredFloor, mCarLevelPosition.getPosition(), 
+					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED 
+					&& desiredFloor < currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_DOWN;
@@ -272,10 +331,14 @@ public class DriveControl extends Controller {
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//#transition 'T6.3'
-			if (commitPoint(desiredFloor) == Commit.REACHED 
-					&& localDriveSpeed.speed() <= SLOW_SPEED 
+			if (localDriveSpeed.speed() <= SLOW_SPEED 
 					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_UP;
+			//#transition 'T6.10'
+			if (Double.compare(localDriveSpeed.speed(),(SLOW_SPEED))>=0
+					&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
+					localDriveSpeed.speed(), localDriveSpeed.direction())==Commit.NOTREACHED)
+				currentState = State.STATE_FAST_UP;
 			//#transition 'T6.9.2'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
@@ -292,10 +355,14 @@ public class DriveControl extends Controller {
 			currentFloor = mAtFloor.getCurrentFloor();
 			
 			//#transition 'T6.4'
-			if (commitPoint(mDesiredFloor.getFloor()) == Commit.REACHED 
-					&& localDriveSpeed.speed() <= SLOW_SPEED 
+			if (localDriveSpeed.speed() <= SLOW_SPEED 
 					&& currentFloor == mDesiredFloor.getFloor())
 				currentState = State.STATE_LEVEL_DOWN;
+			//#transition 'T6.12'
+			if (Double.compare(localDriveSpeed.speed(),(SLOW_SPEED))>=0
+					&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
+					localDriveSpeed.speed(), localDriveSpeed.direction())==Commit.NOTREACHED)
+				currentState = State.STATE_FAST_DOWN;
 			//#transition 'T6.9.3'
 			if (mEmergencyBrake.getValue() == true)
 				currentState = State.STATE_EMERGENCY;
