@@ -4537,7 +4537,8 @@
           <td valign="top">T11.2<br>
           </td>
           <td valign="top">CurrentDirection &#8592; UP AND&nbsp; mCarCall[f,
-            b] &#8592; true AND all other mCarCall &#8592; false<br>
+            b] &#8592; true AND f &gt;= CurrentFloor AND all other mCarCall &#8592;
+            false <br>
           </td>
         </tr>
         <tr>
@@ -4568,7 +4569,7 @@
           <td valign="top">T11.5<br>
           </td>
           <td valign="top">CurrentDirection &#8592; DOWN AND mCarCall[f, b] &#8592;
-            true AND all other mCarCall &#8592; false</td>
+            true AND f &lt;= CurrentFloor AND all other mCarCall &#8592; false</td>
         </tr>
         <tr>
           <td valign="top">T11.6.*<br>
