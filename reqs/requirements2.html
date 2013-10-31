@@ -4516,8 +4516,8 @@
       &nbsp;&nbsp;&nbsp; 11.22.3 mDesiredFloor.d shall be set to Stop.</span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt=""
-      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="427"
-      width="1115"><br>
+      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="481"
+      width="1337"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -4528,17 +4528,17 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1<br>
+          <td valign="top">T11.1.*<br>
           </td>
-          <td valign="top">All mDoorClosed[b, r] &#8592; true<br>
-          </td>
+          <td valign="top">any mDoorClosed[b, r] &#8592; false AND all
+            mAtFloor[f, b] &#8592; false </td>
         </tr>
         <tr>
           <td valign="top">T11.2<br>
           </td>
           <td valign="top">CurrentDirection &#8592; UP AND&nbsp; mCarCall[f,
-            b] &#8592; true AND f &gt;= CurrentFloor AND all other mCarCall &#8592;
-            false <br>
+            b] &#8592; true AND f &gt;= CurrentFloor AND all other mCarCall
+            and mHallCall &#8592; false <br>
           </td>
         </tr>
         <tr>
@@ -4569,7 +4569,8 @@
           <td valign="top">T11.5<br>
           </td>
           <td valign="top">CurrentDirection &#8592; DOWN AND mCarCall[f, b] &#8592;
-            true AND f &lt;= CurrentFloor AND all other mCarCall &#8592; false</td>
+            true AND f &lt;= CurrentFloor AND all other mCarCall and
+            mHallCall &#8592; false</td>
         </tr>
         <tr>
           <td valign="top">T11.6.*<br>
@@ -4598,6 +4599,21 @@
           </td>
           <td valign="top">mDriveSpeed &#8592; (0, STOP) AND any
             mDoorClosed[b,r] &#8592; false<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.9<br>
+          </td>
+          <td valign="top">All mCarCall and mHallCall above or equal
+            CurrentFloor &#8592; false AND at least one mCarCall or mHallCall
+            below CurrentFloor &#8592; true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.10<br>
+          </td>
+          <td valign="top">All mCarCall and mHallCall below CurrentFloor
+            &#8592; false<br>
           </td>
         </tr>
       </tbody>
