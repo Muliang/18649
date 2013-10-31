@@ -197,7 +197,6 @@ public class Utility {
 			return retval;
 		}
 
-		// Front + Back = Both??
 		public Hallway getCurrentHallway() {
 			Hallway retval = Hallway.NONE;
 			int currentFloor = MessageDictionary.NONE;
@@ -270,6 +269,61 @@ public class Utility {
 						|| networkHallCallTranslators.get(downIndex).getValue();
 			}
 		}
+		
+		//Yujia Wang
+		public boolean isPressed(int floor, Hallway hallway, Direction d) {
+			// no atFloor is true
+			if (floor == -1) {
+				return false;
+			} else {
+				int index = ReplicationComputer.computeReplicationId(floor,
+						hallway, d);
+				return networkHallCallTranslators.get(index).getValue();
+			}
+		}
+		
+		//Yujia Wang
+		public boolean isAllUnpressed(){
+			for (int f = Elevator.numFloors; f <= Elevator.numFloors; f++) {
+				for (Hallway h : Hallway.replicationValues) {
+					for(Direction d : Direction.replicationValues){
+						if(isPressed(f, h, d)){
+						return false;
+						}
+					}
+				}
+			}
+			return true;
+		}
+		
+		//Yujia Wang
+		public int getNearestPressedFloor(int floor, Direction d, int count, Direction desiredDirection){
+			int nearestFloor = MessageDictionary.NONE;
+			int i = 0;
+			if(d == Direction.UP){
+				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h, desiredDirection)){
+							nearestFloor = f;
+							i++;
+						}
+					}
+				}				
+			}else if(d == Direction.DOWN){
+				for (int f = floor; f >= 1 && i<count; f--) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h, desiredDirection)){
+							nearestFloor = f;
+							i++;
+						}
+					}
+				}
+			}
+			if(i == count)
+				return nearestFloor;
+			else
+				return MessageDictionary.NONE;
+		}
 	}
 
 	public static class CarCallArray {
@@ -302,7 +356,47 @@ public class Utility {
 				return networkCarCallTranslators.get(index).getValue();
 			}
 		}
-
+		
+		//Yujia Wang
+		public boolean isAllUnpressed(){
+			for (int f = Elevator.numFloors; f <= Elevator.numFloors; f++) {
+				for (Hallway h : Hallway.replicationValues) {
+					if(isPressed(f, h)){
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		
+		//Yujia Wang
+		public int getNearestPressedFloor(int floor, Direction d, int count){
+			int nearestFloor = MessageDictionary.NONE;
+			int i = 0;
+			if(d == Direction.UP){
+				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h)){
+							nearestFloor = f;
+							i++;
+						}
+					}
+				}				
+			}else if(d == Direction.DOWN){
+				for (int f = floor; f >= 1 && i<count; f--) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h)){
+							nearestFloor = f;
+							i++;
+						}
+					}
+				}
+			}
+			if(i == count)
+				return nearestFloor;
+			else
+				return MessageDictionary.NONE;
+		}
 	}
 
 	public static class CarLightArray {

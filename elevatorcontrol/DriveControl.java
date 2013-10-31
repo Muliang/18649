@@ -292,14 +292,16 @@ public class DriveControl extends Controller {
 			
 			//#transition 'T6.1'
 			if (commitPoint(desiredFloor, mCarLevelPosition.getPosition(), 
-					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED 
+					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED
+					&& desiredFloor != MessageDictionary.NONE
 					&& desiredFloor > currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
 				currentState = State.STATE_SLOW_UP;
 			//#transition 'T6.2'
 			else if (commitPoint(desiredFloor, mCarLevelPosition.getPosition(), 
-					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED 
+					localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED
+					&& desiredFloor != MessageDictionary.NONE
 					&& desiredFloor < currentFloor
 					&& mDoorClosedArrayFront.getBothClosed() == true && mDoorClosedArrayBack.getBothClosed() == true
 					&& mCarWeight.getWeight() < Elevator.MaxCarCapacity)
