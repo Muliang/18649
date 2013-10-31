@@ -8,7 +8,11 @@
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
+import simulator.elevatormodules.CarLevelPositionCanPayloadTranslator;
+import simulator.elevatormodules.DriveObject;
 import simulator.framework.Controller;
+import simulator.payloads.CanMailbox;
+import simulator.payloads.CanMailbox.ReadableCanMailbox;
 import simulator.payloads.CarPositionIndicatorPayload.WriteableCarPositionIndicatorPayload;
 
 public class CarPositionControl extends Controller{
@@ -18,9 +22,12 @@ public class CarPositionControl extends Controller{
 	{
 		STATE_INDICATE_CURRENT_FLOOR,
 		STATE_INDICATE_PREVIOUS_FLOOR,
+		STATE_INDICATE_APPROXIMATE_FLOOR;
 	}
 
 	private static final State STATE_INIT = State.STATE_INDICATE_CURRENT_FLOOR;
+	
+	private static final double SLOW_SPEED		= DriveObject.SlowSpeed;		// in m/s
 	
 	// Globals
 	private SimTime		period;
@@ -29,9 +36,15 @@ public class CarPositionControl extends Controller{
 	// Internals
 	private int currentFloor;
 	private int previousFloor;
+	private int approximateFloor;
 	
 	// Inputs
-	private Utility.AtFloorArray		mAtFloor;
+	private Utility.AtFloorArray					mAtFloor;
+	private	CarLevelPositionCanPayloadTranslator	mCarLevelPosition;
+	private DriveSpeedCanPayloadTranslator			mDriveSpeed;
+	
+    private ReadableCanMailbox networkCarLevelPosition;
+    private ReadableCanMailbox networkDriveSpeed;
 	
 	// Outputs
 	private Utility.CarPositionIndicator			mCarPositionIndicator;
@@ -45,10 +58,19 @@ public class CarPositionControl extends Controller{
 		
 		currentFloor = 1;
 		previousFloor = 1;
+		approximateFloor = 1;
 		
 		// Inputs
 		mAtFloor				= new Utility.AtFloorArray(canInterface);
-		
+
+        networkCarLevelPosition = CanMailbox.getReadableCanMailbox(MessageDictionary.CAR_LEVEL_POSITION_CAN_ID);
+        mCarLevelPosition = new CarLevelPositionCanPayloadTranslator(networkCarLevelPosition);
+        canInterface.registerTimeTriggered(networkCarLevelPosition);
+        
+        networkDriveSpeed = CanMailbox.getReadableCanMailbox(MessageDictionary.DRIVE_SPEED_CAN_ID);
+        mDriveSpeed = new DriveSpeedCanPayloadTranslator(networkDriveSpeed);
+        canInterface.registerTimeTriggered(networkDriveSpeed);
+
 		// Outputs
 		CarPositionIndicator	= Utility.CarPositionIndicator.Writeable(physicalInterface, period);
 		mCarPositionIndicator 	= new Utility.CarPositionIndicator(canInterface, physicalInterface, period);
@@ -72,6 +94,10 @@ public class CarPositionControl extends Controller{
 				State_Indicate_Previous_Floor();
 				break;
 				
+			case STATE_INDICATE_APPROXIMATE_FLOOR:
+				State_Indicate_Approximate_Floor();
+				break;
+				
 			default: 
 				throw new RuntimeException("State " + state + " was not recognized.");
 		}
@@ -91,26 +117,59 @@ public class CarPositionControl extends Controller{
 		CarPositionIndicator.set(previousFloor);
 		mCarPositionIndicator.set(previousFloor);
 		
+		previousFloor = mCarPositionIndicator.getValue();
 		currentFloor = mAtFloor.getCurrentFloor();
+		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
 		
-		// #transition 'T10.2'
-		if(currentFloor != MessageDictionary.NONE) {
+		// #transition 'T10.2.1'
+		if(currentFloor != MessageDictionary.NONE && mDriveSpeed.getSpeed() <= SLOW_SPEED) {
 			state = State.STATE_INDICATE_CURRENT_FLOOR;
 		}
 		
+		// #transition 'T10.3.1'
+		if(mDriveSpeed.getSpeed() > SLOW_SPEED) {
+			state = State.STATE_INDICATE_APPROXIMATE_FLOOR;
+		}
 	}
 
 	private void State_Indicate_Current_Floor() {
 		CarPositionIndicator.set(currentFloor);
 		mCarPositionIndicator.set(currentFloor);
 		
-		previousFloor = currentFloor;
-		currentFloor = mAtFloor.getCurrentFloor();
 		
-		// #transition 'T10.1'
-		if(currentFloor == MessageDictionary.NONE) {
+		previousFloor = mCarPositionIndicator.getValue();
+		currentFloor = mAtFloor.getCurrentFloor();
+		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
+		
+		
+		// #transition 'T10.1.1'
+		if(currentFloor == MessageDictionary.NONE && mDriveSpeed.getSpeed() <= SLOW_SPEED) {
 			state = State.STATE_INDICATE_PREVIOUS_FLOOR;
 		}
+		// #transition 'T10.3.2'
+		if(mDriveSpeed.getSpeed() > SLOW_SPEED) {
+			state = State.STATE_INDICATE_APPROXIMATE_FLOOR;
+		}
+	}
+	
+	private void State_Indicate_Approximate_Floor() {
+		CarPositionIndicator.set(approximateFloor);
+		mCarPositionIndicator.set(approximateFloor);
+		
+		previousFloor = mCarPositionIndicator.getValue();
+		currentFloor = mAtFloor.getCurrentFloor();
+		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
+		
+		// #transition 'T10.2.2'
+		if(mDriveSpeed.getSpeed() <= SLOW_SPEED && currentFloor != MessageDictionary.NONE) {
+			state = State.STATE_INDICATE_CURRENT_FLOOR;
+		}
+		
+		// #transition 'T10.1.2'
+		if(mDriveSpeed.getSpeed() <= SLOW_SPEED && currentFloor == MessageDictionary.NONE) {
+			state = State.STATE_INDICATE_PREVIOUS_FLOOR;
+		}
+	
 	}
 
 }
