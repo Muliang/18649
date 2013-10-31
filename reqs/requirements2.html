@@ -4611,8 +4611,8 @@
       &nbsp;&nbsp;&nbsp; 11.22.3 mDesiredFloor.d shall be set to Stop.</span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt=""
-      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="427"
-      width="1115"><br>
+      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="481"
+      width="1337"><br>
     <br>
     <table border="1" cellpadding="2" cellspacing="2">
       <tbody>
@@ -4623,23 +4623,39 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1<br>
+          <td valign="top">T11.1.*<br>
           </td>
-          <td valign="top">All mDoorClosed[b, r] &#8592; true<br>
-          </td>
+          <td valign="top">any mDoorClosed[b, r] &#8592; false AND all
+            mAtFloor[f, b] &#8592; false </td>
         </tr>
         <tr>
           <td valign="top">T11.2<br>
           </td>
-          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; mCarCall[f,
-            b] &#8592; true AND f &gt;= CurrentFloor AND all other mCarCall &#8592;
-            false <br>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+            &#8592; UP AND&nbsp; mCarCall[f, b] &#8592; true <br>
+            AND f &gt;= CurrentFloor AND all other mCarCall and
+            mHallCall &#8592; false <br>
           </td>
         </tr>
         <tr>
           <td valign="top">T11.3.*<br>
           </td>
-          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; <br>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+            &#8592; UP AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
             mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &lt;= f1 &lt;
             f2) OR<br>
@@ -4649,7 +4665,15 @@
         <tr>
           <td valign="top">T11.4.*<br>
           </td>
-          <td valign="top">CurrentDirection &#8592; UP AND&nbsp; <br>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+            &#8592; UP AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND mCarCall[f2, b2] &#8592; true AND f2
             &lt; CurrentFloor &lt;= f1 AND other mCarCall or mHallCall
             above CurrentFloor &#8592; false) OR<br>
@@ -4663,13 +4687,29 @@
         <tr>
           <td valign="top">T11.5<br>
           </td>
-          <td valign="top">CurrentDirection &#8592; DOWN AND mCarCall[f, b] &#8592;
-            true AND f &lt;= CurrentFloor AND all other mCarCall &#8592; false</td>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+            &#8592; DOWN AND mCarCall[f, b] &#8592; true AND f &lt;= CurrentFloor
+            AND all other mCarCall and mHallCall &#8592; false</td>
         </tr>
         <tr>
           <td valign="top">T11.6.*<br>
           </td>
-          <td valign="top">CurrentDIrection &#8592; DOWN AND&nbsp; <br>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDIrection
+            &#8592; DOWN AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
             mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &gt;= f1 &gt;
             f2) OR<br>
@@ -4678,7 +4718,15 @@
         <tr>
           <td valign="top">T11.7.*<br>
           </td>
-          <td valign="top">CurrentDirection &#8592; DOWN AND&nbsp; <br>
+          <td valign="top">mCarWeight &lt; <span style="color: rgb(0,
+              0, 0); font-family: Times; font-size: medium; font-style:
+              normal; font-variant: normal; font-weight: normal;
+              letter-spacing: normal; line-height: normal; orphans:
+              auto; text-align: left; text-indent: 0px; text-transform:
+              none; white-space: normal; widows: auto; word-spacing:
+              0px; -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+            &#8592; DOWN AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND mCarCall[f2, b2] &#8592; true AND f2
             &gt; CurrentFloor &gt;= f1 AND other mCarCall or mHallCall
             below CurrentFloor &#8592; false) OR<br>
@@ -4693,6 +4741,21 @@
           </td>
           <td valign="top">mDriveSpeed &#8592; (0, STOP) AND any
             mDoorClosed[b,r] &#8592; false<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.9<br>
+          </td>
+          <td valign="top">All mCarCall and mHallCall above or equal
+            CurrentFloor &#8592; false AND at least one mCarCall or mHallCall
+            below CurrentFloor &#8592; true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T11.10<br>
+          </td>
+          <td valign="top">All mCarCall and mHallCall below CurrentFloor
+            &#8592; false<br>
           </td>
         </tr>
       </tbody>
