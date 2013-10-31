@@ -1235,6 +1235,8 @@
 
 
 
+
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2065,10 +2067,14 @@
 
 
 
+
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
+
 
 
 
@@ -3584,6 +3590,8 @@
 
 
 
+
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4147,15 +4155,16 @@
     <h3> State: </h3>
     <ul>
       <li>CurrentFloor, is a shorthand notation for the value f of
-        whichever mAtFloor[f, b] is True, if any.&nbsp; If CurrentFloor
-        is invalid it has a mnemonic value of None.</li>
+        whichever mAtFloor[f, b] is True if any.</li>
+      <li>ApproximateFloor, is a shorthand notation for the value of f
+        of the nearest floor.<br>
+      </li>
       <li>CommitPoint[f](v); v = {Reached, NotReached} calculated based
         on car's acceleration profile, current speed, and distance from
         the floor f, to determine whether or not the car can still stop
         at the next floor. </li>
-      <li>PreviousFloor, is a shorthand notation for the value f of
-        whichever mAtFloor[f, b] was most recently true if CurrentFloor
-        has a mnemonic value of None. <br>
+      <li>PreviousFloor, is a shorthand notation for the value f of most
+        recent mCarPositionIndicator value.<br>
       </li>
     </ul>
     <h3> CONSTRAINTS: </h3>
@@ -4170,14 +4179,18 @@
     direction the Drive is moving. By "close approximation" we mean
     within stopping distance in the direction of motion.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    10.4 &nbsp;&nbsp; Whenever any mAtFloor[f,b] is true,
-    CarPositionIndicator shall be commanded to display CurrentFloor. <br>
-    10.5&nbsp;&nbsp;&nbsp; When none of mAtFloor[f,b] is true,
-    CarPositionIndicator shall be commanded to display PreviousFloor.<br>
+    10.4 &nbsp;&nbsp; Whenever any mAtFloor[f,b] is true AND mDriveSpeed
+    is below SLOW_SPEED, CarPositionIndicator shall be commanded to
+    display CurrentFloor. <br>
+    10.5&nbsp;&nbsp;&nbsp; When none of mAtFloor[f,b] is true AND
+    mDriveSpeed is below SLOW_SPEED, CarPositionIndicator shall be
+    commanded to display PreviousFloor.<br>
+    10.6&nbsp;&nbsp;&nbsp; Whenever mDriveSpeed is above SLOW_SPEED,
+    CarPositionIndicator shall be commanded to display ApproximateFloor.
     <h3>State Chart:</h3>
-    &nbsp; <img alt="carPositionControl"
+    &nbsp; <img alt="CarPosition"
       src="CarPositionControl_state_chart_group9_wenhuih.png"
-      height="512" width="638"><br>
+      height="420" width="1339"><br>
     <br>
     <br>
     <table style="text-align: left;" border="1" cellpadding="2"
@@ -4195,7 +4208,7 @@
           <td style="vertical-align: top;">INDICATE CURRENT FLOOR<br>
           </td>
           <td style="vertical-align: top;">Indicate current floor
-            whenever the car arrives at any floor<br>
+            whenever the car is at any floor under slow speed<br>
           </td>
           <td style="vertical-align: top;">command CarPositionIndicator
             to display CurrentFloor <br>
@@ -4205,10 +4218,20 @@
           <td valign="top">INDICATE PREVIOUS FLOOR<br>
           </td>
           <td valign="top">Indicate previous floor when car is not at
-            any floor<br>
+            any floor under slow speed<br>
           </td>
           <td valign="top">command CarPositionIndicator to display
             PreviousFloor<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">INDICATE APPROXIMATE FLOOR<br>
+          </td>
+          <td valign="top">Indicate approximate floor when car is at
+            fast speed<br>
+          </td>
+          <td valign="top">command CarPositionIndicator to display
+            ApproximateFloor<br>
           </td>
         </tr>
       </tbody>
@@ -4224,15 +4247,23 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T 10.1<br>
+          <td valign="top">T 10.1.*<br>
           </td>
-          <td valign="top">all mAtFloor[f,b] &lt;- false<br>
+          <td valign="top">all mAtFloor[f,b] &lt;- false AND mDriveSpeed
+            &lt;= SLOW_SPEED<br>
           </td>
         </tr>
         <tr>
-          <td valign="top">T 10.2<br>
+          <td valign="top">T 10.2.*<br>
           </td>
-          <td valign="top">any mAtFloor[f,b] &lt;- true<br>
+          <td valign="top">any mAtFloor[f,b] &lt;- true AND mDriveSpeed
+            &lt;= SLOW_SPEED<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T 10.3.*<br>
+          </td>
+          <td valign="top">mDriveSpeed &gt; SLOW_SPEED<br>
           </td>
         </tr>
       </tbody>
@@ -4248,6 +4279,8 @@
           </td>
           <td valign="top"><br>
           </td>
+          <td valign="top"><br>
+          </td>
         </tr>
         <tr>
           <td valign="top">States<br>
@@ -4255,6 +4288,8 @@
           <td valign="top" width="6%">10.4<br>
           </td>
           <td valign="top">10.5<br>
+          </td>
+          <td valign="top">10.6<br>
           </td>
         </tr>
         <tr>
@@ -4264,9 +4299,23 @@
           </td>
           <td valign="top"><br>
           </td>
+          <td valign="top"><br>
+          </td>
         </tr>
         <tr>
           <td valign="top">S10.2 Indicate Previous Floor<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">S10.3 Indicate Approximate Floor<br>
+          </td>
+          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4280,9 +4329,53 @@
           </td>
           <td valign="top"><br>
           </td>
+          <td valign="top"><br>
+          </td>
         </tr>
         <tr>
-          <td valign="top">T10.1 <br>
+          <td valign="top">T10.1.1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T10.1.2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T10.2.1<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T10.2.2<br>
+          </td>
+          <td valign="top">x<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">T10.3.1<br>
+          </td>
+          <td valign="top"><br>
           </td>
           <td valign="top"><br>
           </td>
@@ -4290,11 +4383,13 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T10.2<br>
-          </td>
-          <td valign="top">x<br>
+          <td valign="top">T10.3.2<br>
           </td>
           <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top">x<br>
           </td>
         </tr>
       </tbody>
