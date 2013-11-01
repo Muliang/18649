@@ -212,6 +212,11 @@ public class Dispatcher extends Controller {
 				mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_DOWN;
 		}
+		//#Transition 'S11.1.8'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateDownDown() {
@@ -240,6 +245,11 @@ public class Dispatcher extends Controller {
 			mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_DOWN;
 		}
+		//#Transition 'S11.1.7'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateDownStop() {
@@ -293,6 +303,11 @@ public class Dispatcher extends Controller {
 				mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_DOWN;
 		}
+		//#Transition 'S11.1.6'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateUpDown() {
@@ -331,6 +346,11 @@ public class Dispatcher extends Controller {
 				mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_UP;
 		}
+		//#Transition 'S11.1.5'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;		
 	}
 
 	private void stateUpUp() {
@@ -361,7 +381,11 @@ public class Dispatcher extends Controller {
 			mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_UP;
 		}
-
+		//#Transition 'S11.1.4'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateUpStop() {
@@ -415,6 +439,11 @@ public class Dispatcher extends Controller {
 				mDoorClosedArrayBack.getBothClosed() == false)){
 			currentState = State.STATE_STOP_UP;
 		}
+		//#Transition 'S11.1.3'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void StateStopDown() {
@@ -473,6 +502,11 @@ public class Dispatcher extends Controller {
 				&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN)==-1))){
 					currentState = State.STATE_DOWN_UP;
 			}
+		//#Transition 'S11.1.2'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void StateStopUp() {
@@ -534,8 +568,12 @@ public class Dispatcher extends Controller {
 			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP)==-1))){
 				currentState = State.STATE_UP_DOWN;
 		}
+		//#Transition 'S11.1.1'
+		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
+				(mDoorClosedArrayFront.getBothClosed() == false ||
+				mDoorClosedArrayFront.getBothClosed() == false))
+			currentState = State.STATE_EMERGENCY;
 	}
-
 
 	private void stateEmergency() {
 		//DO
