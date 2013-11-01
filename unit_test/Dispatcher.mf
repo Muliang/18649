@@ -199,6 +199,7 @@
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.9'
++0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor 2 BACK = false;
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = true;
 +0.20s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
@@ -390,3 +391,14 @@
 +0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
 +0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
+
+;transition 'T11.1.*'
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = false;
+
+;state 'S11.9 Emergency'
++0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == NONE;
++0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
++0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
++0.00s A S Dispatcher : STATE == STATE_EMERGENCY;

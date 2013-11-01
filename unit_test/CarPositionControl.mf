@@ -17,6 +17,12 @@
 #DEFINE NEXT_FLOOR 2
 #DEFINE NEXT_HALLWAY BACK
 
+#DEFINE DESTINATION_FLOOR 5
+#DEFINE DESTINATION_HALLWAY FRONT
+
+#DEFINE SLOW_SPEED 0.25
+#DEFINE FAST_SPEED 1.00
+
 
 ; Intialize car stopp at Lobby
 0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor FLOOR HALLWAY = true;
@@ -25,10 +31,8 @@
 0.50s A F CarPositionIndicator : floor == 1;
 0.50s A S CarPositionControl : STATE == STATE_INDICATE_CURRENT_FLOOR;
 
-
-
-
-; Move up to second floor
+; Move up to second floor at slow speed
+; #transition 'T10.1.1'
 1.00s I AT_FLOOR_PERIOD N AT_FLOOR_[1][FRONT]_CAN_ID AtFloor FLOOR HALLWAY = false;
 
 ; #state 'INDICATE_PREVIOUS_FLOOR'
@@ -36,10 +40,50 @@
 1.50s A S CarPositionControl : STATE == STATE_INDICATE_PREVIOUS_FLOOR;
 
 
-
 ; Arrive at second floor
-2.00s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor NEXT_FLOOR NEXT_HALLWAY = True;
+; #transition 'T10.2.1'
+2.00s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor NEXT_FLOOR NEXT_HALLWAY = true;
 
 ; #state 'INDICATE_CURRENT_FLOOR'
 2.50s A F CarPositionIndicator : floor == 2;
 2.50s A S CarPositionControl : STATE == STATE_INDICATE_CURRENT_FLOOR;
+
+; Move up to third floor at fast speed
+; #transition 'T10.3.2'
+3.00s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor NEXT_FLOOR NEXT_HALLWAY = false;
+
+; #state 'INDICATE_APPROXIMATE_FLOOR'
+3.50s A F CarPositionIndicator : floor == 2;
+3.50s A S CarPositionControl : STATE == STATE_INDICATE_APPROXIMATE_FLOOR;
+
+; speed slows down while passing forth floor
+; #transition 'T10.2.2'
+4.00s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = true;
+
+; #state 'INDICATE_CURRENT_FLOOR'
+4.50s A F CarPositionIndicator : floor == 4;
+4.50s A S CarPositionControl : STATE == SATET_INDICATE_CURRENT_FLOOR;
+
+; leaves forth floor, keep at slow speed
+; #transition 'T10.1.1'
+4.00s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = false;
+
+; #state 'INDICATE_PREVIOUS_FLOOR'
+4.50s A F CarPositionIndicator : floor == 4;
+4.50s A S CarPositionControl : STATE == SATET_INDICATE_PREVIOUS_FLOOR;
+
+; Move up to fifth floor at fast speed
+; #transition 'T10.3.1'
+5.00s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = false;
+
+; #state 'INDICATE_APPROXIMATE_FLOOR'
+5.50s A F CarPositionIndicator : floor == 4;
+5.50s A S CarPositionControl : STATE == STATE_INDICATE_APPROXIMATE_FLOOR;
+
+; speed slows down while approaching fifth floor
+; #transition 'T10.1.2'
+6.00s I AT_FLOOR_PERIOD N AT_FLOOR_[5][FRONT]_CAN_ID AtFloor 5 FRONT = false;
+
+; #state 'INDICATE_PREVIOUS_FLOOR'
+6.50s A F CarPositionIndicator : floor == 4;
+6.50s A S CarPositionControl : STATE == STATE_INDICATE_PREVIOUS_FLOOR;

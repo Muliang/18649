@@ -1,18 +1,14 @@
-; 18649 Fall 2013
-; group 9
-; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
-; DriveControl.mf
-
 
 #INCLUDE ElevatorDefines.mf
 
-#DEFINE LEVEL_SPEED 0.10
+#DEFINE LEVEL_SPEED 0.05
 #DEFINE SLOW_SPEED 0.25
+#DEFINE FAST_SPEED 1.00
 
 ;Initialization
 ;  Desired Direction is Stop
 ;  Desired Floor is not FLOOR
-;  CommitPoint is not reached (atFloor)
+;  CommitPoint is reached (atFloor)
 ;  mLevel up and down are true
 ;  Drive Speed is Stop
 ;  All doors closed are true
@@ -26,6 +22,7 @@
 0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
 0.00s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = true;
 0.00s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[DOWN]_CAN_ID Leveling DOWN = true;
+0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 10000;
 0.00s I WEIGHT_PERIOD N CAR_WEIGHT_CAN_ID CarWeight = 100;
 0.00s I DRIVE_PERIOD F DriveSpeed = STOP 0;
 
@@ -38,11 +35,12 @@
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
 +0.00s A S DriveControl : STATE == STATE_STOP;
 
-;#tansition 'T6.1'
+;Transition 6.1
 
 +0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 6 FRONT STOP;
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
 
-;#state 'S6.2 SLOW_UP'
+;#state 'SLOW_UP'
 +0.50s A F Drive : speed == SLOW;
 +0.00s A F Drive : direction == UP;
 +0.00s A S DriveControl : STATE == STATE_SLOW_UP;
@@ -51,23 +49,48 @@
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 25;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == UP;
 
-;#tansition 'T6.3'
+;#transition 'T6.10'
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 10000;
+
+;#state 'FAST_UP'
++0.50s A F Drive : speed == FAST;
++0.00s A F Drive : direction == UP;
++0.00s A S DriveControl : STATE == STATE_FAST_UP;
+ 
++0.00s I DRIVE_PERIOD F DriveSpeed = UP FAST_SPEED; 
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 100;
++0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == UP;
+
+;#transition 'T6.9'
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
+
+;#state 'SLOW_UP'
++0.50s A F Drive : speed == SLOW;
++0.00s A F Drive : direction == UP;
++0.00s A S DriveControl : STATE == STATE_SLOW_UP;
+ 
++0.00s I DRIVE_PERIOD F DriveSpeed = UP SLOW_SPEED; 
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 25;
++0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == UP;
+
+;Transition 6.3
 +0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT STOP;
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 10000;
 +0.00s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = false;
  
-;#state 'S6.4 LEVEL_UP'
+;#state 'LEVEL_UP'
 +0.50s A F Drive : speed == LEVEL;
 +0.00s A F Drive : direction == UP;
 +0.00s A S DriveControl : STATE == STATE_LEVEL_UP;
 
 +0.00s I DRIVE_PERIOD F DriveSpeed = UP LEVEL_SPEED;
-+0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 10;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 5;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == UP;
 
-;#tansition 'T6.5'
+;Transition 6.5
 +0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = true;
 
-;#state 'S6.1 STOP'
+;#state 'STOP'
 +0.50s A F Drive : speed == STOP;
 +0.00s A F Drive : direction == STOP;
 +0.00s A S DriveControl : STATE == STATE_STOP;
@@ -76,10 +99,11 @@
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
 
-;#tansition 'T6.2'
+;Transition 6.2
 +0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 1 FRONT STOP;
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 0;
 
-;#state 'S6.3 SLOW_DOWN'
+;#state 'SLOW_DOWN'
 +0.50s A F Drive : speed == SLOW;
 +0.00s A F Drive : direction == DOWN;
 +0.00s A S DriveControl : STATE == STATE_SLOW_DOWN;
@@ -88,23 +112,48 @@
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 25;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == DOWN;
 
-;#tansition 'T6.4'
+;#transition 'T6.12'
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 10000;
+
+;#state 'FAST_DOWN'
++0.50s A F Drive : speed == FAST;
++0.00s A F Drive : direction == DOWN;
++0.00s A S DriveControl : STATE == STATE_FAST_DOWN;
+
++0.00s I DRIVE_PERIOD F DriveSpeed = DOWN FAST_SPEED;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 100;
++0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == DOWN;
+
+;#transition 'T6.11'
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 0;
+
+;#state 'SLOW_DOWN'
++0.50s A F Drive : speed == SLOW;
++0.00s A F Drive : direction == DOWN;
++0.00s A S DriveControl : STATE == STATE_SLOW_DOWN;
+
++0.00s I DRIVE_PERIOD F DriveSpeed = DOWN SLOW_SPEED;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 25;
++0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == DOWN;
+
+;Transition 6.4
 +0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 3 FRONT STOP;
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 10000;
 +0.00s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[DOWN]_CAN_ID Leveling DOWN = false;
  
-;#state 'S6.5 LEVEL_DOWN'
+;#state 'LEVEL_DOWN'
 +0.50s A F Drive : speed == LEVEL;
 +0.00s A F Drive : direction == DOWN;
 +0.00s A S DriveControl : STATE == STATE_LEVEL_DOWN;
 
 +0.00s I DRIVE_PERIOD F DriveSpeed = DOWN LEVEL_SPEED;
-+0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 10;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 5;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == DOWN;
 
-;#tansition 'T6.7'
+;Transition 6.7
 +0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[DOWN]_CAN_ID Leveling DOWN = true;
 
-;#state 'S6.1 STOP'
+;#state 'STOP'
 +0.50s A F Drive : speed == STOP;
 +0.00s A F Drive : direction == STOP;
 +0.00s A S DriveControl : STATE == STATE_STOP;
@@ -113,22 +162,22 @@
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
 
-;#tansition 'T6.6'
+;Transition 6.6
 +0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = false;
 
-;#state 'S6.4 LEVEL_UP'
+;#state 'LEVEL_UP'
 +0.50s A F Drive : speed == LEVEL;
 +0.00s A F Drive : direction == UP;
 +0.00s A S DriveControl : STATE == STATE_LEVEL_UP;
 
 +0.00s I DRIVE_PERIOD F DriveSpeed = UP LEVEL_SPEED;
-+0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 10;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 5;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == UP;
 
-;#tansition 'T6.5'
+;Transition 6.5
 +0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = true;
 
-;#state 'S6.1 STOP'
+;#state 'STOP'
 +0.50s A F Drive : speed == STOP;
 +0.00s A F Drive : direction == STOP;
 +0.00s A S DriveControl : STATE == STATE_STOP;
@@ -137,22 +186,22 @@
 +0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
 
-;#tansition 'T6.8'
+;Transition 6.8
 +0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[DOWN]_CAN_ID Leveling DOWN = false;
 
-;#state 'S6.5 LEVEL_DOWN'
+;#state 'LEVEL_DOWN'
 +0.50s A F Drive : speed == LEVEL;
 +0.00s A F Drive : direction == DOWN;
 +0.00s A S DriveControl : STATE == STATE_LEVEL_DOWN;
 
 +0.00s I DRIVE_PERIOD F DriveSpeed = DOWN LEVEL_SPEED;
-+0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 10;
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 5;
 +0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == DOWN;
 
-;#tansition 'T6.9'.1, 6.9.2, 6.9.3, 6.9.4, 6.9.5
+;Transition 6.9.1, 6.9.2, 6.9.3, 6.9.4, 6.9.5
 +1.00s I DISPATCHER_PERIOD N EMERGENCY_BRAKE_CAN_ID SafetySensor = true;
 
-;#state 'S6.6 EMERGENCY'
+;#state 'EMERGENCY'
 +0.50s A F Drive : speed == STOP;
 +0.00s A F Drive : direction == STOP;
 +0.00s A S DriveControl : STATE == STATE_EMERGENCY;
