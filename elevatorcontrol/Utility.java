@@ -303,7 +303,7 @@ public class Utility {
 			if(d == Direction.UP){
 				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
 					for (Hallway h : Hallway.replicationValues) {
-						if(isPressed(f, h, desiredDirection)){
+						if(isPressed(f, h, desiredDirection) && nearestFloor != f){
 							nearestFloor = f;
 							i++;
 						}
@@ -312,7 +312,7 @@ public class Utility {
 			}else if(d == Direction.DOWN){
 				for (int f = floor; f >= 1 && i<count; f--) {
 					for (Hallway h : Hallway.replicationValues) {
-						if(isPressed(f, h, desiredDirection)){
+						if(isPressed(f, h, desiredDirection) && nearestFloor != f){
 							nearestFloor = f;
 							i++;
 						}
@@ -376,7 +376,7 @@ public class Utility {
 			if(d == Direction.UP){
 				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
 					for (Hallway h : Hallway.replicationValues) {
-						if(isPressed(f, h)){
+						if(isPressed(f, h) && nearestFloor != f){
 							nearestFloor = f;
 							i++;
 						}
@@ -385,7 +385,7 @@ public class Utility {
 			}else if(d == Direction.DOWN){
 				for (int f = floor; f >= 1 && i<count; f--) {
 					for (Hallway h : Hallway.replicationValues) {
-						if(isPressed(f, h)){
+						if(isPressed(f, h) && nearestFloor != f){
 							nearestFloor = f;
 							i++;
 						}

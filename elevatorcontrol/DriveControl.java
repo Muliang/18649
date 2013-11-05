@@ -144,7 +144,7 @@ public class DriveControl extends Controller {
 		//initialize state
 		this.period = period;
 		this.currentState = State.STATE_STOP;
-		this.allowance = 100+2*FAST_SPEED*period.getFracMilliseconds();
+		this.allowance = 2*(100+FAST_SPEED*period.getFracMilliseconds());
 
 		//initialize physical state
         localDriveSpeed = DriveSpeedPayload.getReadablePayload();

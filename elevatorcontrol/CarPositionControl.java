@@ -119,7 +119,7 @@ public class CarPositionControl extends Controller{
 		
 		previousFloor = mCarPositionIndicator.getValue();
 		currentFloor = mAtFloor.getCurrentFloor();
-		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
+		approximateFloor = (int)(mCarLevelPosition.getPosition()/1000.0/5.0)+1; //Yujia Wang edited
 		
 		// #transition 'T10.2.1'
 		if(currentFloor != MessageDictionary.NONE && mDriveSpeed.getSpeed() <= SLOW_SPEED) {
@@ -139,7 +139,7 @@ public class CarPositionControl extends Controller{
 		
 		previousFloor = mCarPositionIndicator.getValue();
 		currentFloor = mAtFloor.getCurrentFloor();
-		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
+		approximateFloor = (int)(mCarLevelPosition.getPosition()/1000.0/5.0)+1; //Yujia Wang edited
 		
 		
 		// #transition 'T10.1.1'
@@ -158,7 +158,7 @@ public class CarPositionControl extends Controller{
 		
 		previousFloor = mCarPositionIndicator.getValue();
 		currentFloor = mAtFloor.getCurrentFloor();
-		approximateFloor = (mCarLevelPosition.getPosition()/1000)%5;	/* not sure about this */
+		approximateFloor = (int)(mCarLevelPosition.getPosition()/1000.0/5.0)+1; //Yujia Wang edited
 		
 		// #transition 'T10.2.2'
 		if(mDriveSpeed.getSpeed() <= SLOW_SPEED && currentFloor != MessageDictionary.NONE) {
