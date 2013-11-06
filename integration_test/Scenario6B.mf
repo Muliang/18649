@@ -1,0 +1,61 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario6B.mf		
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           Scenario6B.mf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#INCLUDE ElevatorDefines.mf
+
+#DEFINE LEVEL_SPEED 0.10
+#DEFINE SLOW_SPEED 0.25
+
+;initialize 
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
+
+0.00s I DRIVE_PERIOD F DriveSpeed = UP SLOW_SPEED;
+
+; #arc '6B/1b'
+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true; 
+
+; #arc '6B/1c'
++0.10s A F Drive : speed == LEVEL;
++0.00s A F Drive : direction == UP;
+
+; #arc '6B/2'
++0.10s I DRIVE_PERIOD F DriveSpeed = UP LEVEL_SPEED; 
+
+; #arc '6B/3a'
++0.10s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[UP]_CAN_ID Leveling UP = true;
++0.00s I LEVEL_SENSOR_PERIOD N LEVEL_SENSOR_[DOWN]_CAN_ID Leveling DOWN = true;
+
+; #arc '6B/3b'
++0.50s A F Drive : speed == STOP;
++0.00s A F Drive : direction == STOP;
+
+; #arc '6B/3c'
++0.10s I DRIVE_PERIOD F DriveSpeed = STOP 0; 
+
+; #arc '6B/3d'
++0.10s A N DRIVE_SPEED_CAN_ID DriveSpeed : getSpeed == 0;
++0.00s A N DRIVE_SPEED_CAN_ID DriveSpeed : getDirection == STOP;
++0.00s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
+
+; #arc '6B/4a'
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[6][FRONT]_CAN_ID AtFloor 6 FRONT = true;
+
+; #arc '6B/4b'
++0.10s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 6 FRONT STOP;
+
+; #arc '6B/5'
++0.50s A F DoorMotor FRONT LEFT : command == OPEN;
+
+
