@@ -62,7 +62,8 @@ public class DoorControl extends Controller {
 
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
-
+	private static final int MAX_NUDGE = 3;
+	
 	// set global variables
 	private Hallway hallway;
 	private Side side;
@@ -72,6 +73,7 @@ public class DoorControl extends Controller {
 	private SimTime period;
 	// current car weight
 	private SimTime countDown;
+	private int nudgeCounter;
 
 	// physical interface
 	// physical output
@@ -119,6 +121,7 @@ public class DoorControl extends Controller {
 		this.side = side;
 		this.period = period;
 		this.state = INIT_STATE;
+		nudgeCounter = 0;
 
 		// log
 		log("Created DoorControl with period=" + period);
@@ -258,10 +261,14 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
 		// #transition 'T5.1'
-		if ((mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
+		if ((nudgeCounter < MAX_NUDGE ) && (mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
 				&& (mDesiredFloor.getHallway() == hallway || mDesiredFloor.getHallway() == Hallway.BOTH)
 				&& (mDriveSpeed.getDirection() == Direction.STOP || mDriveSpeed.getSpeed() == 0))
 			newState = State.STATE_OPENING;
+		
+		if(mDriveSpeed.getSpeed() > 0){	
+			nudgeCounter = 0;
+		}
 	}
 
 	private void StateOpening() {
@@ -328,6 +335,8 @@ public class DoorControl extends Controller {
 	private void StateNudging() {
 		// do:
 		localDoorMotor.set(DoorCommand.NUDGE);
+		nudgeCounter++;  		//if nudge, nudgeCounter++
+		
 		// #transition 'T5.9'
 		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
 				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class

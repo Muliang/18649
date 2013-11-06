@@ -35,6 +35,7 @@ public class LanternControl extends Controller {
 
 	private WriteableCarLanternPayload localCarLantern;
 
+	// constructor
 	public LanternControl(Direction direction, SimTime period, boolean verbose) {
 		super("LanternControl"
 				+ ReplicationComputer.makeReplicationString(direction), verbose);
@@ -56,7 +57,6 @@ public class LanternControl extends Controller {
 		physicalInterface.sendTimeTriggered(localCarLantern, this.period);
 
 		timer.start(period);
-
 	}
 
 	@Override
@@ -68,34 +68,35 @@ public class LanternControl extends Controller {
 		case STATE_IDLE:
 			// do:
 			localCarLantern.set(false);
-			
+
 			// #transition 'T7.1'
-			if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
+			if ((mDesiredFloor.getFloor() != MessageDictionary.NONE)  //mDesireFloor.f != -1
+					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction == mDesiredFloor.getDirection()))
 				newState = State.STATE_ON;
 			// #transition 'T7.4'
 			else if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
-							.getBothClosed()))
+					.getBothClosed()))
 					&& (direction != mDesiredFloor.getDirection()))
 				newState = State.STATE_OFF;
 			break;
 
 		case STATE_ON:
-			//do:
+			// do:
 			localCarLantern.set(true);
 			// #transition 'T7.2'
-			if((mDoorClosedFront.getBothClosed()) && (mDoorClosedBack
-					.getBothClosed()))
+			if ((mDoorClosedFront.getBothClosed())
+					&& (mDoorClosedBack.getBothClosed()))
 				newState = State.STATE_IDLE;
 			break;
 
 		case STATE_OFF:
-			//do:
+			// do:
 			localCarLantern.set(false);
 			// #transition 'T7.3'
-			if((mDoorClosedFront.getBothClosed()) && (mDoorClosedBack
-					.getBothClosed()))
+			if ((mDoorClosedFront.getBothClosed())
+					&& (mDoorClosedBack.getBothClosed()))
 				newState = State.STATE_IDLE;
 			break;
 
