@@ -12,4 +12,4 @@
 DriveControl 10.0ms true;
 CarButtonControl 3 FRONT 100.0ms true;
 DoorControl FRONT LEFT 10.0ms true;
-Dispatcher 8 50.0ms false;
+;Dispatcher 8 50.0ms false;
