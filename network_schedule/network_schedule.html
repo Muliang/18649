@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <meta content="text/html; charset=windows-1252"
-      http-equiv="Content-Type">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>18649 - Network Schedule</title>
   </head>
   <body>
@@ -76,511 +75,874 @@
     <hr style="width: 100%; height: 2px;">
     <h2>CAN Message Dictionary<br>
     </h2>
-    Add a summary here<br>
+    Maps deadline, message ID, and sensor node type onto a CAN ID. <br>
     <br>
-    Add you message dictionary table here<br>
-    <table cellpadding="2" cellspacing="2" border="1" width="100%">
-      <tbody>
-        <tr>
-          <td align="center" valign="middle" width="14%"><b>Sender Node
-              Name</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Message Name</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Deadline(ms)</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Message ID</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Sender Node
-              Type</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Replication
-              ID</b><b><br>
-            </b></td>
-          <td align="center" valign="middle" width="14%"><b>Base Can ID</b><b><br>
-            </b></td>
+    <table style="border-collapse: collapse;width:602pt" cellpadding="1"
+      cellspacing="1" border="2" width="801">
+      <colgroup><col
+          style="mso-width-source:userset;mso-width-alt:5814;width:119pt"
+          width="159"> <col
+          style="mso-width-source:userset;mso-width-alt:5193;width:107pt"
+          width="142"> <col
+          style="mso-width-source:userset;mso-width-alt:3437;width:71pt"
+          width="94"> <col
+          style="mso-width-source:userset;mso-width-alt:2889;width:59pt"
+          width="79"> <col
+          style="mso-width-source:userset;mso-width-alt:4608;width:95pt"
+          width="126"> <col
+          style="mso-width-source:userset;mso-width-alt:4205;width:86pt"
+          width="115"> <col
+          style="mso-width-source:userset;mso-width-alt:3145;width:65pt"
+          width="86"> </colgroup><tbody>
+        <tr style="height:12.75pt" height="17">
+          <td colspan="7" class="xl67" style="height:12.75pt;
+            width:602pt" align="center" height="17" width="801">Message
+            Dictionary</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Door reversal
-            Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mDoorReversal<br>
-          </td>
-          <td align="center" valign="middle" width="14%">10<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1400<br>
-          </td>
-          <td align="center" valign="middle" width="14%">100<br>
-          </td>
-          <td align="center" valign="middle" width="14%">hall, side<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0D786400</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl65" style="height:12.75pt;border-top:none"
+            align="center" height="17">Sender Node Name</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Message Name</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Deadline (ms)</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Message ID</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Sender Node Type</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Replication Type</td>
+          <td class="xl65" style="border-top:none;border-left:none"
+            align="center">Base CAN ID</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Level Sensor<br>
-          </td>
-          <td align="center" valign="middle">mLevel<br>
-          </td>
-          <td align="center" valign="middle">10<br>
-          </td>
-          <td align="center" valign="middle">1900<br>
-          </td>
-          <td align="center" valign="middle">200<br>
-          </td>
-          <td align="center" valign="middle">direction<br>
-          </td>
-          <td align="center" valign="middle">0x0AE81400<br>
-          </td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Door Reversal Sensor<span
+              style="mso-spacerun:yes">&nbsp;</span></td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mDoorReversal</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">10</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">500</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">100</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">hall,side</td>
+          <td class="xl66" style="border-top:none" align="center">0x0A586400</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Drive Control<br>
-          </td>
-          <td align="center" valign="middle">mDriveSpeed<br>
-          </td>
-          <td align="center" valign="middle">10<br>
-          </td>
-          <td align="center" valign="middle">1801<br>
-          </td>
-          <td align="center" valign="middle">181<br>
-          </td>
-          <td align="center" valign="middle">none<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F09B500</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Drive Control</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mDriveSpeed</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">10</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">600</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">181</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">none</td>
+          <td class="xl66" style="border-top:none" align="center">0x0ABCB500</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Drive Control<br>
-          </td>
-          <td align="center" valign="middle">mDriveCommand<br>
-          </td>
-          <td align="center" valign="middle">10<br>
-          </td>
-          <td align="center" valign="middle">1802<br>
-          </td>
-          <td align="center" valign="middle">181<br>
-          </td>
-          <td align="center" valign="middle">none<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0AB500</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Level Sensor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mLevel</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">10</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">700</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">20</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">direction</td>
+          <td class="xl66" style="border-top:none" align="center">0x09F41400</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Door Control<br>
-          </td>
-          <td align="center" valign="middle">mDoorMotorCommand<br>
-          </td>
-          <td align="center" valign="middle">10<br>
-          </td>
-          <td align="center" valign="middle">1805<br>
-          </td>
-          <td align="center" valign="middle">183<br>
-          </td>
-          <td align="center" valign="middle">hall, side<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0DB700</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">At Floor Sensor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mAtFloor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">50</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">900</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">40</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">floor,hall</td>
+          <td class="xl66" style="border-top:none" align="center">0x0BE82800</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Safety Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mEmergencyBrake<br>
-          </td>
-          <td align="center" valign="middle" width="14%">50<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1000<br>
-          </td>
-          <td align="center" valign="middle" width="14%">20<br>
-          </td>
-          <td align="center" valign="middle" width="14%">none<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0BE81400</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Car Level Position Sensor<span
+              style="mso-spacerun:yes">&nbsp;</span></td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mCarLevelPosition</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">50</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1000</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">60</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">none</td>
+          <td class="xl66" style="border-top:none" align="center">0x0C4C3C00</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">At Floor Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mAtFloor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">50<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1100<br>
-          </td>
-          <td align="center" valign="middle" width="14%">40<br>
-          </td>
-          <td align="center" valign="middle" width="14%">floor, hall<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0C4C2800</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Dispatcher</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mDesiredFloor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">50</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1100</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">182</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">hall</td>
+          <td class="xl66" style="border-top:none" align="center">0x0CB0B600</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Car Level
-            Position Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mCarLevelPosition<br>
-          </td>
-          <td align="center" valign="middle" width="14%">50<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1200<br>
-          </td>
-          <td align="center" valign="middle" width="14%">60<br>
-          </td>
-          <td align="center" valign="middle" width="14%">none<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0CB03C00</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Safety Sensor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mEmergencyBrake</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">50</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1200</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">20</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">none</td>
+          <td class="xl66" style="border-top:none" align="center">0x0B841400</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Dispatcher<br>
-          </td>
-          <td align="center" valign="middle">mDesiredDwell<br>
-          </td>
-          <td align="center" valign="middle">50<br>
-          </td>
-          <td align="center" valign="middle">1803<br>
-          </td>
-          <td align="center" valign="middle">182<br>
-          </td>
-          <td align="center" valign="middle">hallway<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0BB600</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Car Button</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mCarCall</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">100</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1300</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">186</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">floor,hall</td>
+          <td class="xl66" style="border-top:none" align="center">0x0DDCBA00</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Dispatcher<br>
-          </td>
-          <td align="center" valign="middle">mDesiredFloor<br>
-          </td>
-          <td align="center" valign="middle">50<br>
-          </td>
-          <td align="center" valign="middle">1804<br>
-          </td>
-          <td align="center" valign="middle">182<br>
-          </td>
-          <td align="center" valign="middle">none<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0CB600</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Door Closed Sensor<span
+              style="mso-spacerun:yes">&nbsp;</span></td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mDoorClosed</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">100</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1400</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">80</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">hall,side</td>
+          <td class="xl66" style="border-top:none" align="center">0x0D145000</td>
         </tr>
-        <tr>
-          <td valign="top">Car Position Control<br>
-          </td>
-          <td valign="top">mCarPosition<br>
-          </td>
-          <td valign="top">50<br>
-          </td>
-          <td valign="top">1810<br>
-          </td>
-          <td valign="top">186<br>
-          </td>
-          <td valign="top">none<br>
-          </td>
-          <td valign="top">0xF0DB700<br>
-          </td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Hall Button</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mHallCall</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">100</td>
+          <td class="xl68" style="border-top:none" align="center">1500</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">185</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">floor,hall,direction</td>
+          <td class="xl66" style="border-top:none" align="center">0x0D78B900</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Door Closed
-            Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mDoorClosed<br>
-          </td>
-          <td align="center" valign="middle" width="14%">100<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1300<br>
-          </td>
-          <td align="center" valign="middle" width="14%">80<br>
-          </td>
-          <td align="center" valign="middle" width="14%">hall, side<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0D145000</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Door Opened Sensor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mDoorOpened</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">200</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1600</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">160</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">hall,side</td>
+          <td class="xl66" style="border-top:none" align="center">0x0F6CA000</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Hall Button Control<br>
-          </td>
-          <td align="center" valign="middle">mHallCall<br>
-          </td>
-          <td align="center" valign="middle">100<br>
-          </td>
-          <td align="center" valign="middle">1806<br>
-          </td>
-          <td align="center" valign="middle">184<br>
-          </td>
-          <td align="center" valign="middle">floor, hall, direction<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0EB800</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Hoistway Limit Sensor</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mHoistwayLimit</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">200</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1700</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">180</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">direction</td>
+          <td class="xl66" style="border-top:none" align="center">0x0FD0B400</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Hall Button Control<br>
-          </td>
-          <td align="center" valign="middle">mHallLight<br>
-          </td>
-          <td align="center" valign="middle">100<br>
-          </td>
-          <td align="center" valign="middle">1807<br>
-          </td>
-          <td align="center" valign="middle">184<br>
-          </td>
-          <td align="center" valign="middle">floor, hall, direction<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F0FB800</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Weight Sensor<span
+              style="mso-spacerun:yes">&nbsp;</span></td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mCarWeightAlarm</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">200</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1800</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">140</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">none</td>
+          <td class="xl66" style="border-top:none" align="center">0x0F088C00</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Car Button Control<br>
-          </td>
-          <td align="center" valign="middle">mCarCall<br>
-          </td>
-          <td align="center" valign="middle">100<br>
-          </td>
-          <td align="center" valign="middle">1808<br>
-          </td>
-          <td align="center" valign="middle">185<br>
-          </td>
-          <td align="center" valign="middle">floor, hall<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F10B900</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl68" style="height:12.75pt;border-top:none"
+            align="center" height="17">Weight Sensor<span
+              style="mso-spacerun:yes">&nbsp;</span></td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">mCarWeight</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">200</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">1900</td>
+          <td class="xl68" style="border-top:none;border-left:none"
+            align="center">120</td>
+          <td class="xl69" style="border-top:none;border-left:none"
+            align="center">none</td>
+          <td class="xl66" style="border-top:none" align="center">0x0EA47800</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Car Button Control<br>
+      </tbody>
+    </table>
+    <br class="Apple-interchange-newline">
+    <h2>Network Schedule Analaysis</h2>
+    Calculates CAN bandwidth based on replication count, deadline, and
+    data payloads.<br>
+    <br>
+    <table style="border-collapse: collapse;width:1223pt"
+      cellpadding="1" cellspacing="1" bgcolor="#ffffff" border="2"
+      width="1622">
+      <colgroup><col
+          style="mso-width-source:userset;mso-width-alt:5814;width:119pt"
+          width="159"> <col
+          style="mso-width-source:userset;mso-width-alt:5193;width:107pt"
+          width="142"> <col
+          style="mso-width-source:userset;mso-width-alt:3181;width:65pt"
+          width="87"> <col
+          style="mso-width-source:userset;mso-width-alt:4461;width:92pt"
+          width="122"> <col
+          style="mso-width-source:userset;mso-width-alt:3437;width:71pt"
+          width="94"> <col
+          style="mso-width-source:userset;mso-width-alt:4205;width:86pt"
+          width="115"> <col style="width:47pt" span="8" width="62"> <col
+          style="mso-width-source:userset;mso-width-alt:2413;width:50pt"
+          width="66"> <col style="width:47pt" width="62"> <col
+          style="mso-width-source:userset;mso-width-alt:2779;width:57pt"
+          width="76"> <col
+          style="mso-width-source:userset;mso-width-alt:2889;width:59pt"
+          width="79"> <col style="width:47pt" span="2" width="62"> </colgroup><tbody>
+        <tr style="height:12.75pt" height="17">
+          <td style="height:12.75pt;width:119pt" height="17" width="159"><br>
           </td>
-          <td align="center" valign="middle">mCarLight<br>
+          <td style="width:107pt" width="142"><br>
           </td>
-          <td align="center" valign="middle">100<br>
+          <td style="width:65pt" width="87"><br>
           </td>
-          <td align="center" valign="middle">1809<br>
+          <td style="width:92pt" width="122"><br>
           </td>
-          <td align="center" valign="middle">185<br>
+          <td style="width:71pt" width="94"><br>
           </td>
-          <td align="center" valign="middle">floor, hall<br>
-          </td>
-          <td align="center" valign="middle"><span style="color: rgb(0,
-              0, 0); font-family: Simsun; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: 2; text-align:
-              center; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: 2; word-spacing: 0px;
-              -webkit-text-size-adjust: auto; -webkit-text-stroke-width:
-              0px; font-size: medium; display: inline !important; float:
-              none; ">0x0F11B900</span></td>
+          <td colspan="3" class="xl67" style="width:180pt" width="239">Field
+
+            1</td>
+          <td colspan="3" class="xl69"
+            style="border-left:none;width:141pt" width="186">Field 2</td>
+          <td colspan="3" class="xl67"
+            style="border-left:none;width:141pt" width="186">Field 3</td>
+          <td rowspan="2" class="xl76" style="border-bottom:.5pt solid
+            black; width:50pt" width="66">Total Payload Bit Len</td>
+          <td rowspan="2" class="xl76" style="border-bottom:.5pt solid
+            black; width:47pt" width="62">Total Payload Byte Len</td>
+          <td rowspan="2" class="xl75" style="width:57pt" width="76">Best
+
+            Case Msg Len</td>
+          <td rowspan="2" class="xl75" style="width:59pt" width="79">Worst
+
+            Case Msg Len</td>
+          <td rowspan="2" class="xl75" style="width:47pt" width="62">Best
+
+            Case BW (bits/sec)</td>
+          <td rowspan="2" class="xl75" style="width:47pt" width="62">Worst
+
+            Case BW (bits/sec)</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Weight Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mCarWeight<br>
-          </td>
-          <td align="center" valign="middle" width="14%">200<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1500<br>
-          </td>
-          <td align="center" valign="middle" width="14%">120<br>
-          </td>
-          <td align="center" valign="middle" width="14%">none<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0DDC7800</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl65" style="height:12.75pt" height="17">Sender
+            Node Name</td>
+          <td class="xl65" style="border-left:none">Message Name</td>
+          <td class="xl68" style="border-left:none">Base CAN ID</td>
+          <td class="xl68">Replication Count</td>
+          <td class="xl68">Deadline (ms)</td>
+          <td class="xl67" style="border-top:none">Desc</td>
+          <td class="xl67" style="border-top:none;border-left:none">Type</td>
+          <td class="xl67" style="border-top:none;border-left:none">Bit
+            Len</td>
+          <td class="xl69" style="border-top:none;border-left:none">Desc</td>
+          <td class="xl69" style="border-top:none;border-left:none">Type</td>
+          <td class="xl69" style="border-top:none;border-left:none">Bit
+            Len</td>
+          <td class="xl67" style="border-top:none;border-left:none">Desc</td>
+          <td class="xl67" style="border-top:none;border-left:none">Type</td>
+          <td class="xl67" style="border-top:none;border-left:none">Bit
+            Len</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Weight Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mCarWeightAlarm<br>
-          </td>
-          <td align="center" valign="middle" width="14%">200<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1600<br>
-          </td>
-          <td align="center" valign="middle" width="14%">140<br>
-          </td>
-          <td align="center" valign="middle" width="14%">none<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0E408C00</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">Door reversal<font class="font6"> Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mDoorReversal</td>
+          <td class="xl74">0x0A586400</td>
+          <td class="xl70" style="border-top:none" align="right">4</td>
+          <td class="xl70" style="border-top:none" align="right">10</td>
+          <td class="xl71" style="border-top:none">D<font class="font6">oorReversal</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">30000</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">36000</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Door Opened
-            Sensor<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mDoorOpened<br>
-          </td>
-          <td align="center" valign="middle" width="14%">200<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1700<br>
-          </td>
-          <td align="center" valign="middle" width="14%">160<br>
-          </td>
-          <td align="center" valign="middle" width="14%">hall, side<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0EA4A000</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">D<font class="font6">rive Control</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mDriveSpeed</td>
+          <td class="xl78" style="border-left:none">0x0ABCB500</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">10</td>
+          <td class="xl71" style="border-top:none">speed</td>
+          <td class="xl71" style="border-top:none;border-left:none">double</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">64</td>
+          <td class="xl66" style="border-top:none;border-left:none">d<font
+              class="font6">irection</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">e<font
+              class="font6">num</font></td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">2</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">66</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">9</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">139</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">167</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">13900</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">16700</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle" width="14%">Hoistway Limit<br>
-          </td>
-          <td align="center" valign="middle" width="14%">mHoistwayLimit<br>
-          </td>
-          <td align="center" valign="middle" width="14%">200<br>
-          </td>
-          <td align="center" valign="middle" width="14%">1800<br>
-          </td>
-          <td align="center" valign="middle" width="14%">180<br>
-          </td>
-          <td align="center" valign="middle" width="14%">direction<br>
-          </td>
-          <td align="center" valign="middle" width="14%"><span
-              style="color: rgb(0, 0, 0); font-family: Simsun;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: 2; text-align: center; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: 2;
-              word-spacing: 0px; -webkit-text-size-adjust: auto;
-              -webkit-text-stroke-width: 0px; font-size: medium;
-              display: inline !important; float: none; ">0x0F08B400</span></td>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">Level Sensor</td>
+          <td class="xl66" style="border-top:none;border-left:none">mLevel</td>
+          <td>0x09F41400</td>
+          <td class="xl70" style="border-top:none" align="right">2</td>
+          <td class="xl70" style="border-top:none" align="right">10</td>
+          <td class="xl71" style="border-top:none">L<font class="font6">eveling</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">15000</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">18000</td>
         </tr>
-        <tr>
-          <td align="center" valign="middle">Lantern Control<br>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">At Floor Sensor</td>
+          <td class="xl66" style="border-top:none;border-left:none">mAtFloor</td>
+          <td class="xl74">0x0BE82800</td>
+          <td class="xl70" style="border-top:none" align="right">10</td>
+          <td class="xl70" style="border-top:none" align="right">50</td>
+          <td class="xl71" style="border-top:none">m<font class="font6">AtFloor</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">15000</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">18000</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">C<font class="font6">ar Level Position Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mCarLevelPosition</td>
+          <td class="xl74">0x0C4C3C00</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">50</td>
+          <td class="xl71" style="border-top:none">C<font class="font6">arLevelPosition</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">i<font
+              class="font6">nt</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">32</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">32</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">4</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">99</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">119</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1980</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">2380</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">D<font class="font6">ispatcher</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mDesiredFloor</td>
+          <td class="xl74">0x0F0CB600</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">50</td>
+          <td class="xl71" style="border-top:none">floor</td>
+          <td class="xl71" style="border-top:none;border-left:none">i<font
+              class="font6">nt</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">32</td>
+          <td class="xl66" style="border-top:none;border-left:none">h<font
+              class="font6">allway</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">e<font
+              class="font6">num</font></td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">2</td>
+          <td class="xl71" style="border-top:none;border-left:none">d<font
+              class="font6">irection</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">e<font
+              class="font6">num</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">2</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">36</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">5</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">107</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">129</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">2140</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">2580</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">Safety Sensor</td>
+          <td class="xl66" style="border-top:none;border-left:none">m<font
+              class="font6">EmergencyBrake</font></td>
+          <td>0x0B841400</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">50</td>
+          <td class="xl71" style="border-top:none">Ebrake</td>
+          <td class="xl71" style="border-top:none;border-left:none">boolean</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1500</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1800</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">C<font class="font6">ar Button Control</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mCarCall</td>
+          <td class="xl74">0x0F10B900</td>
+          <td class="xl70" style="border-top:none" align="right">10</td>
+          <td class="xl70" style="border-top:none" align="right">100</td>
+          <td class="xl71" style="border-top:none">C<font class="font6">arCall</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">7500</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">9000</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">D<font class="font6">oor Closed Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mDoorClosed</td>
+          <td class="xl74">0x0D145000</td>
+          <td class="xl70" style="border-top:none" align="right">4</td>
+          <td class="xl70" style="border-top:none" align="right">100</td>
+          <td style="border-top:none" class="xl71">D<font class="font6">oorClosed</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">3000</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">3600</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">H<font class="font6">all Button Control</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mHallCall</td>
+          <td class="xl74">0x0D78B900</td>
+          <td class="xl70" style="border-top:none" align="right">17</td>
+          <td class="xl70" style="border-top:none" align="right">100</td>
+          <td class="xl71" style="border-top:none">H<font class="font6">allCall</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">12750</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">15300</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">D<font class="font6">oor Opened Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mDoorOpened</td>
+          <td class="xl74">0x0F6CA000</td>
+          <td class="xl70" style="border-top:none" align="right">4</td>
+          <td class="xl70" style="border-top:none" align="right">200</td>
+          <td class="xl71" style="border-top:none">D<font class="font6">oorOpened</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1500</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1800</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">H<font class="font6">oistway Limit</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mHoistwayLimit</td>
+          <td class="xl74">0x0FD0B400</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">200</td>
+          <td class="xl71" style="border-top:none">H<font class="font6">oistway
+
+              limit</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">375</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">450</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">W<font class="font6">eight Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mCarWeightAlarm</td>
+          <td class="xl74">0x0E408C00</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">200</td>
+          <td class="xl71" style="border-top:none">W<font class="font6">eightAlarm</font></td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">375</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">450</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td class="xl66" style="height:12.75pt;border-top:none"
+            height="17">W<font class="font6">eight Sensor</font></td>
+          <td class="xl66" style="border-top:none;border-left:none">mCarWeight</td>
+          <td class="xl74">0x0F088C00</td>
+          <td class="xl70" style="border-top:none" align="right">1</td>
+          <td class="xl70" style="border-top:none" align="right">200</td>
+          <td class="xl71" style="border-top:none">Weight</td>
+          <td class="xl71" style="border-top:none;border-left:none">b<font
+              class="font6">oolean</font></td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none">n/a</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">0</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">1</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">75</td>
+          <td class="xl71" style="border-top:none;border-left:none"
+            align="right">90</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">375</td>
+          <td class="xl66" style="border-top:none;border-left:none"
+            align="right">450</td>
+        </tr>
+        <tr style="height:12.75pt" height="17">
+          <td style="height:12.75pt" height="17"><br>
           </td>
-          <td align="center" valign="middle">mCarLantern<br>
+          <td><br>
           </td>
-          <td align="center" valign="middle">200<br>
+          <td><br>
           </td>
-          <td align="center" valign="middle">1811<br>
+          <td><br>
           </td>
-          <td align="center" valign="middle">187<br>
+          <td><br>
           </td>
-          <td align="center" valign="middle">direction<br>
+          <td><br>
           </td>
-          <td align="center" valign="middle">0x0F13BB00<br>
+          <td><br>
           </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td class="xl72" style="border-top:none">Total bw</td>
+          <td class="xl73" style="border-top:none;border-left:none"
+            align="right">105395</td>
+          <td class="xl73" style="border-top:none;border-left:none"
+            align="right">126510</td>
         </tr>
       </tbody>
     </table>
     <br>
-    <br class="Apple-interchange-newline">
-    <h2>Network Schedule Analaysis</h2>
-    <br>
-    Add a summary here<br>
-    <br>
-    Add your network schedule analysis<br>
-    <br>
-    <br>
-    Add a link to your Excel schedule file here.<br>
-    <br>
+    <a href="network-schedule-group9.xls">Network Schedule Excel Sheet</a><br>
     <h2>Simulation Analysis</h2>
+    Our theoretical results show a Best Case usage of 105,395 bits/sec
+    and a Worst Case usage of 126,510 bits/sec. Our experimental results
+    show an overall utilization of 54.86%. This number is the same for
+    multiple tests (including proj10acceptance1, proj10acceptance2, and
+    proj10acceptance3). At 200,000 bit/sec, this is a utilization of
+    109,720 bits/sec, which is within our theoretical range. <br>
     <br>
-    Compare theoretical and simulated results.<br>
+    Stuff bits can cause the simulation results to differ, but not to go
+    outside of the theoretical bounds, as the bounds take stuff bits
+    into account. However, our boolean payloads store the boolean value
+    in the top-most bit, which means the number of stuff bits should not
+    vary for these messages. This explains the consistency we saw in our
+    utilization. Another factor may be the randomness of the simulation
+    affects which messages are sent first, which may cause jitter in the
+    utilization. Finally, not prioritizing based on deadline can cause
+    the entire analysis to fail, as a message may miss its deadline.<br>
   </body>
 </html>

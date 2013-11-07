@@ -42,7 +42,7 @@ public class HallButtonControl extends Controller{
 	
 	// output
 	private Utility.HallCall	mHallCall;
-	private Utility.HallLight mHallLight;
+	//private Utility.HallLight mHallLight;
 	
 	private WriteableHallLightPayload HallLight;
 
@@ -70,7 +70,7 @@ public class HallButtonControl extends Controller{
 		
 		// output		
 		mHallCall		= new Utility.HallCall(canInterface, period, floor, hallway, direction);
-		mHallLight		= new Utility.HallLight(canInterface, period, floor, hallway, direction);
+		//mHallLight		= new Utility.HallLight(canInterface, period, floor, hallway, direction);
 		
 		HallLight		= Utility.HallLight.Writeable(physicalInterface, period, floor, hallway, direction);
 		HallCall		= mHallCall.Readable(physicalInterface);
@@ -117,7 +117,7 @@ public class HallButtonControl extends Controller{
 	private void StateOn() {
 		
 		HallLight.set(true);
-		mHallLight.set(true);
+		//mHallLight.set(true);
 		mHallCall.set(true);
 
 		// #transition 'T8.2'
@@ -130,7 +130,7 @@ public class HallButtonControl extends Controller{
 
 	private void StateOff() {
 		HallLight.set(false);
-		mHallLight.set(false);
+		//mHallLight.set(false);
 		mHallCall.set(false);
 		
 		// #transition 'T8.1'

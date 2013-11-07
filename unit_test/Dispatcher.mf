@@ -12,6 +12,8 @@
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
 0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
 0.00s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor 2 BACK = true;
+0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 5000;
+
 
 ;Test initial state
 
@@ -19,8 +21,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;#transition 'T11.2'
@@ -31,8 +31,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_STOP;
 
 ;#transition 'T11.8.1'
@@ -44,8 +42,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.3.1'
@@ -58,8 +54,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
 
 ;transition 'T11.8.2'
@@ -72,8 +66,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.4.1'
@@ -86,8 +78,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
 
 ;transition 'T11.8.3'
@@ -100,8 +90,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.4.1'
@@ -114,8 +102,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
 
 ;transition 'T11.8.3'
@@ -128,8 +114,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.4.2'
@@ -141,8 +125,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
 
 ;transition 'T11.3.3'
@@ -154,8 +136,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 4;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
 
 ;transition 'T11.8.2'
@@ -168,8 +148,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.3.2'
@@ -181,8 +159,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
 
 ;transition 'T11.8.2'
@@ -194,22 +170,20 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.9'
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor 2 BACK = false;
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = true;
++0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 15000;
+
 +0.20s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
 
 ;state 'S11.2 Stop_Down'
 +0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;#transition 'T11.5'
@@ -219,8 +193,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_STOP;
 
 ;#state 'S11.8.4'
@@ -231,8 +203,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.6.1'
@@ -244,8 +214,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_DOWN;
 
 ;transition 'T11.8.5'
@@ -257,8 +225,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.4.1'
@@ -270,8 +236,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_UP;
 
 ;transition 'T11.8.6'
@@ -283,8 +247,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.4.1'
@@ -296,8 +258,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_UP;
 
 
@@ -310,8 +270,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.7.2'
@@ -325,8 +283,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_UP;
 
 ;transition 'T11.6.3'
@@ -338,8 +294,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_DOWN;
 
 ;transition 'T11.8.2'
@@ -351,8 +305,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.7.2'
@@ -364,8 +316,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_DOWN;
 
 ;transition 'T11.8.5'
@@ -377,8 +327,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.10'
@@ -388,8 +336,6 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.1.*'
@@ -399,6 +345,4 @@
 +0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == NONE;
-+0.00s A N DESIRED_DWELL_[FRONT]_CAN_ID DesiredDwell FRONT : getValue == 2000;
-+0.00s A N DESIRED_DWELL_[BACK]_CAN_ID DesiredDwell BACK : getValue == 2000;
 +0.00s A S Dispatcher : STATE == STATE_EMERGENCY;

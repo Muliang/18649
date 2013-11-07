@@ -73,7 +73,7 @@ public class DoorControl extends Controller {
 	private SimTime period;
 	// current car weight
 	private SimTime countDown;
-	private int openCounter;
+	//private int openCounter;
 
 	// physical interface
 	// physical output
@@ -121,7 +121,7 @@ public class DoorControl extends Controller {
 		this.side = side;
 		this.period = period;
 		this.state = INIT_STATE;
-		openCounter = 0;
+		//openCounter = 0;
 
 		// log
 		log("Created DoorControl with period=" + period);
@@ -261,16 +261,17 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
 		// #transition 'T5.1'
-		if ((openCounter <= MAX_OPEN ) && (mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
+		if (//(openCounter <= MAX_OPEN ) && 
+				(mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
 				&& (mDesiredFloor.getHallway() == hallway || mDesiredFloor.getHallway() == Hallway.BOTH)
 				&& (mDriveSpeed.getDirection() == Direction.STOP || mDriveSpeed.getSpeed() == 0))
 		{	
-			openCounter++;
+			//openCounter++;
 			newState = State.STATE_OPENING;
 		}
-		if(mDriveSpeed.getSpeed() > 0){	
+		/*if(mDriveSpeed.getSpeed() > 0){	
 			openCounter = 0;
-		}
+		}*/
 	}
 
 	private void StateOpening() {

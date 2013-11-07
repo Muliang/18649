@@ -64,7 +64,7 @@ public class Dispatcher extends Controller {
 	private ReadableCanMailbox networkCarLevelPosition;
     private CarLevelPositionCanPayloadTranslator mCarLevelPosition;
     
-    private static int dwellTime = 2000; //in ms
+    //private static int dwellTime = 2000; //in ms
     private static final double LEVEL_SPEED		= DriveObject.LevelingSpeed;	// in m/s
     //add Time translator
     		
@@ -103,7 +103,7 @@ public class Dispatcher extends Controller {
         mDesiredFloor = new DesiredFloorCanPayloadTranslator(networkDesiredFloor);
         canInterface.sendTimeTriggered(networkDesiredFloor, period);
         
-        networkDesiredDwellFront = 
+        /*networkDesiredDwellFront = 
         		CanMailbox.getWriteableCanMailbox(MessageDictionary.DESIRED_DWELL_BASE_CAN_ID 
         				+ ReplicationComputer.computeReplicationId(Hallway.FRONT));
         networkDesiredDwellBack = 
@@ -112,7 +112,7 @@ public class Dispatcher extends Controller {
         mDesiredDwellFront = new DesiredDwellCanPayloadTranslator(networkDesiredDwellFront, Hallway.FRONT);
         mDesiredDwellBack = new DesiredDwellCanPayloadTranslator(networkDesiredDwellBack, Hallway.BACK);
         canInterface.sendTimeTriggered(networkDesiredDwellFront, period);
-        canInterface.sendTimeTriggered(networkDesiredDwellBack, period);
+        canInterface.sendTimeTriggered(networkDesiredDwellBack, period);*/
         
         //input
         
@@ -188,8 +188,8 @@ public class Dispatcher extends Controller {
 			currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
 		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
@@ -227,8 +227,8 @@ public class Dispatcher extends Controller {
 			currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
 		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
@@ -259,8 +259,8 @@ public class Dispatcher extends Controller {
 			currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
 		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
@@ -319,8 +319,8 @@ public class Dispatcher extends Controller {
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
@@ -363,8 +363,8 @@ public class Dispatcher extends Controller {
 			currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		///mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
 		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 2);
@@ -396,8 +396,8 @@ public class Dispatcher extends Controller {
 			currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
 		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 2);
@@ -459,8 +459,8 @@ public class Dispatcher extends Controller {
 		currentDirection = Direction.DOWN;
 		//mDesiredFloor.setDirection(Direction.STOP);
 		//keep desiredDirection
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1);
@@ -524,8 +524,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setHallway(currentHallway);
 		currentHallway = mAtFloor.getCurrentHallway();
 		currentDirection = Direction.UP;
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
 		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1);
@@ -592,8 +592,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(1);
 		mDesiredFloor.setHallway(Hallway.NONE);
 		mDesiredFloor.setDirection(Direction.STOP);
-		mDesiredDwellFront.set(dwellTime);
-		mDesiredDwellBack.set(dwellTime);
+		//mDesiredDwellFront.set(dwellTime);
+		//mDesiredDwellBack.set(dwellTime);
 		target = 1;
 	}	
 }
