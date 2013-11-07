@@ -128,6 +128,9 @@ public class DriveControl extends Controller {
 		this.period = period;
 		this.currentState = State.STATE_STOP;
 		this.allowance = 2 * (100 + FAST_SPEED * period.getFracMilliseconds());
+		this.desiredFloor = MessageDictionary.NONE;
+		this.currentFloor = 1;
+		this.DesiredDirection = Direction.UP;
 
 		// initialize physical state
 		localDriveSpeed = DriveSpeedPayload.getReadablePayload();
