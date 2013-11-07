@@ -29,7 +29,7 @@
 ; reach commit point
 +0.10s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
 
-+0.00s I DRIVE_PERIOD F DriveSpeed = UP SLOW_SPEED;
++0.50s I DRIVE_PERIOD F DriveSpeed = UP SLOW_SPEED;
 
 ; #arc '6B/1b'
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[6][FRONT]_CAN_ID AtFloor 6 FRONT = true;

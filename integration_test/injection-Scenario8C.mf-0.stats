@@ -1,0 +1,23 @@
+
+Simulator Parameters:
+Command line = -mf Scenario8C.mf -cf Scenario8C.cf
+RandomSeed = 1383804877911
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Message File = Scenario8C.mf
+Controller File = Scenario8C.cf
+
+Assertion Results:
+@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@1c64a584 :: speed ?== FAST PASSED
+@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@2853d34c :: direction ?== UP PASSED
+@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@7b39ca7e :: speed ?== SLOW PASSED
+@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@4ed1a34a :: direction ?== UP PASSED
+
+
+******************Summary******************
+Passed:  4
+Failed:  0
+Total :  4
+

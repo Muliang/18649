@@ -1,7 +1,7 @@
 
 Simulator Parameters:
-Command line = -cf Scenario6A.cf -mf Scenario6A.mf
-RandomSeed = 1381527862947
+Command line = -mf Scenario6A.mf -cf Scenario6A.cf
+RandomSeed = 1383804724281
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -10,17 +10,17 @@ Message File = Scenario6A.mf
 Controller File = Scenario6A.cf
 
 Assertion Results:
-@1.1s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@57ec49db :: floor ?== 1 PASSED
-@1.6s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@46cfd5ee :: isLighted ?== true PASSED
-@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@7e64cfe0 :: speed ?== SLOW PASSED
-@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@29e0969b :: direction ?== UP PASSED
-@3.3s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@69a10f82 :: floor ?== 3 PASSED
-@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@12b3f93c :: speed ?== LEVEL PASSED
-@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@7c830624 :: direction ?== UP PASSED
+@1.1s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@248ce0ea :: floor ?== 1 PASSED
+@1.6s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@7bff88c3 :: isLighted ?== true PASSED
+@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@33dd66fd :: speed ?== SLOW PASSED
+@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@6b13c116 :: direction ?== UP PASSED
+@3.3s:  FAILED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@1dd1702e :: floor ?== 3 FAILED
+@3.3s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@2ff51d36 :: speed ?== LEVEL FAILED
+@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@7fd1a35e :: direction ?== UP PASSED
 
 
 ******************Summary******************
-Passed:  7
-Failed:  0
+Passed:  5
+Failed:  2
 Total :  7
 

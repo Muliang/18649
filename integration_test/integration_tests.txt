@@ -15,10 +15,14 @@ SD4A Scenario4A.cf  Scenario4A.mf
 SD5A Scenario5A.cf  Scenario5A.mf
 SD5B Scenario5B.cf  Scenario5B.mf
 SD6A Scenario6A.cf  Scenario6A.mf
-SD9A Scenario9A.cf  Scenario9A.mf
+SD6B Scenario6B.cf  Scenario6B.mf
 SD7A Scenario7A.cf  Scenario7A.mf
 SD7B Scenario7B.cf  Scenario7B.mf
 SD7C Scenario7C.cf  Scenario7C.mf
+SD7D Scenario7D.cf  Scenario7D.mf
 SD8A Scenario8A.cf  Scenario8A.mf
-SD10A Scenario10A.cf  Scenario10A.mf
-SD11A Scenario11A.cf  Scenario11A.mf
+SD8B Scenario8B.cf  Scenario8B.mf
+SD8C Scenario8C.cf  Scenario8C.mf
+SD9A Scenario9A.cf  Scenario9A.mf
+
+

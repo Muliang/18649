@@ -1,7 +1,7 @@
 
 Simulator Parameters:
-Command line = -cf Scenario7B.cf -mf Scenario7B.mf
-RandomSeed = 1382054168465
+Command line = -mf Scenario7B.mf -cf Scenario7B.cf
+RandomSeed = 1383804700906
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -10,16 +10,16 @@ Message File = Scenario7B.mf
 Controller File = Scenario7B.cf
 
 Assertion Results:
-@1.4s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1827b40b :: command ?== OPEN PASSED
-@2.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@708a605c :: command ?== STOP PASSED
-@2.0s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@27cf35d3 :: getDirection ?== STOP PASSED
-@3.0s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@1fe20120 :: lighted ?== false PASSED
-@5.5s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@2cf5ebcc :: command ?== CLOSE PASSED
-@8.1s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@7aee513 :: command ?== STOP PASSED
+@1.4s:  FAILED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@5d400f33 :: command ?== OPEN FAILED
+@2.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@3da5f0f3 :: command ?== STOP PASSED
+@2.0s:  FAILED simulator.payloads.CanMailbox$ReadableCanMailbox@450cceb3 :: getDirection ?== STOP FAILED
+@3.0s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@6a9a4f8e :: lighted ?== false PASSED
+@5.5s:  FAILED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@794f8b9a :: command ?== CLOSE FAILED
+@8.1s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1c344a47 :: command ?== STOP PASSED
 
 
 ******************Summary******************
-Passed:  6
-Failed:  0
+Passed:  3
+Failed:  3
 Total :  6
 

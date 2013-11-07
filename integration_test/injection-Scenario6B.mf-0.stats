@@ -1,0 +1,28 @@
+
+Simulator Parameters:
+Command line = -mf Scenario6B.mf -cf Scenario6B.cf
+RandomSeed = 1383804732413
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Message File = Scenario6B.mf
+Controller File = Scenario6B.cf
+
+Assertion Results:
+@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@3ed8d90c :: speed ?== SLOW PASSED
+@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@39d56e9 :: direction ?== UP PASSED
+@1.4s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@236ed0f7 :: speed ?== LEVEL FAILED
+@1.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@19cdd63c :: direction ?== UP PASSED
+@2.1s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@46dd3147 :: speed ?== STOP FAILED
+@2.1s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@7e11ba6f :: direction ?== STOP FAILED
+@2.3s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@c4cdf7e :: getSpeed ?== 0 PASSED
+@2.3s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@33f323bd :: getDirection ?== STOP PASSED
+@3.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@34d0cdd0 :: command ?== OPEN PASSED
+
+
+******************Summary******************
+Passed:  6
+Failed:  3
+Total :  9
+

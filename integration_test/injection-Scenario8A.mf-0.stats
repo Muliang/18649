@@ -1,7 +1,7 @@
 
 Simulator Parameters:
-Command line = -cf Scenario8A.cf -mf Scenario8A.mf
-RandomSeed = 1382056470287
+Command line = -mf Scenario8A.mf -cf Scenario8A.cf
+RandomSeed = 1383804683352
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = null
@@ -10,14 +10,14 @@ Message File = Scenario8A.mf
 Controller File = Scenario8A.cf
 
 Assertion Results:
-@4.5s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@37464fee :: command ?== CLOSE PASSED
-@5.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@2f86780d :: command ?== STOP PASSED
-@5.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@65e84ff1 :: getFloor ?== 4 PASSED
-@6.9s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@2ad7532 :: getSpeed ?== 25 PASSED
+@4.5s:  FAILED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@61bf61a0 :: command ?== CLOSE FAILED
+@5.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@40d0d75 :: command ?== STOP PASSED
+@5.2s:  FAILED simulator.payloads.CanMailbox$ReadableCanMailbox@55ac9683 :: getFloor ?== 4 FAILED
+@6.9s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@4e5a5622 :: getSpeed ?== 25 PASSED
 
 
 ******************Summary******************
-Passed:  4
-Failed:  0
+Passed:  2
+Failed:  2
 Total :  4
 
