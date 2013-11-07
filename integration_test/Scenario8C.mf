@@ -1,0 +1,46 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario8C.mf		
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           Scenario8C.mf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#INCLUDE ElevatorDefines.mf
+
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][LEFT]_CAN_ID DoorClosed BACK LEFT = true;
+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[BACK][RIGHT]_CAN_ID DoorClosed BACK RIGHT = true;
+
+; #arc '8C/1a'
+0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 5000;
+
+; #arc '8C/1b'
+0.00s I DISPATCHER_PERIOD N DESIRED_FLOOR_CAN_ID DesiredFloor = 6 FRONT STOP;
+
++0.10s I DRIVE_PERIOD F DriveSpeed = UP 0.25;
+
++0.10s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 15000;
+
+; #arc '8C/1c'
++1.00s A F Drive : speed == FAST;
++0.00s A F Drive : direction == UP;
+
+; #arc '8C/2'
++0.10s I DRIVE_PERIOD F DriveSpeed = UP 1.00;
+
+; #arc '8C/3'
++0.10s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
+
+; #arc '8C/4'
++1.00s A F Drive : speed == SLOW;
++0.00s A F Drive : direction == UP;
+; #arc '8C/5'
++0.10s I DRIVE_PERIOD F DriveSpeed = UP 1.00;
+
+
+

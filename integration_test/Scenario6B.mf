@@ -25,13 +25,19 @@
 
 +0.20s A F Drive : speed == SLOW;
 +0.00s A F Drive : direction == UP;
+
+; reach commit point
++0.10s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 25000;
+
 +0.00s I DRIVE_PERIOD F DriveSpeed = UP SLOW_SPEED;
 
 ; #arc '6B/1b'
-+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[6][FRONT]_CAN_ID CarCall 6 FRONT = true; 
++0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[6][FRONT]_CAN_ID AtFloor 6 FRONT = true;
++0.50s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[6][FRONT]_CAN_ID CarCall 6 FRONT = true; 
+
 
 ; #arc '6B/1c'
-+0.10s A F Drive : speed == LEVEL;
++0.50s A F Drive : speed == LEVEL;
 +0.00s A F Drive : direction == UP;
 
 ; #arc '6B/2'

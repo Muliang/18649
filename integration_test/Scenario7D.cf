@@ -1,0 +1,14 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; Scenario7D.cf		
+
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+;
+;           Scenario7D.cf
+;
+;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dispatcher 8 50.0ms true;
+DoorControl FRONT LEFT 10.0ms true;
+LanternControl UP 200.0ms true;
