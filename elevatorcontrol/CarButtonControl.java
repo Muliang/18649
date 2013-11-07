@@ -45,7 +45,7 @@ public class CarButtonControl extends Controller {
 	
 	// output
 	private Utility.CarCall	mCarCall;
-	private Utility.CarLight mCarLight;
+	//private Utility.CarLight mCarLight;
 	
 	private WriteableCarLightPayload CarLight;
 
@@ -71,7 +71,7 @@ public class CarButtonControl extends Controller {
 		
 		// Outputs
 		mCarCall		= new Utility.CarCall(canInterface, period, floor, hallway);
-		mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 
+		//mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 
 		
 		CarLight		= Utility.CarLight.Writeable(physicalInterface, period, floor, hallway);
 		CarCall			= mCarCall.Readable(physicalInterface);
@@ -119,7 +119,7 @@ public class CarButtonControl extends Controller {
 
 	private void StateOn() {
 		CarLight.set(true);
-		mCarLight.set(true);
+		///mCarLight.set(true);
 		mCarCall.set(true);
 		
 		// #transition 'T9.1'
@@ -132,7 +132,7 @@ public class CarButtonControl extends Controller {
 
 	private void StateOff() {
 		CarLight.set(false);
-		mCarLight.set(false);
+		//mCarLight.set(false);
 		mCarCall.set(false);
 		
 		// #transition 'T9.2'
