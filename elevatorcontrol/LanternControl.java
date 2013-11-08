@@ -73,12 +73,13 @@ public class LanternControl extends Controller {
 			if ((mDesiredFloor.getFloor() != MessageDictionary.NONE)  //mDesireFloor.f != -1
 					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
-					&& (direction == mDesiredFloor.getDirection()))
+					&& (direction == desiredDiretion()))
 				newState = State.STATE_ON;
+			
 			// #transition 'T7.4'
 			else if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 					.getBothClosed()))
-					&& (direction != mDesiredFloor.getDirection()))
+					&& (direction != desiredDiretion()))
 				newState = State.STATE_OFF;
 			break;
 
@@ -121,6 +122,18 @@ public class LanternControl extends Controller {
 		// you must do this at the end of the timer callback in order to restart
 		// the timer
 		timer.start(period);
+	}
+	
+	private Direction desiredDiretion(){
+		if(mDesiredFloor.getFloor() > mAtFloor.getCurrentFloor()){
+			return Direction.UP;
+		}
+		else if(mDesiredFloor.getFloor() < mAtFloor.getCurrentFloor()){
+			return Direction.DOWN;
+		}
+		else{
+			return Direction.STOP;
+		}
 	}
 
 }
