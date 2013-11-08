@@ -1,19 +1,24 @@
+18649 <2013-Fall>
+Group 9
+Yujia Wang     andrewID: yujiaw
+Yichao Xue     andrewID: yichaox
+Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -mf Scenario2C.mf -cf Scenario2C.cf
-RandomSeed = 1383804822157
+Command line = -rt 0s -head HEADER -cf integration_test/Scenario2C.cf -mf integration_test/Scenario2C.mf
+RandomSeed = 1383870104805
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
-Run Time = null
+Run Time = 0.0s
 Real time rate = null
-Message File = Scenario2C.mf
-Controller File = Scenario2C.cf
+Message File = integration_test/Scenario2C.mf
+Controller File = integration_test/Scenario2C.cf
 
 Assertion Results:
-@1.6s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@4577357d :: command ?== OPEN PASSED
+@1.6s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@74a17378 :: command ?== OPEN PASSED
 @1.6s:  PASSED DoorControl[FRONT][LEFT]::checkState(STATE) ?== STATE_OPENING PASSED
-@2.2s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@4ad4694f :: lighted ?== false PASSED
-@2.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@13b4d41e :: command ?== STOP PASSED
+@2.2s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@3957f3a4 :: lighted ?== false PASSED
+@2.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@5ba27d4b :: command ?== STOP PASSED
 
 
 ******************Summary******************

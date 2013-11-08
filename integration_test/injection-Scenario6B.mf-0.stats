@@ -1,28 +1,33 @@
+18649 <2013-Fall>
+Group 9
+Yujia Wang     andrewID: yujiaw
+Yichao Xue     andrewID: yichaox
+Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -mf Scenario6B.mf -cf Scenario6B.cf
-RandomSeed = 1383804732413
+Command line = -rt 0s -head HEADER -cf integration_test/Scenario6B.cf -mf integration_test/Scenario6B.mf
+RandomSeed = 1383870108270
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
-Run Time = null
+Run Time = 0.0s
 Real time rate = null
-Message File = Scenario6B.mf
-Controller File = Scenario6B.cf
+Message File = integration_test/Scenario6B.mf
+Controller File = integration_test/Scenario6B.cf
 
 Assertion Results:
-@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@3ed8d90c :: speed ?== SLOW PASSED
-@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@39d56e9 :: direction ?== UP PASSED
-@1.4s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@236ed0f7 :: speed ?== LEVEL FAILED
-@1.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@19cdd63c :: direction ?== UP PASSED
-@2.1s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@46dd3147 :: speed ?== STOP FAILED
-@2.1s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@7e11ba6f :: direction ?== STOP FAILED
-@2.3s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@c4cdf7e :: getSpeed ?== 0 PASSED
-@2.3s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@33f323bd :: getDirection ?== STOP PASSED
-@3.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@34d0cdd0 :: command ?== OPEN PASSED
+@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@330e3816 :: speed ?== SLOW PASSED
+@0.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@12330301 :: direction ?== UP PASSED
+@1.9s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@45eee3fb :: speed ?== LEVEL PASSED
+@1.9s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@42906563 :: direction ?== UP PASSED
+@2.6s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@5a6b54ef :: speed ?== STOP PASSED
+@2.6s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@6bf7dab1 :: direction ?== STOP PASSED
+@2.8s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@3a0aaa10 :: getSpeed ?== 0 PASSED
+@2.8s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@3f9432e0 :: getDirection ?== STOP PASSED
+@3.5s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@7da79447 :: command ?== OPEN PASSED
 
 
 ******************Summary******************
-Passed:  6
-Failed:  3
+Passed:  9
+Failed:  0
 Total :  9
 

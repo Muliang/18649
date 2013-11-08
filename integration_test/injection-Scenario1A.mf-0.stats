@@ -1,16 +1,21 @@
+18649 <2013-Fall>
+Group 9
+Yujia Wang     andrewID: yujiaw
+Yichao Xue     andrewID: yichaox
+Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -mf Scenario1A.mf -cf Scenario1A.cf
-RandomSeed = 1383804646363
+Command line = -rt 0s -head HEADER -cf integration_test/Scenario1A.cf -mf integration_test/Scenario1A.mf
+RandomSeed = 1383870101561
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
-Run Time = null
+Run Time = 0.0s
 Real time rate = null
-Message File = Scenario1A.mf
-Controller File = Scenario1A.cf
+Message File = integration_test/Scenario1A.mf
+Controller File = integration_test/Scenario1A.cf
 
 Assertion Results:
-@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@1ef1257f :: lighted ?== true PASSED
+@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@efa0bf4 :: lighted ?== true PASSED
 
 
 ******************Summary******************

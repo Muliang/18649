@@ -1,19 +1,24 @@
+18649 <2013-Fall>
+Group 9
+Yujia Wang     andrewID: yujiaw
+Yichao Xue     andrewID: yichaox
+Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -mf Scenario8C.mf -cf Scenario8C.cf
-RandomSeed = 1383804877911
+Command line = -rt 0s -head HEADER -cf integration_test/Scenario8C.cf -mf integration_test/Scenario8C.mf
+RandomSeed = 1383870112333
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
-Run Time = null
+Run Time = 0.0s
 Real time rate = null
-Message File = Scenario8C.mf
-Controller File = Scenario8C.cf
+Message File = integration_test/Scenario8C.mf
+Controller File = integration_test/Scenario8C.cf
 
 Assertion Results:
-@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@1c64a584 :: speed ?== FAST PASSED
-@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@2853d34c :: direction ?== UP PASSED
-@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@7b39ca7e :: speed ?== SLOW PASSED
-@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@4ed1a34a :: direction ?== UP PASSED
+@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@33f323bd :: speed ?== FAST PASSED
+@1.2s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@34d0cdd0 :: direction ?== UP PASSED
+@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@1a055ff4 :: speed ?== SLOW PASSED
+@2.4s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@3030d5aa :: direction ?== UP PASSED
 
 
 ******************Summary******************

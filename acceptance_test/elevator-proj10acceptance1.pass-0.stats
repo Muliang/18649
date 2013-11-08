@@ -1,0 +1,77 @@
+
+Simulator Parameters:
+Command line = -pf acceptance_test/proj10acceptance1.pass -gui
+RandomSeed = 1383875285006
+CanNetworkBitTime = 0 ns
+Effective Can Bitrate = Infinity
+Run Time = null
+Real time rate = null
+Acceptance Test File = acceptance_test/proj10acceptance1.pass
+
+STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
+-----------------------------------------------------
+
+
+These passengers were delivered:
+Passenger 0: INJECTED AT 0.0s and DELIVERED in 20.496s
+  Satisfaction score: 100.0
+Passenger 2: INJECTED AT 0.6s and DELIVERED in 38.252s
+  Satisfaction score: 100.0
+Passenger 1: INJECTED AT 0.3s and DELIVERED in 56.681s
+  Satisfaction score: 100.0
+Passenger 14: INJECTED AT 66.2s and DELIVERED in 31.105s
+  Satisfaction score: 100.0
+Passenger 9: INJECTED AT 5.0s and DELIVERED in 153.029s
+  Satisfaction score: 100.0
+Passenger 12: INJECTED AT 7.1s and DELIVERED in 164.687s
+  Satisfaction score: 100.0
+Passenger 10: INJECTED AT 6.0s and DELIVERED in 178.542s
+  Satisfaction score: 100.0
+Passenger 5: INJECTED AT 3.0s and DELIVERED in 194.06s
+  Satisfaction score: 100.0
+Passenger 7: INJECTED AT 3.0s and DELIVERED in 196.088s
+  Satisfaction score: 100.0
+Passenger 4: INJECTED AT 2.0s and DELIVERED in 208.756s
+  Satisfaction score: 100.0
+Passenger 11: INJECTED AT 7.0s and DELIVERED in 205.281s
+  Satisfaction score: 100.0
+Passenger 3: INJECTED AT 1.0s and DELIVERED in 222.412s
+  Satisfaction score: 100.0
+Passenger 6: INJECTED AT 3.0s and DELIVERED in 233.603s
+  Satisfaction score: 100.0
+Passenger 16: INJECTED AT 101.0s and DELIVERED in 161.641s
+  Satisfaction score: 90.0
+    @237.520000000: 0.90 Repeated hall call press
+Passenger 15: INJECTED AT 100.0s and DELIVERED in 188.263s
+  Satisfaction score: 90.0
+    @211.320000000: 0.90 Repeated hall call press
+Passenger 13: INJECTED AT 58.0s and DELIVERED in 253.639s
+  Satisfaction score: 90.0
+    @237.520000000: 0.90 Repeated hall call press
+Passenger 8: INJECTED AT 4.0s and DELIVERED in 429.065s
+  Satisfaction score: 29.524500000000007
+    @325.700000000: 0.90 Repeated hall call press
+    @342.320000000: 0.90 Repeated hall call press
+    @358.920000000: 0.90 Repeated hall call press
+    @375.520000000: 0.90 Repeated hall call press
+    @392.120000000: 0.90 Repeated hall call press
+    @394.405000000: 0.50 After the car came by 5 times without showing arrows compatible with UP, finally gave up and got on anyway.
+
+Passenger Delivery Summary
+Delivered: 17
+Stranded: 0
+Total: 17
+
+Deliver Stats (lower is better):
+Average_delivery_time: 172.682
+Maximum_delivery_time:  429.065
+Delivery_performance_score:  1119.794
+
+Satisfaction Stats (higher is better):
+Average_satisfaction_score: 94.090
+Min_satisfaction_score:  29.525
+Satisfaction_performance_score:  405.883
+
+
+
+
