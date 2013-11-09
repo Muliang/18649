@@ -257,7 +257,7 @@ public class Utility {
 		// any hall call button is pressed at a floor
 		public boolean isAnyPressed(int floor, Hallway hallway) {
 			// no atFloor is true
-			if (floor == -1) {
+			if (floor < 1 || floor > Elevator.numFloors) {
 				return false;
 			} else {
 				int upIndex = ReplicationComputer.computeReplicationId(floor,
@@ -273,7 +273,7 @@ public class Utility {
 		//Yujia Wang
 		public boolean isPressed(int floor, Hallway hallway, Direction d) {
 			// no atFloor is true
-			if (floor == -1) {
+			if (floor < 1 || floor > Elevator.numFloors) {
 				return false;
 			} else {
 				int index = ReplicationComputer.computeReplicationId(floor,
@@ -284,7 +284,7 @@ public class Utility {
 		
 		//Yujia Wang
 		public boolean isAllUnpressed(){
-			for (int f = Elevator.numFloors; f <= Elevator.numFloors; f++) {
+			for (int f = 1; f <= Elevator.numFloors; f++) {
 				for (Hallway h : Hallway.replicationValues) {
 					for(Direction d : Direction.replicationValues){
 						if(isPressed(f, h, d)){
@@ -297,10 +297,11 @@ public class Utility {
 		}
 		
 		//Yujia Wang
-		public int getNearestPressedFloor(int floor, Direction d, int count, Direction desiredDirection){
+		public int getNearestPressedFloor(int floor, Direction d, int count, Direction desiredDirection, boolean ignoreFlag){
 			int nearestFloor = MessageDictionary.NONE;
 			int i = 0;
 			if(d == Direction.UP){
+				if(ignoreFlag == true) floor ++;
 				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
 					for (Hallway h : Hallway.replicationValues) {
 						if(isPressed(f, h, desiredDirection) && nearestFloor != f){
@@ -310,6 +311,7 @@ public class Utility {
 					}
 				}				
 			}else if(d == Direction.DOWN){
+				if(ignoreFlag == true) floor--;
 				for (int f = floor; f >= 1 && i<count; f--) {
 					for (Hallway h : Hallway.replicationValues) {
 						if(isPressed(f, h, desiredDirection) && nearestFloor != f){
@@ -348,7 +350,7 @@ public class Utility {
 
 		public boolean isPressed(int floor, Hallway hallway) {
 			// no atFloor is true
-			if (floor == -1) {
+			if (floor < 1 || floor > Elevator.numFloors) {
 				return false;
 			} else {
 				int index = ReplicationComputer.computeReplicationId(floor,
@@ -359,7 +361,7 @@ public class Utility {
 		
 		//Yujia Wang
 		public boolean isAllUnpressed(){
-			for (int f = Elevator.numFloors; f <= Elevator.numFloors; f++) {
+			for (int f = 1; f <= Elevator.numFloors; f++) {
 				for (Hallway h : Hallway.replicationValues) {
 					if(isPressed(f, h)){
 						return false;
@@ -370,10 +372,12 @@ public class Utility {
 		}
 		
 		//Yujia Wang
-		public int getNearestPressedFloor(int floor, Direction d, int count){
+		public int getNearestPressedFloor(int floor, Direction d, int count, boolean ignoreFlag){
+			// ignoreFlag is flag that detemines ignore the starting floor or not
 			int nearestFloor = MessageDictionary.NONE;
 			int i = 0;
 			if(d == Direction.UP){
+				if(ignoreFlag == true) floor ++;
 				for (int f = floor; f <= Elevator.numFloors && i<count; f++) {
 					for (Hallway h : Hallway.replicationValues) {
 						if(isPressed(f, h) && nearestFloor != f){
@@ -383,6 +387,7 @@ public class Utility {
 					}
 				}				
 			}else if(d == Direction.DOWN){
+				if(ignoreFlag == true) floor --;
 				for (int f = floor; f >= 1 && i<count; f--) {
 					for (Hallway h : Hallway.replicationValues) {
 						if(isPressed(f, h) && nearestFloor != f){
