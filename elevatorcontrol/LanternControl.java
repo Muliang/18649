@@ -1,4 +1,5 @@
 /*
+ /*
  * 18649 Fall 2013
  * group 9
  * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
@@ -70,16 +71,16 @@ public class LanternControl extends Controller {
 			localCarLantern.set(false);
 
 			// #transition 'T7.1'
-			if ((mDesiredFloor.getFloor() != MessageDictionary.NONE)  //mDesireFloor.f != -1
+			if ((mDesiredFloor.getFloor() != MessageDictionary.NONE) // mDesireFloor.f
+																		// != -1
 					&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
-					&& (direction == desiredDiretion()))
+					&& (direction == mDesiredFloor.getDirection()))
 				newState = State.STATE_ON;
-			
 			// #transition 'T7.4'
 			else if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 					.getBothClosed()))
-					&& (direction != desiredDiretion()))
+					&& (direction != mDesiredFloor.getDirection()))
 				newState = State.STATE_OFF;
 			break;
 
@@ -122,18 +123,6 @@ public class LanternControl extends Controller {
 		// you must do this at the end of the timer callback in order to restart
 		// the timer
 		timer.start(period);
-	}
-	
-	private Direction desiredDiretion(){
-		if(mDesiredFloor.getFloor() > mAtFloor.getCurrentFloor()){
-			return Direction.UP;
-		}
-		else if(mDesiredFloor.getFloor() < mAtFloor.getCurrentFloor()){
-			return Direction.DOWN;
-		}
-		else{
-			return Direction.STOP;
-		}
 	}
 
 }
