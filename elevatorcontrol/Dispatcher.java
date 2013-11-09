@@ -97,7 +97,7 @@ public class Dispatcher extends Controller {
 		this.period = period;
 		this.maxFloors = maxFloors;
 		this.currentState = State.STATE_STOP_UP;
-		this.target = 1;
+		this.target = MessageDictionary.NONE;
 		this.currentFloor = 1;
 		this.currentHallway = Hallway.NONE;
 		this.countDown = waitingTime;
@@ -188,9 +188,8 @@ public class Dispatcher extends Controller {
 	private void stateDownUp() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
 		countDown = waitingTime;
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
@@ -231,8 +230,7 @@ public class Dispatcher extends Controller {
 	private void stateDownDown() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
 		countDown = waitingTime;
@@ -266,8 +264,8 @@ public class Dispatcher extends Controller {
 	private void stateDownStop() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
 		countDown = waitingTime;
@@ -328,6 +326,7 @@ public class Dispatcher extends Controller {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
 		countDown = waitingTime;
@@ -372,8 +371,7 @@ public class Dispatcher extends Controller {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
 		countDown = waitingTime;
@@ -408,8 +406,8 @@ public class Dispatcher extends Controller {
 	private void stateUpStop() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
 		countDown = waitingTime;
@@ -475,8 +473,8 @@ public class Dispatcher extends Controller {
 		}else
 			countDown = waitingTime;
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(currentHallway);
 		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.DOWN;
 		//mDesiredFloor.setDirection(Direction.STOP);
 		//keep desiredDirection
@@ -549,8 +547,8 @@ public class Dispatcher extends Controller {
 		}else
 			countDown = waitingTime;
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(currentHallway);
 		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.UP;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);

@@ -334,13 +334,13 @@ public class DriveControl extends Controller {
 		// #transition 'T6.6'
 
 		else if (mLevelUp.getValue() == false // ||
-												// mCarLevelPosition.getPosition()<0)
+				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()<0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_UP;
 		// #transition 'T6.8'
 		else if (mLevelDown.getValue() == false // ||
-												// mCarLevelPosition.getPosition()>0)
+				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()>0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_DOWN;
@@ -365,6 +365,7 @@ public class DriveControl extends Controller {
 			currentState = State.STATE_LEVEL_UP;
 		// #transition 'T6.10'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
+				&& desiredFloor != MessageDictionary.NONE
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_UP;
@@ -389,6 +390,7 @@ public class DriveControl extends Controller {
 			currentState = State.STATE_LEVEL_DOWN;
 		// #transition 'T6.12'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
+				&& desiredFloor != MessageDictionary.NONE
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_DOWN;
