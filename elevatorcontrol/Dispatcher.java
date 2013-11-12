@@ -295,9 +295,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
-		System.out.println("At state DownUp.\n");
+		/*System.out.println("At state DownUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.6.3'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
@@ -340,9 +340,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
-		System.out.println("At state DownDown.\n");
+		/*System.out.println("At state DownDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.8.5'
 		if(	mDriveSpeed.getSpeed() == 0 
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
@@ -377,9 +377,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
-		System.out.println("At state DownStop.\n");
+		/*System.out.println("At state DownStop.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.6.2'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
@@ -443,9 +443,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
-		System.out.println("At state UpDown.\n");
+		/*System.out.println("At state UpDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.3.3'
 		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
 				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
@@ -490,9 +490,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
-		System.out.println("At state UpUp.\n");
+		/*System.out.println("At state UpUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.8.2'
 		if(	mDriveSpeed.getSpeed() == 0
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
@@ -528,9 +528,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
-		System.out.println("At state UpStop.\n");
+		/*System.out.println("At state UpStop.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.3.2'
 		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
 				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
@@ -599,9 +599,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
-		System.out.println("At state StopDown.\n");
+		/*System.out.println("At state StopDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//#Transition S11.10
 		if (nearestCarCallFloor ==-1 && nearestHallCallFloor == -1 && isAllDoorClosed()){
 			currentState = State.STATE_STOP_UP;
@@ -674,9 +674,9 @@ public class Dispatcher extends Controller {
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
-		System.out.println("At state StopUp.\n");
+		/*System.out.println("At state StopUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//#Transition S11.9
 		if (nearestCarCallFloor ==-1 && nearestHallCallFloor == -1
 			&& (mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1,  false)!=-1 
@@ -732,9 +732,9 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(1);
 		mDesiredFloor.setHallway(Hallway.NONE);
 		mDesiredFloor.setDirection(Direction.STOP);
-		System.out.println("At state Emergency.\n");
+		/*System.out.println("At state Emergency.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		target = 1;

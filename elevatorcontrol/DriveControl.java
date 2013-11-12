@@ -204,7 +204,7 @@ public class DriveControl extends Controller {
 	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
-		double brakeDistance = speed * speed / (2 * DECELERATION) * ONETOMILLI;
+		double brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
 		switch (d) {
 		case STOP:
 			return Commit.NOTREACHED;
