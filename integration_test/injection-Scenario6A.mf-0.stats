@@ -5,27 +5,27 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -rt 0s -head HEADER -cf integration_test/Scenario6A.cf -mf integration_test/Scenario6A.mf
-RandomSeed = 1383870107780
+Command line = -cf Scenario6A.cf -mf Scenario6A.mf -rt 0s -head HEADER
+RandomSeed = 1384376497479
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
 Real time rate = null
-Message File = integration_test/Scenario6A.mf
-Controller File = integration_test/Scenario6A.cf
+Message File = Scenario6A.mf
+Controller File = Scenario6A.cf
 
 Assertion Results:
-@1.1s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@16dd6ae7 :: floor ?== 1 PASSED
-@1.6s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@c5eb8a :: isLighted ?== true PASSED
-@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@1726099c :: speed ?== SLOW PASSED
-@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@346fe350 :: direction ?== UP PASSED
-@3.3s:  FAILED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@429addef :: floor ?== 3 FAILED
-@3.3s:  FAILED simulator.payloads.DrivePayload$ReadableDrivePayload@489fe953 :: speed ?== LEVEL FAILED
-@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@5e56ff18 :: direction ?== UP PASSED
+@1.1s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@2f2faeca :: floor ?== 1 PASSED
+@1.6s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@687a7e40 :: isLighted ?== true PASSED
+@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@332986ef :: speed ?== SLOW PASSED
+@2.1s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@552efed9 :: direction ?== UP PASSED
+@3.3s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@7b9585ef :: floor ?== 3 PASSED
+@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@2e26c3a1 :: speed ?== LEVEL PASSED
+@3.3s:  PASSED simulator.payloads.DrivePayload$ReadableDrivePayload@5978bb14 :: direction ?== UP PASSED
 
 
 ******************Summary******************
-Passed:  5
-Failed:  2
+Passed:  7
+Failed:  0
 Total :  7
 
