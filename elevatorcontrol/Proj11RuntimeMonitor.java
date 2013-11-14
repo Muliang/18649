@@ -16,7 +16,7 @@ import simulator.framework.Speed;
 //import simulator.payloads.CarWeightPayload.ReadableCarWeightPayload;
 //import simulator.payloads.DoorReversalPayload.ReadableDoorReversalPayload;
 //import simulator.payloads.DoorClosedPayload.ReadableDoorClosedPayload;
-import simulator.payloads.DoorMotorPayload.ReadableDoorMotorPayload;
+//import simulator.payloads.DoorMotorPayload.ReadableDoorMotorPayload;
 //import simulator.payloads.DoorOpenPayload.ReadableDoorOpenPayload;
 import simulator.payloads.DriveSpeedPayload.ReadableDriveSpeedPayload;
 import simulator.payloads.CarLanternPayload.ReadableCarLanternPayload;
@@ -384,11 +384,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	//Java doesn't like enums in private classes.
 	private static enum RT82State
-	{
-		DIRECTION_NONE,
-		DIRECTION_UP,
-		DIRECTION_DOWN,
-		DIRECTION_CHANGE
+	{		
+		NO_DIRECTION,
+		VALID_DIRECTION_UP,
+		VALID_DIRECTION_DOWN,
+		INVALID_DIRECTION
 	}
 
 	/**
@@ -397,14 +397,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	private class RT82StateMachine extends StateMachine
 	{
 		
-		private RT82State state = RT82State.DIRECTION_NONE;
+		private RT82State state = RT82State.NO_DIRECTION;
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT8.2: The Lanterns changed indicated direction on floor currentFloor.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
 			return "RT8.2: The Lanterns changed indicated direction on floor " + currentFloor + ".";
@@ -417,10 +412,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case DIRECTION_NONE:	directionNone();	break;
-				case DIRECTION_UP:		directionUp(); 		break;
-				case DIRECTION_DOWN:	directionDown();	break;
-				case DIRECTION_CHANGE:	directionChange();	break;
+				case NO_DIRECTION:	directionNone();	break;
+				case VALID_DIRECTION_UP:	validDirectionUp();	break;
+				case VALID_DIRECTION_DOWN:	validDirectionDown(); break;
+				case INVALID_DIRECTION:	invalidDirection();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
@@ -431,48 +426,50 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state does not produce a warning
 			releaseWarning();
 
-			//transition RT82-1
-			if(anyDoorsOpen() && lanternLit(Direction.UP))
-				state = RT82State.DIRECTION_UP;
-			//transition RT82-2
-			else if(anyDoorsOpen() && lanternLit(Direction.DOWN))
-				state = RT82State.DIRECTION_DOWN;
-		}
+			if(anyDoorsOpen() && (lanternLit(Direction.UP)))
+				state = RT82State.VALID_DIRECTION_UP;
+			
+			else if(anyDoorsOpen() && (lanternLit(Direction.DOWN)))
+				state = RT82State.VALID_DIRECTION_DOWN;
 
-		private void directionUp()
-		{
-			//This state does not produce a warning
+		}
+		
+		private void validDirectionUp() {
+			// this state does not produce a warning
+			
 			releaseWarning();
-
-			//transition RT82-3
-			if(!anyDoorsOpen())
-				state = RT82State.DIRECTION_NONE;
-			//transition RT82-6
-			else if(!lanternLit(Direction.UP))
-				state = RT82State.DIRECTION_CHANGE;
+			
+			if(!anyDoorsOpen()) {
+				state = RT82State.NO_DIRECTION;
+			}
+			else if(anyDoorsOpen() && !lanternLit(Direction.UP)) {
+				state = RT82State.INVALID_DIRECTION;
+			}
 		}
-
-		private void directionDown()
-		{
-			//This state does not produce a warning
+		
+		
+		
+		private void validDirectionDown() {
+			// this state does not produce a warning
+			
 			releaseWarning();
-
-			//transition RT82-4
-			if(!anyDoorsOpen())
-				state = RT82State.DIRECTION_NONE;
-			//transition RT82-7
-			else if(!lanternLit(Direction.DOWN))
-				state = RT82State.DIRECTION_CHANGE;
+			
+			if(!anyDoorsOpen()) {
+				state = RT82State.NO_DIRECTION;
+			}
+			else if(anyDoorsOpen() && !lanternLit(Direction.DOWN)) {
+				state = RT82State.INVALID_DIRECTION;
+			}
 		}
 
-		private void directionChange()
+
+		private void invalidDirection()
 		{
 			//This state produces a warning
 			setWarning();
 
-			//transition RT82-5
 			if(!anyDoorsOpen())
-				state = RT82State.DIRECTION_NONE;
+				state = RT82State.NO_DIRECTION;
 		}
 
 	}
@@ -496,11 +493,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private RT83State state = RT83State.DIRECTION_NONE;
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT8.3: The car traveled in different direction than indicated at floor currentFloor.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
 			return "RT8.3: The car traveled in different direction than indicated at floor " + currentFloor + ".";
@@ -527,10 +519,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state does not produce a warning
 			releaseWarning();
 
-			//transition RT83-1
 			if(!allDoorsClosed() && lanternLit(Direction.DOWN))
 				state = RT83State.DIRECTION_DOWN;
-			//transition RT83-2
+
 			else if(!allDoorsClosed() && lanternLit(Direction.UP))
 				state = RT83State.DIRECTION_UP;
 		}
@@ -542,11 +533,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 			boolean higherCalls = checkDirectionForCalls(currentFloor,Direction.UP);
 
-			//transition RT83-4
 			if(!allDoorsClosed() && !lanternLit(Direction.UP))
 				state = RT83State.DIRECTION_NONE;
-			//transition RT83-6
-			else if(currentFloor != MessageDictionary.NONE && mDesiredFloor.getFloor() < currentFloor && higherCalls)
+			
+			else if(!allDoorsClosed() && lanternLit(Direction.UP) && mDesiredFloor.getFloor() < currentFloor && higherCalls)
 				state = RT83State.DIRECTION_WRONG;
 		}
 
@@ -557,11 +547,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 			boolean lowerCalls = checkDirectionForCalls(currentFloor,Direction.DOWN);
 			
-			//transition RT83-3
+			
 			if(!allDoorsClosed() && !lanternLit(Direction.DOWN))
 				state = RT83State.DIRECTION_NONE;
-			//transition RT83-5
-			else if(currentFloor != MessageDictionary.NONE && mDesiredFloor.getFloor() > currentFloor && lowerCalls)
+			
+			else if(!allDoorsClosed() && lanternLit(Direction.DOWN) && mDesiredFloor.getFloor() > currentFloor && lowerCalls)
 				state = RT83State.DIRECTION_WRONG;
 		}
 
@@ -569,8 +559,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			//This state produces a warning
 			setWarning();
-
-			//transition RT83-7
+			
 			if(!allDoorsClosed())
 				state = RT83State.DIRECTION_NONE;
 		}
