@@ -266,7 +266,7 @@ public class DriveControl extends Controller {
 			log("No transitions:", currentState);
 		else
 			log("Transitions:", oldState, "->", currentState);
-
+		
 		setState(STATE_KEY, currentState.toString());
 		timer.start(period);
 	}
@@ -386,7 +386,7 @@ public class DriveControl extends Controller {
 
 		// #transition 'T6.4'
 		if (localDriveSpeed.speed() <= SLOW_SPEED
-				&& currentFloor == mDesiredFloor.getFloor())
+				&& (currentFloor == mDesiredFloor.getFloor() || mDesiredFloor.getFloor() == MessageDictionary.NONE))
 			currentState = State.STATE_LEVEL_DOWN;
 		// #transition 'T6.12'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
