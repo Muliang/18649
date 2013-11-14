@@ -5,26 +5,26 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -rt 0s -head HEADER -cf integration_test/Scenario7B.cf -mf integration_test/Scenario7B.mf
-RandomSeed = 1383870109244
+Command line = -cf Scenario7B.cf -mf Scenario7B.mf -rt 0s -head HEADER
+RandomSeed = 1384376478485
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
 Real time rate = null
-Message File = integration_test/Scenario7B.mf
-Controller File = integration_test/Scenario7B.cf
+Message File = Scenario7B.mf
+Controller File = Scenario7B.cf
 
 Assertion Results:
-@1.4s:  FAILED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1ff6c2a9 :: command ?== OPEN FAILED
-@2.0s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@4ce1e2b3 :: command ?== STOP PASSED
-@2.0s:  FAILED simulator.payloads.CanMailbox$ReadableCanMailbox@49c1e1e7 :: getDirection ?== STOP FAILED
-@3.0s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@2d81aed0 :: lighted ?== false PASSED
-@5.5s:  FAILED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@608d116e :: command ?== CLOSE FAILED
-@8.1s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@59678f0a :: command ?== STOP PASSED
+@2.1s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@75d8c794 :: command ?== OPEN PASSED
+@2.7s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@3383bff8 :: command ?== STOP PASSED
+@2.7s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@589c9874 :: getDirection ?== STOP PASSED
+@3.7s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@2295aedf :: lighted ?== false PASSED
+@6.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1b7ebdf8 :: command ?== CLOSE PASSED
+@8.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@6a48e2c5 :: command ?== STOP PASSED
 
 
 ******************Summary******************
-Passed:  3
-Failed:  3
+Passed:  6
+Failed:  0
 Total :  6
 

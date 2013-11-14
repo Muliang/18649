@@ -1,8 +1,11 @@
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
+import jSimPack.SimTime.SimTimeUnit;
 import simulator.elevatormodules.CarLevelPositionCanPayloadTranslator;
+import simulator.elevatormodules.CarWeightCanPayloadTranslator;
 import simulator.elevatormodules.DriveObject;
+import simulator.elevatormodules.passengers.Passenger;
 import simulator.framework.Controller;
 import simulator.framework.Direction;
 import simulator.framework.Elevator;
@@ -37,19 +40,22 @@ public class Dispatcher extends Controller {
 	//trace current state
 	private int target; //desired floor, initialized to 1
 	private int currentFloor;// do not update when all AtFloor are false
+	private int commitableFloor;
 	private Direction currentDirection;//current direction, update when drive.d is not STOP, initialize to UP
 	private Hallway currentHallway;//initialized to 1
+	private SimTime countDown;//countDown when doors are all closed, 
+	//when it reaches 0, dispatcher will ignore current floor hall call or car call
 	
     //network interface
 	//output
     private WriteableCanMailbox networkDesiredFloor;
     private DesiredFloorCanPayloadTranslator mDesiredFloor;
     
-    private WriteableCanMailbox networkDesiredDwellFront;
+    /*private WriteableCanMailbox networkDesiredDwellFront;
     private DesiredDwellCanPayloadTranslator mDesiredDwellFront;
     private WriteableCanMailbox networkDesiredDwellBack;
     private DesiredDwellCanPayloadTranslator mDesiredDwellBack;
-    
+*/    
     //input
     private Utility.AtFloorArray mAtFloor;
     private Utility.CarCallArray mCarCall;
@@ -64,8 +70,19 @@ public class Dispatcher extends Controller {
 	private ReadableCanMailbox networkCarLevelPosition;
     private CarLevelPositionCanPayloadTranslator mCarLevelPosition;
     
-    //private static int dwellTime = 2000; //in ms
-    private static final double LEVEL_SPEED		= DriveObject.LevelingSpeed;	// in m/s
+    private ReadableCanMailbox networkCarWeight;
+	private CarWeightCanPayloadTranslator mCarWeight;
+    
+	// m/s
+	private static final double LEVEL_SPEED = DriveObject.LevelingSpeed;
+	private static final double SLOW_SPEED = DriveObject.SlowSpeed; // in m/s
+	private static final double FAST_SPEED = DriveObject.FastSpeed; // in m/s
+	private static final double ACCELERATION = DriveObject.Acceleration; // in
+		// m/s^2
+	private static final double DECELERATION = DriveObject.Deceleration; // in
+		// m/s^2
+	private static final double ONETOMILLI = 1000.0;
+    private static final SimTime waitingTime  =  new SimTime(5000, SimTimeUnit.MILLISECOND);
     //add Time translator
     		
 	//enumerate states
@@ -81,6 +98,10 @@ public class Dispatcher extends Controller {
     	STATE_EMERGENCY
     }
     
+	private static enum Commit {
+		REACHED, NOTREACHED
+	}
+    
     
   //store the period for the controller
     private SimTime period;
@@ -93,9 +114,11 @@ public class Dispatcher extends Controller {
 		this.period = period;
 		this.maxFloors = maxFloors;
 		this.currentState = State.STATE_STOP_UP;
-		this.target = 1;
+		this.target = MessageDictionary.NONE;
 		this.currentFloor = 1;
+		this.commitableFloor = 1;
 		this.currentHallway = Hallway.NONE;
+		this.countDown = waitingTime;
 
         //initialize network interface
 		//output
@@ -131,6 +154,11 @@ public class Dispatcher extends Controller {
 		
         mDoorClosedArrayBack = new Utility.DoorClosedArray(Hallway.BACK, canInterface);
         mDoorClosedArrayFront = new Utility.DoorClosedArray(Hallway.FRONT, canInterface);
+        
+        networkCarWeight = CanMailbox
+				.getReadableCanMailbox(MessageDictionary.CAR_WEIGHT_CAN_ID);
+		mCarWeight = new CarWeightCanPayloadTranslator(networkCarWeight);
+		canInterface.registerTimeTriggered(networkCarWeight);
         
         timer.start(period);
 		
@@ -179,108 +207,187 @@ public class Dispatcher extends Controller {
 		}
 		return retval;
 	}
-
+	
+	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
+			Direction d) {
+		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
+		double brakeDistance = speed * speed / (2 * DECELERATION) * ONETOMILLI;
+		double allowance = 2 * speed * period.getFracMilliseconds();
+		switch (d) {
+		case STOP:
+			return Commit.NOTREACHED;
+		case UP: {
+			int estimatedPosition = (int) (floorPosition - brakeDistance - allowance);
+			if (estimatedPosition > CarLevelPosition) {
+				return Commit.NOTREACHED;
+			} else {
+				return Commit.REACHED;
+			}
+		}
+		case DOWN: {
+			int estimatedPosition = (int) (floorPosition + brakeDistance + allowance);
+			if (estimatedPosition < CarLevelPosition) {
+				return Commit.NOTREACHED;
+			} else {
+				return Commit.REACHED;
+			}
+		}
+		default:
+			return Commit.NOTREACHED;
+		}
+	}
+	
+	private int getNearestCommitableFloor(int currentFloor, int CarLevelPosition, int s, Direction d){
+		int floor = -1;
+		double speed = s/100.0;
+		if (speed < LEVEL_SPEED) return (int)Math.round(mCarLevelPosition.getPosition()/1000.0/5.0) + 1;
+		switch(d){
+		case UP: {
+			for(floor = currentFloor; floor <= Elevator.numFloors; floor ++){
+				if (commitPoint(floor, CarLevelPosition, speed, d) == Commit.NOTREACHED){
+					return floor;
+				}
+			}
+			break;
+		}
+		case DOWN: {
+			for(floor = currentFloor; floor >= 1; floor --){
+				if (commitPoint(floor, CarLevelPosition, speed, d) == Commit.NOTREACHED){
+					return floor;
+				}
+			}
+			break;
+		}
+		case STOP:
+		default:
+		}
+		return MessageDictionary.NONE;
+	}
+	
+	private boolean isIgnoringCurrentFloorCall(){
+		return countDown.isLessThanOrEqual(SimTime.ZERO) && mCarWeight.getValue() >= Elevator.MaxCarCapacity- Passenger.DEFAULT_WEIGHT;
+	}
+	
+	private boolean isAllDoorClosed(){
+		return (mDoorClosedArrayFront.getBothClosed() && mDoorClosedArrayBack.getBothClosed());
+	}
+	
 	private void stateDownUp() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		countDown = waitingTime;
 		mDesiredFloor.setHallway(currentHallway);
-		mDesiredFloor.setDirection(Direction.UP);
+		mDesiredFloor.setDirection(Direction.UP);		
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.DOWN);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 2, isIgnoringCurrentFloorCall());
+		//nearest floor in the negative direction to the currentDirection
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.DOWN);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallDownFloor, Direction.DOWN);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
+		/*System.out.println("At state DownUp.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.6.3'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
-			(((nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ((currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
-			|| (currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)))
-			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1))){
+			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
+			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
+			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
+			 && currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)
+			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1)))
 				currentState = State.STATE_DOWN_DOWN;
-			}
 		// #Transition 'T11.8.6'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED 
+		if(	mDriveSpeed.getSpeed() == 0
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE){
-			currentState = State.STATE_STOP_DOWN;
+			currentState = State.STATE_STOP_UP;
 		}
 		//#Transition 'S11.1.8'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				 !isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateDownDown() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
+		countDown = waitingTime;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.DOWN);
+		
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 2, isIgnoringCurrentFloorCall());
+		//nearest floor in the negative direction to the currentDirection
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.DOWN);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallDownFloor, Direction.DOWN);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
+		/*System.out.println("At state DownDown.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.8.5'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED 
+		if(	mDriveSpeed.getSpeed() == 0 
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 			){
 			currentState = State.STATE_STOP_DOWN;
 		}
 		//#Transition 'S11.1.7'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateDownStop() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
+		countDown = waitingTime;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.ceil((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 2);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.DOWN);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 2, isIgnoringCurrentFloorCall());
 		//nearest floor in the negative direction to the currentDirection
-		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
-		
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN);
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.DOWN);
-		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallDownFloor, Direction.DOWN);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
+		/*System.out.println("At state DownStop.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.6.2'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
-			(((nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ((currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
-			|| (currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)))
+			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
+			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
+			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
+			 && currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)
 			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1))){
-				currentState = State.STATE_DOWN_DOWN;
+			currentState = State.STATE_DOWN_DOWN;
 			}
 		// #Transition 'T11.7.2'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
@@ -288,28 +395,27 @@ public class Dispatcher extends Controller {
 			&& nearestCarCallFloorN != -1 && nearestHallCallDownFloor == -1)
 			
 			|| (nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.UP) != -1
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.UP) == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN)==-1)
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.UP, false) != -1
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor-1, Direction.DOWN, 1, Direction.UP, false) == -1
+			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)==-1)
 			
 			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
-				&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN)!=-1
-					|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP)!=-1))
+			&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN, false)!=-1
+				|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)!=-1))
 			
 			|| (nearestHallCallUpFloor != -1 && nearestCarCallFloor == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN)==-1))){
+			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall())==-1))){
 				currentState = State.STATE_DOWN_UP;
 		}
 		// #Transition 'T11.8.4'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED
+		if(	mDriveSpeed.getSpeed() == 0
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
 			currentState = State.STATE_STOP_DOWN;
 		}
 		//#Transition 'S11.1.6'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
@@ -317,41 +423,47 @@ public class Dispatcher extends Controller {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.UP);
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
+		countDown = waitingTime;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 2);
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 2, isIgnoringCurrentFloorCall());
+		//nearest floor in the negative direction to the currentDirection
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.UP);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallUpFloor, Direction.UP);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
+		/*System.out.println("At state UpDown.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.3.3'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0
-			
-			&&(  (nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ( (currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
-			|| (currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor) )    )
-			
-			||(currentFloor <= nearestHallCallUpFloor)){
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
+				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
+				|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
+				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor)
+				||(currentFloor <= nearestHallCallUpFloor))){
 				currentState = State.STATE_UP_UP;
 			}
 		// #Transition 'T11.8.3'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED
+		if(	mDriveSpeed.getSpeed() == 0
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
-			currentState = State.STATE_STOP_UP;
+			currentState = State.STATE_STOP_DOWN;
 		}
 		//#Transition 'S11.1.5'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;		
 	}
 
@@ -359,64 +471,73 @@ public class Dispatcher extends Controller {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
+		countDown = waitingTime;
 		///mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 2);
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.UP);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 2, isIgnoringCurrentFloorCall());
+		//nearest floor in the negative direction to the currentDirection
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.UP);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallUpFloor, Direction.UP);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
-		
+		/*System.out.println("At state UpUp.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.8.2'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED
+		if(	mDriveSpeed.getSpeed() == 0
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 			){
 			currentState = State.STATE_STOP_UP;
 		}
 		//#Transition 'S11.1.4'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateUpStop() {
 		// TODO Auto-generated method stub
 		mDesiredFloor.setFloor(target);
-		if(mAtFloor.getCurrentHallway() != Hallway.NONE)
-			currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
+		countDown = waitingTime;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 2);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.UP);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 2, isIgnoringCurrentFloorCall());
 		//nearest floor in the negative direction to the currentDirection
-		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
-		
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN);
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.UP);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallUpFloor, Direction.UP);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
+		/*System.out.println("At state UpStop.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		// #Transition 'T11.3.2'
 		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
-			(((nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ((currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
-			|| (currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor)))
-			||(currentFloor <= nearestHallCallUpFloor))){
+				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
+				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
+				|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
+				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor)
+				||(currentFloor <= nearestHallCallUpFloor))){
 				currentState = State.STATE_UP_UP;
 			}
 		// #Transition 'T11.4.2'
@@ -424,38 +545,41 @@ public class Dispatcher extends Controller {
 			((nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
 			&& nearestCarCallFloorN != -1 && nearestHallCallUpFloor == -1)
 			
-			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.DOWN) != -1
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.DOWN) == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP)==-1
-			)
+			|| (nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.DOWN, false) != -1
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor+1, Direction.UP, 1, Direction.DOWN, false) == -1
+			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)==-1)
 			
 			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
-				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN)!=-1
-					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP)!=-1))
+				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)!=-1
+					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP, false)!=-1))
 			
 			|| (nearestHallCallDownFloor != -1 && nearestCarCallFloor == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP)==-1))){
+			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall())==-1))){
 				currentState = State.STATE_UP_DOWN;
 		}
 		// #Transition 'T11.8.4'
-		if(	mDriveSpeed.getSpeed() <= LEVEL_SPEED
+		if(	mDriveSpeed.getSpeed() == 0
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
 			currentState = State.STATE_STOP_UP;
 		}
 		//#Transition 'S11.1.3'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void StateStopDown() {
 		// TODO Auto-generated method stub
+		if(mDoorClosedArrayFront.getBothClosed() == true &&
+				mDoorClosedArrayFront.getBothClosed() == true){
+			countDown = SimTime.subtract(countDown, period);
+		}else
+			countDown = waitingTime;
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(currentHallway);
 		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.DOWN;
 		//mDesiredFloor.setDirection(Direction.STOP);
 		//keep desiredDirection
@@ -463,34 +587,40 @@ public class Dispatcher extends Controller {
 		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 2);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.DOWN);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 2, isIgnoringCurrentFloorCall());
 		//nearest floor in the negative direction to the currentDirection
-		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1);
-		
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN);
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.DOWN);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallDownFloor, Direction.DOWN);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.DOWN);
 		}
+		/*System.out.println("At state StopDown.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//#Transition S11.10
-		if (nearestCarCallFloor ==-1 && nearestHallCallFloor == -1){
+		if (nearestCarCallFloor ==-1 && nearestHallCallFloor == -1 && isAllDoorClosed()){
 			currentState = State.STATE_STOP_UP;
 		}		
 		//#Transition 'S11.5'
-		if (currentDirection == Direction.DOWN && nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
-			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1)==-1 
+		if (currentDirection == Direction.DOWN && mDriveSpeed.getSpeed()!=0
+			&& nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
+			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, isIgnoringCurrentFloorCall())==-1 
 			&& mHallCall.isAllUnpressed() && mDriveSpeed.getSpeed() != 0){
 			currentState = State.STATE_DOWN_STOP;
 		}
 		//#Transition 'S11.6.1'
 		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
-			(((nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ((currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
-			|| (currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)))
-			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1))){
+			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
+			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
+			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
+			 && currentFloor >= nearestCarCallFloor && nearestCarCallFloor > nearestHallCallFloor)
+			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1)))
+		{
 				currentState = State.STATE_DOWN_DOWN;
 			}
 		//#Transition 'S11.7.1'
@@ -499,66 +629,77 @@ public class Dispatcher extends Controller {
 			&& nearestCarCallFloorN != -1 && nearestHallCallDownFloor == -1)
 			
 			|| (nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.UP) != -1
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.UP) == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN)==-1)
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.UP, false) != -1
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor-1, Direction.DOWN, 1, Direction.UP, false) == -1
+			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)==-1)
 			
 			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
-			&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN)!=-1
-				|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP)!=-1))
+			&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN, false)!=-1
+				|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)!=-1))
 			
 			|| (nearestHallCallUpFloor != -1 && nearestCarCallFloor == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN)==-1))){
+			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall())==-1))){
 				currentState = State.STATE_DOWN_UP;
 		}
 		//#Transition 'S11.1.2'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+			!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void StateStopUp() {
 		// TODO Auto-generated method stub
+		if(mDoorClosedArrayFront.getBothClosed() == true &&
+				mDoorClosedArrayFront.getBothClosed() == true){
+			countDown = SimTime.subtract(countDown, period);
+		}else
+			countDown = waitingTime;
 		mDesiredFloor.setFloor(target);
-		mDesiredFloor.setHallway(currentHallway);
 		currentHallway = mAtFloor.getCurrentHallway();
+		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.UP;
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
 			currentFloor = mAtFloor.getCurrentFloor(); //do not update currentFloor at hoistway
-		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1);
-		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 2);
+		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.UP);
+		int nearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, isIgnoringCurrentFloorCall());
+		int secondNearestCarCallFloor = mCarCall.getNearestPressedFloor(commitableFloor, Direction.UP, 2, isIgnoringCurrentFloorCall());
 		//nearest floor in the negative direction to the currentDirection
-		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1);
-		
-		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP);
-		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.DOWN);
+		int nearestCarCallFloorN = mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, false);
+		int nearestHallCallUpFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall());
+		int nearestHallCallDownFloor = mHallCall.getNearestPressedFloor(commitableFloor, Direction.UP, 1, Direction.DOWN, isIgnoringCurrentFloorCall());
 		int nearestHallCallFloor = computeNearestFloor(nearestHallCallUpFloor, nearestHallCallDownFloor, Direction.UP);
 		target = computeNearestFloor(nearestCarCallFloor, nearestHallCallUpFloor, Direction.UP);
 		if(target == -1){
 			target = computeNearestFloor(nearestCarCallFloor, nearestHallCallFloor, Direction.UP);
 		}
+		/*System.out.println("At state StopUp.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//#Transition S11.9
 		if (nearestCarCallFloor ==-1 && nearestHallCallFloor == -1
-			&& (mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1) !=-1 
-			|| mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN)!=-1
-			|| mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.UP)!=-1)){
+			&& (mCarCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1,  false)!=-1 
+			|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)!=-1
+			|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP, false)!=-1)
+			&& isAllDoorClosed()){
 			currentState = State.STATE_STOP_DOWN;
 		}		
 		//#Transition 'S11.2'
-		if (currentDirection == Direction.UP && nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
-			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1)==-1 
+		if (currentDirection == Direction.UP && mDriveSpeed.getSpeed()!=0
+			&& nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
+			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall())==-1 
 			&& mHallCall.isAllUnpressed()){
 			currentState = State.STATE_UP_STOP;
 		}
 		//#Transition 'S11.3.1'
 		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
-			(((nearestCarCallFloor != -1&&(secondNearestCarCallFloor != -1 || nearestHallCallFloor != -1))
-			&& ((currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
-			|| (currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor)))
-			||(currentFloor <= nearestHallCallUpFloor))){
+			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
+			&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
+			|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
+			&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < nearestHallCallFloor)
+			||(currentFloor <= nearestHallCallUpFloor)))
+			{
 				currentState = State.STATE_UP_UP;
 			}
 		//#Transition 'S11.4.1'
@@ -567,22 +708,21 @@ public class Dispatcher extends Controller {
 			&& nearestCarCallFloorN != -1 && nearestHallCallUpFloor == -1)
 			
 			|| (nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.DOWN) != -1
-			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.UP, 1, Direction.DOWN) == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP)==-1)
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor, Direction.DOWN, 1, Direction.DOWN, false) != -1
+			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor+1, Direction.UP, 1, Direction.DOWN, false) == -1
+			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)==-1)
 			
 			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
-				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN)!=-1
-					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP)!=-1))
+				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)!=-1
+					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP, false)!=-1))
 			
 			|| (nearestHallCallDownFloor != -1 && nearestCarCallFloor == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP)==-1))){
+			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, Direction.UP, isIgnoringCurrentFloorCall())==-1))){
 				currentState = State.STATE_UP_DOWN;
 		}
 		//#Transition 'S11.1.1'
 		if(mAtFloor.getCurrentFloor() == MessageDictionary.NONE && 
-				(mDoorClosedArrayFront.getBothClosed() == false ||
-				mDoorClosedArrayFront.getBothClosed() == false))
+				!isAllDoorClosed())
 			currentState = State.STATE_EMERGENCY;
 	}
 
@@ -592,6 +732,9 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(1);
 		mDesiredFloor.setHallway(Hallway.NONE);
 		mDesiredFloor.setDirection(Direction.STOP);
+		/*System.out.println("At state Emergency.\n");
+		System.out.print("currentFloor ="+ currentFloor +"\n");
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		target = 1;

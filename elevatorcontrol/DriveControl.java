@@ -204,7 +204,7 @@ public class DriveControl extends Controller {
 	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
-		double brakeDistance = speed * speed / (2 * DECELERATION) * ONETOMILLI;
+		double brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
 		switch (d) {
 		case STOP:
 			return Commit.NOTREACHED;
@@ -266,7 +266,7 @@ public class DriveControl extends Controller {
 			log("No transitions:", currentState);
 		else
 			log("Transitions:", oldState, "->", currentState);
-
+		
 		setState(STATE_KEY, currentState.toString());
 		timer.start(period);
 	}
@@ -334,13 +334,13 @@ public class DriveControl extends Controller {
 		// #transition 'T6.6'
 
 		else if (mLevelUp.getValue() == false // ||
-												// mCarLevelPosition.getPosition()<0)
+				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()<0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_UP;
 		// #transition 'T6.8'
 		else if (mLevelDown.getValue() == false // ||
-												// mCarLevelPosition.getPosition()>0)
+				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()>0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_DOWN;
@@ -365,6 +365,7 @@ public class DriveControl extends Controller {
 			currentState = State.STATE_LEVEL_UP;
 		// #transition 'T6.10'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
+				&& desiredFloor != MessageDictionary.NONE
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_UP;
@@ -385,10 +386,11 @@ public class DriveControl extends Controller {
 
 		// #transition 'T6.4'
 		if (localDriveSpeed.speed() <= SLOW_SPEED
-				&& currentFloor == mDesiredFloor.getFloor())
+				&& (currentFloor == mDesiredFloor.getFloor() || mDesiredFloor.getFloor() == MessageDictionary.NONE))
 			currentState = State.STATE_LEVEL_DOWN;
 		// #transition 'T6.12'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
+				&& desiredFloor != MessageDictionary.NONE
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_DOWN;
