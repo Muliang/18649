@@ -210,8 +210,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	private static enum RT7State
 	{
 		CLOSED,
-		OPEN,
-		BAD_OPEN,
+		VALID_OPEN,
+		INVALID_OPEN,
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	 */
 	private class RT7StateMachine extends StateMachine
 	{
-		
+		// initial state
 		private RT7State state = RT7State.CLOSED;
 
 		@Override
@@ -241,8 +241,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			switch(state) {
 				case CLOSED:	closed();	break;
-				case OPEN:		open();		break;
-				case BAD_OPEN:	badOpen();	break;
+				case VALID_OPEN:		open();		break;
+				case INVALID_OPEN:	badOpen();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
@@ -253,13 +253,13 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state does not set a warning
 			releaseWarning();
 
-			//RT7-1
+			
 			if(anyDoorsOpen() && hasCall(currentFloor)) {
-				state = RT7State.OPEN;
+				state = RT7State.VALID_OPEN;
 			}
-			//RT7-4
+			
 			if(anyDoorsOpen() && !hasCall(currentFloor)) {
-				state = RT7State.BAD_OPEN;
+				state = RT7State.INVALID_OPEN;
 			}
 
 		}
@@ -269,7 +269,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state does not set a warning
 			releaseWarning();
 
-			//RT7-2
+			
 			if(!anyDoorsOpen()) {
 				state = RT7State.CLOSED;
 			}
@@ -281,7 +281,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state sets a warning
 			setWarning();
 
-			//transition RT7-3
+			
 			if(!anyDoorsOpen()) {
 				state = RT7State.CLOSED;
 			}
@@ -292,9 +292,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
     //Java doesn't like enums in private classes.
 	private static enum RT81State
 	{
-		CORRECT_LANTERNS,
-		CALL_MADE_DELAY,
-		WRONG_LANTERNS
+		LANTERN_IDLE,
+		LANTERN_ON,
+		LANTERN_OFF
 	}
 
 	/**
@@ -306,7 +306,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public static final int LANTERN_CONTROL_TIME = 200;
 		public static final int LANTERN_DOUBLE_GLOBAL_TICK = 2*LANTERN_CONTROL_TIME;
 		
-		private RT81State state = RT81State.CORRECT_LANTERNS;
+		// initial state: no call, lantern is idle
+		private RT81State state = RT81State.LANTERN_IDLE;
 		private IntervalTimer timer = new IntervalTimer();
 
 		@Override
@@ -327,9 +328,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case CORRECT_LANTERNS:	correctLanterns();	break;
-				case CALL_MADE_DELAY:	callMadeDelay();	break;
-				case WRONG_LANTERNS:	wrongLanterns();	break;
+				case LANTERN_IDLE:	correctLanterns();	break;
+				case LANTERN_ON:	callMadeDelay();	break;
+				case LANTERN_OFF:	wrongLanterns();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
@@ -343,10 +344,12 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//Timer should not be running in this state
 			timer.stop();
 
-			//transition RT81-1
+			// car stopped at certain floor
 			if(anyDoorsOpen() && anyOtherCall(currentFloor) &&
-					(!lanternLit(Direction.UP) && !lanternLit(Direction.DOWN)) ) {
-				state = RT81State.CALL_MADE_DELAY;
+					(lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
+				state = RT81State.LANTERN_ON;
+			} else if(anyDoorsOpen() && anyOtherCall(currentFloor) && ((!lanternLit(Direction.UP)) && (!lanternLit(Direction.DOWN)))) {
+				state = RT81State.LANTERN_OFF;
 			}
 
 		}
@@ -359,14 +362,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//Timer should be running in this state
 			timer.start(new SimTime(LANTERN_DOUBLE_GLOBAL_TICK, SimTimeUnit.MILLISECOND));
 				
-
-			//transition RT81-2
-			if(!timer.isExpired() && (!anyDoorsOpen() || 
-					lanternLit(Direction.UP) || lanternLit(Direction.DOWN) ) )
-				state = RT81State.CORRECT_LANTERNS;
-			//transition RT81-3
-			else if(timer.isExpired())
-				state = RT81State.WRONG_LANTERNS;
+			if(!timer.isExpired() && (!anyDoorsOpen()))
+				state = RT81State.LANTERN_IDLE;
 
 		}
 
@@ -380,7 +377,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 			//transition RT81-4
 			if(!anyDoorsOpen())
-				state = RT81State.CORRECT_LANTERNS;
+				state = RT81State.LANTERN_IDLE;
 		}
 
 	} 
