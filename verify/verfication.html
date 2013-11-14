@@ -30,26 +30,18 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">Group 9- Yichao Xue &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      yichaox</span><br style="color: rgb(0, 0, 0); font-family: Times;
-      font-size: medium; font-style: normal; font-variant: normal;
-      font-weight: normal; letter-spacing: normal; line-height: normal;
-      orphans: auto; text-align: start; text-indent: 0px;
+      yichaox</span><span style="color: rgb(0, 0, 0); font-family:
+      Times; font-size: medium; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
       text-transform: none; white-space: normal; widows: auto;
-      word-spacing: 0px; -webkit-text-stroke-width: 0px;">
-    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp; Priya Mahajan&nbsp;&nbsp;&nbsp; priyam</span><br
-      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
-      font-style: normal; font-variant: normal; font-weight: normal;
-      letter-spacing: normal; line-height: normal; orphans: auto;
-      text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px;">
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"></span><br style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
       medium; font-style: normal; font-variant: normal; font-weight:
       normal; letter-spacing: normal; line-height: normal; orphans:
@@ -87,7 +79,53 @@
       none;">R-T6: The Car shall only stop at Floors for which there are
       pending calls.<br>
       <br>
-      <img alt="rt6" src="RT6.png" height="162" width="662"><br>
+      <img alt="rt6" src="RT6.png" height="163" width="662"><br>
+      <br>
+    </span>
+    <table border="1" cellpadding="2" cellspacing="2" height="178"
+      width="890">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Conditions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT6-1<br>
+          </td>
+          <td valign="top">mDriveSpeed &lt;= LevelSpeed AND&nbsp; any
+            mHallCall[currenfloor, b] is true or mCallCall[currentfloor,
+            b] is true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT6-2<br>
+          </td>
+          <td valign="top">mDriveSpeed &gt; LevelSpeed</td>
+        </tr>
+        <tr>
+          <td valign="top">RT6-2<br>
+          </td>
+          <td valign="top">mDriveSpeed &lt;= LevelSpeed AND&nbsp; all
+            mHallCall[currenfloor, b] or mCallCall[currentfloor, b] are
+            not true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT6-4<br>
+          </td>
+          <td valign="top">mDriveSpeed &gt; LevelSpeed</td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;"><br>
       <br>
       <br>
     </span><br>
@@ -101,7 +139,53 @@
       none;">R-T7: The Car shall only open Doors at Hallways for which
       there are pending calls.<br>
       <br>
-      <img alt="rt7" src="RT7.png" height="137" width="635"><br>
+      <img alt="rt7" src="RT7.png" height="153" width="624"><br>
+    </span><br>
+    <table border="1" cellpadding="2" cellspacing="2" height="178"
+      width="890">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Conditions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT7-1<br>
+          </td>
+          <td valign="top">any mDoorMotor[b, r] is open AND any
+            mHallCall[currenfloor, b] is true or mCallCall[currentfloor,
+            b] is true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT7-2<br>
+          </td>
+          <td valign="top">mDoorMotor[b, r] is not open</td>
+        </tr>
+        <tr>
+          <td valign="top">RT7-2<br>
+          </td>
+          <td valign="top">any mDoorMotor[b, r] is open AND all
+            mHallCall[currenfloor, b] or mCallCall[currentfloor, b] are
+            not true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT7-4<br>
+          </td>
+          <td valign="top">mDoorMotor[b, r] is not open</td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;"><br>
+      <br>
       <br>
       <br>
     </span>
@@ -116,6 +200,49 @@
       pending calls at any other floor(s), a Car Lantern shall turn on.<br>
       <br>
       <img alt="rt8_1" src="RT8_1.png" height="113" width="572"><br>
+    </span><br>
+    <table border="1" cellpadding="2" cellspacing="2" height="178"
+      width="890">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Conditions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT8_1-1<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT8_1-2<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT8_1-3<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT8_1-4<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-style: normal; font-variant: normal; font-weight:
+      normal; letter-spacing: normal; line-height: normal; orphans:
+      auto; text-align: left; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;"><br>
       <br>
       <br>
     </span>
@@ -181,6 +308,8 @@
             Test Name<br>
           </td>
           <td style="vertical-align: top; font-weight: bold;">Verification
+
+
 
 
             Status<br>
