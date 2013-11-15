@@ -446,7 +446,9 @@
       is already lit on. The monitor records dispatcher's desired floor
       while the door is and one lantern is lit on. A warning is thrown
       when car's desired floor is not on the same direction as the
-      lantern indicated while making transition RT8_3-4 &amp; RT8_3-6.</span>
+      lantern indicated while making transition RT8_3-4 &amp; RT8_3-6.<br>
+      <br>
+    </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
       font-family: Times; font-size: medium; font-style: normal;
       font-variant: normal; font-weight: normal; letter-spacing: normal;
@@ -534,7 +536,13 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">R-T10: For each stop at a floor, at least one door reversal
-      shall have occured before the doors are commanded to nudge.</span><br>
+      shall have occurred before the doors are commanded to nudge.</span><br>
+    <br>
+    write up: R-T10 is violated when door starts to nudge before any
+    door reversal has occurred. The monitor records door's state between
+    moving, stopped, reversal and nudged. A warning is thrown when the
+    state transits directly from stopped to nudged without reversal
+    RT10-4.<br>
     <h2>Verification Instructions</h2>
     <i style="color: rgb(0, 0, 0); font-family: Times; font-size:
       medium; font-variant: normal; font-weight: normal; letter-spacing:
