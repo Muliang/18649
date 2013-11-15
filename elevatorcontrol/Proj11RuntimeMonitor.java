@@ -12,12 +12,7 @@ import simulator.framework.Harness;
 import simulator.framework.RuntimeMonitor;
 import simulator.framework.Side;
 import simulator.framework.Direction;
-import simulator.framework.Speed;
-//import simulator.payloads.CarWeightPayload.ReadableCarWeightPayload;
-//import simulator.payloads.DoorReversalPayload.ReadableDoorReversalPayload;
-//import simulator.payloads.DoorClosedPayload.ReadableDoorClosedPayload;
-//import simulator.payloads.DoorMotorPayload.ReadableDoorMotorPayload;
-//import simulator.payloads.DoorOpenPayload.ReadableDoorOpenPayload;
+import simulator.payloads.DoorMotorPayload.ReadableDoorMotorPayload;
 import simulator.payloads.DriveSpeedPayload.ReadableDriveSpeedPayload;
 import simulator.payloads.CarLanternPayload.ReadableCarLanternPayload;
 import simulator.payloads.AtFloorPayload.ReadableAtFloorPayload;
@@ -80,40 +75,32 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
         	
     }
 
-//	@Override
-//	/**
-//	 *	Whenever a DoorMotor is updated, do this.
-//	 *	Updates the state machines that primarily use the DoorMotors
-//	 *	@param msg latest DoorMotor message
-//	 */
-//    public void receive(ReadableDoorMotorPayload msg) {
-//		checkStateMachine(rt10_f);
-//		checkStateMachine(rt10_b);
-//    }
+	@Override
+	/**
+	 *	Whenever a DoorMotor is updated, do this.
+	 *	Updates the state machines that primarily use the DoorMotors
+	 *	@param msg latest DoorMotor message
+	 */
+    public void receive(ReadableDoorMotorPayload msg) {
+		checkStateMachine(rt10_f);
+		checkStateMachine(rt10_b);
+    }
 
     @Override
-    /**
-     *	Gives array of strings that summarize the warnings generated 
-     *	in the runtime monitor while it was running
-     *	@return Array of summarized warnings
-     */
     protected String[] summarize()
     {
     	String[] summary = new String[7];
-		summary[0] = "RT6: Times a stop occured without a pending call: " + rt6.getViolations();
-		summary[1] = "RT7: Times a door open occurred without a pending call: " + rt7.getViolations();
-    	summary[2] = "RT8.1: Times a call occured without a car lantern: " + rt81.getViolations();
-    	summary[3] = "RT8.2: Times car lanterns changed direction: " + rt82.getViolations();
-    	summary[4] = "RT8.3: Times car traveled in different direction than indicated: " + rt83.getViolations();
-    	summary[5] = "RT9:   Times Speed not commaded to maximum degree practicable: " + rt9.getViolations();
-		summary[6] = "RT10: Times a door reversal occured without a nudge: " + (rt10_f.getViolations() + rt10_b.getViolations());
+		summary[0] = "RT6: stops at floors for which there are no pending calls " + rt6.getViolations();
+		summary[1] = "RT7: open doors at hallways for which there are no pending calls " + rt7.getViolations();
+    	summary[2] = "RT8.1: no lantern lit when any door is open at a hallway and there are any pending calls at any other floor(s) " + rt81.getViolations();
+    	summary[3] = "RT8.2: direction indicated by lantern changes while the doors are open " + rt82.getViolations();
+    	summary[4] = "RT8.3: car services other direction when one of the car lanterns is lit " + rt83.getViolations();
+    	summary[5] = "RT9: drive speed not commaded to maximum degree practicable " + rt9.getViolations();
+		summary[6] = "RT10: no door reversal occurs before the doors are commanded to nudge " + (rt10_f.getViolations() + rt10_b.getViolations());
     	return summary;
     }
 
-    /**
-     *	Runs the specified state machine and checks for warnings generated
-     *	@param machine state machine to be run
-     */
+
     protected void checkStateMachine(StateMachine machine)
     {
     	machine.update();
@@ -122,7 +109,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
         	warning(message);
     }
 
-	//Java doesn't like enums in private classes.
 	private static enum RT6State
 	{
 		MOVING,
@@ -141,14 +127,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public static final double LEVEL_SPEED = 0.10;
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT6: The car stopped at a floor for which there are no pending calls.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
-			return "RT6: The car stopped with no pending calls at " + currentFloor + ".";
+			return "RT6: stops at floors for which there are no pending calls " + currentFloor + ".";
 		}
 
 		@Override
@@ -159,8 +140,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			switch(state) {
 				case MOVING:	moving();	break;
-				case VALID_STOP:	stopCall();	break;
-				case INVALID_STOP:	badStop();	break;
+				case VALID_STOP:	validStop();	break;
+				case INVALID_STOP:	invalidStop();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
@@ -168,9 +149,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void moving()
 		{
-			//This state does not set a warning
 			releaseWarning();
-
 			
 			if(driveActualSpeed.speed() <= LEVEL_SPEED && hasCall(currentFloor)) {
 				state = RT6State.VALID_STOP;
@@ -182,9 +161,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		}
 
-		private void stopCall()
+		private void validStop()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
 			if(driveActualSpeed.speed() > LEVEL_SPEED) {
@@ -193,12 +171,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		}
 
-		private void badStop()
+		private void invalidStop()
 		{
-			//This state sets a warning
 			setWarning();
 
-			//transition RT6-3
 			if(driveActualSpeed.speed() > LEVEL_SPEED) {
 				state = RT6State.MOVING;
 			}
@@ -206,7 +182,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	} 
 
-	//Java doesn't like enums in private classes.
+
 	private static enum RT7State
 	{
 		CLOSED,
@@ -223,14 +199,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private RT7State state = RT7State.CLOSED;
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT7: The car opened doors at a floor for which there are no pending calls.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
-			return "RT7: The car opened doors with no pending calls at " + currentFloor + ".";
+			return "RT7: open doors at hallways for which there are no pending calls " + currentFloor + ".";
 		}
 
 		@Override
@@ -250,7 +221,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void closed()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
 			
@@ -266,7 +236,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void open()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
 			
@@ -278,7 +247,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void badOpen()
 		{
-			//This state sets a warning
 			setWarning();
 
 			
@@ -289,7 +257,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	}
 
-    //Java doesn't like enums in private classes.
+
 	private static enum RT81State
 	{
 		LANTERN_IDLE,
@@ -311,14 +279,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private IntervalTimer timer = new IntervalTimer();
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT8.1: The Lanterns failed to indicate direction at currentFloor.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
-			return "RT8.1: The Lanterns failed to indicate direction at " + currentFloor + ".";
+			return "RT8.1: no lantern lit when any door is open at a hallway and there are any pending calls at any other floor(s) " + currentFloor + ".";
 		}
 
 		@Override
@@ -338,13 +301,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void correctLanterns()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
 			//Timer should not be running in this state
 			timer.stop();
 
-			// car stopped at certain floor
 			if(anyDoorsOpen() && anyOtherCall(currentFloor) &&
 					(lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
 				state = RT81State.LANTERN_ON;
@@ -356,7 +317,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void callMadeDelay()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
 			//Timer should be running in this state
@@ -369,20 +329,17 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void wrongLanterns()
 		{
-			//This state sets a warning
 			setWarning();
 
 			//Timer should not be running in this state
 			timer.stop();
 
-			//transition RT81-4
 			if(!anyDoorsOpen())
 				state = RT81State.LANTERN_IDLE;
 		}
 
 	} 
 
-	//Java doesn't like enums in private classes.
 	private static enum RT82State
 	{		
 		NO_DIRECTION,
@@ -402,7 +359,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		@Override
 		protected String warningMessage()
 		{
-			return "RT8.2: The Lanterns changed indicated direction on floor " + currentFloor + ".";
+			return "RT8.2: direction indicated by lantern changes while the doors are open " + currentFloor + ".";
 		}
 
 		@Override
@@ -423,7 +380,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void directionNone()
 		{
-			//This state does not produce a warning
 			releaseWarning();
 
 			if(anyDoorsOpen() && (lanternLit(Direction.UP)))
@@ -435,8 +391,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		}
 		
 		private void validDirectionUp() {
-			// this state does not produce a warning
-			
 			releaseWarning();
 			
 			if(!anyDoorsOpen()) {
@@ -450,8 +404,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		
 		
 		private void validDirectionDown() {
-			// this state does not produce a warning
-			
 			releaseWarning();
 			
 			if(!anyDoorsOpen()) {
@@ -475,7 +427,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	}
 
 
-	//Java doesn't like enums in private classes.
 	private static enum RT83State
 	{
 		DIRECTION_NONE,
@@ -495,7 +446,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		@Override
 		protected String warningMessage()
 		{
-			return "RT8.3: The car traveled in different direction than indicated at floor " + currentFloor + ".";
+			return "RT8.3: car services other direction when one of the car lanterns is lit " + currentFloor + ".";
 		}
 
 		@Override
@@ -516,7 +467,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void directionNone()
 		{
-			//This state does not produce a warning
 			releaseWarning();
 
 			if(!allDoorsClosed() && lanternLit(Direction.DOWN))
@@ -528,7 +478,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void directionUp()
 		{
-			//This state does not produce a warning
 			releaseWarning();
 
 			boolean higherCalls = checkDirectionForCalls(currentFloor,Direction.UP);
@@ -542,7 +491,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void directionDown()
 		{
-			//This state does not produce a warning
 			releaseWarning();
 
 			boolean lowerCalls = checkDirectionForCalls(currentFloor,Direction.DOWN);
@@ -557,22 +505,21 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void directionWrong()
 		{
-			//This state produces a warning
+			// warning
 			setWarning();
 			
-			if(!allDoorsClosed())
+			if(allDoorsClosed())
 				state = RT83State.DIRECTION_NONE;
 		}
 
 	}
 
 
-	//Java doesn't like enums in private classes.
 	private static enum RT9State
 	{
-		NORMAL_OPERATION,
-		TRANS_SLOW_TO_FAST,
-		INEFFICIENCY
+		CURRENT_FLOOR,
+		NEXT_FLOOR_EFFICIENT,
+		NEXT_FLOOR_INEFFICIENT
 	}
 
 	/**
@@ -580,87 +527,69 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	 */
 	private class RT9StateMachine extends StateMachine
 	{
-
 		public static final int DRIVE_CONTROL_TIME = 10;
 		public static final double SLOW_SPEED = 0.25;
 		
-		private RT9State state = RT9State.NORMAL_OPERATION;
+		private RT9State state = RT9State.CURRENT_FLOOR;
 		private IntervalTimer timer = new IntervalTimer();
+		private boolean fastSpeed = false;
 
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT9: Speed not commanded to maximum degree practicable.
-		 *	@return Warning Message
-		 */
-		protected String warningMessage()
-		{
-			return "RT9: Speed not commanded to maximum degree practicable.";
-		}
-
-		@Override
-		/**
-		 *	Updates the state machine
-		 */
-		public void update()
-		{
+		public void update() {
 			switch(state) {
-				case NORMAL_OPERATION:		normalOperation();		break;
-				case TRANS_SLOW_TO_FAST:	transSlowToFast();		break;
-				case INEFFICIENCY:			inefficiency();			break;
+				case CURRENT_FLOOR:	currentFloor();	break;
+				case NEXT_FLOOR_EFFICIENT:	nextFloor();	break;
+				case NEXT_FLOOR_INEFFICIENT:	inefficientNextFloor();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
+			
 		}
-
-		private void normalOperation()
-		{
-			//There is no warning in this state
+		
+		private void currentFloor() {
 			releaseWarning();
-
-			//The timer should not be going
-			timer.stop();
-
-			//RT9-1
-			if(driveActualSpeed.speed() == SLOW_SPEED) {
-				state = RT9State.TRANS_SLOW_TO_FAST;
-			}
-
-		}
-
-		private void transSlowToFast()
-		{
-			//There is no warning in this state
-			releaseWarning();
-
-			//The timer should be set when entering this state
 			timer.start(new SimTime(3*DRIVE_CONTROL_TIME, SimTimeUnit.MILLISECOND));
-				
-			//RT9-2
-			if(!timer.isExpired() && driveCommandedSpeed.speed() != Speed.SLOW )
-				state = RT9State.NORMAL_OPERATION;
-			//RT9-3
-			else if(timer.isExpired())
-				state = RT9State.INEFFICIENCY;
-
+			
+			if(driveActualSpeed.speed() > SLOW_SPEED) {
+				fastSpeed = true;
+			}
+			
+			if(currentFloor != MessageDictionary.NONE && fastSpeed == true && driveActualSpeed.speed() == 0) {
+				state = RT9State.NEXT_FLOOR_EFFICIENT;
+			}
+			
+			else if(timer.isExpired() && currentFloor != MessageDictionary.NONE && fastSpeed == false && driveActualSpeed.speed() == 0) {
+				state = RT9State.NEXT_FLOOR_INEFFICIENT;
+			}
+		}
+		
+		private void nextFloor() {
+			releaseWarning();
+			
+			if(driveActualSpeed.speed() != 0) {
+				fastSpeed = false;
+				state = RT9State.CURRENT_FLOOR;
+			}
+		}
+		
+		private void inefficientNextFloor() {
+			// warning
+			setWarning();
+	
+			if(driveActualSpeed.speed() != 0) {
+				fastSpeed = false;
+				state = RT9State.CURRENT_FLOOR;
+			}
+			
 		}
 
-		private void inefficiency()
-		{
-			//There is a warning in this state
-			setWarning();
-
-			//The timer should not be going
-			timer.stop();
-
-			//transition RT9-4
-			if(driveActualSpeed.speed() < SLOW_SPEED)
-				state = RT9State.NORMAL_OPERATION;
+		@Override
+		protected String warningMessage() {
+			return "RT9: drive speed not commaded to maximum degree practicable";
 		}
 
 	} 
 
-	//Java doesn't like enums in private classes.
 	private static enum RT10State
 	{
 		MOVING,
@@ -684,14 +613,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			this.hall = hall;
 		}
 		@Override
-		/**
-		 *	Warning message generated whenever this state machine produces a warning
-		 *		RT10: A nudge was commanded without a door reversal happening first.
-		 *	@return Warning Message
-		 */
 		protected String warningMessage()
 		{
-			return "RT10: A nudge was commanded without a door reversal happening first.";
+			return "RT10: no door reversal occurs before the doors are commanded to nudge";
 		}
 
 		@Override
@@ -712,10 +636,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void moving()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
-			//RT10-1
 			if(driveActualSpeed.speed() <= LEVEL_SPEED) {
 				state = RT10State.STOPPED;
 			}
@@ -724,18 +646,14 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void stopped()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
-			//RT10-2
 			if(driveActualSpeed.speed() > LEVEL_SPEED) {
 				state = RT10State.MOVING;
 			}
-			//RT10-3
 			else if(driveActualSpeed.speed() <= LEVEL_SPEED && anyDoorReversing(hall)) {
 				state = RT10State.REVERSED;
 			}
-			//RT10-5
 			else if(driveActualSpeed.speed() <= LEVEL_SPEED && anyDoorNudging(hall)) {
 				state = RT10State.BAD_NUDGE;
 			}
@@ -744,10 +662,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void reversed()
 		{
-			//This state does not set a warning
 			releaseWarning();
 
-			//RT10-4
 			if(allDoorsClosed() && driveActualSpeed.speed() > LEVEL_SPEED) {
 				state = RT10State.MOVING;
 			}
@@ -756,10 +672,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void badNudge()
 		{
-			//This state sets a warning
 			setWarning();
 
-			//transition RT6-6
 			if(allDoorsClosed() && driveActualSpeed.speed() > LEVEL_SPEED) {
 				state = RT10State.MOVING;
 			}
