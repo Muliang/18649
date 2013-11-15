@@ -529,9 +529,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	{
 		public static final int DRIVE_CONTROL_TIME = 10;
 		public static final double SLOW_SPEED = 0.25;
+		public static final double LEVEL_SPEED = 0.05;
 		
 		private RT9State state = RT9State.CURRENT_FLOOR;
 		private IntervalTimer timer = new IntervalTimer();
+		private boolean startWorking = false;
 		private boolean fastSpeed = false;
 
 		@Override
@@ -548,7 +550,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		
 		private void currentFloor() {
 			releaseWarning();
-			timer.start(new SimTime(3*DRIVE_CONTROL_TIME, SimTimeUnit.MILLISECOND));
 			
 			if(driveActualSpeed.speed() > SLOW_SPEED) {
 				fastSpeed = true;
@@ -558,7 +559,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 				state = RT9State.NEXT_FLOOR_EFFICIENT;
 			}
 			
-			else if(timer.isExpired() && currentFloor != MessageDictionary.NONE && fastSpeed == false && driveActualSpeed.speed() == 0) {
+			else if(startWorking && currentFloor != MessageDictionary.NONE && fastSpeed == false && driveActualSpeed.speed() == 0) {
 				state = RT9State.NEXT_FLOOR_INEFFICIENT;
 			}
 		}
@@ -566,7 +567,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private void nextFloor() {
 			releaseWarning();
 			
-			if(driveActualSpeed.speed() != 0) {
+			if(driveActualSpeed.speed() > LEVEL_SPEED) {
+				startWorking = true;
 				fastSpeed = false;
 				state = RT9State.CURRENT_FLOOR;
 			}
@@ -576,7 +578,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			// warning
 			setWarning();
 	
-			if(driveActualSpeed.speed() != 0) {
+			if(driveActualSpeed.speed() > LEVEL_SPEED) {
 				fastSpeed = false;
 				state = RT9State.CURRENT_FLOOR;
 			}
