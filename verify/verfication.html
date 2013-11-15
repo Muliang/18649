@@ -126,9 +126,14 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"><br>
-      <br>
-      <br>
-    </span><br>
+      write up: R-T6 is violated if and only if car stops at a floor at
+      which there is no call RT6-3. The monitor records car's state
+      change from above level speed to below level speed RT6-1
+      (attempting to stop). A warning is thrown when there is no pending
+      call while making transition RT6-3.<br>
+      &nbsp; <br>
+    </span>
+    <hr size="2" width="100%"><br>
     <meta charset="utf-8">
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
       medium; font-style: normal; font-variant: normal; font-weight:
@@ -185,9 +190,19 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"><br>
+      write up: R-T7 is violated if and only if the door opens at a
+      hallway in which there is no pending calls. The monitor records
+      door's state from close to open. A warning is thrown when there is
+      no pending calls while making transition RT7-4.<br>
       <br>
-      <br>
-      <br>
+    </span>
+    <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      display: inline !important; float: none;"><br>
     </span>
     <meta charset="utf-8">
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
@@ -243,8 +258,20 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"><br>
+      write up: R-T8.1 is violated if and only both lantern is off while
+      any door is open and there are pending calls. The monitor records
+      lantern's state while the door is open. A warning is thrown then
+      there is pending calls at other floor and both lantern is not lit
+      on.<br>
       <br>
-      <br>
+    </span>
+    <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
+      font-family: Times; font-size: medium; font-style: normal;
+      font-variant: normal; font-weight: normal; letter-spacing: normal;
+      line-height: normal; orphans: auto; text-align: left; text-indent:
+      0px; text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;"><br>
     </span>
     <meta charset="utf-8">
     <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
@@ -295,8 +322,18 @@
       none;">R-T10: For each stop at a floor, at least one door reversal
       shall have occured before the doors are commanded to nudge.</span><br>
     <h2>Verification Instructions</h2>
-    <br>
-    Add instructions here<br>
+    <i style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">$
+      java simulator.framework.Elevator -b 200 -pf acceptance test.pass</i>
+    <i style="color: rgb(0, 0, 0); font-family: Times; font-size:
+      medium; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: normal; orphans: auto; text-align: start;
+      text-indent: 0px; text-transform: none; white-space: normal;
+      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">-monitor
+      Proj11RuntimeMonitor -gui</i><br>
     <br>
     <h2>Verification Results</h2>
     <br>
@@ -308,6 +345,7 @@
             Test Name<br>
           </td>
           <td style="vertical-align: top; font-weight: bold;">Verification
+
 
 
 
