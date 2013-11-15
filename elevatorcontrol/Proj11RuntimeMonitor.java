@@ -485,7 +485,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			if(!allDoorsClosed() && !lanternLit(Direction.UP))
 				state = RT83State.DIRECTION_NONE;
 			
-			else if(!allDoorsClosed() && lanternLit(Direction.UP) && mDesiredFloor.getFloor() < currentFloor && higherCalls)
+			else if(!allDoorsClosed() && lanternLit(Direction.UP) && 
+					(mDesiredFloor.getFloor() < currentFloor && mDesiredFloor.getFloor()!=-1) && higherCalls)
 				state = RT83State.DIRECTION_WRONG;
 		}
 
@@ -499,7 +500,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			if(!allDoorsClosed() && !lanternLit(Direction.DOWN))
 				state = RT83State.DIRECTION_NONE;
 			
-			else if(!allDoorsClosed() && lanternLit(Direction.DOWN) && mDesiredFloor.getFloor() > currentFloor && lowerCalls)
+			else if(!allDoorsClosed() && lanternLit(Direction.DOWN) && 
+					(mDesiredFloor.getFloor() > currentFloor && mDesiredFloor.getFloor()!=-1) && lowerCalls)
 				state = RT83State.DIRECTION_WRONG;
 		}
 
