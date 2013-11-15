@@ -411,7 +411,8 @@
           height="195" width="504"></a><br>
       <br>
     </span><br>
-    <table border="1" cellpadding="2" cellspacing="2" height="178">
+    <table border="1" cellpadding="2" cellspacing="2" height="178"
+      width="681">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -463,6 +464,74 @@
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">R-T10: For each stop at a floor, at least one door reversal
       shall have occured before the doors are commanded to nudge.</span><br>
+    <br>
+    <a href="RT10.png"><img alt="rt10" src="RT10.png" border="0"
+        height="231" width="456"></a><br>
+    <br>
+    <table border="1" cellpadding="2" cellspacing="2" height="223"
+      width="708">
+      <tbody>
+        <tr>
+          <td valign="top">Transition #<br>
+          </td>
+          <td valign="top">Conditions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="100">RT10-1<br>
+          </td>
+          <td valign="top">mDriveSpeed &lt;= Level_Speed<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT10-2<br>
+          </td>
+          <td valign="top">mDriveSpeed &gt; Level_Speed</td>
+        </tr>
+        <tr>
+          <td valign="top">RT10-2<br>
+          </td>
+          <td valign="top">mDriveSpeed &lt;= Level_Speed and <span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: start; text-indent:
+              0px; text-transform: none; white-space: normal; widows:
+              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;">any
+              mDoorReversal(b,r) is true</span> </td>
+        </tr>
+        <tr>
+          <td valign="top">RT10-4<br>
+          </td>
+          <td valign="top">mDriveSpeed &lt;= Level_Speed and any
+            mDoorMotor(b, r) = nudge
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT10-5</td>
+          <td valign="top">
+            <meta charset="utf-8">
+            <span style="color: rgb(0, 0, 0); font-family: Times;
+              font-size: medium; font-style: normal; font-variant:
+              normal; font-weight: normal; letter-spacing: normal;
+              line-height: normal; orphans: auto; text-align: start;
+              text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span>mDriveSpeed &gt;
+            Level_Speed and all mDoorClosed are true<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">RT10-6<br>
+          </td>
+          <td valign="top">mDriveSpeed &gt; Level_Speed and all
+            mDoorClosed are true</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
     <h2>Verification Instructions</h2>
     <br>
     Add instructions here<br>
