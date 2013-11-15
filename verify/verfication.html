@@ -217,7 +217,7 @@
       pending calls at any other floor(s), a Car Lantern shall turn on.<br>
       <br>
       <a href="RT8_1.png"><img alt="rt8_1" src="RT8_1.png" border="0"
-          height="177" width="538"></a><br>
+          height="281" width="596"></a><br>
     </span><br>
     <table border="1" cellpadding="2" cellspacing="2" height="178"
       width="924">
@@ -537,8 +537,8 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">R-T10: For each stop at a floor, at least one door reversal
-<<<<<<< HEAD
-      shall have occured before the doors are commanded to nudge.</span><br>
+      &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD shall have occured before the
+      doors are commanded to nudge.</span><br>
     <br>
     <a href="RT10.png"><img alt="rt10" src="RT10.png" border="0"
         height="231" width="456"></a><br>
@@ -580,8 +580,7 @@
           <td valign="top">RT10-4<br>
           </td>
           <td valign="top">mDriveSpeed &lt;= Level_Speed and any
-            mDoorMotor(b, r) = nudge
-          </td>
+            mDoorMotor(b, r) = nudge </td>
         </tr>
         <tr>
           <td valign="top">RT10-5</td>
@@ -608,10 +607,9 @@
     </table>
     <br>
     <h2>Verification Instructions</h2>
-=======
-      shall have occurred before the doors are commanded to nudge.</span><br>
->>>>>>> ef68bde6f9dc453520dde3fe859f4062d30e41d3
-    <br>
+    ======= shall have occurred before the doors are commanded to nudge.<br>
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+    ef68bde6f9dc453520dde3fe859f4062d30e41d3 <br>
     write up: R-T10 is violated when door starts to nudge before any
     door reversal has occurred. The monitor records door's state between
     moving, stopped, reversal and nudged. A warning is thrown when the
@@ -630,6 +628,7 @@
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">-monitor
 
+
       Proj11RuntimeMonitor -gui</i><br>
     <br>
     <h2>Verification Results</h2>
@@ -642,6 +641,7 @@
             Test Name<br>
           </td>
           <td style="vertical-align: top; font-weight: bold;">Verification
+
 
 
 
