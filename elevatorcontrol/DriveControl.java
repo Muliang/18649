@@ -333,14 +333,12 @@ public class DriveControl extends Controller {
 			currentState = State.STATE_SLOW_DOWN;
 		// #transition 'T6.6'
 
-		else if (mLevelUp.getValue() == false // ||
-				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()<0)
+		else if (mLevelUp.getValue() == false // ||mCarLevelPosition.getPosition()<0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_UP;
 		// #transition 'T6.8'
-		else if (mLevelDown.getValue() == false // ||
-				&& desiredFloor != MessageDictionary.NONE								// mCarLevelPosition.getPosition()>0)
+		else if (mLevelDown.getValue() == false // mCarLevelPosition.getPosition()>0)
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_DOWN;
