@@ -127,7 +127,7 @@ public class DriveControl extends Controller {
 		// initialize state
 		this.period = period;
 		this.currentState = State.STATE_STOP;
-		this.allowance = 2 * (100 + FAST_SPEED * period.getFracMilliseconds());
+		this.allowance = 2*(100 + FAST_SPEED *10* period.getFracMilliseconds());
 		this.desiredFloor = MessageDictionary.NONE;
 		this.currentFloor = 1;
 		this.DesiredDirection = Direction.UP;
@@ -204,7 +204,21 @@ public class DriveControl extends Controller {
 	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
-		double brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
+		double brakeDistance;
+		/*if(speed <= FAST_SPEED/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED /25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED/5 && speed <= FAST_SPEED*2/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *4/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*2/5 && speed <= FAST_SPEED*3/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *9/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*3/5 && speed <= FAST_SPEED*4/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *16/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*4/5 && speed <= FAST_SPEED)
+			brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
+		else
+			brakeDistance = SLOW_SPEED * SLOW_SPEED / (2* DECELERATION) * ONETOMILLI;
+		*/
+		brakeDistance = speed*speed / (2* DECELERATION) * ONETOMILLI;
 		switch (d) {
 		case STOP:
 			return Commit.NOTREACHED;

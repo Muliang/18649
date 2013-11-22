@@ -75,6 +75,7 @@ public class Dispatcher extends Controller {
     
 	// m/s
 	private static final double LEVEL_SPEED = DriveObject.LevelingSpeed;
+	private static final double MLEVEL_SPEED = LEVEL_SPEED * 100;
 	private static final double SLOW_SPEED = DriveObject.SlowSpeed; // in m/s
 	private static final double FAST_SPEED = DriveObject.FastSpeed; // in m/s
 	private static final double ACCELERATION = DriveObject.Acceleration; // in
@@ -212,8 +213,22 @@ public class Dispatcher extends Controller {
 	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
-		double brakeDistance = speed * speed / (2 * DECELERATION) * ONETOMILLI;
-		double allowance = 2 * speed * period.getFracMilliseconds();
+		double brakeDistance;
+		/*if(speed <= FAST_SPEED/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED /25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED/5 && speed <= FAST_SPEED*2/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *4/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*2/5 && speed <= FAST_SPEED*3/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *9/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*3/5 && speed <= FAST_SPEED*4/5)
+			brakeDistance = FAST_SPEED * FAST_SPEED *16/25/ (2 * DECELERATION) * ONETOMILLI;
+		else if(speed> FAST_SPEED*4/5 && speed <= FAST_SPEED)
+			brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
+		else
+			brakeDistance = SLOW_SPEED * SLOW_SPEED / (2* DECELERATION) * ONETOMILLI;
+		*/
+		brakeDistance = speed*speed / (2* DECELERATION) * ONETOMILLI;
+		double allowance = 200;
 		switch (d) {
 		case STOP:
 			return Commit.NOTREACHED;
@@ -241,7 +256,7 @@ public class Dispatcher extends Controller {
 	private int getNearestCommitableFloor(int currentFloor, int CarLevelPosition, int s, Direction d){
 		int floor = -1;
 		double speed = s/100.0;
-		if (speed <= LEVEL_SPEED) return (int)Math.round(mCarLevelPosition.getPosition()/1000.0/5.0) + 1;
+		if (speed <= SLOW_SPEED) return (int)Math.round(mCarLevelPosition.getPosition()/1000.0/5.0) + 1;
 		switch(d){
 		case UP: {
 			for(floor = currentFloor; floor <= Elevator.numFloors; floor ++){
@@ -298,9 +313,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state DownUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.6.3'
-		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.6.3'
+		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()>MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
 			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
 			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
@@ -308,7 +323,7 @@ public class Dispatcher extends Controller {
 			||(currentFloor >= nearestHallCallDownFloor && nearestHallCallDownFloor != -1)))
 				currentState = State.STATE_DOWN_DOWN;
 		// #Transition 'T11.8.6'
-		if(	mDriveSpeed.getSpeed() == 0
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE){
 			currentState = State.STATE_STOP_UP;
 		}
@@ -343,9 +358,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state DownDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.8.5'
-		if(	mDriveSpeed.getSpeed() == 0 
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.8.5'
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED 
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 			){
 			currentState = State.STATE_STOP_DOWN;
@@ -380,9 +395,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state DownStop.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.6.2'
-		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.6.2'
+		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
 			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
 			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
@@ -391,7 +406,7 @@ public class Dispatcher extends Controller {
 			currentState = State.STATE_DOWN_DOWN;
 			}
 		// #Transition 'T11.7.2'
-		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
 			&& nearestCarCallFloorN != -1 && nearestHallCallDownFloor == -1)
 			
@@ -409,7 +424,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_DOWN_UP;
 		}
 		// #Transition 'T11.8.4'
-		if(	mDriveSpeed.getSpeed() == 0
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
 			currentState = State.STATE_STOP_STOP;
@@ -446,9 +461,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state UpDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.3.3'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.3.3'
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
 				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
 				|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
@@ -457,7 +472,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_UP_UP;
 			}
 		// #Transition 'T11.8.3'
-		if(	mDriveSpeed.getSpeed() == 0
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
 			currentState = State.STATE_STOP_DOWN;
@@ -493,9 +508,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state UpUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.8.2'
-		if(	mDriveSpeed.getSpeed() == 0
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.8.2'
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED
 			&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 			){
 			currentState = State.STATE_STOP_UP;
@@ -531,9 +546,9 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state UpStop.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		// #Transition 'T11.3.2'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/// #Transition 'T11.3.2'
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 				((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
 				&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
 				|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
@@ -542,7 +557,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_UP_UP;
 			}
 		// #Transition 'T11.4.2'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
 			&& nearestCarCallFloorN != -1 && nearestHallCallUpFloor == -1)
 			
@@ -560,7 +575,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_UP_DOWN;
 		}
 		// #Transition 'T11.8.4'
-		if(	mDriveSpeed.getSpeed() == 0
+		if(	mDriveSpeed.getSpeed() <= MLEVEL_SPEED
 				&& mAtFloor.getCurrentFloor() != MessageDictionary.NONE
 				){
 			currentState = State.STATE_STOP_STOP;
@@ -602,8 +617,8 @@ public class Dispatcher extends Controller {
 		
 		/*System.out.println("At state StopStop.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		//#Transition S11.9
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*///#Transition S11.9
 		if ((nearestCarCallDownFloor != -1 || nearestHallCallDownFloor != -1)
 			&& (nearestCarCallUpFloor ==-1 && nearestHallCallUpFloor == -1)
 				&& isAllDoorClosed()){
@@ -653,21 +668,21 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state StopDown.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-		
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+		*/
 		//#Transition
 		if (target == -1 && isAllDoorClosed()){
 			currentState = State.STATE_STOP_STOP;
 		}
 		//#Transition 'S11.5'
-		if (currentDirection == Direction.DOWN && mDriveSpeed.getSpeed()!=0
+		if (currentDirection == Direction.DOWN && mDriveSpeed.getSpeed() > MLEVEL_SPEED
 			&& nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
 			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, isIgnoringCurrentFloorCall())==-1 
 			&& mHallCall.isAllUnpressed() && mDriveSpeed.getSpeed() != 0){
 			currentState = State.STATE_DOWN_STOP;
 		}
 		//#Transition 'S11.6.1'
-		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1&&
 			currentFloor >= nearestCarCallFloor && nearestCarCallFloor > secondNearestCarCallFloor)
 			||(nearestCarCallFloor != -1&&nearestHallCallFloor != -1
@@ -677,7 +692,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_DOWN_DOWN;
 			}
 		//#Transition 'S11.7.1'
-		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.DOWN && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
 			&& nearestCarCallFloorN != -1 && nearestHallCallDownFloor == -1)
 			
@@ -729,15 +744,15 @@ public class Dispatcher extends Controller {
 		}
 		/*System.out.println("At state StopUp.\n");
 		System.out.print("currentFloor ="+ currentFloor +"\n");
-		System.out.print("commitableFloor ="+ commitableFloor +"\n");*/
-	
+		System.out.print("commitableFloor ="+ commitableFloor +"\n");
+	*/
 		//#Transition
 		if (target == -1 && isAllDoorClosed()){
 			currentState = State.STATE_STOP_STOP;
 		}
 		
 		//#Transition 'S11.2'
-		if (currentDirection == Direction.UP && mDriveSpeed.getSpeed()!=0
+		if (currentDirection == Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED
 			&& nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1
 			&& mCarCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, isIgnoringCurrentFloorCall())==-1 
 			&& mHallCall.isAllUnpressed()){
@@ -745,7 +760,7 @@ public class Dispatcher extends Controller {
 		}
 		
 		//#Transition 'S11.3.1'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1&& secondNearestCarCallFloor != -1 
 			&& currentFloor <= nearestCarCallFloor && nearestCarCallFloor < secondNearestCarCallFloor)
 			|| (nearestCarCallFloor != -1&& nearestHallCallFloor != -1
@@ -755,7 +770,7 @@ public class Dispatcher extends Controller {
 				currentState = State.STATE_UP_UP;
 			}
 		//#Transition 'S11.4.1'
-		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed()!=0 &&
+		if(currentDirection==Direction.UP && mDriveSpeed.getSpeed() > MLEVEL_SPEED &&
 			((nearestCarCallFloor != -1 && secondNearestCarCallFloor == -1 
 			&& nearestCarCallFloorN != -1 && nearestHallCallUpFloor == -1)
 			
