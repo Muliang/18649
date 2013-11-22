@@ -18,17 +18,17 @@
 ;Test initial state
 
 ;#state 'S11.1 STOP_UP'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A S Dispatcher : STATE == STATE_STOP_UP;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;#transition 'T11.2'
 +0.20s I CAR_BUTTON_CONTROL_PERIOD  N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
 
 ;#state 'S11.3 UP_STOP'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_STOP;
@@ -37,11 +37,11 @@
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 
-;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
+;state 'S11.1 Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A S Dispatcher : STATE == STATE_STOP_UP;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;transition 'T11.3.1'
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
@@ -49,18 +49,17 @@
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[4][FRONT]_CAN_ID CarCall 4 FRONT = true;
 
 ;state 'S11.4 Up_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
 
 ;transition 'T11.8.2'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
-+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[4][FRONT]_CAN_ID CarCall 4 FRONT = false;
 
 ;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
@@ -71,7 +70,7 @@
 +0.20s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[1][FRONT]_CAN_ID CarCall 1 FRONT = true;
 
 ;state 'S11.1 Up_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
@@ -81,12 +80,11 @@
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[1][FRONT]_CAN_ID CarCall 1 FRONT = false;
 
-
-;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
+;state 'S11.1 Stop_Down'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A S Dispatcher : STATE == STATE_STOP_UP;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;transition 'T11.4.1'
 +0.10s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
@@ -95,7 +93,7 @@
 +0.20s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[2][BACK][DOWN]_CAN_ID HallCall 2 BACK DOWN = true;
 
 ;state 'S11.1 Up_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
@@ -103,21 +101,21 @@
 ;transition 'T11.8.3'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
-+0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[2][BACK][DOWN]_CAN_ID HallCall 2 BACK DOWN = false;
 
 ;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 2;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
-+0.00s A S Dispatcher : STATE == STATE_STOP_UP;
++0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.4.2'
++0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[2][BACK][DOWN]_CAN_ID HallCall 2 BACK DOWN = false;
 +0.10s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][DOWN]_CAN_ID HallCall 3 FRONT DOWN = true;
 
 ;state 'S11.1 Up_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_DOWN;
@@ -128,7 +126,7 @@
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][DOWN]_CAN_ID HallCall 3 FRONT DOWN = false;
 
 ;state 'S11.4 Up_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 4;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 4;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
@@ -137,21 +135,21 @@
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[4][FRONT]_CAN_ID CarCall 4 FRONT = false;
-+0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][DOWN]_CAN_ID HallCall 5 FRONT DOWN = false;
 
 ;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 5;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.3.2'
++0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][DOWN]_CAN_ID HallCall 5 FRONT DOWN = false;
 +0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][UP]_CAN_ID HallCall 3 FRONT UP = true;
 
 ;state 'S11.4 Up_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_UP_UP;
@@ -161,14 +159,22 @@
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][UP]_CAN_ID HallCall 3 FRONT UP = false;
 
-;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
+;state 'S11.1 Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
 +0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.9'
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
+
+;state 'Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == BACK;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
+
+;transition 'T11.11'
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[2][BACK]_CAN_ID AtFloor 2 BACK = false;
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = true;
 +0.00s I CAR_LEVEL_POSITION_PERIOD N CAR_LEVEL_POSITION_CAN_ID CarLevelPosition = 15000;
@@ -177,7 +183,7 @@
 
 ;state 'S11.2 Stop_Down'
 +0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
@@ -185,24 +191,24 @@
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED DOWN;
 
 ;#state 'S11.6 DOWN_STOP'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_STOP;
 
-;#state 'S11.8.4'
+;#transition 'S11.8.4'
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
-+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 
-;state 'S11.1 Stop_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
+;#state 'S11.1 Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;transition 'T11.6.1'
-+0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
-+0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
++0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED DOWN;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[1][FRONT]_CAN_ID CarCall 1 FRONT = true;
 
 ;state 'S11.7 Down_Down'
@@ -213,17 +219,17 @@
 
 ;transition 'T11.8.5'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
-+0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = false;
-+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[1][FRONT]_CAN_ID CarCall 1 FRONT = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 
 ;state 'S11.2 Stop_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 1;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
 +0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
 
 ;transition 'T11.4.1'
-+0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[1][FRONT]_CAN_ID CarCall 1 FRONT = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED DOWN;
 +0.20s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[5][FRONT]_CAN_ID CarCall 5 FRONT = true;
 
@@ -235,16 +241,17 @@
 
 ;transition 'T11.8.6'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
-+0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[5][FRONT]_CAN_ID CarCall 5 FRONT = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 
-;state 'S11.2 Stop_Down'
-+0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
+;state 'S11.2 Stop_Up'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 5;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
++0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.4.1'
-+0.10s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][RIGHT]_CAN_ID DoorClosed FRONT RIGHT = true;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[5][FRONT]_CAN_ID CarCall 5 FRONT = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = true;
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED DOWN;
 +0.20s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][UP]_CAN_ID HallCall 5 FRONT UP = true;
 
@@ -257,15 +264,17 @@
 
 ;transition 'T11.8.6'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
-+0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][UP]_CAN_ID HallCall 5 FRONT UP = false;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
+;+0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][UP]_CAN_ID HallCall 5 FRONT UP = false;
 
-;state 'S11.2 Stop_Down'
-+0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
+;state 'S11.2 Stop_Up'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 5;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == UP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
++0.00s A S Dispatcher : STATE == STATE_STOP_UP;
 
 ;transition 'T11.7.2'
++0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[5][FRONT][UP]_CAN_ID HallCall 5 FRONT UP = false;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][UP]_CAN_ID HallCall 3 FRONT UP = true;
 +0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED UP;
@@ -290,20 +299,21 @@
 
 ;transition 'T11.8.2'
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
++0.00s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[1][FRONT][UP]_CAN_ID HallCall 1 FRONT UP = false;
 
-;state 'S11.2 Stop_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
+;state 'S11.2 Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;transition 'T11.7.2'
 +0.20s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = SLOW_SPEED DOWN;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][DOWN]_CAN_ID HallCall 3 FRONT DOWN = true;
 
 ;state 'S11.7 Down_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
 +0.00s A S Dispatcher : STATE == STATE_DOWN_DOWN;
@@ -312,20 +322,11 @@
 +0.10s I DRIVE_CONTROL_PERIOD N DRIVE_SPEED_CAN_ID DriveSpeed = 0 STOP;
 +0.00s I HALL_BUTTON_CONTROL_PERIOD N HALL_CALL_[3][FRONT][DOWN]_CAN_ID HallCall 3 FRONT DOWN = false;
 
-;state 'S11.2 Stop_Down'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 3;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
+;state 'S11.2 Stop_Stop'
++0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
++0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_DOWN;
-
-;transition 'T11.10'
-+0.10s I CAR_BUTTON_CONTROL_PERIOD N CAR_CALL_[3][FRONT]_CAN_ID CarCall 3 FRONT = false;
-
-;state 'S11.1 Stop_Up'
-+0.20s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == -1;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == DOWN;
-+0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == FRONT;
-+0.00s A S Dispatcher : STATE == STATE_STOP_UP;
++0.00s A S Dispatcher : STATE == STATE_STOP_STOP;
 
 ;transition 'T11.1.*'
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[4][FRONT]_CAN_ID AtFloor 4 FRONT = false;
@@ -336,3 +337,4 @@
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getHallway == NONE;
 +0.00s A S Dispatcher : STATE == STATE_EMERGENCY;
+

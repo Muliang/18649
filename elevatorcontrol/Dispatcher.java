@@ -648,6 +648,7 @@ public class Dispatcher extends Controller {
 		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.DOWN;
+		mDesiredFloor.setDirection(Direction.DOWN);
 		//mDesiredFloor.setDirection(Direction.STOP);
 		//keep desiredDirection
 		//mDesiredDwellFront.set(dwellTime);
@@ -726,6 +727,7 @@ public class Dispatcher extends Controller {
 		currentHallway = mAtFloor.getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.UP;
+		mDesiredFloor.setDirection(Direction.UP);
 		//mDesiredDwellFront.set(dwellTime);
 		//mDesiredDwellBack.set(dwellTime);
 		if (mAtFloor.getCurrentFloor() != MessageDictionary.NONE)
