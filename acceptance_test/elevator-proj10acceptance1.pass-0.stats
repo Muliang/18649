@@ -5,72 +5,55 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -pf proj10acceptance1.pass -head HEADER
-RandomSeed = 1384394858891
-CanNetworkBitTime = 0 ns
-Effective Can Bitrate = Infinity
+Command line = -b 200 -head HEADER -pf acceptance_test/proj10acceptance1.pass -b 200 -fs 5.0
+RandomSeed = 1385161385277
+CanNetworkBitTime = 5000 ns
+Effective Can Bitrate = 199999.99999999997
 Run Time = null
 Real time rate = null
-Acceptance Test File = proj10acceptance1.pass
+Acceptance Test File = acceptance_test/proj10acceptance1.pass
 
 STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
 -----------------------------------------------------
 
+The following passengers were stranded:
+Passenger 0: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 1: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 2: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 3: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 4: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 6: NOT_DELIVERED, OVERWEIGHT_BACKOFF
+Passenger 7: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 5: NOT_DELIVERED, OVERWEIGHT_BACKOFF
+Passenger 8: NOT_DELIVERED, OVERWEIGHT_BACKOFF
+Passenger 9: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 10: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 11: NOT_DELIVERED, OVERWEIGHT_BACKOFF
+Passenger 12: NOT_DELIVERED, WAITING_IN_CAR
+Passenger 13: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 14: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 15: NOT_DELIVERED, WAITING_IN_HALL
+Passenger 16: NOT_DELIVERED, WAITING_IN_HALL
 
 These passengers were delivered:
-Passenger 0: INJECTED AT 0.0s and DELIVERED in 21.793s
-  Satisfaction score: 100.0
-Passenger 2: INJECTED AT 0.6s and DELIVERED in 39.205s
-  Satisfaction score: 100.0
-Passenger 1: INJECTED AT 0.3s and DELIVERED in 57.896s
-  Satisfaction score: 100.0
-Passenger 14: INJECTED AT 66.2s and DELIVERED in 33.371s
-  Satisfaction score: 100.0
-Passenger 9: INJECTED AT 5.0s and DELIVERED in 146.185s
-  Satisfaction score: 100.0
-Passenger 12: INJECTED AT 7.1s and DELIVERED in 157.858s
-  Satisfaction score: 100.0
-Passenger 5: INJECTED AT 3.0s and DELIVERED in 180.301s
-  Satisfaction score: 100.0
-Passenger 7: INJECTED AT 3.0s and DELIVERED in 182.493s
-  Satisfaction score: 100.0
-Passenger 11: INJECTED AT 7.0s and DELIVERED in 189.993s
-  Satisfaction score: 100.0
-Passenger 4: INJECTED AT 2.0s and DELIVERED in 196.426s
-  Satisfaction score: 100.0
-Passenger 3: INJECTED AT 1.0s and DELIVERED in 208.531s
-  Satisfaction score: 100.0
-Passenger 8: INJECTED AT 4.0s and DELIVERED in 207.377s
-  Satisfaction score: 100.0
-Passenger 6: INJECTED AT 3.0s and DELIVERED in 219.984s
-  Satisfaction score: 100.0
-Passenger 16: INJECTED AT 101.0s and DELIVERED in 148.581s
-  Satisfaction score: 90.0
-    @223.700000000: 0.90 Repeated hall call press
-Passenger 15: INJECTED AT 100.0s and DELIVERED in 177.002s
-  Satisfaction score: 90.0
-    @196.900000000: 0.90 Repeated hall call press
-Passenger 13: INJECTED AT 58.0s and DELIVERED in 242.045s
-  Satisfaction score: 90.0
-    @223.700000000: 0.90 Repeated hall call press
-Passenger 10: INJECTED AT 6.0s and DELIVERED in 318.424s
-  Satisfaction score: 100.0
 
 Passenger Delivery Summary
-Delivered: 17
-Stranded: 0
+Delivered: 0
+Stranded: 17
 Total: 17
 
 Deliver Stats (lower is better):
-Average_delivery_time: 160.439
-Maximum_delivery_time:  318.424
-Delivery_performance_score:  960.180
+Average_delivery_time: n/a
+Maximum_delivery_time:  n/a
+Delivery_performance_score:  2147483647
 
 Satisfaction Stats (higher is better):
-Average_satisfaction_score: 98.235
-Min_satisfaction_score:  90.000
-Satisfaction_performance_score:  482.941
+Average_satisfaction_score: n/a
+Min_satisfaction_score:  n/a
+Satisfaction_performance_score:  0.000
 
 
 
+Network Utilization Summary:
+Recent: 54.86 % Max: 54.86 %  Overall:  54.86 %
 
