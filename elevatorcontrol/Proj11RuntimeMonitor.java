@@ -5,6 +5,7 @@ package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
 import jSimPack.SimTime.SimTimeUnit;
+import simulator.elevatormodules.DriveObject;
 import simulator.framework.DoorCommand;
 import simulator.framework.Elevator;
 import simulator.framework.Hallway;
@@ -219,16 +220,22 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			}
 		}
 
+/**
+ * RT-7: change the condition 
+ * door start opening -> DoorClosed is false
+ * ????????????? 
+ */
+		
 		private void closed()
 		{
 			releaseWarning();
 
-			
-			if(anyDoorsOpen() && hasCall(currentFloor)) {
+			//change condition 
+			if(!allDoorsClosed() && hasCall(currentFloor)) {
 				state = RT7State.VALID_OPEN;
 			}
-			
-			if(anyDoorsOpen() && !hasCall(currentFloor)) {
+			//change condition 
+			if(!allDoorsClosed() && !hasCall(currentFloor)) {
 				state = RT7State.INVALID_OPEN;
 			}
 
@@ -238,8 +245,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			releaseWarning();
 
-			
-			if(!anyDoorsOpen()) {
+			//change condition 
+			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
 
@@ -249,8 +256,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			setWarning();
 
-			
-			if(!anyDoorsOpen()) {
+			//change condition 
+			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
 		}
@@ -306,10 +313,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//Timer should not be running in this state
 			timer.stop();
 
-			if(anyDoorsOpen() && anyOtherCall(currentFloor) &&
+			if(!allDoorsClosed() && anyOtherCall(currentFloor) &&
 					(lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
 				state = RT81State.LANTERN_ON;
-			} else if(anyDoorsOpen() && anyOtherCall(currentFloor) && ((!lanternLit(Direction.UP)) && (!lanternLit(Direction.DOWN)))) {
+			} else if(!allDoorsClosed() && anyOtherCall(currentFloor) && ((!lanternLit(Direction.UP)) && (!lanternLit(Direction.DOWN)))) {
 				state = RT81State.LANTERN_OFF;
 			}
 
@@ -322,7 +329,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//Timer should be running in this state
 			timer.start(new SimTime(LANTERN_DOUBLE_GLOBAL_TICK, SimTimeUnit.MILLISECOND));
 				
-			if(!timer.isExpired() && (!anyDoorsOpen()))
+			if(!timer.isExpired() && (allDoorsClosed()))
 				state = RT81State.LANTERN_IDLE;
 
 		}
@@ -334,7 +341,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//Timer should not be running in this state
 			timer.stop();
 
-			if(!anyDoorsOpen())
+			if(allDoorsClosed())
 				state = RT81State.LANTERN_IDLE;
 		}
 
@@ -382,10 +389,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			releaseWarning();
 
-			if(anyDoorsOpen() && (lanternLit(Direction.UP)))
+			if(!allDoorsClosed() && (lanternLit(Direction.UP)))
 				state = RT82State.VALID_DIRECTION_UP;
 			
-			else if(anyDoorsOpen() && (lanternLit(Direction.DOWN)))
+			else if(!allDoorsClosed() && (lanternLit(Direction.DOWN)))
 				state = RT82State.VALID_DIRECTION_DOWN;
 
 		}
@@ -393,10 +400,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private void validDirectionUp() {
 			releaseWarning();
 			
-			if(!anyDoorsOpen()) {
+			if(allDoorsClosed()) {
 				state = RT82State.NO_DIRECTION;
 			}
-			else if(anyDoorsOpen() && !lanternLit(Direction.UP)) {
+			else if(!allDoorsClosed() && !lanternLit(Direction.UP)) {
 				state = RT82State.INVALID_DIRECTION;
 			}
 		}
@@ -406,10 +413,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private void validDirectionDown() {
 			releaseWarning();
 			
-			if(!anyDoorsOpen()) {
+			if(allDoorsClosed()) {
 				state = RT82State.NO_DIRECTION;
 			}
-			else if(anyDoorsOpen() && !lanternLit(Direction.DOWN)) {
+			else if(!allDoorsClosed() && !lanternLit(Direction.DOWN)) {
 				state = RT82State.INVALID_DIRECTION;
 			}
 		}
@@ -420,7 +427,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			//This state produces a warning
 			setWarning();
 
-			if(!anyDoorsOpen())
+			if(allDoorsClosed())
 				state = RT82State.NO_DIRECTION;
 		}
 
@@ -519,7 +526,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	private static enum RT9State
 	{
-		CURRENT_FLOOR,
+		MOVING,     
 		NEXT_FLOOR_EFFICIENT,
 		NEXT_FLOOR_INEFFICIENT
 	}
@@ -529,19 +536,17 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	 */
 	private class RT9StateMachine extends StateMachine
 	{
-		public static final int DRIVE_CONTROL_TIME = 10;
 		public static final double SLOW_SPEED = 0.25;
 		public static final double LEVEL_SPEED = 0.05;
 		
-		private RT9State state = RT9State.CURRENT_FLOOR;
-		private IntervalTimer timer = new IntervalTimer();
+		private RT9State state = RT9State.MOVING;
 		private boolean startWorking = false;
 		private boolean fastSpeed = false;
 
 		@Override
 		public void update() {
 			switch(state) {
-				case CURRENT_FLOOR:	currentFloor();	break;
+				case MOVING:	moving();	break;
 				case NEXT_FLOOR_EFFICIENT:	nextFloor();	break;
 				case NEXT_FLOOR_INEFFICIENT:	inefficientNextFloor();	break;
 				default:
@@ -550,7 +555,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			
 		}
 		
-		private void currentFloor() {
+		private void moving() {
 			releaseWarning();
 			
 			if(driveActualSpeed.speed() > SLOW_SPEED) {
@@ -566,13 +571,14 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			}
 		}
 		
-		private void nextFloor() {
+		//next floor efficient 
+		private void nextFloor() {   //fast speed reached
 			releaseWarning();
 			
 			if(driveActualSpeed.speed() > LEVEL_SPEED) {
 				startWorking = true;
 				fastSpeed = false;
-				state = RT9State.CURRENT_FLOOR;
+				state = RT9State.MOVING;
 			}
 		}
 		
@@ -582,7 +588,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	
 			if(driveActualSpeed.speed() > LEVEL_SPEED) {
 				fastSpeed = false;
-				state = RT9State.CURRENT_FLOOR;
+				state = RT9State.MOVING;
 			}
 			
 		}
@@ -611,7 +617,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private RT10State state = RT10State.STOPPED;
 		private Hallway hall;
 
-		public static final double LEVEL_SPEED = 0.10;
+		public static final double LEVEL_SPEED = DriveObject.LevelingSpeed;
 
 		public RT10StateMachine(Hallway hall) {
 			this.hall = hall;
