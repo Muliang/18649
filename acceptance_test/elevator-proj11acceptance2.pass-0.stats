@@ -5,8 +5,8 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -b 200 -head HEADER -pf acceptance_test/proj11acceptance2.pass -b 200 -fs 5.0
-RandomSeed = 1385161463339
+Command line = -b 200 -head HEADER -pf acceptance_test/proj11acceptance2.pass -fs 5.0
+RandomSeed = 1385404680235
 CanNetworkBitTime = 5000 ns
 Effective Can Bitrate = 199999.99999999997
 Run Time = null
@@ -18,135 +18,136 @@ STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
 
 
 These passengers were delivered:
-Passenger 2: INJECTED AT 0.0s and DELIVERED in 3.04s
+Passenger 3: INJECTED AT 0.0s and DELIVERED in 2.754s
   Satisfaction score: 100.0
-Passenger 3: INJECTED AT 0.0s and DELIVERED in 3.446s
+Passenger 2: INJECTED AT 0.0s and DELIVERED in 2.959s
   Satisfaction score: 100.0
-Passenger 1: INJECTED AT 0.0s and DELIVERED in 18.274s
+Passenger 1: INJECTED AT 0.0s and DELIVERED in 17.678s
   Satisfaction score: 100.0
-Passenger 4: INJECTED AT 0.0s and DELIVERED in 35.164s
+Passenger 4: INJECTED AT 0.0s and DELIVERED in 35.316s
   Satisfaction score: 100.0
-Passenger 0: INJECTED AT 0.0s and DELIVERED in 64.257s
+Passenger 0: INJECTED AT 0.0s and DELIVERED in 64.763s
   Satisfaction score: 100.0
-Passenger 9: INJECTED AT 30.8s and DELIVERED in 48.657s
+Passenger 9: INJECTED AT 30.8s and DELIVERED in 48.276s
   Satisfaction score: 100.0
-Passenger 6: INJECTED AT 7.0s and DELIVERED in 101.121s
+Passenger 6: INJECTED AT 7.0s and DELIVERED in 124.235s
   Satisfaction score: 100.0
-Passenger 5: INJECTED AT 5.0s and DELIVERED in 117.548s
+Passenger 19: INJECTED AT 111.2s and DELIVERED in 21.589s
+  Satisfaction score: 100.0
+Passenger 13: INJECTED AT 65.2s and DELIVERED in 103.851s
+  Satisfaction score: 100.0
+Passenger 5: INJECTED AT 5.0s and DELIVERED in 165.959s
   Satisfaction score: 90.0
-    @63.540000000: 0.90 Repeated hall call press
-Passenger 16: INJECTED AT 88.5s and DELIVERED in 49.346s
+    @63.480000000: 0.90 Repeated hall call press
+Passenger 16: INJECTED AT 88.5s and DELIVERED in 117.017s
+  Satisfaction score: 80.0
+    @96.897000000: 0.80 Failed to enter car
+Passenger 10: INJECTED AT 37.0s and DELIVERED in 183.368s
   Satisfaction score: 100.0
-Passenger 7: INJECTED AT 9.6s and DELIVERED in 142.251s
+Passenger 7: INJECTED AT 9.6s and DELIVERED in 212.632s
   Satisfaction score: 90.0
     @78.080000000: 0.90 Repeated hall call press
-Passenger 10: INJECTED AT 37.0s and DELIVERED in 116.499s
+Passenger 21: INJECTED AT 125.4s and DELIVERED in 132.944s
   Satisfaction score: 100.0
-Passenger 14: INJECTED AT 66.099999999s and DELIVERED in 122.681000001s
+Passenger 22: INJECTED AT 128.199999999s and DELIVERED in 131.421000001s
   Satisfaction score: 100.0
-Passenger 21: INJECTED AT 125.4s and DELIVERED in 65.111s
+Passenger 14: INJECTED AT 66.099999999s and DELIVERED in 199.869000001s
+  Satisfaction score: 80.0
+    @261.121000000: 0.80 Failed to exit car at 2,BACK
+Passenger 8: INJECTED AT 14.4s and DELIVERED in 280.963s
   Satisfaction score: 100.0
-Passenger 8: INJECTED AT 14.4s and DELIVERED in 189.822s
+Passenger 25: INJECTED AT 156.4s and DELIVERED in 143.07s
   Satisfaction score: 100.0
-Passenger 30: INJECTED AT 199.0s and DELIVERED in 11.946s
+Passenger 30: INJECTED AT 199.0s and DELIVERED in 105.769s
   Satisfaction score: 50.0
-    @207.886000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
-Passenger 25: INJECTED AT 156.4s and DELIVERED in 54.658s
+    @301.469000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
+Passenger 24: INJECTED AT 138.4s and DELIVERED in 193.816s
   Satisfaction score: 100.0
-Passenger 24: INJECTED AT 138.4s and DELIVERED in 102.873s
+Passenger 32: INJECTED AT 224.5s and DELIVERED in 162.657s
   Satisfaction score: 100.0
-Passenger 32: INJECTED AT 224.5s and DELIVERED in 70.981s
+Passenger 23: INJECTED AT 132.699999999s and DELIVERED in 268.550000001s
   Satisfaction score: 100.0
-Passenger 34: INJECTED AT 238.3s and DELIVERED in 58.906s
+Passenger 12: INJECTED AT 53.4s and DELIVERED in 384.943s
   Satisfaction score: 100.0
-Passenger 23: INJECTED AT 132.699999999s and DELIVERED in 176.574000001s
+Passenger 45: INJECTED AT 342.3s and DELIVERED in 99.536s
   Satisfaction score: 100.0
-Passenger 27: INJECTED AT 187.7s and DELIVERED in 153.321s
-  Satisfaction score: 100.0
-Passenger 41: INJECTED AT 305.4s and DELIVERED in 36.009s
-  Satisfaction score: 100.0
-Passenger 15: INJECTED AT 82.6s and DELIVERED in 260.346s
+Passenger 11: INJECTED AT 47.6s and DELIVERED in 410.05s
   Satisfaction score: 90.0
-    @203.060000000: 0.90 Repeated hall call press
-Passenger 11: INJECTED AT 47.6s and DELIVERED in 295.521s
+    @167.940000000: 0.90 Repeated hall call press
+Passenger 41: INJECTED AT 305.4s and DELIVERED in 152.996s
+  Satisfaction score: 100.0
+Passenger 27: INJECTED AT 187.7s and DELIVERED in 271.878s
+  Satisfaction score: 100.0
+Passenger 15: INJECTED AT 82.6s and DELIVERED in 377.041s
   Satisfaction score: 90.0
-    @122.080000000: 0.90 Repeated hall call press
-Passenger 18: INJECTED AT 106.5s and DELIVERED in 238.22s
+    @294.180000000: 0.90 Repeated hall call press
+Passenger 18: INJECTED AT 106.5s and DELIVERED in 355.019s
   Satisfaction score: 90.0
-    @136.740000000: 0.90 Repeated hall call press
-Passenger 20: INJECTED AT 117.8s and DELIVERED in 229.033s
+    @205.240000000: 0.90 Repeated hall call press
+Passenger 26: INJECTED AT 171.6s and DELIVERED in 291.935s
   Satisfaction score: 100.0
-Passenger 26: INJECTED AT 171.6s and DELIVERED in 177.141s
+Passenger 20: INJECTED AT 117.8s and DELIVERED in 347.327s
   Satisfaction score: 100.0
-Passenger 42: INJECTED AT 314.1s and DELIVERED in 37.658s
+Passenger 42: INJECTED AT 314.1s and DELIVERED in 154.878s
   Satisfaction score: 100.0
-Passenger 28: INJECTED AT 191.3s and DELIVERED in 187.579s
+Passenger 17: INJECTED AT 93.7s and DELIVERED in 401.613s
   Satisfaction score: 100.0
-Passenger 17: INJECTED AT 93.7s and DELIVERED in 286.38s
+Passenger 28: INJECTED AT 191.3s and DELIVERED in 305.773s
   Satisfaction score: 100.0
-Passenger 29: INJECTED AT 194.1s and DELIVERED in 188.125s
+Passenger 29: INJECTED AT 194.1s and DELIVERED in 305.03s
   Satisfaction score: 100.0
-Passenger 31: INJECTED AT 218.4s and DELIVERED in 213.028s
-  Satisfaction score: 100.0
-Passenger 19: INJECTED AT 111.2s and DELIVERED in 321.71s
+Passenger 31: INJECTED AT 218.4s and DELIVERED in 329.083s
   Satisfaction score: 90.0
-    @377.240000000: 0.90 Repeated hall call press
-Passenger 45: INJECTED AT 342.3s and DELIVERED in 93.704s
-  Satisfaction score: 100.0
-Passenger 13: INJECTED AT 65.2s and DELIVERED in 403.249s
-  Satisfaction score: 81.0
-    @107.500000000: 0.90 Repeated hall call press
-    @377.680000000: 0.90 Repeated hall call press
-Passenger 39: INJECTED AT 298.0s and DELIVERED in 184.156s
-  Satisfaction score: 100.0
-Passenger 50: INJECTED AT 401.8s and DELIVERED in 81.931s
-  Satisfaction score: 100.0
-Passenger 40: INJECTED AT 299.0s and DELIVERED in 198.277s
-  Satisfaction score: 100.0
-Passenger 38: INJECTED AT 286.3s and DELIVERED in 214.096s
-  Satisfaction score: 100.0
-Passenger 33: INJECTED AT 236.6s and DELIVERED in 275.255s
-  Satisfaction score: 100.0
-Passenger 22: INJECTED AT 128.199999999s and DELIVERED in 385.431000001s
+    @494.480000000: 0.90 Repeated hall call press
+Passenger 39: INJECTED AT 298.0s and DELIVERED in 302.214s
   Satisfaction score: 90.0
-    @323.500000000: 0.90 Repeated hall call press
-Passenger 55: INJECTED AT 452.4s and DELIVERED in 96.992s
+    @437.680000000: 0.90 Repeated hall call press
+Passenger 50: INJECTED AT 401.8s and DELIVERED in 199.905s
   Satisfaction score: 100.0
-Passenger 44: INJECTED AT 339.1s and DELIVERED in 211.071s
+Passenger 40: INJECTED AT 299.0s and DELIVERED in 338.779s
   Satisfaction score: 100.0
-Passenger 54: INJECTED AT 449.9s and DELIVERED in 100.792s
+Passenger 52: INJECTED AT 421.0s and DELIVERED in 231.823s
   Satisfaction score: 100.0
-Passenger 37: INJECTED AT 271.0s and DELIVERED in 280.68s
+Passenger 33: INJECTED AT 236.6s and DELIVERED in 418.183s
   Satisfaction score: 100.0
-Passenger 43: INJECTED AT 333.9s and DELIVERED in 218.946s
+Passenger 55: INJECTED AT 452.4s and DELIVERED in 236.975s
   Satisfaction score: 100.0
-Passenger 48: INJECTED AT 363.0s and DELIVERED in 194.002s
-  Satisfaction score: 100.0
-Passenger 49: INJECTED AT 382.1s and DELIVERED in 174.934s
-  Satisfaction score: 100.0
-Passenger 47: INJECTED AT 357.7s and DELIVERED in 232.219s
-  Satisfaction score: 100.0
-Passenger 51: INJECTED AT 419.5s and DELIVERED in 171.734s
-  Satisfaction score: 100.0
-Passenger 12: INJECTED AT 53.4s and DELIVERED in 590.439s
-  Satisfaction score: 64.8
-    @188.580000000: 0.90 Repeated hall call press
-    @511.180000000: 0.90 Repeated hall call press
-    @592.879000000: 0.80 Failed to enter car
-Passenger 46: INJECTED AT 356.1s and DELIVERED in 302.105s
-  Satisfaction score: 100.0
-Passenger 53: INJECTED AT 437.4s and DELIVERED in 221.237s
+Passenger 44: INJECTED AT 339.1s and DELIVERED in 351.108s
   Satisfaction score: 90.0
-    @481.940000000: 0.90 Repeated hall call press
-Passenger 35: INJECTED AT 247.9s and DELIVERED in 411.745s
+    @400.740000000: 0.90 Repeated hall call press
+Passenger 43: INJECTED AT 333.9s and DELIVERED in 357.41s
+  Satisfaction score: 100.0
+Passenger 37: INJECTED AT 271.0s and DELIVERED in 420.778s
   Satisfaction score: 90.0
-    @511.180000000: 0.90 Repeated hall call press
-Passenger 36: INJECTED AT 266.5s and DELIVERED in 406.155s
+    @494.940000000: 0.90 Repeated hall call press
+Passenger 54: INJECTED AT 449.9s and DELIVERED in 242.589s
+  Satisfaction score: 100.0
+Passenger 49: INJECTED AT 382.1s and DELIVERED in 313.018s
+  Satisfaction score: 100.0
+Passenger 48: INJECTED AT 363.0s and DELIVERED in 335.384s
+  Satisfaction score: 100.0
+Passenger 51: INJECTED AT 419.5s and DELIVERED in 309.505s
+  Satisfaction score: 100.0
+Passenger 47: INJECTED AT 357.7s and DELIVERED in 372.983s
+  Satisfaction score: 100.0
+Passenger 38: INJECTED AT 286.3s and DELIVERED in 454.694s
   Satisfaction score: 90.0
-    @467.380000000: 0.90 Repeated hall call press
-Passenger 52: INJECTED AT 421.0s and DELIVERED in 287.21s
+    @651.360000000: 0.90 Repeated hall call press
+Passenger 34: INJECTED AT 238.3s and DELIVERED in 528.079s
+  Satisfaction score: 72.0
+    @651.360000000: 0.90 Repeated hall call press
+    @732.159000000: 0.80 Failed to enter car
+Passenger 35: INJECTED AT 247.9s and DELIVERED in 561.99s
   Satisfaction score: 90.0
-    @672.380000000: 0.90 Repeated hall call press
+    @651.360000000: 0.90 Repeated hall call press
+Passenger 53: INJECTED AT 437.4s and DELIVERED in 373.285s
+  Satisfaction score: 90.0
+    @598.940000000: 0.90 Repeated hall call press
+Passenger 46: INJECTED AT 356.1s and DELIVERED in 455.259s
+  Satisfaction score: 100.0
+Passenger 36: INJECTED AT 266.5s and DELIVERED in 558.888s
+  Satisfaction score: 90.0
+    @584.280000000: 0.90 Repeated hall call press
 
 Passenger Delivery Summary
 Delivered: 56
@@ -154,14 +155,14 @@ Stranded: 0
 Total: 56
 
 Deliver Stats (lower is better):
-Average_delivery_time: 177.028
-Maximum_delivery_time:  590.439
-Delivery_performance_score:  1298.552
+Average_delivery_time: 254.811
+Maximum_delivery_time:  561.990
+Delivery_performance_score:  1581.233
 
 Satisfaction Stats (higher is better):
-Average_satisfaction_score: 96.175
+Average_satisfaction_score: 95.571
 Min_satisfaction_score:  50.000
-Satisfaction_performance_score:  434.700
+Satisfaction_performance_score:  432.286
 
 
 
