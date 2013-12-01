@@ -1244,6 +1244,8 @@
 
 
 
+
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -2083,10 +2085,14 @@
 
 
 
+
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
+
 
 
 
@@ -3840,6 +3846,8 @@
 
 
 
+
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4851,8 +4859,8 @@
       &nbsp;&nbsp;&nbsp; 11.22.3 mDesiredFloor.d shall be set to Stop.</span><br>
     <h3>TIME-TRIGGERED STATECHART:</h3>
     &nbsp; <img alt=""
-      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="668"
-      width="1669"><br>
+      src="Dispatcher_statecharts_group9_yujiaw_new.png" height="528"
+      width="1198"><br>
     <br>
     <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
@@ -4863,7 +4871,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">T11.1.*<br>
+          <td valign="top">T11.11.*<br>
           </td>
           <td valign="top">any mDoorClosed[b, r] &#8592; false AND all
             mAtFloor[f, b] &#8592; false </td>
@@ -4879,6 +4887,8 @@
               none; white-space: normal; widows: auto; word-spacing:
               0px; -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+
+
 
 
 
@@ -4909,6 +4919,8 @@
 
 
 
+
+
             &#8592; UP AND&nbsp; <br>
             ((mCarCall[f1, b1] &#8592; true AND (mCarCall[f2, b2] &#8592; true OR
             mHallCall[f2, b2, *] &#8592; true) AND CurrentFloor &lt;= f1 &lt;
@@ -4927,6 +4939,8 @@
               none; white-space: normal; widows: auto; word-spacing:
               0px; -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+
+
 
 
 
@@ -4963,6 +4977,8 @@
 
 
 
+
+
             &#8592; DOWN AND mCarCall[f, b] &#8592; true AND f &lt;= CurrentFloor
             AND all other mCarCall and mHallCall &#8592; false</td>
         </tr>
@@ -4977,6 +4993,8 @@
               none; white-space: normal; widows: auto; word-spacing:
               0px; -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;">MaxCarCapacity AND </span>CurrentDIrection
+
+
 
 
 
@@ -5001,6 +5019,8 @@
               none; white-space: normal; widows: auto; word-spacing:
               0px; -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;">MaxCarCapacity AND </span>CurrentDirection
+
+
 
 
 
@@ -5036,6 +5056,116 @@
           </td>
           <td valign="top">All mCarCall and mHallCall below CurrentFloor
             &#8592; false AND all mDoorClosed[b, r] &#8592; true </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table cellpadding="2" cellspacing="2" border="1">
+      <tbody>
+        <tr>
+          <td valign="top" width="15%">State<br>
+          </td>
+          <td valign="top" width="35">Description<br>
+          </td>
+          <td valign="top" width="60">Actions<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.1 Stop_Stop<br>
+          </td>
+          <td valign="top" width="20%">Car is stopped, DesiredDirection
+            is Stop<br>
+          </td>
+          <td valign="top" width="60">set Target to None, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to
+            Stop<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.2 Stop_Up<br>
+          </td>
+          <td valign="top">Car is stopped, DesiredDirection is Up<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to Up<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.3 Stop_Down<br>
+          </td>
+          <td valign="top">Car is stopped, DesiredDirection is Down<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to
+            Down<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.4 Up_Stop<br>
+          </td>
+          <td valign="top">Car is moving up, DesiredDirection is Stop<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to
+            Stop<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.5 Up_Up<br>
+          </td>
+          <td valign="top">Car is moving up, DesiredDirection is Up<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to Up</td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.6 Up_Down<br>
+          </td>
+          <td valign="top">Car is moving up, DesiredDirection is Down<br>
+          </td>
+          <td valign="top">set Target to the farthest floor of calls,
+            set DesiredHallway to CurrentHallway, set DesiredDirection
+            to Down<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.7 Down_Stop<br>
+          </td>
+          <td valign="top">Car is moving down, DesiredDirection is Stop<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to
+            Stop<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.8 Down_Down<br>
+          </td>
+          <td valign="top">Car is moving down,<br>
+            DesiredDirection is Down<br>
+          </td>
+          <td valign="top">set Target to the nearest floor of calls, set
+            DesiredHallway to CurrentHallway, set DesiredDirection to
+            Down<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.9 Down_Up<br>
+          </td>
+          <td valign="top">Car is moving down, DesiredDirection is Up<br>
+          </td>
+          <td valign="top">set Target to the farthest floor of calls,
+            set DesiredHallway to CurrentHallway, set DesiredDirection
+            to Up</td>
+        </tr>
+        <tr>
+          <td valign="top" width="5%">S11.10 Emergency<br>
+          </td>
+          <td valign="top">Doors are not closed between floors<br>
+          </td>
+          <td valign="top">set Target to 1, set DesiredHallway to None,
+            set DesiredDirection to Stop<br>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -326,6 +326,37 @@ public class Utility {
 			else
 				return MessageDictionary.NONE;
 		}
+	
+		//Yujia Wang
+		public int getFarthestPressedFloor(int floor, Direction d, int count, Direction desiredDirection, boolean ignoreFlag){
+			int farthestFloor = MessageDictionary.NONE;
+			int i = 0;
+			if(d == Direction.UP){
+				if(ignoreFlag == true) floor ++;
+				for (int f = Elevator.numFloors; f >= floor && i<count; f--) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h, desiredDirection) && farthestFloor != f){
+							farthestFloor = f;
+							i++;
+						}
+					}
+				}				
+			}else if(d == Direction.DOWN){
+				if(ignoreFlag == true) floor--;
+				for (int f = 1; f <= floor && i<count; f++) {
+					for (Hallway h : Hallway.replicationValues) {
+						if(isPressed(f, h, desiredDirection) && farthestFloor != f){
+							farthestFloor = f;
+							i++;
+						}
+					}
+				}
+			}
+			if(i == count)
+				return farthestFloor;
+			else
+				return MessageDictionary.NONE;
+		}
 	}
 
 	public static class CarCallArray {
