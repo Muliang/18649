@@ -27,4 +27,4 @@ if [[ "$?" -eq "0" ]]; then
   echo "Verification passed"
 fi
 
-#rm -f *.stats
+rm -f *.stats
