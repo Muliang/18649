@@ -430,12 +430,12 @@ public class Dispatcher extends Controller {
 			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor-1, Direction.DOWN, 1, Direction.UP, false) == -1
 			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)==-1)
 			
-			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
+			|| (nearestCarCallFloor !=-1 && secondNearestCarCallFloor == -1 
 			&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN, false)!=-1
 				|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)!=-1))
 			
-			|| (nearestHallCallUpFloor != -1 && nearestCarCallFloor == -1
-			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall())==-1))){
+			/*|| (nearestHallCallUpFloor != -1 && nearestCarCallFloor == -1
+			&& mHallCall.getNearestPressedFloor(currentFloor, Direction.DOWN, 1, Direction.DOWN, isIgnoringCurrentFloorCall())==-1)*/)){
 				currentState = State.STATE_DOWN_UP;
 		}
 		// #Transition 'T11.10.4'
@@ -566,7 +566,7 @@ public class Dispatcher extends Controller {
 			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor+1, Direction.UP, 1, Direction.DOWN, false) == -1
 			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)==-1)
 			
-			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
+			|| (nearestCarCallFloor !=-1 && secondNearestCarCallFloor == -1 
 				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)!=-1
 					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP, false)!=-1))
 			
@@ -687,7 +687,7 @@ public class Dispatcher extends Controller {
 			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor-1, Direction.DOWN, 1, Direction.UP, false) == -1
 			&& mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)==-1)
 			
-			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
+			|| (nearestCarCallFloor !=-1 && secondNearestCarCallFloor == -1 
 			&& (mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.DOWN, false)!=-1
 				|| mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)!=-1))
 			
@@ -760,7 +760,7 @@ public class Dispatcher extends Controller {
 			&& mHallCall.getNearestPressedFloor(nearestCarCallFloor+1, Direction.UP, 1, Direction.DOWN, false) == -1
 			&& mHallCall.getNearestPressedFloor(currentFloor+1, Direction.UP, 1, Direction.UP, false)==-1)
 			
-			|| (nearestCarCallFloor !=1 && secondNearestCarCallFloor == -1 
+			|| (nearestCarCallFloor !=-1 && secondNearestCarCallFloor == -1 
 				&& (mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.DOWN, false)!=-1
 					|| mHallCall.getNearestPressedFloor(currentFloor-1, Direction.DOWN, 1, Direction.UP, false)!=-1))
 			

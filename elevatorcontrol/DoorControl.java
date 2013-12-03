@@ -58,7 +58,7 @@ public class DoorControl extends Controller {
 
 	// constant value
 	// set Dwell value
-	private static final SimTime DWELL = new SimTime(2000,
+	private static final SimTime DWELL = new SimTime(6000,
 			SimTimeUnit.MILLISECOND);
 
 	// initial state
@@ -307,7 +307,8 @@ public class DoorControl extends Controller {
 		// #transition 'T5.5'
 		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
 				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))
-				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway)))
+				|| (mHallCall.isPressed(mAtFloor.getCurrentFloor(), hallway, 
+						mDesiredFloor.getDirection())))
 			newState = State.STATE_OPENING;
 
 		// #transition 'T5.6'
@@ -343,7 +344,8 @@ public class DoorControl extends Controller {
 		// #transition 'T5.9'
 		if ((mCarWeight.getWeight() >= Elevator.MaxCarCapacity)
 				|| (mCarCall.isPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
-				|| (mHallCall.isAnyPressed(mAtFloor.getCurrentFloor(), hallway))//need change mCarCall class
+				|| mHallCall.isPressed(mAtFloor.getCurrentFloor(), hallway, 
+						mDesiredFloor.getDirection())
 				||	mDoorReversalLeft.getValue() == true || 
 				mDoorReversalRight.getValue() == true)
 			newState = State.STATE_REOPENING;

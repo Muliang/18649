@@ -121,8 +121,8 @@ public class HallButtonControl extends Controller{
 		mHallCall.set(true);
 
 		// #transition 'T8.2'
-		if (//mDesiredFloor.getFloor() == floor && 
-				mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
+		if (mDesiredFloor.getDirection() == direction &&
+			mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 							state = State.STATE_OFF;
 		}
 		
