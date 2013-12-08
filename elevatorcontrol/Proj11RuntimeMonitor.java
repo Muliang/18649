@@ -881,16 +881,13 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	private boolean hasCall(int floor)
 	{
-		
-		if(floor == -1) {return false;}
-			floor -= 1;
-			return 	   carLights[floor][Hallway.FRONT.ordinal()].lighted()
+		floor -= 1;
+		return 	   carLights[floor][Hallway.FRONT.ordinal()].lighted()
 				|| carLights[floor][Hallway.BACK.ordinal() ].lighted()
 				|| hallLights[floor][Hallway.FRONT.ordinal()][Direction.UP.ordinal()  ].lighted()
 				|| hallLights[floor][Hallway.FRONT.ordinal()][Direction.DOWN.ordinal()].lighted()
 				|| hallLights[floor][Hallway.BACK.ordinal() ][Direction.UP.ordinal()  ].lighted()
 				|| hallLights[floor][Hallway.BACK.ordinal() ][Direction.DOWN.ordinal()].lighted();
-		
 	}
 
 	private boolean lanternLit(Direction dir) {

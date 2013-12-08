@@ -273,7 +273,7 @@ public class Utility {
 		//Yujia Wang
 		public boolean isPressed(int floor, Hallway hallway, Direction d) {
 			// no atFloor is true
-			if (floor < 1 || floor > Elevator.numFloors) {
+			if (floor < 1 || floor > Elevator.numFloors|| d == Direction.STOP) {
 				return false;
 			} else {
 				int index = ReplicationComputer.computeReplicationId(floor,

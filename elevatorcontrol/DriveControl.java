@@ -127,7 +127,7 @@ public class DriveControl extends Controller {
 		// initialize state
 		this.period = period;
 		this.currentState = State.STATE_STOP;
-		this.allowance = 2*(100 + FAST_SPEED *10* period.getFracMilliseconds());
+		this.allowance = 2*(100 + FAST_SPEED *6* period.getFracMilliseconds());
 		this.desiredFloor = MessageDictionary.NONE;
 		this.currentFloor = 1;
 		this.DesiredDirection = Direction.UP;
