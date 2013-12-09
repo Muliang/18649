@@ -89,7 +89,7 @@ public class Dispatcher extends Controller {
 	private static final double DECELERATION = DriveObject.Deceleration; // in
 		// m/s^2
 	private static final double ONETOMILLI = 1000.0;
-    private static final SimTime waitingTime  =  new SimTime(1000, SimTimeUnit.MILLISECOND);
+    private static final SimTime waitingTime  =  new SimTime(500, SimTimeUnit.MILLISECOND);
     private static final SimTime respondingTime = new SimTime(2000, SimTimeUnit.MILLISECOND);
     private static final SimTime pressingTime = new SimTime(250, SimTimeUnit.MILLISECOND);
     //add Time translator
@@ -764,6 +764,7 @@ public class Dispatcher extends Controller {
 			else
 				target = secondNearestHallCallUpFloor;
 		}
+		if(nearestCarCallFloor != -1) countDown3 = SimTime.ZERO;
 		if(countDown3.isGreaterThan(SimTime.ZERO)) target = MessageDictionary.NONE;
 		mDesiredFloor.setFloor(target);
 		if(target != currentFloor && target != -1) countDown2 = respondingTime;
@@ -856,6 +857,7 @@ public class Dispatcher extends Controller {
 				target = secondNearestHallCallDownFloor;
 		}
 		if(target != currentFloor && target != -1) countDown2 = respondingTime;
+		if(nearestCarCallFloor != -1) countDown3 = SimTime.ZERO;
 		if(countDown3.isGreaterThan(SimTime.ZERO)) target = MessageDictionary.NONE;
 		//if(nearestCarCallFloor == currentFloor) countDown2 = SimTime.ZERO;
 		mDesiredFloor.setFloor(target);
