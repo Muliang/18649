@@ -89,9 +89,9 @@ public class Dispatcher extends Controller {
 	private static final double DECELERATION = DriveObject.Deceleration; // in
 		// m/s^2
 	private static final double ONETOMILLI = 1000.0;
-    private static final SimTime waitingTime  =  new SimTime(500, SimTimeUnit.MILLISECOND);
+    private static final SimTime waitingTime  =  new SimTime(2000, SimTimeUnit.MILLISECOND);
     private static final SimTime respondingTime = new SimTime(2000, SimTimeUnit.MILLISECOND);
-    private static final SimTime pressingTime = new SimTime(250, SimTimeUnit.MILLISECOND);
+    private static final SimTime pressingTime = new SimTime(1000, SimTimeUnit.MILLISECOND);
     //add Time translator
     		
 	//enumerate states
@@ -245,6 +245,28 @@ public class Dispatcher extends Controller {
 		return retval;
 	}
 	
+	private Hallway getCurrentHallway(){
+		Hallway retval = Hallway.NONE;
+		Hallway possibleHallway = mAtFloor.getCurrentHallway();
+		retval = possibleHallway;
+		int floor = mAtFloor.getCurrentFloor();
+		if(isPendingCall(floor, Hallway.BOTH))
+			retval = Hallway.BOTH;
+		else if(isPendingCall(floor, Hallway.FRONT))
+			retval = Hallway.FRONT;
+		else if(isPendingCall(floor, Hallway.BACK))
+			retval = Hallway.BACK;
+		return retval;
+	}
+	
+	private boolean isPendingCall(int f, Hallway h){
+		if (h == Hallway.BOTH)
+			return (mCarCall.isPressed(f, Hallway.FRONT) || mHallCall.isAnyPressed(f, Hallway.FRONT))
+					&&(mCarCall.isPressed(f, Hallway.BACK) || mHallCall.isAnyPressed(f, Hallway.BACK));
+		else
+			return mCarCall.isPressed(f, h) || mHallCall.isAnyPressed(f, h);
+	}
+	
 	private Commit commitPoint(int floor, int CarLevelPosition, double speed,
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
@@ -318,7 +340,7 @@ public class Dispatcher extends Controller {
 	}
 	
 	private void stateDownUp() {
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		countDown1 = waitingTime;
 		if(countDown2.isGreaterThan(SimTime.ZERO))
@@ -374,7 +396,7 @@ public class Dispatcher extends Controller {
 	}
 
 	private void stateDownDown() {
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
 		countDown1 = waitingTime;
@@ -444,7 +466,7 @@ public class Dispatcher extends Controller {
 	}
 
 	private void stateDownStop() {
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
@@ -515,7 +537,7 @@ public class Dispatcher extends Controller {
 	private void stateUpDown() {
 		currentFloor = (int) (Math.floor((mCarLevelPosition.getPosition()/1000.0/5.0))+1);
 		commitableFloor = getNearestCommitableFloor(currentFloor, mCarLevelPosition.getValue(), mDriveSpeed.getSpeed(), Direction.UP);
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.DOWN);
 		countDown1 = waitingTime;
@@ -563,7 +585,7 @@ public class Dispatcher extends Controller {
 	}
 
 	private void stateUpUp() {
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.UP);
 		countDown1 = waitingTime;
@@ -619,7 +641,7 @@ public class Dispatcher extends Controller {
 	}
 
 	private void stateUpStop() {
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setHallway(currentHallway);
 		mDesiredFloor.setDirection(Direction.STOP);
@@ -696,7 +718,7 @@ public class Dispatcher extends Controller {
 		if(mCarCall.getNearestPressedFloor(currentFloor, Direction.UP, 1, false)==currentFloor)
 			target = currentFloor;
 		mDesiredFloor.setFloor(target);
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.STOP;
 		mDesiredFloor.setDirection(Direction.STOP);
@@ -716,14 +738,12 @@ public class Dispatcher extends Controller {
 		
 		//#Transition 'T11.2'
 		if ((nearestCarCallDownFloor != -1 || nearestHallCallDownFloor != -1)
-			&& (nearestCarCallUpFloor ==-1 && nearestHallCallUpFloor == -1)
-				&& isAllDoorClosed()){
+			&& (nearestCarCallUpFloor ==-1 && nearestHallCallUpFloor == -1)){
 			currentState = State.STATE_STOP_DOWN;
 		}
 		
 		//#Transition 'T11.1'
-		if ((nearestCarCallUpFloor !=-1 || nearestHallCallUpFloor != -1)
-			&& isAllDoorClosed()){
+		if ((nearestCarCallUpFloor !=-1 || nearestHallCallUpFloor != -1)){
 			currentState = State.STATE_STOP_UP;
 		}
 		
@@ -742,7 +762,7 @@ public class Dispatcher extends Controller {
 			countDown3 = SimTime.subtract(countDown3, period);
 		else
 			countDown3 = pressingTime;
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.DOWN;
 		mDesiredFloor.setDirection(Direction.DOWN);
@@ -769,8 +789,8 @@ public class Dispatcher extends Controller {
 		mDesiredFloor.setFloor(target);
 		if(target != currentFloor && target != -1) countDown2 = respondingTime;
 		//#Transition 'T11.3.2'
-		if (nearestCarCallFloor == -1 && nearestHallCallFloor == -1
-			&& isAllDoorClosed()&& countDown3.isLessThanOrEqual(SimTime.ZERO)){
+		if (nearestCarCallFloor == -1 && nearestHallCallFloor == -1 && isAllDoorClosed()
+			&& countDown3.isLessThanOrEqual(SimTime.ZERO)){
 			currentState = State.STATE_STOP_STOP;
 		}
 		//#Transition 'T11.7'
@@ -831,7 +851,7 @@ public class Dispatcher extends Controller {
 			countDown3 = SimTime.subtract(countDown3, period);
 		else
 			countDown3 = pressingTime;			
-		currentHallway = mAtFloor.getCurrentHallway();
+		currentHallway = getCurrentHallway();
 		mDesiredFloor.setHallway(currentHallway);
 		currentDirection = Direction.UP;
 		mDesiredFloor.setDirection(Direction.UP);
@@ -862,7 +882,7 @@ public class Dispatcher extends Controller {
 		//if(nearestCarCallFloor == currentFloor) countDown2 = SimTime.ZERO;
 		mDesiredFloor.setFloor(target);
 		//#Transition 'T11.3.1'
-		if (target == -1 && isAllDoorClosed()&& countDown3.isLessThanOrEqual(SimTime.ZERO)){
+		if (target == -1 && isAllDoorClosed() && countDown3.isLessThanOrEqual(SimTime.ZERO)){
 			currentState = State.STATE_STOP_STOP;
 		}
 		

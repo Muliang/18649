@@ -58,9 +58,9 @@ public class DoorControl extends Controller {
 
 	// constant value
 	// set Dwell value
-	private static final SimTime DWELL = new SimTime(5000,
+	private static final SimTime DWELL = new SimTime(6000,
 			SimTimeUnit.MILLISECOND);
-	private static final SimTime DWELL2 = new SimTime(1000,
+	private static final SimTime DWELL2 = new SimTime(2000,
 			SimTimeUnit.MILLISECOND);
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
