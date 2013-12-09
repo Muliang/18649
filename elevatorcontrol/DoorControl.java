@@ -60,7 +60,8 @@ public class DoorControl extends Controller {
 	// set Dwell value
 	private static final SimTime DWELL = new SimTime(5000,
 			SimTimeUnit.MILLISECOND);
-
+	private static final SimTime DWELL2 = new SimTime(1000,
+			SimTimeUnit.MILLISECOND);
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
 	private static final int MAX_OPEN = 1;
@@ -320,7 +321,7 @@ public class DoorControl extends Controller {
 	private void StateReopening() {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
-		countDown = DWELL;
+		countDown = DWELL2;
 		// #transition 'T5.7'
 		if (mDoorOpened.getValue() == true)
 			newState = State.STATE_REOPEN;
