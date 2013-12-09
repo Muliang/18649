@@ -64,7 +64,7 @@ public class DoorControl extends Controller {
 			SimTimeUnit.MILLISECOND);
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
-	private static final int MAX_OPEN = 1;
+	private static final int MAX_OPEN = 2;
 	
 	// set global variables
 	private Hallway hallway;
