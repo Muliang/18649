@@ -764,6 +764,7 @@ public class Dispatcher extends Controller {
 			else
 				target = secondNearestHallCallUpFloor;
 		}
+		if(countDown3.isGreaterThan(SimTime.ZERO)) target = MessageDictionary.NONE;
 		mDesiredFloor.setFloor(target);
 		if(target != currentFloor && target != -1) countDown2 = respondingTime;
 		//#Transition 'T11.3.2'
@@ -855,6 +856,7 @@ public class Dispatcher extends Controller {
 				target = secondNearestHallCallDownFloor;
 		}
 		if(target != currentFloor && target != -1) countDown2 = respondingTime;
+		if(countDown3.isGreaterThan(SimTime.ZERO)) target = MessageDictionary.NONE;
 		//if(nearestCarCallFloor == currentFloor) countDown2 = SimTime.ZERO;
 		mDesiredFloor.setFloor(target);
 		//#Transition 'T11.3.1'
