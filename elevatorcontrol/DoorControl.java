@@ -58,12 +58,12 @@ public class DoorControl extends Controller {
 
 	// constant value
 	// set Dwell value
-	private static final SimTime DWELL = new SimTime(6000,
+	private static final SimTime DWELL = new SimTime(8000,
 			SimTimeUnit.MILLISECOND);
 
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
-	private static final int MAX_OPEN = 3;
+	private static final int MAX_OPEN = 2;
 	
 	// set global variables
 	private Hallway hallway;
