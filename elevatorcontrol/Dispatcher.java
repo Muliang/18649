@@ -89,7 +89,7 @@ public class Dispatcher extends Controller {
 	private static final double DECELERATION = DriveObject.Deceleration; // in
 		// m/s^2
 	private static final double ONETOMILLI = 1000.0;
-    private static final SimTime waitingTime  =  new SimTime(500, SimTimeUnit.MILLISECOND);
+    private static final SimTime waitingTime  =  new SimTime(250, SimTimeUnit.MILLISECOND);
     private static final SimTime respondingTime = new SimTime(2000, SimTimeUnit.MILLISECOND);
     private static final SimTime pressingTime = new SimTime(250, SimTimeUnit.MILLISECOND);
     //add Time translator
