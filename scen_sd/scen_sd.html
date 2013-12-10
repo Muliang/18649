@@ -17,8 +17,6 @@
         Group 9- Yichao Xue &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
         yichaox<br>
         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; Priya Mahajan&nbsp;&nbsp;&nbsp; priyam<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp; Wenhui Hu &nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp; wenhuih <br>
         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -66,7 +64,8 @@
         <ul>
           <li><a href="#scenario7c">Scenario 7C</a></li>
           <li><a href="#Scenario_7D">Scenario 7D</a> (Trace to
-            requirement R-T8.3)<br>
+            requirement R-T8.3)</li>
+          <li><a href="#Scenario_7E">Scenario 7E</a> <br>
           </li>
         </ul>
         <li><a href="#usecase8">8. Move Car to Next Floor</a></li>
@@ -205,9 +204,7 @@
         <li>Door[b, r] starts closing.</li>
         <li>The passenger presses the car call button CarCall[f, b] for
           desired destination [f, b].</li>
-        <ol>
-          <li>The CarLight[f,b] turns on.</li>
-        </ol>
+        <li>The CarLight[f,b] turns on.</li>
         <li>Doors complete closing.</li>
       </ol>
       <h3> Post-Conditions: </h3>
@@ -401,8 +398,7 @@
       <ul type="disc">
       </ul>
       <h3> Sequence Diagram: </h3>
-      <br>
-      <img alt="4A" src="SD_4A_wenhui.png" height="340" width="578"><br>
+      <img alt="4A" src="SD_4A_wenhui.png" height="338" width="578"><br>
       <hr size="2" width="100%">
       <h2> <a name="usecase5" id="usecase5"></a>Use Case 5: Passenger
         Triggers Door Reversal </h2>
@@ -480,14 +476,6 @@
       <h3> <a name="Scenario_6A"></a>Scenario 6A: Car moves from
         hallway f on floor x to adjacent hallway g on floor y and stops.
       </h3>
-      <p> Note: Recall that the Drive of the&nbsp;elevator we provided
-        is never commanded to go Fast, so the elevator only moves Slow
-        and can therefore stop right away when it sees the appropriate
-        AtFloor[f, b](True). Your solution will probably involve the
-        Drive going Fast for some portion of the trip, and the
-        CarLevelPosition Sensor to plan when to slow down. You will be
-        given information on how to design a Fast Drive in the upcoming
-        projects. For Project 2, a Slow Drive will suffice.</p>
       <h3> Author name: Priya Mahajan(priyam@andrew.cmu.edu)<br>
       </h3>
       <h3> Pre-Conditions: </h3>
@@ -601,7 +589,7 @@
           <b>d</b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <img alt="" src="SD_7A_YujiaWang.png" height="354" width="922"><br>
+      <img alt="7A" src="SD_7A_YujiaWang.png" height="360" width="860"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7b" id="scenario7b"></a>Scenario 7B:
@@ -642,8 +630,7 @@
         <li>Elevator is at floor <b>f</b>.</li>
       </ul>
       <h3> Sequence Diagram: </h3>
-      <a href="SD_7B_YujiaWang.png"><img alt="7B"
-          src="SD_7B_YujiaWang.png" border="0" height="359" width="1136"></a><br>
+      <img alt="7B" src="SD_7B_YujiaWang.png" height="359" width="1136"><br>
       <div align="center">
         <hr align="center" size="2" width="100%"> </div>
       <h3> <a name="scenario7c" id="scenario7c"></a>Scenario 7C:
@@ -676,9 +663,9 @@
       <h3> Sequence Diagram:</h3>
       <img alt="" src="SD_7C_YujiaWang.png" height="295" width="781"><br>
       <hr size="2" width="100%"><br>
-      <h3><a name="Scenario_7D"></a>Scenario 7D: Elevator determines go
-        to {floor g, hallway c} first when there is car call for both
-        {floor g, hallway c} and {floor f, hallway b}</h3>
+      <h3><a name="Scenario_7D"></a>Scenario 7D: Elevator determines
+        desired floor when there is car call for both {floor g, hallway
+        c} and {floor f, hallway b}</h3>
       <h3>Author name: Wenhui Hu(wenhuih@andrew.cmu.edu)</h3>
       <p><b>Pre-Conditions:</b><br>
       </p>
@@ -690,10 +677,10 @@
       <b>Scenario:</b><br>
       <ol>
         <li>Passenger1 pushes car button for {floor g, hallway c} which
-          has same desired direction as d.<br>
+          is on the way of direction d.<br>
         </li>
         <li>Passenger2 pushes car button for {floor f, hallway b} which
-          has different desired direction as d.<br>
+          is not on the way of direction d.<br>
         </li>
         <li>Dispatcher sets mDesiredFloor.floor as g.<br>
         </li>
@@ -713,10 +700,54 @@
       </ul>
       <b>Sequence Diagram:<br>
         <img alt="7D" src="SD_7D_wenhui.png" height="319" width="1066"><br>
-      </b><br>
+        <br>
+      </b>
+      <hr size="2" width="100%"><br>
+      <h3><a name="Scenario_7E"></a>Scenario 7E: Elevator determines
+        desired floor when there is hall call for both {floor g, hallway
+        c, direction ~d} and {floor f, hallway b, direction ~d}</h3>
+      <h3>Author name: Wenhui Hu(wenhuih@andrew.cmu.edu)</h3>
+      <p><b>Pre-Conditions:</b><br>
+      </p>
+      <ul>
+        <li>Car stops at floor f0.</li>
+        <li>All doors are open.</li>
+        <li>CarLantern is already On for direction d.</li>
+      </ul>
+      <b>Scenario:</b><br>
+      <ol>
+        <li>Passenger1 pushes hall call button for {floor g, hallway c,
+          direction ~d} which is on the way of direction d and has
+          different desired direction as d.<br>
+        </li>
+        <li>Passenger2 pushes hall call button for {floor f, hallway b,
+          direction ~d} which is on the way of direction d and&nbsp; has
+          different desired direction as d.<br>
+        </li>
+        <li>Dispatcher sets mDesiredFloor.floor as max(abs(f0-f),
+          abs(f0-g)).<br>
+        </li>
+        <li>Door[b,r] starts closing.</li>
+        <li>Door[b,r] completes closing.</li>
+        <li>CarLantern[d] turns Off.<br>
+        </li>
+      </ol>
+      <b>Post-Conditions:</b><br>
+      <ul>
+        <li>All doors are closed.</li>
+        <li>All CarLanterns are off.<br>
+        </li>
+        <li>Elevator is at floor f0, intends to move to floor g in
+          direction d.</li>
+      </ul>
+      <p><b>Sequence Diagram:<br>
+          <img alt="7E" src="SD_7E_wenhui.png" height="319" width="1067"><br>
+        </b></p>
       <div align="center">
         <hr align="center" size="2" width="100%"></div>
-      <h2><a name="usecase8"></a> Use Case 8: Move Car to Next Floor </h2>
+      <h2><a name="usecase8" id="usecase8"></a>Use Case 8: Move Car to
+        Next Floor </h2>
+      <h2></h2>
       <h3> </h3>
       <h3><a name="Scenario_8A" id="usecase8"></a> Scenario 8A: Elevator
         moves from {floor f, hallway b} to {floor g, hallway c} in
@@ -772,7 +803,8 @@
         <li>Car is stoppe<b>d</b></li>
       </ul>
       <b>Sequence Diagram:</b><br>
-      <img alt="" src="SD_8B_YujiaWang.png" height="206" width="510"><br>
+      <br>
+      <img alt="8B" src="SD_8B_YujiaWang.png" height="204" width="530"><br>
       <hr size="2" width="100%"><b><br>
       </b>
       <h3><a name="Scenario_8C"></a>Scenario 8C: Elevator moves towards
@@ -811,9 +843,7 @@
       <h3><a name="scenario9a"></a> Scenario 9A: Elevator stops at
         hallway and doors open. Dispatcher computes next desired floor
         just as doors open. Doors close. </h3>
-      <p> Note: This dispatcher is really dumb and stops at every floor,
-        in order. It would be much better to stop only at floors with
-        people on them or that people want to go to. </p>
+      <p> </p>
       <h3> Author name: Wenhui Hu (wenhuih@andrew.cmu.edu)<br>
       </h3>
       <h3> </h3>
@@ -827,7 +857,7 @@
       <ol start="1" type="1">
         <li>Door[<b>b</b>,<b>r</b>] starts opening. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes opening. </li>
-        <li>mDesiredFloor.floor is set to ((f mod MaxFloors)+1).<br>
+        <li>mDesiredFloor.floor is set to Target.<br>
         </li>
         <li>Door[<b>b</b>,<b>r</b>] starts closing. </li>
         <li>Door[<b>b</b>,<b>r</b>] completes closing. </li>
@@ -839,8 +869,8 @@
       </ul>
       <h3> Sequence Diagram: </h3>
       <h3> </h3>
-      &nbsp; <img alt="" src="SD_9A_wenhui.png" height="359"
-        width="764"><br>
+      &nbsp; <img alt="9A" src="SD_9A_wenhui.png" height="357"
+        width="778"><br>
     </div>
   </body>
 </html>
