@@ -56,7 +56,7 @@
 +0.00s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getDirection == STOP;
 
 ;#arc '7C/4'
-+2.50s A F DoorMotor FRONT LEFT : command == CLOSE;
++6.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 
 ;#arc '7C/5a'
