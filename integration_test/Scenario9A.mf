@@ -49,7 +49,7 @@
 +0.50s A N DESIRED_FLOOR_CAN_ID DesiredFloor : getFloor == 4;
 
 ;#arc '9A/4'
-+2.50s A F DoorMotor FRONT LEFT : command == CLOSE;
++6.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 
 ;#arc '9A/5a'
 +0.00s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;

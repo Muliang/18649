@@ -51,7 +51,7 @@
 ;End Setting Up Pre-conditions
 
 ;#arc '8A/1'
-+6.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++2.50s A F DoorMotor FRONT LEFT : command == CLOSE;
 
 ;#arc '8A/2a'
 +0.20s I DOOR_CLOSED_SENSOR_PERIOD N DOOR_CLOSED_SENSOR_[FRONT][LEFT]_CAN_ID DoorClosed FRONT LEFT = true;
