@@ -352,8 +352,8 @@
           width: 613px; height: 523px;" border="0" height="523"
           width="613"></a><br>
     </div>
-    <table style="text-align: left; width: 800px;" border="1"
-      cellpadding="2" cellspacing="2">
+    <table style="text-align: left; width: 800px;" cellpadding="2"
+      cellspacing="2" border="1">
       <tbody>
         <tr>
           <td style="vertical-align: top;">Trigger #<br>
@@ -491,8 +491,8 @@
       </tbody>
     </table>
     <br>
-    <table style="text-align: left; width: 800px;" border="1"
-      cellpadding="2" cellspacing="2">
+    <table style="text-align: left; width: 800px;" cellpadding="2"
+      cellspacing="2" border="1">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -643,7 +643,7 @@
     'X' means that that Drive command is considered adjacent to the
     corresponding value of {DriveSpeed}:<br>
     <table style="text-align: left; width: 100%; height: 376px;"
-      border="1" cellpadding="2" cellspacing="2">
+      cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td style="vertical-align: top;"><br>
@@ -1028,9 +1028,9 @@
     &nbsp;&nbsp;&nbsp; 5.7.2&nbsp; CountDown shall be decremented.<br>
     5.8&nbsp; If mDoorClosed[b, r] is True, then DoorMotor[b,r] should
     be commanded to Stop.<br>
-    5.9&nbsp; When CountDown &lt;= 0, DoorMotor[b,r] shall be commanded
-    to Close<br>
-    5.10&nbsp; When CountDown &lt;= 0, DoorMotor[b,r] should be
+    5.9&nbsp; If CountDown &lt;= 0, then DoorMotor[b,r] shall be
+    commanded to Close<br>
+    5.10&nbsp; If CountDown &lt;= 0, then DoorMotor[b,r] should be
     commanded to Nudge.<br>
     5.11 If mCarWeight(g) &gt;= MaxCarCapacity, and mDoorOpened[b, r] is
     False, DoorMotor[b, r] shall be commanded to Open.<br>
@@ -1052,7 +1052,7 @@
       width="807"><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="303">
+    <table cellpadding="2" cellspacing="2" border="1" height="303">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -1101,6 +1101,7 @@
                 text-transform: none; white-space: normal; widows: auto;
                 word-spacing: 0px; -webkit-text-stroke-width: 0px;
                 display: inline !important; float: none;">&#8592; </span>True)
+
 
 
               <br>
@@ -1255,6 +1256,7 @@
 
 
 
+
             </span><span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -1271,7 +1273,7 @@
       </tbody>
     </table>
     <h2> </h2>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top">State<br>
@@ -1348,7 +1350,7 @@
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -1884,7 +1886,7 @@
     'X' means that that Drive command is considered adjacent to the
     corresponding value of {DriveSpeed}:<br>
     <table style="text-align: left; width: 100%; height: 376px;"
-      border="1" cellpadding="2" cellspacing="2">
+      cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td style="vertical-align: top;"><br>
@@ -2102,10 +2104,12 @@
 
 
 
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
 
 
 
@@ -2168,7 +2172,7 @@
         src="DriveControl_state_chart_group9_yujiaw.png" border="0"
         height="629" width="856"></a><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -2277,7 +2281,7 @@
     <br>
     <meta name="&#26631;&#39064;" content="">
     <table class="MsoNormalTable" style="background: none repeat scroll
-      0% 0% white;" border="1" cellpadding="0" height="325">
+      0% 0% white;" cellpadding="0" border="1" height="325">
       <tbody>
         <tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes">
           <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
@@ -2457,6 +2461,7 @@
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">Emergency&nbsp;
+
                 <o:p></o:p></span><br>
             </big></td>
           <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
@@ -3296,7 +3301,7 @@ div.WordSection1
 	{page:WordSection1;}
 --> </style><br>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -3937,13 +3942,14 @@ div.WordSection1
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
       display: inline !important; float: none;">mDoorClose[b,*] is true</span>,
-    <span style="color: rgb(0, 0, 0); font-family: Times; font-size:
-      medium; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: normal; orphans:
-      auto; text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: auto; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none;">CarLantern[*]</span> shall be set to Off.<br>
+    then <span style="color: rgb(0, 0, 0); font-family: Times;
+      font-size: medium; font-style: normal; font-variant: normal;
+      font-weight: normal; letter-spacing: normal; line-height: normal;
+      orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
+      !important; float: none;">CarLantern[*]</span> shall be set to
+    Off.<br>
     7.3 &nbsp;&nbsp; If any<span style="color: rgb(0, 0, 0);
       font-family: Times; font-size: medium; font-style: normal;
       font-variant: normal; font-weight: normal; letter-spacing: normal;
@@ -3951,7 +3957,7 @@ div.WordSection1
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
       display: inline !important; float: none;"> mDoorClose[b,*] is
-      false and DesiredDirection == d</span>, <span style="color:
+      false and DesiredDirection == d</span>, then <span style="color:
       rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
       normal; font-variant: normal; font-weight: normal; letter-spacing:
       normal; line-height: normal; orphans: auto; text-align: start;
@@ -3966,14 +3972,14 @@ div.WordSection1
       text-indent: 0px; text-transform: none; white-space: normal;
       widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
       display: inline !important; float: none;"> mDoorClose[b,*] is
-      false and DesiredDirection is not d</span>, <span style="color:
-      rgb(0, 0, 0); font-family: Times; font-size: medium; font-style:
-      normal; font-variant: normal; font-weight: normal; letter-spacing:
-      normal; line-height: normal; orphans: auto; text-align: start;
-      text-indent: 0px; text-transform: none; white-space: normal;
-      widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      display: inline !important; float: none;">CarLantern[d] shall be
-      set to Off.</span><br>
+      false and DesiredDirection is not d</span>, then <span
+      style="color: rgb(0, 0, 0); font-family: Times; font-size: medium;
+      font-style: normal; font-variant: normal; font-weight: normal;
+      letter-spacing: normal; line-height: normal; orphans: auto;
+      text-align: start; text-indent: 0px; text-transform: none;
+      white-space: normal; widows: auto; word-spacing: 0px;
+      -webkit-text-stroke-width: 0px; display: inline !important; float:
+      none;">CarLantern[d] shall be set to Off.</span><br>
     7.5 &nbsp;&nbsp; mCarLantern[d] shall be set to the current value of
     CarLantern[d].
     <h3>TIME-TRIGGERED STATE CHART</h3>
@@ -3982,7 +3988,7 @@ div.WordSection1
         height="371" width="578"></a><br>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="148">
+    <table cellpadding="2" cellspacing="2" border="1" height="148">
       <tbody>
         <tr>
           <td valign="top">Transition # <br>
@@ -4164,7 +4170,7 @@ div.WordSection1
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"></span>
     <h2> </h2>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top">State<br>
@@ -4207,7 +4213,7 @@ div.WordSection1
       text-transform: none; white-space: normal; widows: auto;
       word-spacing: 0px; -webkit-text-stroke-width: 0px;">Requirements
       to Statechart Traceability</h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="303"
+    <table cellpadding="2" cellspacing="2" border="1" height="303"
       width="319">
       <tbody>
         <tr>
@@ -4370,10 +4376,10 @@ div.WordSection1
     8.2&nbsp;&nbsp;&nbsp;&nbsp; HallCall[f,b,d] = idle shall return
     mHallCall[f,b,d] = false<br>
     <h3>TIME-TRIGGERED BEHAVIORS: </h3>
-    8.3&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall be
+    8.3&nbsp; If HallCall[f,b,d] is idle, then mHallCall[f,b,d] shall be
     set to False.<br>
     8.4&nbsp; If CurrentFloor is f and any mDoorClosed[b,*] = False and
-    desiredDirection = d then<br>
+    desiredDirection = d, then<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.1 HallLight[f,b,d] shall
     be set to OFF<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.2 mHallCall[f,b,d] shall
@@ -4388,7 +4394,7 @@ div.WordSection1
     <img alt="" src="HallButtonControl_state_chart_group9_priyam.png"
       height="402" width="515"><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top">State<br>
@@ -4426,7 +4432,7 @@ div.WordSection1
     </table>
     <br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="80"
+    <table cellpadding="2" cellspacing="2" border="1" height="80"
       width="777">
       <tbody>
         <tr>
@@ -4495,7 +4501,7 @@ div.WordSection1
     <br>
     <h3>Requirements-to-Statecharts Traceability</h3>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -4633,10 +4639,10 @@ div.WordSection1
       false.<br>
     </p>
     <h3><b>TIME-TRIGGERED BEHAVIORS:</b></h3>
-    <p>9.1 If CurrentFloor is f and mDoorClosed[b,r] is False,
+    <p>9.1 If CurrentFloor is f and mDoorClosed[b,r] is False, then
       CarLight[f,b] shall be set to Off.<br>
       9.2 If CarCall[f,b] is True, and CurrentFloor g is not the same as
-      mDesiredFloor f, CarLight[f,b] shall be set to On.<br>
+      mDesiredFloor f, then CarLight[f,b] shall be set to On.<br>
       9.3 mCarCall[f,b] shall be set to the current value of
       CarCall[f,b]. </p>
     <h3>State Chart:<br>
@@ -4645,8 +4651,8 @@ div.WordSection1
       src="CarButtonControl_state_chart_group9_wenhuih.png" height="343"
       width="442"><br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="148" width="801">
+    <table style="text-align: left;" cellpadding="2" cellspacing="2"
+      border="1" height="148" width="801">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -4682,7 +4688,7 @@ div.WordSection1
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="115"
+    <table cellpadding="2" cellspacing="2" border="1" height="115"
       width="742">
       <tbody>
         <tr>
@@ -4709,6 +4715,7 @@ div.WordSection1
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span>CurrentFloor
+
 
 
 
@@ -5202,7 +5209,7 @@ div.WordSection1
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top"><br>
@@ -5319,13 +5326,13 @@ div.WordSection1
     direction the Drive is moving. By "close approximation" we mean
     within stopping distance in the direction of motion.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    10.4 &nbsp;&nbsp; Whenever any mAtFloor[f,b] is true AND mDriveSpeed
-    is below SLOW_SPEED, CarPositionIndicator shall be commanded to
+    10.4 &nbsp;&nbsp; If any mAtFloor[f,b] is true AND mDriveSpeed is
+    below SLOW_SPEED, then CarPositionIndicator shall be commanded to
     display CurrentFloor. <br>
-    10.5&nbsp;&nbsp;&nbsp; When none of mAtFloor[f,b] is true AND
-    mDriveSpeed is below SLOW_SPEED, CarPositionIndicator shall be
+    10.5&nbsp;&nbsp;&nbsp; If none of mAtFloor[f,b] is true AND
+    mDriveSpeed is below SLOW_SPEED, then CarPositionIndicator shall be
     commanded to display PreviousFloor.<br>
-    10.6&nbsp;&nbsp;&nbsp; Whenever mDriveSpeed is above SLOW_SPEED,
+    10.6&nbsp;&nbsp;&nbsp; If mDriveSpeed is above SLOW_SPEED, then
     CarPositionIndicator shall be commanded to display ApproximateFloor.
     <h3>State Chart:</h3>
     &nbsp; <img alt="CarPosition"
@@ -5333,8 +5340,8 @@ div.WordSection1
       height="372" width="861"><br>
     <br>
     <br>
-    <table style="text-align: left;" border="1" cellpadding="2"
-      cellspacing="2" height="80" width="902">
+    <table style="text-align: left;" cellpadding="2" cellspacing="2"
+      border="1" height="80" width="902">
       <tbody>
         <tr>
           <td style="vertical-align: top;">State<br>
@@ -5377,7 +5384,7 @@ div.WordSection1
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2" height="73"
+    <table cellpadding="2" cellspacing="2" border="1" height="73"
       width="379">
       <tbody>
         <tr>
@@ -5409,7 +5416,7 @@ div.WordSection1
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="144"
+    <table cellpadding="2" cellspacing="2" border="1" height="144"
       width="388">
       <tbody>
         <tr>
@@ -5621,7 +5628,7 @@ div.WordSection1
         alt="" src="Dispatcher_statecharts_group9_yujiaw.png" border="0"
         height="589" width="1086"></a><br>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top">Transition #<br>
@@ -5758,7 +5765,7 @@ div.WordSection1
       </tbody>
     </table>
     <br>
-    <table border="1" cellpadding="2" cellspacing="2">
+    <table cellpadding="2" cellspacing="2" border="1">
       <tbody>
         <tr>
           <td valign="top" width="15%">State<br>
@@ -5868,7 +5875,7 @@ div.WordSection1
       </tbody>
     </table>
     <h3>Requirements-to-Statecharts Traceability </h3>
-    <table border="1" cellpadding="2" cellspacing="2" height="641"
+    <table cellpadding="2" cellspacing="2" border="1" height="641"
       width="831">
       <tbody>
         <tr>
