@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf unit_test/CarPositionControl.cf -mf unit_test/CarPositionControl.mf
-RandomSeed = 1383869695333
+RandomSeed = 1386708090432
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,21 +15,21 @@ Message File = unit_test/CarPositionControl.mf
 Controller File = unit_test/CarPositionControl.cf
 
 Assertion Results:
-@0.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@914304e :: floor ?== 1 PASSED
+@0.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@c6f558a :: floor ?== 1 PASSED
 @0.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_CURRENT_FLOOR PASSED
-@1.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@112f8578 :: floor ?== 1 PASSED
+@1.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@46e39218 :: floor ?== 1 PASSED
 @1.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_PREVIOUS_FLOOR PASSED
-@2.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@74b90ff7 :: floor ?== 2 PASSED
+@2.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@21c75cff :: floor ?== 2 PASSED
 @2.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_CURRENT_FLOOR PASSED
-@3.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@295bc68c :: floor ?== 3 PASSED
+@3.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@4848268a :: floor ?== 3 PASSED
 @3.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_APPROXIMATE_FLOOR PASSED
-@4.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@45858aa4 :: floor ?== 4 PASSED
+@4.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@425138a4 :: floor ?== 4 PASSED
 @4.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_CURRENT_FLOOR PASSED
-@5.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@771c9fcc :: floor ?== 4 PASSED
+@5.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@783f472b :: floor ?== 4 PASSED
 @5.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_PREVIOUS_FLOOR PASSED
-@6.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@4774e78a :: floor ?== 5 PASSED
+@6.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@4c0d39ac :: floor ?== 5 PASSED
 @6.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_APPROXIMATE_FLOOR PASSED
-@7.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@174d3343 :: floor ?== 5 PASSED
+@7.5s:  PASSED simulator.payloads.CarPositionIndicatorPayload$ReadableCarPositionIndicatorPayload@7a5d1647 :: floor ?== 5 PASSED
 @7.5s:  PASSED CarPositionControl::checkState(STATE) ?== STATE_INDICATE_PREVIOUS_FLOOR PASSED
 
 
