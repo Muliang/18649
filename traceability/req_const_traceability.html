@@ -717,14 +717,14 @@
           </td>
         </tr>
         <tr>
-          <td style="vertical-align: top;">11.5.1 no call -&gt; set
-            desired floor to None<br>
+          <td style="vertical-align: top;">11.5&nbsp; Same direction
+            -&gt; set Target to nearest floor of calls<br>
+          </td>
+          <td style="vertical-align: top;">X<br>
           </td>
           <td style="vertical-align: top;">~<br>
           </td>
-          <td style="vertical-align: top;">X<br>
-          </td>
-          <td style="vertical-align: top;">X<br>
+          <td style="vertical-align: top;">~<br>
           </td>
           <td style="vertical-align: top;"><br>
           </td>
@@ -732,9 +732,8 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.5.2 no call -&gt;set desired direction to
-            Stop<br>
-          </td>
+          <td valign="top">11.6&nbsp; Different direction -&gt; set
+            Target to farthest floor of calls </td>
           <td valign="top">X<br>
           </td>
           <td valign="top">~<br>
@@ -747,282 +746,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.6.1 one car call at current floor -&gt;
-            set desired floor to current floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.6.2 one car call at current floor -&gt;
-            set desired direction to Stop<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.7.1 one hall call at current floor -&gt;
-            set desired floor to current floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.7.2 one hall call at current floor -&gt;
-            set desired direction to target direction<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.8.1 one car call at different floor -&gt;
-            set desired floor to target floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.8.2 one car call at different floor -&gt;
-            set desired direction to Stop<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.9.1 one of car calls C has same direction
-            as current direction and current target floor has different
-            desired direction from current direction and car hasn't
-            reached commit point for C's desired floor -&gt; set desired
-            floor to this C's desired floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.9.2&nbsp;one of car calls C has same
-            direction as current direction and current target floor has
-            different desired direction from current direction and car
-            hasn't reached commit point for C's desired floor -&gt; set
-            desired direction to the opposite of current direction. </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.10.1 one of car calls C has same direction
-            as current direction and current target floor has same
-            desired direction as current direction and C is nearer to
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired floor to C's desired
-            floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.10.2 one of car calls C has same direction
-            as current direction and current target floor has same
-            desired direction as current direction and C is nearer to
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired direction the same as
-            before </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.11.1 multiple car calls have same
-            direction as current direction and current target floor has
-            same desired direction as current direction and C is the
-            nearest floor to current floor among all car calls and
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired floor to C's desired
-            floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.11.2 multiple car calls have same
-            direction as current direction and current target floor has
-            same desired direction as current direction and C is the
-            nearest floor to current floor among all car calls and
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired direction the same as
-            before </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.12.1 multiple car calls have different
-            direction as current direction and current target floor also
-            has different direction as current direction and C is the
-            nearest floor to current floor among all car calls and
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired floor to C's desired
-            floor<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.12.2 multiple car calls have different
-            direction as current direction and current target floor also
-            has different direction as current direction and C is the
-            nearest floor to current floor among all car calls and
-            current target floor and car hasn't reached commit point for
-            C's desired floor -&gt; set desired direction to the
-            opposite of current direction&nbsp; </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.13.1 multiple car calls have different
-            direction as current direction and current target floor has
-            same direction as current direction and car hasn't reached
-            commit point for target floor -&gt; set target floor the
-            same as before </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.13.2 multiple car calls have different
-            direction as current direction and current target floor has
-            same direction as current direction and car hasn't reached
-            commit point for target floor -&gt;set desired direction the
-            opposite of current direction </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.14.1 one of multiple hall calls have same
-            direction as current direction and
+          <td valign="top">11.7&nbsp;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1031,68 +755,9 @@
               text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target</span>
-            and car hasn't reached commit point for target floor and <span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: start; text-indent:
-              0px; text-transform: none; white-space: normal; widows:
-              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">CommitPoint[fi]
-              not Reached </span>-&gt; set target floor fi,<span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: start; text-indent:
-              0px; text-transform: none; white-space: normal; widows:
-              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"> the nearest
-              floor to CurrentFloor</span> </td>
-          <td valign="top">X<br>
+              !important; float: none;">mDesiredFloor.d should be
+              consistent with the moving direction after next serving</span>
           </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.14.2 one of multiple hall calls have same
-            direction as current direction and
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target</span>
-            and car hasn't reached commit point for target floor and
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">CommitPoint[fi] not Reached</span>
-            -&gt; set
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDesiredFloor.d to
-              CurrentDirection</span> </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
@@ -1105,76 +770,15 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.15.1 multiple hall calls have different
-            direction as current direction and target floor also has
-            different direction and
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target and </span>and
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">CommitPoint[target] not Reached
-              -&gt; </span>set target floor fi,<span style="color:
-              rgb(0, 0, 0); font-family: Times; font-size: medium;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: auto; text-align: start; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"> the nearest
-              floor to CurrentFloor</span> </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.15.2 multiple hall calls have different
-            direction as current direction and target floor also has
-            different direction and
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target and </span>and
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">CommitPoint[target] not Reached
-              -&gt; </span>set <span style="color: rgb(0, 0, 0);
+          <td valign="top">11.8&nbsp; <span style="color: rgb(0, 0, 0);
               font-family: Times; font-size: medium; font-style: normal;
               font-variant: normal; font-weight: normal; letter-spacing:
               normal; line-height: normal; orphans: auto; text-align:
               start; text-indent: 0px; text-transform: none;
               white-space: normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDesiredFloor.d to
-              ~CurrentDirection</span> </td>
+              !important; float: none;">mDesiredFloor.b should set to b,
+              where mAtFloor[f,b] is true and there is a call</span> </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
@@ -1187,34 +791,24 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.16.1 multiple hall calls have different
-            direction as current direction and target floor also has
-            same direction and <span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              start; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target and </span>and
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">CommitPoint[target] not Reached
-              -&gt; </span>
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">Target shall not change</span> </td>
+          <td valign="top">11.9&nbsp; if there are calls from both FRONT
+            and BACK, mDesiredFloor.b should be set to both <br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top">~<br>
+          </td>
+          <td valign="top"><br>
+          </td>
+          <td valign="top"><br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">11.10.1 Emergency -&gt; Target shall be set
+            to 1<br>
+          </td>
           <td valign="top">X<br>
           </td>
           <td valign="top">~<br>
@@ -1227,168 +821,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.16.2 multiple hall calls have different
-            direction as current direction and target floor also has
-            same direction and <span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              start; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">fi is nearer than Target and </span>and
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">CommitPoint[target] not Reached
-              -&gt; </span><span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              start; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"></span>set <span style="color:
-              rgb(0, 0, 0); font-family: Times; font-size: medium;
-              font-style: normal; font-variant: normal; font-weight:
-              normal; letter-spacing: normal; line-height: normal;
-              orphans: auto; text-align: start; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">mDesiredFloor.d
-              to ~CurrentDirection</span> </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.17
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">any mDoorClosed[b, r] = false
-              -&gt; mDesiredFloor.d shall not be changed.</span> </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.18
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDesiredFloor.b shall&nbsp; be
-              set to b, where b is whichever mAtFloor[f, b] is True</span>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.19
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span
-                class="Apple-converted-space">&nbsp;</span>two
-              mAtFloor[f,b]&nbsp; are True with the same value f -&gt;
-              mDesiredFloor.b shall be set to Both</span> </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.20.1
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">all mAtFloor[f, b] are False AND
-              any mDoorClosed [b, r] is False -&gt; </span>
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">Target shall be set to 1</span>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">X<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.20.2
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">all mAtFloor[f, b] are False AND
-              any mDoorClosed [b, r] is False -&gt; </span>
+          <td valign="top">11.10.2 Emergency -&gt;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1411,17 +844,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.20.3
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">all mAtFloor[f, b] are False AND
-              any mDoorClosed [b, r] is False -&gt; </span>
+          <td valign="top">11.10.3 Emergency -&gt;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1431,7 +854,14 @@
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
               !important; float: none;">mDesiredFloor.d shall be set to
-              Stop</span> </td>
+              Stop</span><span style="color: rgb(0, 0, 0); font-family:
+              Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              start; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;"></span> </td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
@@ -1444,56 +874,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.21
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span
-                class="Apple-converted-space">&nbsp;</span>mDesiredDwell
-              shall always be set to a constant</span> </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top">~<br>
-          </td>
-          <td valign="top"><br>
-          </td>
-          <td valign="top"><br>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">11.22.1
-            <meta charset="utf-8">
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: start;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mCarWeight &gt;<span
-                class="Apple-converted-space">&nbsp;</span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: start; text-indent:
-              0px; text-transform: none; white-space: normal; widows:
-              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; text-align: left;
-              float: none; display: inline !important;">MaxCarCapacity -<big>&gt;
-              </big></span>
+          <td valign="top">11.11.1 Overweight -&gt;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1502,8 +883,8 @@
               text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">Target set to f, where f is
-              whichever mAtFloor[f,b] is True</span> </td>
+              !important; float: none;">Target shall be set to f, where
+              f is whichever mAtFloor[f,b] is True</span> </td>
           <td valign="top">X<br>
           </td>
           <td valign="top">~<br>
@@ -1516,30 +897,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.22.2 <span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              start; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mCarWeight &gt;<span
-                class="Apple-converted-space">&nbsp;</span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: start; text-indent:
-              0px; text-transform: none; white-space: normal; widows:
-              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; text-align: left;
-              float: none; display: inline !important;">MaxCarCapacity -<big>&gt;
-              </big></span>
+          <td valign="top">11.11.2 Overweight -&gt;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
@@ -1548,8 +906,8 @@
               text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mDesiredFloor.b set to b, where
-              b is whichever mAtFloor[f,b] is True</span> </td>
+              !important; float: none;">mDesiredFloor.b shall be set to
+              b, where b is whichever mAtFloor[f,b] is True</span></td>
           <td valign="top">~<br>
           </td>
           <td valign="top">~<br>
@@ -1562,30 +920,7 @@
           </td>
         </tr>
         <tr>
-          <td valign="top">11.22.3 <span style="color: rgb(0, 0, 0);
-              font-family: Times; font-size: medium; font-style: normal;
-              font-variant: normal; font-weight: normal; letter-spacing:
-              normal; line-height: normal; orphans: auto; text-align:
-              start; text-indent: 0px; text-transform: none;
-              white-space: normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">mCarWeight &gt;<span
-                class="Apple-converted-space">&nbsp;</span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: start; text-indent:
-              0px; text-transform: none; white-space: normal; widows:
-              auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; text-align: left;
-              float: none; display: inline !important;">MaxCarCapacity -<big>&gt;
-              </big></span>
+          <td valign="top">11.11.3 Overweight -&gt;
             <meta charset="utf-8">
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
