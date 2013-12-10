@@ -1,7 +1,7 @@
 /*
  * 18649 Fall 2013
  * group 9
- * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
  * Author: Yujia Wang
  */
 
@@ -40,11 +40,20 @@ import simulator.payloads.translators.BooleanCanPayloadTranslator;
  * This DriveControl which controls the elevator Drive (the main motor moving
  * Car Up and Down).
  * 
- * Source of: Drive mDrive //omit mDriveSpeed
+ * Source of: 
+ * Drive 
+ * mDriveSpeed
  * 
- * Sink of: DriveSpeed mAtFloor[f,b] mLevel[d] mCarLevelPosition[b,r]
- * mDoorClosed[b,r] mDoorMotor[b,r]// can't find translator mEmergencyBrake
- * mDesiredFloor mHoistwayLimit[d] mCarWeight
+ * Sink of: 
+ * DriveSpeed 
+ * mAtFloor[f,b] 
+ * mLevel[d] m
+ * CarLevelPosition[b,r]
+ * mDoorClosed[b,r] 
+ * mEmergencyBrake
+ * mDesiredFloor 
+ * mHoistwayLimit[d] 
+ * mCarWeight
  * 
  * @author Yujia Wang
  */
@@ -79,9 +88,6 @@ public class DriveControl extends Controller {
 	private Utility.DoorClosedArray mDoorClosedArrayFront;
 	private Utility.DoorClosedArray mDoorClosedArrayBack;
 
-	// private ReadableCanMailbox networkDoorMotor;
-	// private DoorCommandCanPayloadTranslator mDoorMotor;
-
 	private ReadableCanMailbox networkEmergencyBrake;
 	private SafetySensorCanPayloadTranslator mEmergencyBrake;
 
@@ -93,9 +99,6 @@ public class DriveControl extends Controller {
 
 	private ReadableCanMailbox networkCarWeight;
 	private CarWeightCanPayloadTranslator mCarWeight;
-
-	// additional internal state variables
-	// private SimTime counter = SimTime.ZERO;
 
 	private static final double LEVEL_SPEED = DriveObject.LevelingSpeed; // in
 																			// m/s
@@ -127,7 +130,8 @@ public class DriveControl extends Controller {
 		// initialize state
 		this.period = period;
 		this.currentState = State.STATE_STOP;
-		this.allowance = 2*(100 + FAST_SPEED *6* period.getFracMilliseconds());
+		this.allowance = 2 * (100 + FAST_SPEED * 6
+				* period.getFracMilliseconds());
 		this.desiredFloor = MessageDictionary.NONE;
 		this.currentFloor = 1;
 		this.DesiredDirection = Direction.UP;
@@ -205,20 +209,7 @@ public class DriveControl extends Controller {
 			Direction d) {
 		double floorPosition = (floor - 1) * 5 * ONETOMILLI;
 		double brakeDistance;
-		/*if(speed <= FAST_SPEED/5)
-			brakeDistance = FAST_SPEED * FAST_SPEED /25/ (2 * DECELERATION) * ONETOMILLI;
-		else if(speed> FAST_SPEED/5 && speed <= FAST_SPEED*2/5)
-			brakeDistance = FAST_SPEED * FAST_SPEED *4/25/ (2 * DECELERATION) * ONETOMILLI;
-		else if(speed> FAST_SPEED*2/5 && speed <= FAST_SPEED*3/5)
-			brakeDistance = FAST_SPEED * FAST_SPEED *9/25/ (2 * DECELERATION) * ONETOMILLI;
-		else if(speed> FAST_SPEED*3/5 && speed <= FAST_SPEED*4/5)
-			brakeDistance = FAST_SPEED * FAST_SPEED *16/25/ (2 * DECELERATION) * ONETOMILLI;
-		else if(speed> FAST_SPEED*4/5 && speed <= FAST_SPEED)
-			brakeDistance = FAST_SPEED * FAST_SPEED / (2 * DECELERATION) * ONETOMILLI;
-		else
-			brakeDistance = SLOW_SPEED * SLOW_SPEED / (2* DECELERATION) * ONETOMILLI;
-		*/
-		brakeDistance = speed*speed / (2* DECELERATION) * ONETOMILLI;
+		brakeDistance = speed * speed / (2 * DECELERATION) * ONETOMILLI;
 		switch (d) {
 		case STOP:
 			return Commit.NOTREACHED;
@@ -280,13 +271,13 @@ public class DriveControl extends Controller {
 			log("No transitions:", currentState);
 		else
 			log("Transitions:", oldState, "->", currentState);
-		
+
 		setState(STATE_KEY, currentState.toString());
 		timer.start(period);
 	}
 
 	private void stateFastUp() {
-		// TODO Auto-generated method stub
+		// state actions
 		localDrive.set(Speed.FAST, Direction.UP);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
 		mDriveSpeed.setDirection(localDriveSpeed.direction());
@@ -299,13 +290,13 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.REACHED)
 			currentState = State.STATE_SLOW_UP;
-        // #transition 'T6.13.6'
+		// #transition 'T6.13.6'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateFastDown() {
-		// TODO Auto-generated method stub
+		// state actions
 		localDrive.set(Speed.FAST, Direction.DOWN);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
 		mDriveSpeed.setDirection(localDriveSpeed.direction());
@@ -318,13 +309,12 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.REACHED)
 			currentState = State.STATE_SLOW_DOWN;
-        // #transition 'T6.13.7'
+		// #transition 'T6.13.7'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateStop() {
-		// DO
 		// state actions
 		localDrive.set(Speed.STOP, Direction.STOP);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
@@ -368,7 +358,6 @@ public class DriveControl extends Controller {
 	}
 
 	private void stateSlowUp() {
-		// DO
 		// state actions
 		localDrive.set(Speed.SLOW, Direction.UP);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
@@ -393,7 +382,6 @@ public class DriveControl extends Controller {
 	}
 
 	private void stateSlowDown() {
-		// DO
 		// state actions
 		localDrive.set(Speed.SLOW, Direction.DOWN);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
@@ -404,7 +392,8 @@ public class DriveControl extends Controller {
 
 		// #transition 'T6.4'
 		if (localDriveSpeed.speed() <= SLOW_SPEED
-				&& (currentFloor == mDesiredFloor.getFloor() || mDesiredFloor.getFloor() == MessageDictionary.NONE))
+				&& (currentFloor == mDesiredFloor.getFloor() || mDesiredFloor
+						.getFloor() == MessageDictionary.NONE))
 			currentState = State.STATE_LEVEL_DOWN;
 		// #transition 'T6.12'
 		if (Double.compare(localDriveSpeed.speed(), (SLOW_SPEED)) >= 0
@@ -418,7 +407,6 @@ public class DriveControl extends Controller {
 	}
 
 	private void stateLevelUp() {
-		// DO
 		// state actions
 		localDrive.set(Speed.LEVEL, Direction.UP);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
@@ -437,7 +425,6 @@ public class DriveControl extends Controller {
 	}
 
 	private void stateLevelDown() {
-		// DO
 		// state actions
 		localDrive.set(Speed.LEVEL, Direction.DOWN);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());
@@ -457,7 +444,6 @@ public class DriveControl extends Controller {
 	}
 
 	private void stateEmergency() {
-		// DO
 		// state actions
 		localDrive.set(Speed.STOP, Direction.STOP);
 		mDriveSpeed.setSpeed(localDriveSpeed.speed());

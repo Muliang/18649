@@ -40,12 +40,8 @@ public class CarButtonControl extends Controller {
 	private Utility.DesiredFloor mDesiredFloor;
 	
 	private ReadableCarCallPayload CarCall;
-	
-	
-	
 	// output
 	private Utility.CarCall	mCarCall;
-	//private Utility.CarLight mCarLight;
 	
 	private WriteableCarLightPayload CarLight;
 
@@ -66,21 +62,10 @@ public class CarButtonControl extends Controller {
 		mDesiredFloor	= new Utility.DesiredFloor(canInterface);
 		mDoorClosed		= new Utility.DoorClosedArray(hallway, canInterface);
 		
-		
-		
-		
 		// Outputs
 		mCarCall		= new Utility.CarCall(canInterface, period, floor, hallway);
-		//mCarLight		= new Utility.CarLight(canInterface, period, floor, hallway); 
-		
 		CarLight		= Utility.CarLight.Writeable(physicalInterface, period, floor, hallway);
 		CarCall			= mCarCall.Readable(physicalInterface);
-
-
-		
-		// CarLight 		= CarLightPayload.getWriteablePayload(floor, hallway);
-		// CarCall			= CarCallPayload.getReadablePayload(floor, hallway);
-		
 		
 		// Start Timer
 		timer.start(period);
@@ -119,12 +104,10 @@ public class CarButtonControl extends Controller {
 
 	private void StateOn() {
 		CarLight.set(true);
-		///mCarLight.set(true);
 		mCarCall.set(true);
 		
 		// #transition 'T9.1'
-		if (//mDesiredFloor.getFloor() == floor && 
-				mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
+		if (mAtFloor.isAtFloor(floor, hallway) == true && !mDoorClosed.getBothClosed()) {
 			state = State.STATE_OFF;
 		}
 		
@@ -132,13 +115,10 @@ public class CarButtonControl extends Controller {
 
 	private void StateOff() {
 		CarLight.set(false);
-		//mCarLight.set(false);
 		mCarCall.set(false);
 		
 		// #transition 'T9.2'
 		if(CarCall.isPressed()) {
-//			boolean b =
-//			log("isPressed value", )
 			state = State.STATE_ON;
 		}
 		
