@@ -5,79 +5,80 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -b 200 -head HEADER -pf acceptance_test/proj10acceptance2.pass -fs 5.0
-RandomSeed = 1385404629070
+Command line = -b 200 -fs 5.0 -head HEADER -pf acceptance_test/proj10acceptance2.pass -monitor Proj11RuntimeMonitor
+RandomSeed = 1386713689799
 CanNetworkBitTime = 5000 ns
 Effective Can Bitrate = 199999.99999999997
 Run Time = null
 Real time rate = null
 Acceptance Test File = acceptance_test/proj10acceptance2.pass
+Monitors: Proj11RuntimeMonitor  
 
 STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
 -----------------------------------------------------
 
 
 These passengers were delivered:
-Passenger 0: INJECTED AT 1.0s and DELIVERED in 101.33s
+Passenger 0: INJECTED AT 1.0s and DELIVERED in 50.798s
   Satisfaction score: 100.0
-Passenger 1: INJECTED AT 2.4s and DELIVERED in 138.307s
+Passenger 6: INJECTED AT 39.0s and DELIVERED in 28.094s
   Satisfaction score: 100.0
-Passenger 6: INJECTED AT 39.0s and DELIVERED in 102.148s
+Passenger 1: INJECTED AT 2.4s and DELIVERED in 64.859s
   Satisfaction score: 100.0
-Passenger 8: INJECTED AT 43.0s and DELIVERED in 100.043s
+Passenger 3: INJECTED AT 7.5s and DELIVERED in 61.23s
   Satisfaction score: 100.0
-Passenger 13: INJECTED AT 64.0s and DELIVERED in 80.793s
+Passenger 2: INJECTED AT 6.7s and DELIVERED in 63.851s
   Satisfaction score: 100.0
-Passenger 2: INJECTED AT 6.7s and DELIVERED in 140.131s
+Passenger 4: INJECTED AT 7.7s and DELIVERED in 64.889s
   Satisfaction score: 100.0
-Passenger 5: INJECTED AT 39.0s and DELIVERED in 109.397s
+Passenger 12: INJECTED AT 61.0s and DELIVERED in 37.716s
   Satisfaction score: 100.0
-Passenger 3: INJECTED AT 7.5s and DELIVERED in 142.964s
+Passenger 25: INJECTED AT 101.0s and DELIVERED in 14.568s
   Satisfaction score: 100.0
-Passenger 17: INJECTED AT 83.0s and DELIVERED in 69.341s
+Passenger 11: INJECTED AT 60.0s and DELIVERED in 72.297s
   Satisfaction score: 100.0
-Passenger 4: INJECTED AT 7.7s and DELIVERED in 146.678s
+Passenger 16: INJECTED AT 73.0s and DELIVERED in 141.076s
   Satisfaction score: 100.0
-Passenger 12: INJECTED AT 61.0s and DELIVERED in 132.693s
+Passenger 9: INJECTED AT 47.0s and DELIVERED in 167.386s
   Satisfaction score: 100.0
-Passenger 24: INJECTED AT 100.5s and DELIVERED in 107.383s
+Passenger 19: INJECTED AT 86.0s and DELIVERED in 129.73s
   Satisfaction score: 100.0
-Passenger 25: INJECTED AT 101.0s and DELIVERED in 121.487s
+Passenger 7: INJECTED AT 43.0s and DELIVERED in 173.124s
   Satisfaction score: 100.0
-Passenger 11: INJECTED AT 60.0s and DELIVERED in 178.988s
+Passenger 5: INJECTED AT 39.0s and DELIVERED in 178.719s
   Satisfaction score: 100.0
-Passenger 23: INJECTED AT 100.0s and DELIVERED in 153.185s
+Passenger 15: INJECTED AT 73.0s and DELIVERED in 145.955s
   Satisfaction score: 100.0
-Passenger 26: INJECTED AT 150.0s and DELIVERED in 162.895s
-  Satisfaction score: 90.0
-    @236.760000000: 0.90 Repeated hall call press
-Passenger 7: INJECTED AT 43.0s and DELIVERED in 337.973s
-  Satisfaction score: 90.0
-    @253.140000000: 0.90 Repeated hall call press
-Passenger 15: INJECTED AT 73.0s and DELIVERED in 308.567s
+Passenger 8: INJECTED AT 43.0s and DELIVERED in 180.009s
+  Satisfaction score: 50.0
+    @219.680000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
+Passenger 14: INJECTED AT 66.0s and DELIVERED in 158.503s
+  Satisfaction score: 50.0
+    @219.680000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
+Passenger 21: INJECTED AT 92.0s and DELIVERED in 134.073s
+  Satisfaction score: 45.0
+    @219.680000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
+    @219.880000000: 0.90 Repeated car call press
+Passenger 24: INJECTED AT 100.5s and DELIVERED in 176.71s
   Satisfaction score: 100.0
-Passenger 9: INJECTED AT 47.0s and DELIVERED in 336.02s
-  Satisfaction score: 90.0
-    @253.140000000: 0.90 Repeated hall call press
-Passenger 20: INJECTED AT 91.0s and DELIVERED in 292.543s
+Passenger 23: INJECTED AT 100.0s and DELIVERED in 196.367s
+  Satisfaction score: 80.0
+    @227.787000000: 0.80 Failed to enter car
+Passenger 26: INJECTED AT 150.0s and DELIVERED in 179.966s
   Satisfaction score: 100.0
-Passenger 14: INJECTED AT 66.0s and DELIVERED in 319.089s
+Passenger 17: INJECTED AT 83.0s and DELIVERED in 293.173s
   Satisfaction score: 100.0
-Passenger 18: INJECTED AT 84.0s and DELIVERED in 302.385s
-  Satisfaction score: 90.0
-    @221.980000000: 0.90 Repeated hall call press
-Passenger 16: INJECTED AT 73.0s and DELIVERED in 315.203s
+Passenger 10: INJECTED AT 57.0s and DELIVERED in 320.459s
   Satisfaction score: 100.0
-Passenger 19: INJECTED AT 86.0s and DELIVERED in 304.265s
+Passenger 22: INJECTED AT 92.0s and DELIVERED in 287.021s
   Satisfaction score: 100.0
-Passenger 21: INJECTED AT 92.0s and DELIVERED in 299.486s
+Passenger 20: INJECTED AT 91.0s and DELIVERED in 289.239s
   Satisfaction score: 100.0
-Passenger 10: INJECTED AT 57.0s and DELIVERED in 376.702s
-  Satisfaction score: 90.0
-    @192.780000000: 0.90 Repeated hall call press
-Passenger 22: INJECTED AT 92.0s and DELIVERED in 374.302s
-  Satisfaction score: 90.0
-    @207.340000000: 0.90 Repeated hall call press
+Passenger 18: INJECTED AT 84.0s and DELIVERED in 297.788s
+  Satisfaction score: 100.0
+Passenger 13: INJECTED AT 64.0s and DELIVERED in 321.569s
+  Satisfaction score: 50.0
+    @382.360000000: 0.50 Failed to exit at 1, FRONT even though the doors opened.
 
 Passenger Delivery Summary
 Delivered: 27
@@ -85,18 +86,30 @@ Stranded: 0
 Total: 27
 
 Deliver Stats (lower is better):
-Average_delivery_time: 205.715
-Maximum_delivery_time:  376.702
-Delivery_performance_score:  1199.561
+Average_delivery_time: 156.636
+Maximum_delivery_time:  321.569
+Delivery_performance_score:  948.113
 
 Satisfaction Stats (higher is better):
-Average_satisfaction_score: 97.778
-Min_satisfaction_score:  90.000
-Satisfaction_performance_score:  481.111
+Average_satisfaction_score: 91.667
+Min_satisfaction_score:  45.000
+Satisfaction_performance_score:  411.667
 
 
 
 
 Network Utilization Summary:
 Recent: 54.86 % Max: 54.86 %  Overall:  54.86 %
+
+Monitors Warning Results: 
+RuntimeMonitor generated 22 warnings.
+
+Monitors Summmary Results: 
+RT6: stops at floors for which there are no pending calls 0
+RT7: open doors at hallways for which there are no pending calls 0
+RT8.1: no lantern lit when any door is open at a hallway and there are any pending calls at any other floor(s) 21
+RT8.2: direction indicated by lantern changes while the doors are open 0
+RT8.3: car services other direction when one of the car lanterns is lit 0
+RT9: drive speed not commaded to maximum degree practicable 1
+RT10: no door reversal occurs before the doors are commanded to nudge 0
 
