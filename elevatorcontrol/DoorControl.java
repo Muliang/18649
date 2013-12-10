@@ -58,10 +58,9 @@ public class DoorControl extends Controller {
 
 	// constant value
 	// set Dwell value
-	private static final SimTime DWELL = new SimTime(6000,
-			SimTimeUnit.MILLISECOND);
-	private static final SimTime DWELL2 = new SimTime(2000,
-			SimTimeUnit.MILLISECOND);
+	private static final SimTime DWELL1 = new SimTime("10s");
+	private static final SimTime DWELL2 = new SimTime("4s");
+	private static final SimTime DWELL3 = new SimTime("1s");
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
 	private static final int MAX_OPEN = 2;
@@ -201,6 +200,17 @@ public class DoorControl extends Controller {
 
 		timer.start(period);
 	}
+	
+	private SimTime getDwell(){
+		SimTime retval = SimTime.ZERO;
+		int f = mAtFloor.getCurrentFloor();
+		Hallway h = hallway;
+		if(mCarCall.isPressed(f, h) && mHallCall.isAnyPressed(f, h))
+			retval = DWELL1;
+		else
+			retval = DWELL2;
+		return retval;
+	}
 
 	@Override
 	public void timerExpired(Object callbackData) {
@@ -280,7 +290,7 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
 		// set countDown
-		countDown = DWELL;
+		countDown = getDwell();
 		// #transition 'T5.2'
 		if (mDoorOpened.getValue() == true)
 			newState = State.STATE_OPEN;
@@ -321,7 +331,7 @@ public class DoorControl extends Controller {
 	private void StateReopening() {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
-		countDown = DWELL2;
+		countDown = DWELL3;
 		// #transition 'T5.7'
 		if (mDoorOpened.getValue() == true)
 			newState = State.STATE_REOPEN;
