@@ -1,7 +1,7 @@
 /*
  * 18649 Fall 2013
  * group 9
- * Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
  * Author: Yichao Xue
  */
 
@@ -58,8 +58,8 @@ public class DoorControl extends Controller {
 
 	// constant value
 	// set Dwell value
-	private static final SimTime DWELL1 = new SimTime("10s");
-	private static final SimTime DWELL2 = new SimTime("4s");
+	private static final SimTime DWELL1 = new SimTime("8s");
+	private static final SimTime DWELL2 = new SimTime("6s");
 	private static final SimTime DWELL3 = new SimTime("1s");
 	// initial state
 	private static final State INIT_STATE = State.STATE_CLOSED;
@@ -74,6 +74,7 @@ public class DoorControl extends Controller {
 	private SimTime period;
 	// current car weight
 	private SimTime countDown;
+	private SimTime dwell;
 	private int openCounter;
 
 	// physical interface
@@ -211,7 +212,7 @@ public class DoorControl extends Controller {
 			retval = DWELL2;
 		return retval;
 	}
-
+	
 	@Override
 	public void timerExpired(Object callbackData) {
 		// TODO Auto-generated method stub
@@ -272,6 +273,7 @@ public class DoorControl extends Controller {
 	private void StateClosed() {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
+		dwell = getDwell();
 		// #transition 'T5.1'
 		if ((openCounter <= MAX_OPEN ) && 
 				(mAtFloor.getCurrentFloor() == mDesiredFloor.getFloor())
@@ -290,7 +292,7 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.OPEN);
 		// set countDown
-		countDown = getDwell();
+		countDown = dwell;
 		// #transition 'T5.2'
 		if (mDoorOpened.getValue() == true)
 			newState = State.STATE_OPEN;
@@ -300,7 +302,10 @@ public class DoorControl extends Controller {
 		// do:
 		localDoorMotor.set(DoorCommand.STOP);
 		// countDown decremented
-		countDown = SimTime.subtract(countDown, period);
+		if(mCarWeight.getWeight() < Elevator.MaxCarCapacity)
+			countDown = SimTime.subtract(countDown, period);
+		else
+			countDown = DWELL3;
 		// #transition 'T5.3'
 		if (countDown.isLessThanOrEqual(SimTime.ZERO)){
 			newState = State.STATE_CLOSING;
