@@ -1,7 +1,7 @@
 ; 18649 Fall 2013
 ; group 9
 ; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
-; Scenario7D.mf		
+; Scenario7D.mf		Author: Yujia Wang(yujiaw)
 
 ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ;

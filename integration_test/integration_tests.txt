@@ -1,6 +1,5 @@
 ;18649 <Fall 2013>
 ;Group 9 - Yichao Xue         yichaox
-;          Priya Mahajan      priyam
 ;          Wenhui Hu          wenhuih
 ;          Yujia Wang         yujiaw 
 
