@@ -1,3 +1,7 @@
+; 18649 Fall 2013
+; group 9
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; DriveControl.cf author: Yujia Wang(yujiaw)
 
 #INCLUDE ElevatorDefines.mf
 
