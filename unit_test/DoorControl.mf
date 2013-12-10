@@ -68,7 +68,7 @@
 
 ;#state 'S5.4 Closing'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 
 ;#transition 'T5.5' 
@@ -91,7 +91,7 @@
 
 ;#state 'S5.4 Closing'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 
 ;#transition 'T5.5' 
@@ -117,7 +117,7 @@
 
 ;#state 'S5.4 Closing'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 
 ;#transition 'T5.5' 
@@ -141,7 +141,7 @@
 
 ;#state 'S5.4 Closing'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 
 
@@ -191,7 +191,7 @@
 
 ;#state 'S5.4 Closing'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_CLOSING;
 
 ;#transition 'T5.6'
@@ -214,7 +214,7 @@
 
 ;#state 'S5.7 Nudging'
 
-+10.00s A F DoorMotor FRONT LEFT : command == NUDGE;
++12.00s A F DoorMotor FRONT LEFT : command == NUDGE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_NUDGING;
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 
@@ -240,7 +240,7 @@
 
 ;#state 'S5.7 Nudging'
 
-+10.00s A F DoorMotor FRONT LEFT : command == NUDGE;
++12.00s A F DoorMotor FRONT LEFT : command == NUDGE;
 +0.00s A S DoorControl[FRONT][LEFT] : STATE == STATE_NUDGING;
 +0.10s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = true;
 
