@@ -1000,6 +1000,8 @@
       <li>CountDown: a count-down timer for Door Dwell[b] (implemented
         in simulation by scheduling a future task execution at time of
         expiration) </li>
+      <li>OpenCounter: a counter for door opening.<br>
+      </li>
     </ul>
     <h3> CONSTRAINTS: </h3>
     5.1&nbsp;&nbsp;&nbsp; DoorClosed[b, *] shall be True when there is
@@ -1015,9 +1017,10 @@
     5.5&nbsp;&nbsp;&nbsp; If CarWeight(x) &gt;= MaxCarCapacity, the
     doors shall open completely until the car is no longer overloaded.
     <h3> TIME-TRIGGERED BEHAVIORS: </h3>
-    5.6 &nbsp;&nbsp; If (any mAtFloor[f, b] is True or mAtFloor[f, BOTH]
-    is true) and f equals mDesiredFloor.f, and mDriveSpeed = (0, d) or
-    mDriveSpeed = (s, Stop) then: <br>
+    5.6 &nbsp;&nbsp; If OpenCounter &lt; Max_Open and (any mAtFloor[f,
+    b] is True or mAtFloor[f, BOTH] is true) and f equals
+    mDesiredFloor.f, and mDriveSpeed = (0, d) or mDriveSpeed = (s, Stop)
+    then: <br>
     &nbsp;&nbsp;&nbsp; 5.6.1&nbsp; DoorMotor[b, r] shall be commanded to
     Open; <br>
     &nbsp;&nbsp;&nbsp; 5.6.2&nbsp; CountDown shall be set to Dwell.<br>
@@ -1033,8 +1036,7 @@
     commanded to Nudge.<br>
     5.11 If mCarWeight(g) &gt;= MaxCarCapacity, and mDoorOpened[b, r] is
     False, DoorMotor[b, r] shall be commanded to Open.<br>
-    5.12 Dwell shall be set to an appropriate value based on
-    mDesiredDwell[b].<br>
+    5.12 Dwell shall be set to an appropriate value.<br>
     5.13 mDoorMotor[b,r] shall be set to the current value of
     DoorMotor[b,r].<br>
     5.14 If <span style="color: rgb(0, 0, 0); font-family: Times;
@@ -1070,29 +1072,22 @@
               start; text-indent: 0px; text-transform: none;
               white-space: normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">(mAtFloor[f, b] </span><span
+              !important; float: none;">openCounter &lt; Max_Open AND
+              (mAtFloor[f, b] </span><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              start; text-indent: 0px; text-transform: none;
+              white-space: normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">&#8592; True OR mAtFloor[f, BOTH] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
               normal; orphans: auto; text-align: start; text-indent:
               0px; text-transform: none; white-space: normal; widows:
               auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;">&#8592; True OR
-              mAtFloor[f, BOTH] </span><span style="color: rgb(0, 0,
-              0); font-family: Times; font-size: medium; font-style:
-              normal; font-variant: normal; font-weight: normal;
-              letter-spacing: normal; line-height: normal; orphans:
-              auto; text-align: start; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"><span style="color: rgb(0, 0,
-                0); font-family: Times; font-size: medium; font-style:
-                normal; font-variant: normal; font-weight: normal;
-                letter-spacing: normal; line-height: normal; orphans:
-                auto; text-align: start; text-indent: 0px;
-                text-transform: none; white-space: normal; widows: auto;
-                word-spacing: 0px; -webkit-text-stroke-width: 0px;
-                display: inline !important; float: none;"></span><span
+              display: inline !important; float: none;"><span
                 style="color: rgb(0, 0, 0); font-family: Times;
                 font-size: medium; font-style: normal; font-variant:
                 normal; font-weight: normal; letter-spacing: normal;
@@ -1100,7 +1095,15 @@
                 text-indent: 0px; text-transform: none; white-space:
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;">&#8592; </span>True) <br>
+                !important; float: none;"></span><span style="color:
+                rgb(0, 0, 0); font-family: Times; font-size: medium;
+                font-style: normal; font-variant: normal; font-weight:
+                normal; letter-spacing: normal; line-height: normal;
+                orphans: auto; text-align: start; text-indent: 0px;
+                text-transform: none; white-space: normal; widows: auto;
+                word-spacing: 0px; -webkit-text-stroke-width: 0px;
+                display: inline !important; float: none;">&#8592; </span>True)
+              <br>
               AND f equals mDesiredFloor.f, AND mDriveSpeed = (0, d) OR
               mDriveSpeed = (s, Stop)</span></td>
         </tr>
@@ -1226,6 +1229,8 @@
                 normal; widows: auto; word-spacing: 0px;
                 -webkit-text-stroke-width: 0px; display: inline
                 !important; float: none;">&#8592; True OR </span>mDoorReversal[b,*]
+
+
 
 
 
@@ -2091,10 +2096,14 @@
 
 
 
+
+
     SlowSpeed AND DriveSpeed.s &lt;=&nbsp; FastSpeed, then Drive(s,d)
     shall be set to [Slow, d]<br>
     6.11 If mDesiredFloor.f = g AND CommitPoint[g] = Reached AND
     CurrentFloor = g&nbsp; AND<b> </b>DriveSpeed.s<b>&nbsp; </b>&gt;&nbsp;
+
+
 
 
 
@@ -2168,7 +2177,8 @@
             AND <br>
             All mDoorClosed[b,r] &#8592; true AND mCarWeight(x) &lt;
             MaxCarCapacity <br>
-            AND CommitPoint[g] &#8592; NotReached<br>
+            AND CommitPoint[g] &#8592; NotReached AND mDesiredFloor.f &gt;
+            currentFloor<br>
           </td>
         </tr>
         <tr>
@@ -2178,24 +2188,23 @@
             Down AND <br>
             All mDoorClosed[b,r] &#8592; true AND mCarWeight(x) &lt;
             MaxCarCapacity <br>
-            AND CommitPoint[g] &#8592; NotReached</td>
+            AND CommitPoint[g] &#8592; NotReached AND mDesiredFloor.f &lt;
+            currentFloor</td>
         </tr>
         <tr>
           <td valign="top">T6.3<br>
           </td>
-          <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
-            Reached AND<br>
-            DriveSpeed &lt;= SLOW_SPEED AND currentFloor &#8592;
-            DestinationFloor<br>
+          <td valign="top">mDesiredFloor.f &#8592; g&nbsp; AND DriveSpeed
+            &lt;= SLOW_SPEED <br>
+            AND currentFloor &#8592; DestinationFloor<br>
           </td>
         </tr>
         <tr>
           <td valign="top">T6.4<br>
           </td>
-          <td valign="top">mDesiredFloor.f &#8592; g AND&nbsp; CommitPoint[g]
-            &#8592; Reached AND<br>
-            DriveSpeed &lt;= SLOW_SPEED AND currentFloor &#8592;
-            DestinationFloor<br>
+          <td valign="top">mDesiredFloor.f &#8592; g AND DriveSpeed &lt;=
+            SLOW_SPEED <br>
+            AND currentFloor &#8592; DestinationFloor<br>
           </td>
         </tr>
         <tr>
@@ -2229,7 +2238,7 @@
           </td>
           <td valign="top">mDesiredFloor.f &#8592; g AND CommitPoint[g] &#8592;
             Reached AND<br>
-            SLOW_SPEED &lt; DriveSpeed &lt;= FAST_SPEED </td>
+            SLOW_SPEED &lt; DriveSpeed &lt;= FAST_SPEED</td>
         </tr>
         <tr>
           <td valign="top">T6.10<br>
@@ -2255,222 +2264,200 @@
         <tr>
           <td valign="top">T6.13.*<br>
           </td>
-          <td valign="top">mEmergencyBrake &#8592; true<br>
-          </td>
+          <td valign="top">mEmergencyBrake &#8592; true</td>
         </tr>
       </tbody>
     </table>
     <br>
     <meta name="&#26631;&#39064;" content="">
     <table class="MsoNormalTable" style="background: none repeat scroll
-      0% 0% white;" border="1" cellpadding="0" height="325" width="1366">
+      0% 0% white;" border="1" cellpadding="0" height="325">
       <tbody>
         <tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">State<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">State<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Description<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Description<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Actions<o:p></o:p></span></p>
-          </td>
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Actions<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:1">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Stop<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Stop<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">When the
-                elevator is stopped at a Floor&nbsp;<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                elevator is stopped at a Floor&nbsp;<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It sets
                 the Drive speed and Direction to Stop and Desired
                 Direction will&nbsp; be Stop and mDriveSpeed is set to
-                the value of DriveSpeed<o:p></o:p></span></p>
-          </td>
+                the value of DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:2">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Slow_Up<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Slow_Up<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">When the
-                elevator is moving at a Slow Speed in upward direction<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                elevator is moving at a Slow Speed in upward direction<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It sets
                 the Drive Speed to Slow_Speed and Desired Direction will
                 be Upwards. Set mDriveSpeed to the&nbsp; value of
-                DriveSpeed<o:p></o:p></span></p>
-          </td>
+                DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:3">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Slow_Down<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Slow_Down<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">When the
-                elevator is moving at a Slow Speed in downward direction<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                elevator is moving at a Slow Speed in downward direction<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It sets
                 the Drive Speed to Slow_Speed and Desired Direction will
                 be Downwards. Set mDriveSpeed to the&nbsp; value of
-                DriveSpeed<o:p></o:p></span></p>
-          </td>
+                DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:4">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Level_Up<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Level_Up<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">When it
-                is leveling the elevator in upward direction<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                is leveling the elevator in upward direction<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It sets
                 the Drive Speed to Level_Speed and Desired Direction
                 will be Upwards. Set mDriveSpeed to the&nbsp; value of
-                DriveSpeed<o:p></o:p></span></p>
-          </td>
+                DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:5">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Level_Down<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Level_Down<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">When it
-                is leveling the elevator in downward direction<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                is leveling the elevator in downward direction<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It sets
                 the Drive Speed to Level_Speed and Desired Direction
                 will be Downwards. Set mDriveSpeed to the&nbsp; value of
-                DriveSpeed<o:p></o:p></span></p>
-          </td>
+                DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
         <tr style="mso-yfti-irow:6;mso-yfti-lastrow:yes">
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
-                Roman&quot;;color:#222222;mso-font-kerning:0pt">Emergency<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                Roman&quot;;color:#222222;mso-font-kerning:0pt">Emergency<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">In case
                 of emergency situations, i.e when the elevator overruns
-                the hoistway limit or thedoors are open between floors<o:p></o:p></span></p>
-          </td>
-          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top">
-            <p class="MsoNormal"
-              style="text-align:left;mso-pagination:widow-orphan"
-              align="left"><span style="font-family:&quot;Times New
+                the hoistway limit or thedoors are open between floors<o:p></o:p></span><br>
+            </big></td>
+          <td style="padding:2.0pt 2.0pt 2.0pt 2.0pt" valign="top"><big>
+              <br>
+              <span style="font-family:&quot;Times New
                 Roman&quot;;mso-fareast-font-family:&quot;Times New
                 Roman&quot;; mso-bidi-font-family:&quot;Times New
                 Roman&quot;;color:#222222;mso-font-kerning:0pt">It
                 should STOP the elevator at a Floor. DesiredDirection
                 will be STOP and Drive Speed will be STOP. Set
-                mDriveSpeed to the&nbsp; value of DriveSpeed<o:p></o:p></span></p>
-          </td>
+                mDriveSpeed to the&nbsp; value of DriveSpeed<o:p></o:p></span><br>
+            </big></td>
         </tr>
       </tbody>
     </table>
@@ -3986,7 +3973,7 @@ div.WordSection1
           </td>
         </tr>
         <tr>
-          <td valign="top">T7.1<br>
+          <td valign="top">T7.1.*<br>
           </td>
           <td valign="top">Any mDoorClosed[f, b] <span style="color:
               rgb(0, 0, 0); font-family: Times; font-size: medium;
@@ -4266,7 +4253,7 @@ div.WordSection1
           </td>
         </tr>
         <tr>
-          <td valign="top">T7.1<br>
+          <td valign="top">T7.1.*<br>
           </td>
           <td valign="top" width="50"><br>
           </td>
@@ -4368,8 +4355,8 @@ div.WordSection1
     <h3>TIME-TRIGGERED BEHAVIORS: </h3>
     8.3&nbsp; If HallCall[f,b,d] is idle then mHallCall[f,b,d] shall be
     set to False.<br>
-    8.4&nbsp; If CurrentFloor is f and any mDoorClosed[b,*] = False,
-    then<br>
+    8.4&nbsp; If CurrentFloor is f and any mDoorClosed[b,*] = False and
+    desiredDirection = d then<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.1 HallLight[f,b,d] shall
     be set to OFF<br>
     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 8.4.2 mHallCall[f,b,d] shall
@@ -4441,14 +4428,14 @@ div.WordSection1
         <tr>
           <td valign="top">T8.1<br>
           </td>
-          <td valign="top">CurrentFloor <span style="color: rgb(0, 0,
-              0); font-family: Times; font-size: medium; font-style:
-              normal; font-variant: normal; font-weight: normal;
-              letter-spacing: normal; line-height: normal; orphans:
-              auto; text-align: left; text-indent: 0px; text-transform:
-              none; white-space: normal; widows: auto; word-spacing:
-              0px; -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; g AND HallCall[f,b,d] </span><span
+          <td valign="top"><span style="color: rgb(0, 0, 0);
+              font-family: Times; font-size: medium; font-style: normal;
+              font-variant: normal; font-weight: normal; letter-spacing:
+              normal; line-height: normal; orphans: auto; text-align:
+              left; text-indent: 0px; text-transform: none; white-space:
+              normal; widows: auto; word-spacing: 0px;
+              -webkit-text-stroke-width: 0px; display: inline
+              !important; float: none;">HallCall[f,b,d] </span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
@@ -4483,7 +4470,7 @@ div.WordSection1
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;">AND any
-              mDoorClosed[b,*] = false</span><br>
+              mDoorClosed[b,*] = false</span> AND mDesiredFloor.d = d <br>
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4783,6 +4770,8 @@ div.WordSection1
 
 
 
+
+
             <span style="color: rgb(0, 0, 0); font-family: Times;
               font-size: medium; font-style: normal; font-variant:
               normal; font-weight: normal; letter-spacing: normal;
@@ -4967,15 +4956,7 @@ div.WordSection1
               text-indent: 0px; text-transform: none; white-space:
               normal; widows: auto; word-spacing: 0px;
               -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; True AND mDesiredFloor </span>
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: left;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;"></span><span style="color:
+              !important; float: none;">= true</span><span style="color:
               rgb(0, 0, 0); font-family: Times; font-size: medium;
               font-style: normal; font-variant: normal; font-weight:
               normal; letter-spacing: normal; line-height: normal;
@@ -4989,81 +4970,6 @@ div.WordSection1
               normal; orphans: auto; text-align: left; text-indent: 0px;
               text-transform: none; white-space: normal; widows: auto;
               word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
-                style="color: rgb(0, 0, 0); font-family: Times;
-                font-size: medium; font-style: normal; font-variant:
-                normal; font-weight: normal; letter-spacing: normal;
-                line-height: normal; orphans: auto; text-align: left;
-                text-indent: 0px; text-transform: none; white-space:
-                normal; widows: auto; word-spacing: 0px;
-                -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"></span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
-                style="color: rgb(0, 0, 0); font-family: Times;
-                font-size: medium; font-style: normal; font-variant:
-                normal; font-weight: normal; letter-spacing: normal;
-                line-height: normal; orphans: auto; text-align: left;
-                text-indent: 0px; text-transform: none; white-space:
-                normal; widows: auto; word-spacing: 0px;
-                -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"></span></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"><span
-                style="color: rgb(0, 0, 0); font-family: Times;
-                font-size: medium; font-style: normal; font-variant:
-                normal; font-weight: normal; letter-spacing: normal;
-                line-height: normal; orphans: auto; text-align: left;
-                text-indent: 0px; text-transform: none; white-space:
-                normal; widows: auto; word-spacing: 0px;
-                -webkit-text-stroke-width: 0px; display: inline
-                !important; float: none;"><span style="color: rgb(0, 0,
-                  0); font-family: Times; font-size: medium; font-style:
-                  normal; font-variant: normal; font-weight: normal;
-                  letter-spacing: normal; line-height: normal; orphans:
-                  auto; text-align: left; text-indent: 0px;
-                  text-transform: none; white-space: normal; widows:
-                  auto; word-spacing: 0px; -webkit-text-stroke-width:
-                  0px; display: inline !important; float: none;"><span
-                    style="color: rgb(0, 0, 0); font-family: Times;
-                    font-size: medium; font-style: normal; font-variant:
-                    normal; font-weight: normal; letter-spacing: normal;
-                    line-height: normal; orphans: auto; text-align:
-                    left; text-indent: 0px; text-transform: none;
-                    white-space: normal; widows: auto; word-spacing:
-                    0px; -webkit-text-stroke-width: 0px; display: inline
-                    !important; float: none;"></span></span></span></span>
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: left;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; f AND CurrentFloor </span> <span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
-              display: inline !important; float: none;"></span><span
-              style="color: rgb(0, 0, 0); font-family: Times; font-size:
-              medium; font-style: normal; font-variant: normal;
-              font-weight: normal; letter-spacing: normal; line-height:
-              normal; orphans: auto; text-align: left; text-indent: 0px;
-              text-transform: none; white-space: normal; widows: auto;
-              word-spacing: 0px; -webkit-text-stroke-width: 0px;
               display: inline !important; float: none;"></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
@@ -5124,15 +5030,95 @@ div.WordSection1
                     left; text-indent: 0px; text-transform: none;
                     white-space: normal; widows: auto; word-spacing:
                     0px; -webkit-text-stroke-width: 0px; display: inline
-                    !important; float: none;"></span></span></span></span>
-            <span style="color: rgb(0, 0, 0); font-family: Times;
-              font-size: medium; font-style: normal; font-variant:
-              normal; font-weight: normal; letter-spacing: normal;
-              line-height: normal; orphans: auto; text-align: left;
-              text-indent: 0px; text-transform: none; white-space:
-              normal; widows: auto; word-spacing: 0px;
-              -webkit-text-stroke-width: 0px; display: inline
-              !important; float: none;">&#8592; not f</span><span
+                    !important; float: none;"></span></span></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"><span
+                style="color: rgb(0, 0, 0); font-family: Times;
+                font-size: medium; font-style: normal; font-variant:
+                normal; font-weight: normal; letter-spacing: normal;
+                line-height: normal; orphans: auto; text-align: left;
+                text-indent: 0px; text-transform: none; white-space:
+                normal; widows: auto; word-spacing: 0px;
+                -webkit-text-stroke-width: 0px; display: inline
+                !important; float: none;"><span style="color: rgb(0, 0,
+                  0); font-family: Times; font-size: medium; font-style:
+                  normal; font-variant: normal; font-weight: normal;
+                  letter-spacing: normal; line-height: normal; orphans:
+                  auto; text-align: left; text-indent: 0px;
+                  text-transform: none; white-space: normal; widows:
+                  auto; word-spacing: 0px; -webkit-text-stroke-width:
+                  0px; display: inline !important; float: none;"><span
+                    style="color: rgb(0, 0, 0); font-family: Times;
+                    font-size: medium; font-style: normal; font-variant:
+                    normal; font-weight: normal; letter-spacing: normal;
+                    line-height: normal; orphans: auto; text-align:
+                    left; text-indent: 0px; text-transform: none;
+                    white-space: normal; widows: auto; word-spacing:
+                    0px; -webkit-text-stroke-width: 0px; display: inline
+                    !important; float: none;"></span></span></span></span><span
+              style="color: rgb(0, 0, 0); font-family: Times; font-size:
+              medium; font-style: normal; font-variant: normal;
+              font-weight: normal; letter-spacing: normal; line-height:
+              normal; orphans: auto; text-align: left; text-indent: 0px;
+              text-transform: none; white-space: normal; widows: auto;
+              word-spacing: 0px; -webkit-text-stroke-width: 0px;
+              display: inline !important; float: none;"></span><span
               style="color: rgb(0, 0, 0); font-family: Times; font-size:
               medium; font-style: normal; font-variant: normal;
               font-weight: normal; letter-spacing: normal; line-height:
