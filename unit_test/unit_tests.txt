@@ -1,8 +1,8 @@
 ;18649 <Fall 2013>
 ;Group 9 - Yichao Xue         yichaox
-;          Priya Mahajan    priyam
 ;          Wenhui Hu         wenhuih
 ;          Yujia Wang         yujiaw 
+
 DriveControl DriveControl.cf DriveControl.mf
 CarButtonControl CarButtonControl.cf CarButtonControl.mf
 DoorControl DoorControl.cf DoorControl.mf

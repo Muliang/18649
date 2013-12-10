@@ -1,7 +1,7 @@
 ; 18649 Fall 2013
 ; group 9
-; Priya Mahajan (priyam), Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
-; DoorControl.cf	 
+; Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+; DoorControl.cf	 author: Yujia Wang(yujiaw)
 
 ;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ;

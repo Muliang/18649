@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf unit_test/CarButtonControl.cf -mf unit_test/CarButtonControl.mf
-RandomSeed = 1383869694235
+RandomSeed = 1386708088007
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
