@@ -3,13 +3,10 @@
  */
 package simulator.elevatorcontrol;
 
-import jSimPack.SimTime;
-import jSimPack.SimTime.SimTimeUnit;
 import simulator.elevatormodules.DriveObject;
 import simulator.framework.DoorCommand;
 import simulator.framework.Elevator;
 import simulator.framework.Hallway;
-import simulator.framework.Harness;
 import simulator.framework.RuntimeMonitor;
 import simulator.framework.Side;
 import simulator.framework.Direction;
@@ -26,6 +23,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	// Variables
 	protected int currentFloor = MessageDictionary.NONE;
+	protected Hallway currentHallway;
 
 	// State machines to be updated
 	protected RT6StateMachine	rt6		= new RT6StateMachine();
@@ -110,6 +108,9 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
         	warning(message);
     }
 
+    
+    
+    // check to see if only stops at floors for which there are pending calls
 	private static enum RT6State
 	{
 		MOVING,
@@ -125,7 +126,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		// initial state VALID_STOP
 		private RT6State state = RT6State.VALID_STOP;
 
-		public static final double LEVEL_SPEED = 0.10;
+		public static final double LEVEL_SPEED = DriveObject.LevelingSpeed;
 
 		@Override
 		protected String warningMessage()
@@ -140,7 +141,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case MOVING:	moving();	break;
+				case MOVING:		moving();	break;
 				case VALID_STOP:	validStop();	break;
 				case INVALID_STOP:	invalidStop();	break;
 				default:
@@ -184,6 +185,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	} 
 
 
+	// check to see if only opens door at floor which there are pending calls
 	private static enum RT7State
 	{
 		CLOSED,
@@ -212,51 +214,41 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case CLOSED:	closed();	break;
-				case VALID_OPEN:		open();		break;
-				case INVALID_OPEN:	badOpen();	break;
+				case CLOSED:			closed();	break;
+				case VALID_OPEN:		validOpen();		break;
+				case INVALID_OPEN:		invalidOpen();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
 		}
-
-/**
- * RT-7: change the condition 
- * door start opening -> DoorClosed is false
- * ????????????? 
- */
 		
 		private void closed()
 		{
 			releaseWarning();
 
-			//change condition 
-			if(!allDoorsClosed() && hasCall(currentFloor)) {
+			if(!allDoorsClosed(currentHallway) && hasCall(currentFloor, currentHallway)) {
 				state = RT7State.VALID_OPEN;
 			}
-			//change condition 
-			if(!allDoorsClosed() && !hasCall(currentFloor)) {
+			if(!allDoorsClosed(currentHallway) && !hasCall(currentFloor, currentHallway)) {
 				state = RT7State.INVALID_OPEN;
 			}
 
 		}
 
-		private void open()
+		private void validOpen()
 		{
 			releaseWarning();
 
-			//change condition 
 			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
 
 		}
 
-		private void badOpen()
+		private void invalidOpen()
 		{
 			setWarning();
 
-			//change condition 
 			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
@@ -264,6 +256,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	}
 
+	// check if lantern is lit while there are pending calls on other floor while doors are open
 
 	private static enum RT81State
 	{
@@ -277,13 +270,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	 */
 	private class RT81StateMachine extends StateMachine
 	{
-
-		public static final int LANTERN_CONTROL_TIME = 200;
-		public static final int LANTERN_DOUBLE_GLOBAL_TICK = 2*LANTERN_CONTROL_TIME;
-		
 		// initial state: no call, lantern is idle
 		private RT81State state = RT81State.LANTERN_IDLE;
-		private IntervalTimer timer = new IntervalTimer();
 
 		@Override
 		protected String warningMessage()
@@ -298,23 +286,19 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case LANTERN_IDLE:	correctLanterns();	break;
-				case LANTERN_ON:	callMadeDelay();	break;
+				case LANTERN_IDLE:	idleLanterns();	break;
+				case LANTERN_ON:	rightLanterns();	break;
 				case LANTERN_OFF:	wrongLanterns();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
 		}
 
-		private void correctLanterns()
+		private void idleLanterns()
 		{
 			releaseWarning();
 
-			//Timer should not be running in this state
-			timer.stop();
-
-			if(!allDoorsClosed() && anyOtherCall(currentFloor) &&
-					(lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
+			if(!allDoorsClosed() && anyOtherCall(currentFloor) && (lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
 				state = RT81State.LANTERN_ON;
 			} else if(!allDoorsClosed() && anyOtherCall(currentFloor) && ((!lanternLit(Direction.UP)) && (!lanternLit(Direction.DOWN)))) {
 				state = RT81State.LANTERN_OFF;
@@ -322,14 +306,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		}
 
-		private void callMadeDelay()
+		private void rightLanterns()
 		{
 			releaseWarning();
 
-			//Timer should be running in this state
-			timer.start(new SimTime(LANTERN_DOUBLE_GLOBAL_TICK, SimTimeUnit.MILLISECOND));
-				
-			if(!timer.isExpired() && (allDoorsClosed()))
+			if(allDoorsClosed())
 				state = RT81State.LANTERN_IDLE;
 
 		}
@@ -338,15 +319,13 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			setWarning();
 
-			//Timer should not be running in this state
-			timer.stop();
-
 			if(allDoorsClosed())
 				state = RT81State.LANTERN_IDLE;
 		}
 
 	} 
 
+	// check if direction indicated by lantern changes while the doors are open
 	private static enum RT82State
 	{		
 		NO_DIRECTION,
@@ -376,16 +355,16 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case NO_DIRECTION:	directionNone();	break;
+				case NO_DIRECTION:			noDirection();	break;
 				case VALID_DIRECTION_UP:	validDirectionUp();	break;
 				case VALID_DIRECTION_DOWN:	validDirectionDown(); break;
-				case INVALID_DIRECTION:	invalidDirection();	break;
+				case INVALID_DIRECTION:		invalidDirection();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
 		}
 
-		private void directionNone()
+		private void noDirection()
 		{
 			releaseWarning();
 
@@ -403,7 +382,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			if(allDoorsClosed()) {
 				state = RT82State.NO_DIRECTION;
 			}
-			else if(!allDoorsClosed() && !lanternLit(Direction.UP)) {
+			else if(!allDoorsClosed() && (!lanternLit(Direction.UP) || lanternLit(Direction.DOWN))) {
 				state = RT82State.INVALID_DIRECTION;
 			}
 		}
@@ -416,7 +395,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			if(allDoorsClosed()) {
 				state = RT82State.NO_DIRECTION;
 			}
-			else if(!allDoorsClosed() && !lanternLit(Direction.DOWN)) {
+			else if(!allDoorsClosed() && (!lanternLit(Direction.DOWN) || lanternLit(Direction.UP))) {
 				state = RT82State.INVALID_DIRECTION;
 			}
 		}
@@ -424,7 +403,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void invalidDirection()
 		{
-			//This state produces a warning
 			setWarning();
 
 			if(allDoorsClosed())
@@ -433,7 +411,7 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	}
 
-
+	// check if car service the direction which the lantern indicates
 	private static enum RT83State
 	{
 		DIRECTION_NONE,
@@ -767,72 +745,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		}
 	}
 
-	/**
-     * Times process and determines whether a specified interval is exceeded
-     */
-    private class IntervalTimer {
-
-        private boolean isRunning;
-        private SimTime startTime;
-        private SimTime interval;
-
-        /**
-         *	Generic constructor
-         */
-        public IntervalTimer()
-        {
-        	this.interval = null;
-        	this.startTime = null;
-        	this.isRunning = false;
-        }
-
-        /**
-         *	Starts timer. If the timer has already been started, this function does nothing.
-         *	@param interval SimTime for this interval timer to last before becoming expired.
-         */
-        public void start(SimTime interval)
-        {
-            if (!isRunning) {
-            	this.interval = interval;
-                startTime = Harness.getTime();
-                isRunning = true;
-            }
-        }
-
-        /**
-         *	Stops and resets timer. If the timer was not running this function does nothing.
-         */
-        public void stop()
-        {
-        	if (isRunning) {
-        		startTime = null;
-        		isRunning = false;
-        	}
-        }
-
-		/**
-		 *	determines wheter the length of time that the timer has been running
-		 *		is greater than the specified time interval
-		 *	@return true if the timer has been running for longer than the specified time interval
-		 */
-		public boolean isExpired()
-		{
-			if(interval == null) {
-				return true;
-			}
-			else {
-				return interval.isLessThan(SimTime.subtract(Harness.getTime(), startTime));
-			}
-		}
-
-    }
-
     /**
-     *	updates the current floor with latest AtFloor Payload
-     *	Stolen frim SampleDispatcherMonitor.java lines 97-110
-     *	@param lastAtFloor Payload for last received AtFloor message
+     *	updates the current floor with latest AtFloor Payload. source: SampleDispatcherMonitor
      */
-	private void updateCurrentFloor(ReadableAtFloorPayload lastAtFloor) {
+    private void updateCurrentFloor(ReadableAtFloorPayload lastAtFloor) {
         if (lastAtFloor.getFloor() == currentFloor) {
             //the atFloor message is for the currentfloor, so check both sides to see if they a
             if (!atFloors[lastAtFloor.getFloor()-1][Hallway.BACK.ordinal()].value() && !atFloors[lastAtFloor.getFloor()-1][Hallway.FRONT.ordinal()].value()) {
@@ -881,34 +797,22 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 	private boolean hasCall(int floor)
 	{
-		floor -= 1;
-		return 	   carLights[floor][Hallway.FRONT.ordinal()].lighted()
-				|| carLights[floor][Hallway.BACK.ordinal() ].lighted()
-				|| hallLights[floor][Hallway.FRONT.ordinal()][Direction.UP.ordinal()  ].lighted()
+		return carLights[floor][Hallway.FRONT.ordinal()].lighted()
+				|| carLights[floor][Hallway.BACK.ordinal()].lighted()
+				|| hallLights[floor][Hallway.FRONT.ordinal()][Direction.UP.ordinal()].lighted()
 				|| hallLights[floor][Hallway.FRONT.ordinal()][Direction.DOWN.ordinal()].lighted()
-				|| hallLights[floor][Hallway.BACK.ordinal() ][Direction.UP.ordinal()  ].lighted()
-				|| hallLights[floor][Hallway.BACK.ordinal() ][Direction.DOWN.ordinal()].lighted();
+				|| hallLights[floor][Hallway.BACK.ordinal()][Direction.UP.ordinal()].lighted()
+				|| hallLights[floor][Hallway.BACK.ordinal()][Direction.DOWN.ordinal()].lighted();
+	}
+	
+	private boolean hasCall(int floor, Hallway hallway) {
+		return carLights[floor][hallway.ordinal()].lighted()
+				|| hallLights[floor][hallway.ordinal()][Direction.UP.ordinal()].lighted()
+				|| hallLights[floor][hallway.ordinal()][Direction.DOWN.ordinal()].lighted();
 	}
 
 	private boolean lanternLit(Direction dir) {
 		return carLanterns[dir.ordinal()].lighted();
-	}
-
-//	private boolean allDoorsOpen(Hallway hall)
-//	{
-//		return doorOpeneds[hall.ordinal()][Side.LEFT.ordinal() ].isOpen()
-//			&& doorOpeneds[hall.ordinal()][Side.RIGHT.ordinal()].isOpen();
-//	}
-
-	private boolean anyDoorsOpen()
-	{
-		return anyDoorsOpen(Hallway.FRONT) || anyDoorsOpen(Hallway.BACK);
-	}
-
-	private boolean anyDoorsOpen(Hallway hall)
-	{
-		return doorOpeneds[hall.ordinal()][Side.LEFT.ordinal() ].isOpen()
-			|| doorOpeneds[hall.ordinal()][Side.RIGHT.ordinal()].isOpen();
 	}
 	
 	private boolean anyDoorReversing(Hallway hall)
@@ -924,12 +828,10 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	}
 	
 	private boolean allDoorsClosed() {
-		return allDoorsClosed(Hallway.FRONT)
-			&& allDoorsClosed(Hallway.BACK);
+		return allDoorsClosed(Hallway.FRONT) && allDoorsClosed(Hallway.BACK);
 	}
 	
 	private boolean allDoorsClosed(Hallway hall) {
-		return doorCloseds[hall.ordinal()][Side.LEFT.ordinal() ].isClosed()
-			&& doorCloseds[hall.ordinal()][Side.RIGHT.ordinal()].isClosed();
+		return doorCloseds[hall.ordinal()][Side.LEFT.ordinal()].isClosed() && doorCloseds[hall.ordinal()][Side.RIGHT.ordinal()].isClosed();
 	}
 }
