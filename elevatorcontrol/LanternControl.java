@@ -70,7 +70,7 @@ public class LanternControl extends Controller {
 			// do:
 			localCarLantern.set(false);
 
-			// #transition 'T7.1'
+			// #transition 'T7.1.1'
 			if (((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack
 							.getBothClosed()))
 					&& (direction == mDesiredFloor.getDirection()))
@@ -98,7 +98,7 @@ public class LanternControl extends Controller {
 			if ((mDoorClosedFront.getBothClosed())
 					&& (mDoorClosedBack.getBothClosed()))
 				newState = State.STATE_IDLE;
-			// #transition ''
+			// #transition 'T7.1.2'
 			if ((mDesiredFloor.getFloor() != MessageDictionary.NONE) // mDesireFloor.f
 														// != -1
 				&& ((!mDoorClosedFront.getBothClosed()) || (!mDoorClosedBack

@@ -299,6 +299,9 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.REACHED)
 			currentState = State.STATE_SLOW_UP;
+        // #transition 'T6.13.6'
+		if (mEmergencyBrake.getValue() == true)
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateFastDown() {
@@ -315,6 +318,9 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.REACHED)
 			currentState = State.STATE_SLOW_DOWN;
+        // #transition 'T6.13.7'
+		if (mEmergencyBrake.getValue() == true)
+			currentState = State.STATE_EMERGENCY;
 	}
 
 	private void stateStop() {
@@ -356,7 +362,7 @@ public class DriveControl extends Controller {
 				&& localDriveSpeed.speed() == 0
 				&& localDriveSpeed.direction() == Direction.STOP)
 			currentState = State.STATE_LEVEL_DOWN;
-		// #transition 'T6.9.1'
+		// #transition 'T6.13.1'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
@@ -381,7 +387,7 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_UP;
-		// #transition 'T6.9.2'
+		// #transition 'T6.13.2'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
@@ -406,7 +412,7 @@ public class DriveControl extends Controller {
 				&& commitPoint(desiredFloor, mCarLevelPosition.getPosition(),
 						localDriveSpeed.speed(), localDriveSpeed.direction()) == Commit.NOTREACHED)
 			currentState = State.STATE_FAST_DOWN;
-		// #transition 'T6.9.3'
+		// #transition 'T6.13.3'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
@@ -425,7 +431,7 @@ public class DriveControl extends Controller {
 		if (mLevelUp.getValue() == true// || mCarLevelPosition.getPosition()>=0)
 				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 			currentState = State.STATE_STOP;
-		// #transition 'T6.9.4'
+		// #transition 'T6.13.4'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
@@ -445,7 +451,7 @@ public class DriveControl extends Controller {
 											// mCarLevelPosition.getPosition()<=0)
 				&& localDriveSpeed.speed() <= LEVEL_SPEED)
 			currentState = State.STATE_STOP;
-		// #transition 'T6.9.5'
+		// #transition 'T6.13.5'
 		if (mEmergencyBrake.getValue() == true)
 			currentState = State.STATE_EMERGENCY;
 	}
