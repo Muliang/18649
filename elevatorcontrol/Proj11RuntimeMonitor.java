@@ -2,7 +2,9 @@
  * 18649 Fall 2013
  * group 9
  * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
+ * Author: Wenhui Hu (wenhuih)
  */
+
 package simulator.elevatorcontrol;
 
 import jSimPack.SimTime;
@@ -214,29 +216,22 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case CLOSED:	closed();	break;
+				case CLOSED:			closed();	break;
 				case VALID_OPEN:		open();		break;
-				case INVALID_OPEN:	badOpen();	break;
+				case INVALID_OPEN:		badOpen();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
 		}
 
-/**
- * RT-7: change the condition 
- * door start opening -> DoorClosed is false
- * ????????????? 
- */
 		
 		private void closed()
 		{
 			releaseWarning();
 
-			//change condition 
 			if(!allDoorsClosed() && hasCall(currentFloor)) {
 				state = RT7State.VALID_OPEN;
 			}
-			//change condition 
 			if(!allDoorsClosed() && !hasCall(currentFloor)) {
 				state = RT7State.INVALID_OPEN;
 			}
@@ -247,7 +242,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			releaseWarning();
 
-			//change condition 
 			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
@@ -258,7 +252,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		{
 			setWarning();
 
-			//change condition 
 			if(allDoorsClosed()) {
 				state = RT7State.CLOSED;
 			}
@@ -280,12 +273,11 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 	private class RT81StateMachine extends StateMachine
 	{
 
-		public static final int LANTERN_CONTROL_TIME = 200;
-		public static final int LANTERN_DOUBLE_GLOBAL_TICK = 2*LANTERN_CONTROL_TIME;
-		
-		// initial state: no call, lantern is idle
 		private RT81State state = RT81State.LANTERN_IDLE;
 		private IntervalTimer timer = new IntervalTimer();
+		
+		public static final int LANTERN_CONTROL_TIME = 200;
+		public static final int LANTERN_DOUBLE_GLOBAL_TICK = 2*LANTERN_CONTROL_TIME;
 
 		@Override
 		protected String warningMessage()
@@ -300,38 +292,35 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		public void update()
 		{
 			switch(state) {
-				case LANTERN_IDLE:	correctLanterns();	break;
-				case LANTERN_ON:	callMadeDelay();	break;
+				case LANTERN_IDLE:	idleLanterns();	break;
+				case LANTERN_ON:	correctLanterns();	break;
 				case LANTERN_OFF:	wrongLanterns();	break;
 				default:
 					throw new RuntimeException("State " + state + " was not recognized.");
 			}
 		}
 
-		private void correctLanterns()
+		private void idleLanterns()
 		{
 			releaseWarning();
 
-			//Timer should not be running in this state
-			timer.stop();
 
-			if(!allDoorsClosed() && anyOtherCall(currentFloor) &&
-					(lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
+			timer.start(new SimTime(LANTERN_DOUBLE_GLOBAL_TICK, SimTimeUnit.MILLISECOND));
+			
+			if(!timer.isExpired() && anyDoorsOpen() && (lanternLit(Direction.UP) || lanternLit(Direction.DOWN)) ) {
 				state = RT81State.LANTERN_ON;
-			} else if(!allDoorsClosed() && anyOtherCall(currentFloor) && ((!lanternLit(Direction.UP)) && (!lanternLit(Direction.DOWN)))) {
+			} else if(timer.isExpired() && anyDoorsOpen() && anyOtherCall(currentFloor) && (!lanternLit(Direction.UP) && !lanternLit(Direction.DOWN)) && ((lanternLit(Direction.UP) && lanternLit(Direction.DOWN)))) {
 				state = RT81State.LANTERN_OFF;
 			}
 
 		}
 
-		private void callMadeDelay()
+		private void correctLanterns()
 		{
 			releaseWarning();
-
-			//Timer should be running in this state
-			timer.start(new SimTime(LANTERN_DOUBLE_GLOBAL_TICK, SimTimeUnit.MILLISECOND));
-				
-			if(!timer.isExpired() && (allDoorsClosed()))
+			
+			timer.stop();
+			if(anyDoorsClosed())
 				state = RT81State.LANTERN_IDLE;
 
 		}
@@ -339,11 +328,8 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		private void wrongLanterns()
 		{
 			setWarning();
-
-			//Timer should not be running in this state
 			timer.stop();
-
-			if(allDoorsClosed())
+			if(anyDoorsClosed())
 				state = RT81State.LANTERN_IDLE;
 		}
 
@@ -426,7 +412,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 
 		private void invalidDirection()
 		{
-			//This state produces a warning
 			setWarning();
 
 			if(allDoorsClosed())
@@ -769,65 +754,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		}
 	}
 
-	/**
-     * Times process and determines whether a specified interval is exceeded
-     */
-    private class IntervalTimer {
-
-        private boolean isRunning;
-        private SimTime startTime;
-        private SimTime interval;
-
-        /**
-         *	Generic constructor
-         */
-        public IntervalTimer()
-        {
-        	this.interval = null;
-        	this.startTime = null;
-        	this.isRunning = false;
-        }
-
-        /**
-         *	Starts timer. If the timer has already been started, this function does nothing.
-         *	@param interval SimTime for this interval timer to last before becoming expired.
-         */
-        public void start(SimTime interval)
-        {
-            if (!isRunning) {
-            	this.interval = interval;
-                startTime = Harness.getTime();
-                isRunning = true;
-            }
-        }
-
-        /**
-         *	Stops and resets timer. If the timer was not running this function does nothing.
-         */
-        public void stop()
-        {
-        	if (isRunning) {
-        		startTime = null;
-        		isRunning = false;
-        	}
-        }
-
-		/**
-		 *	determines wheter the length of time that the timer has been running
-		 *		is greater than the specified time interval
-		 *	@return true if the timer has been running for longer than the specified time interval
-		 */
-		public boolean isExpired()
-		{
-			if(interval == null) {
-				return true;
-			}
-			else {
-				return interval.isLessThan(SimTime.subtract(Harness.getTime(), startTime));
-			}
-		}
-
-    }
 
     /**
      *	updates the current floor with latest AtFloor Payload
@@ -896,22 +822,6 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 		return carLanterns[dir.ordinal()].lighted();
 	}
 
-//	private boolean allDoorsOpen(Hallway hall)
-//	{
-//		return doorOpeneds[hall.ordinal()][Side.LEFT.ordinal() ].isOpen()
-//			&& doorOpeneds[hall.ordinal()][Side.RIGHT.ordinal()].isOpen();
-//	}
-
-	private boolean anyDoorsOpen()
-	{
-		return anyDoorsOpen(Hallway.FRONT) || anyDoorsOpen(Hallway.BACK);
-	}
-
-	private boolean anyDoorsOpen(Hallway hall)
-	{
-		return doorOpeneds[hall.ordinal()][Side.LEFT.ordinal() ].isOpen()
-			|| doorOpeneds[hall.ordinal()][Side.RIGHT.ordinal()].isOpen();
-	}
 	
 	private boolean anyDoorReversing(Hallway hall)
 	{
@@ -930,8 +840,90 @@ public class Proj11RuntimeMonitor extends RuntimeMonitor
 			&& allDoorsClosed(Hallway.BACK);
 	}
 	
+	private boolean anyDoorsClosed() {
+		return anyDoorsClosed(Hallway.FRONT)
+			|| anyDoorsClosed(Hallway.BACK);
+	}
+	
 	private boolean allDoorsClosed(Hallway hall) {
 		return doorCloseds[hall.ordinal()][Side.LEFT.ordinal() ].isClosed()
 			&& doorCloseds[hall.ordinal()][Side.RIGHT.ordinal()].isClosed();
 	}
+	
+
+	private boolean anyDoorsClosed(Hallway hall) {
+		return doorCloseds[hall.ordinal()][Side.LEFT.ordinal() ].isClosed()
+			|| doorCloseds[hall.ordinal()][Side.RIGHT.ordinal()].isClosed();
+	}
+	
+	private boolean anyDoorsOpen()
+	{
+		return anyDoorsOpen(Hallway.FRONT) || anyDoorsOpen(Hallway.BACK);
+	}
+	private boolean anyDoorsOpen(Hallway hall)
+	{
+		return doorOpeneds[hall.ordinal()][Side.LEFT.ordinal() ].isOpen()
+			|| doorOpeneds[hall.ordinal()][Side.RIGHT.ordinal()].isOpen();
+	}
+	
+	
+	/**
+     * Times process and determines whether a specified interval is exceeded
+     */
+    private class IntervalTimer {
+
+        private boolean isRunning;
+        private SimTime startTime;
+        private SimTime interval;
+
+        /**
+         *	Generic constructor
+         */
+        public IntervalTimer()
+        {
+        	this.interval = null;
+        	this.startTime = null;
+        	this.isRunning = false;
+        }
+
+        /**
+         *	Starts timer. If the timer has already been started, this function does nothing.
+         *	@param interval SimTime for this interval timer to last before becoming expired.
+         */
+        public void start(SimTime interval)
+        {
+            if (!isRunning) {
+            	this.interval = interval;
+                startTime = Harness.getTime();
+                isRunning = true;
+            }
+        }
+
+        /**
+         *	Stops and resets timer. If the timer was not running this function does nothing.
+         */
+        public void stop()
+        {
+        	if (isRunning) {
+        		startTime = null;
+        		isRunning = false;
+        	}
+        }
+
+		/**
+		 *	determines wheter the length of time that the timer has been running
+		 *		is greater than the specified time interval
+		 *	@return true if the timer has been running for longer than the specified time interval
+		 */
+		public boolean isExpired()
+		{
+			if(interval == null) {
+				return true;
+			}
+			else {
+				return interval.isLessThan(SimTime.subtract(Harness.getTime(), startTime));
+			}
+		}
+
+    }
 }

@@ -6,24 +6,6 @@ package simulator.elevatorcontrol;
  * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
  */
 
-/*
-* 
-* This monitor detects ::
-* 
-* 1. The number of stops where the car becomes OVERWEIGHT
-* when the door are open.  Each stop counted at most once, unless the doors
-* close completely and then reopen at the same floor.(that counts as two overweight instances)
-*
-* 2.The number of WASTED OPENINGS
-* The number of times when a door opens but there is no call at that floor
-* 
-* 3. TIME spent dealing with DOOR REVERSALS
-* Count the time from a reversal until the doors fully close, and accumulate this value over the whole test. 
-* 
-* @author Priya Mahajan
-* priyam
-* 
-*/
 
 import jSimPack.SimTime;
 import simulator.framework.Direction;
@@ -46,6 +28,24 @@ import simulator.payloads.DriveSpeedPayload.ReadableDriveSpeedPayload;
 import simulator.payloads.HallCallPayload.ReadableHallCallPayload;
 import simulator.payloads.HallLightPayload.ReadableHallLightPayload;
 
+/*
+* 
+* This monitor detects ::
+* 
+* 1. The number of stops where the car becomes OVERWEIGHT
+* when the door are open.  Each stop counted at most once, unless the doors
+* close completely and then reopen at the same floor.(that counts as two overweight instances)
+*
+* 2.The number of WASTED OPENINGS
+* The number of times when a door opens but there is no call at that floor
+* 
+* 3. TIME spent dealing with DOOR REVERSALS
+* Count the time from a reversal until the doors fully close, and accumulate this value over the whole test. 
+* 
+* @author Priya Mahajan
+* priyam
+* 
+*/
 
 public class Proj7RuntimeMonitor extends RuntimeMonitor {
 
