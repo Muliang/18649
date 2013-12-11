@@ -95,8 +95,8 @@
           <td valign="top" width="100">RT6-1<br>
           </td>
           <td valign="top">mDriveSpeed &lt;= LevelSpeed AND&nbsp; any
-            mHallCall[currenfloor, b] is true or mCallCall[currentfloor,
-            b] is true<br>
+            mHallCall[currenfloor, b, *] is true or
+            mCallCall[currentfloor, b] is true<br>
           </td>
         </tr>
         <tr>
@@ -107,9 +107,9 @@
         <tr>
           <td valign="top">RT6-2<br>
           </td>
-          <td valign="top">mDriveSpeed &lt;= LevelSpeed AND&nbsp; all
-            mHallCall[currenfloor, b] or mCallCall[currentfloor, b] are
-            not true<br>
+          <td valign="top">mDriveSpeed &lt;= LevelSpeed AND&nbsp; none
+            of mHallCall[currenfloor, b, *] or mCallCall[currentfloor,
+            b] is true<br>
           </td>
         </tr>
         <tr>
@@ -127,10 +127,11 @@
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"><br>
       write up: R-T6 is violated if and only if car stops at a floor at
-      which there is no call RT6-3. The monitor records car's state
+      which there is no calls (RT6-3). The monitor records car's state
       change from above level speed to below level speed RT6-1
       (attempting to stop). A warning is thrown when there is no pending
-      call while making transition RT6-3.<br>
+      call while car trying to stop at a floor which has no car call or
+      hall call (RT6-3).<br>
       &nbsp; <br>
     </span>
     <hr size="2" width="100%"><br>
@@ -159,8 +160,8 @@
           <td valign="top">RT7-1<br>
           </td>
           <td valign="top">any mDoorOpen[b, r] is true AND any
-            mHallCall[currenfloor, b] is true or mCallCall[currentfloor,
-            b] is true<br>
+            mHallCall[currenfloor, b, *] is true or
+            mCallCall[currentfloor, b] is true<br>
           </td>
         </tr>
         <tr>
@@ -172,9 +173,9 @@
         <tr>
           <td valign="top">RT7-2<br>
           </td>
-          <td valign="top">any mDoorOpen[b, r] is true AND all
-            mHallCall[currenfloor, b] or mCallCall[currentfloor, b] are
-            not true<br>
+          <td valign="top">any mDoorOpen[b, r] is true AND none of
+            mHallCall[currenfloor, b, *] or mCallCall[currentfloor, b]
+            is true<br>
           </td>
         </tr>
         <tr>
@@ -194,8 +195,8 @@
       none;"><br>
       write up: R-T7 is violated if and only if the door opens at a
       hallway in which there is no pending calls. The monitor records
-      door's state from close to open. A warning is thrown when there is
-      no pending calls while making transition RT7-4.<br>
+      door's state from close to open. A warning is thrown when the door
+      opens in hallways where there is no car call or hall call (RT7-4).<br>
       <br>
     </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
@@ -232,16 +233,18 @@
           <td valign="top">RT8_1-1<br>
           </td>
           <td valign="top">any mDoorMotor[b, r] is open AND (any
-            mHallCall[otherFloor, b]) or mCarCall[otherFloor, b] is true
-            ) AND (CarLantern[up] or CarLantern[down] is true)<br>
+            mHallCall[otherFloor, b, *]) or mCarCall[otherFloor, b] is
+            true ) AND (either CarLantern[up] or CarLantern[down] is
+            true)<br>
           </td>
         </tr>
         <tr>
           <td valign="top">RT8_1-2<br>
           </td>
           <td valign="top">any mDoorMotor[b, r] is open AND (any
-            mHallCall[otherFloor, b]) or mCarCall[otherFloor, b] is true
-            ) AND (CarLantern[up] and CarLantern[down] are false ) </td>
+            mHallCall[otherFloor, b, *]) or mCarCall[otherFloor, b] is
+            true ) AND ( both CarLantern[up] and CarLantern[down] are
+            false ) </td>
         </tr>
         <tr>
           <td valign="top">RT8_1-3<br>
@@ -263,10 +266,10 @@
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"><br>
       write up: R-T8.1 is violated if and only both lantern is off while
-      any door is open and there are pending calls. The monitor records
-      lantern's state while the door is open. A warning is thrown when
-      there is pending calls at other floor and both lantern is not lit
-      on while making transition RT8_1-2.<br>
+      any door is open and there are pending calls on other floor. The
+      monitor records lantern's state while the door is open. A warning
+      is thrown when there is pending calls at other floor and both
+      lantern is not lit (RT8_1-2).<br>
       <br>
     </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
@@ -345,11 +348,10 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;"> <br>
-      write up: R-T8.2 is violated if and only if the lantern lit on
-      switched from one to another while the door is open. The monitor
-      records lantern's state while any door is open. A warning is
-      thrown when any changes are made in lantern while doors are open
-      while making transition RT8_2-3 &amp; RT8_2-6.<br>
+      write up: R-T8.2 is violated if and only if the lantern change
+      status while the door is open. The monitor records lantern's state
+      while any door is open. A warning is thrown when any changes are
+      made in lantern while doors are open (RT8_2-3 &amp; RT8_2-6).<br>
       <br>
     </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
@@ -398,33 +400,28 @@
         <tr>
           <td valign="top">RT8_3-3<br>
           </td>
-          <td valign="top">all mDoorClosed[b,r] are false and
-            mCarLantern[up] is false </td>
+          <td valign="top">all mDoorClosed[b,r] are true </td>
         </tr>
         <tr>
           <td valign="top">RT8_3-4<br>
           </td>
           <td valign="top">all mDoorClosed[b,r] are false and
-            mCarLantern[up] is true and desiredFloor &lt; currentFloor
-            and (mHallCall(higherFloor, b) is true or
-            mCarCall(higherFloor, b) is true )<br>
+            desiredFloor &lt; currentFloor<br>
           </td>
         </tr>
         <tr>
           <td valign="top">RT8_3-5</td>
-          <td valign="top">all mDoorClosed[b,r] are false and
-            mCarLantern[down] is false </td>
+          <td valign="top">all mDoorClosed[b,r] are true </td>
         </tr>
         <tr>
           <td valign="top">RT8_3-6</td>
           <td valign="top">all mDoorClosed[b,r] are false and
-            mCarLantern[down] is true and desiredFloor &gt; currentFloor
-            and (mHallCall(lowerFloor, b) is true or
-            mCarCall(lowerFloor, b) is true )</td>
+            desiredFloor &gt; currentFloor<br>
+          </td>
         </tr>
         <tr>
           <td valign="top">RT8_3-7</td>
-          <td valign="top">all mDoorClosed[b,r] are false </td>
+          <td valign="top">all mDoorClosed[b,r] are true </td>
         </tr>
       </tbody>
     </table>
@@ -444,9 +441,10 @@
       !important; float: none;">R-T8.3 is violated if and only if the
       car services one direction first while lantern for other direction
       is already lit on. The monitor records dispatcher's desired floor
-      while the door is and one lantern is lit on. A warning is thrown
-      when car's desired floor is not on the same direction as the
-      lantern indicated while making transition RT8_3-4 &amp; RT8_3-6.<br>
+      while the door is open and the status of lantern. A warning is
+      thrown when car's desired floor is not on the same direction as
+      the lantern indicated while the door is open (RT8_3-4 &amp;
+      RT8_3-6).<br>
       <br>
     </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
@@ -516,9 +514,9 @@
       none;"><br>
       write up: R-T9 is violated when car is moving between two floors
       and fast speed is never reached. The monitor records drive speed
-      and checks if it makes transition from slow speed to fast speed. A
-      warning is thrown when the drive remains when moving to next
-      floor.<br>
+      and checks if it makes transition from slow speed to fast speed
+      while moving from one floor to another floor. A warning is thrown
+      when the fast speed is never reached (RT9-2).<br>
       <br>
     </span>
     <hr size="2" width="100%"><span style="color: rgb(0, 0, 0);
@@ -537,7 +535,7 @@
       white-space: normal; widows: auto; word-spacing: 0px;
       -webkit-text-stroke-width: 0px; display: inline !important; float:
       none;">R-T10: For each stop at a floor, at least one door reversal
-      shall have occured before the doors are commanded to nudge.</span><br>
+      shall have occurred before the doors are commanded to nudge.</span><br>
     <br>
     <a href="RT10.png"><img alt="rt10" src="RT10.png" border="0"
         height="231" width="456"></a><br>
@@ -628,6 +626,7 @@
 
 
 
+
       Proj11RuntimeMonitor -gui</i><br>
     <br>
     <h2>Verification Results</h2>
@@ -640,6 +639,7 @@
             Test Name<br>
           </td>
           <td style="vertical-align: top; font-weight: bold;">Verification
+
 
 
 
@@ -670,13 +670,12 @@
         </tr>
         <tr>
           <td style="vertical-align: top;">proj7acceptance2.pass </td>
-          <td style="vertical-align: top;">fail<br>
+          <td style="vertical-align: top;">pass<br>
           </td>
           <td style="vertical-align: top;"><a
               href="elevator-proj7acceptance2.pass-0.stats">p7-2_verification.out</a><br>
           </td>
-          <td style="vertical-align: top;">2 warnings for RT8.3<br>
-          </td>
+          <td style="vertical-align: top;">no warning </td>
         </tr>
         <tr>
           <td valign="top">proj7acceptance3.pass</td>
@@ -702,24 +701,22 @@
         <tr>
           <td valign="top">proj10acceptance1.pass<br>
           </td>
-          <td valign="top">fail<br>
+          <td valign="top">pass<br>
           </td>
           <td valign="top"><a
               href="elevator-proj10acceptance1.pass-0.stats">p10-1_verification.out</a><br>
           </td>
-          <td valign="top">1 warning for RT8.3<br>
-          </td>
+          <td valign="top">no warning </td>
         </tr>
         <tr>
           <td valign="top">proj10acceptance2.pass<br>
           </td>
-          <td valign="top">fail<br>
+          <td valign="top">pass<br>
           </td>
           <td valign="top"><a
               href="elevator-proj10acceptance2.pass-0.stats">p10-2_verification.out</a><br>
           </td>
-          <td valign="top">1 warning for RT6<br>
-          </td>
+          <td valign="top">no warning </td>
         </tr>
         <tr>
           <td valign="top">proj10acceptance3.pass<br>
@@ -735,13 +732,12 @@
         <tr>
           <td valign="top">proj11acceptance1.pass<br>
           </td>
-          <td valign="top">fail<br>
+          <td valign="top">pass<br>
           </td>
           <td valign="top"><a
               href="elevator-proj11acceptance1.pass-0.stats">p11-1_verification.out</a><br>
           </td>
-          <td valign="top">1 warning for RT8.1, 2 warnings for RT8.3<br>
-          </td>
+          <td valign="top">no warning </td>
         </tr>
         <tr>
           <td valign="top">proj11acceptance2.pass<br>
@@ -764,6 +760,34 @@
           </td>
           <td valign="top">no warning<br>
           </td>
+        </tr>
+        <tr>
+          <td valign="top">normal_final.pass<br>
+          </td>
+          <td valign="top">pass<br>
+          </td>
+          <td valign="top">p_normal_final.out<br>
+          </td>
+          <td valign="top">no warning</td>
+        </tr>
+        <tr>
+          <td valign="top">downpeak_final.pass<br>
+          </td>
+          <td valign="top">pass<br>
+          </td>
+          <td valign="top">p_downpeak_final.out<br>
+          </td>
+          <td valign="top">no warning<br>
+          </td>
+        </tr>
+        <tr>
+          <td valign="top">uppeak_final.pass<br>
+          </td>
+          <td valign="top">pass<br>
+          </td>
+          <td valign="top">p_uppead_final.out<br>
+          </td>
+          <td valign="top">no warning</td>
         </tr>
       </tbody>
     </table>
