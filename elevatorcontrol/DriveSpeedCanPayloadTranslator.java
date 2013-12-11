@@ -1,9 +1,7 @@
 /*
- * 18649 - Fall 2013
- * Group 9 - 	Priya Mahajan 	(priyam)
- * 				Wenhui Hu		(wenhuih)
- * 				Yichao Xue		(yichaox)
- * 				Yujia Wang		(yujiaw) 
+ * 18649 Fall 2013
+ * group 9
+ * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
  */
 
 package simulator.elevatorcontrol;

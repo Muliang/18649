@@ -1,5 +1,7 @@
 /*
- * 18649 - Fall 2013
+ * 18649 Fall 2013
+ * group 9
+ * Wenhui Hu (wenhuih), Yichao Xue(yichaox), Yujia Wang(yujiaw)
  */
 package simulator.elevatorcontrol;
 
