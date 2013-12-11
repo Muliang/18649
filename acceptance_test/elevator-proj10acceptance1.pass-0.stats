@@ -5,57 +5,53 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -b 200 -fs 5.0 -head HEADER -pf acceptance_test/proj10acceptance1.pass -monitor Proj11RuntimeMonitor
-RandomSeed = 1386713686953
+Command line = -b 200 -head HEADER -pf acceptance_test/proj10acceptance1.pass -rt 2h -fs 5.0
+RandomSeed = 1386721272704
 CanNetworkBitTime = 5000 ns
 Effective Can Bitrate = 199999.99999999997
-Run Time = null
+Run Time = 7200.0s
 Real time rate = null
 Acceptance Test File = acceptance_test/proj10acceptance1.pass
-Monitors: Proj11RuntimeMonitor  
 
 STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
 -----------------------------------------------------
 
 
 These passengers were delivered:
-Passenger 0: INJECTED AT 0.0s and DELIVERED in 47.481s
+Passenger 9: INJECTED AT 5.0s and DELIVERED in 26.799s
   Satisfaction score: 100.0
-Passenger 10: INJECTED AT 6.0s and DELIVERED in 57.153s
+Passenger 0: INJECTED AT 0.0s and DELIVERED in 49.326s
   Satisfaction score: 100.0
-Passenger 2: INJECTED AT 0.6s and DELIVERED in 77.457s
+Passenger 10: INJECTED AT 6.0s and DELIVERED in 60.049s
   Satisfaction score: 100.0
-Passenger 7: INJECTED AT 3.0s and DELIVERED in 76.304s
+Passenger 2: INJECTED AT 0.6s and DELIVERED in 82.326s
   Satisfaction score: 100.0
-Passenger 5: INJECTED AT 3.0s and DELIVERED in 78.449s
+Passenger 5: INJECTED AT 3.0s and DELIVERED in 81.089s
   Satisfaction score: 100.0
-Passenger 4: INJECTED AT 2.0s and DELIVERED in 91.516s
+Passenger 4: INJECTED AT 2.0s and DELIVERED in 98.706s
   Satisfaction score: 100.0
-Passenger 8: INJECTED AT 4.0s and DELIVERED in 105.16s
+Passenger 11: INJECTED AT 7.0s and DELIVERED in 95.057s
   Satisfaction score: 100.0
-Passenger 3: INJECTED AT 1.0s and DELIVERED in 110.035s
+Passenger 8: INJECTED AT 4.0s and DELIVERED in 114.257s
   Satisfaction score: 100.0
-Passenger 1: INJECTED AT 0.3s and DELIVERED in 112.031s
+Passenger 1: INJECTED AT 0.3s and DELIVERED in 119.241s
   Satisfaction score: 100.0
-Passenger 16: INJECTED AT 101.0s and DELIVERED in 23.198s
+Passenger 16: INJECTED AT 101.0s and DELIVERED in 37.24s
   Satisfaction score: 100.0
-Passenger 15: INJECTED AT 100.0s and DELIVERED in 55.161s
+Passenger 15: INJECTED AT 100.0s and DELIVERED in 72.869s
   Satisfaction score: 100.0
-Passenger 14: INJECTED AT 66.2s and DELIVERED in 119.495s
+Passenger 14: INJECTED AT 66.2s and DELIVERED in 141.144s
   Satisfaction score: 100.0
-Passenger 13: INJECTED AT 58.0s and DELIVERED in 143.043s
+Passenger 13: INJECTED AT 58.0s and DELIVERED in 166.752s
   Satisfaction score: 100.0
-Passenger 11: INJECTED AT 7.0s and DELIVERED in 214.987s
+Passenger 12: INJECTED AT 7.1s and DELIVERED in 238.911s
   Satisfaction score: 100.0
-Passenger 6: INJECTED AT 3.0s and DELIVERED in 236.039s
+Passenger 7: INJECTED AT 3.0s and DELIVERED in 261.518s
   Satisfaction score: 100.0
-Passenger 9: INJECTED AT 5.0s and DELIVERED in 272.819s
-  Satisfaction score: 72.0
-    @8.219000000: 0.80 Failed to enter car
-    @217.100000000: 0.90 Repeated hall call press
-Passenger 12: INJECTED AT 7.1s and DELIVERED in 285.809s
-  Satisfaction score: 90.0
-    @217.100000000: 0.90 Repeated hall call press
+Passenger 3: INJECTED AT 1.0s and DELIVERED in 282.615s
+  Satisfaction score: 100.0
+Passenger 6: INJECTED AT 3.0s and DELIVERED in 297.946s
+  Satisfaction score: 100.0
 
 Passenger Delivery Summary
 Delivered: 17
@@ -63,30 +59,18 @@ Stranded: 0
 Total: 17
 
 Deliver Stats (lower is better):
-Average_delivery_time: 123.890
-Maximum_delivery_time:  285.809
-Delivery_performance_score:  781.371
+Average_delivery_time: 130.932
+Maximum_delivery_time:  297.946
+Delivery_performance_score:  821.674
 
 Satisfaction Stats (higher is better):
-Average_satisfaction_score: 97.765
-Min_satisfaction_score:  72.000
-Satisfaction_performance_score:  463.059
+Average_satisfaction_score: 100.000
+Min_satisfaction_score:  100.000
+Satisfaction_performance_score:  500.000
 
 
 
 
 Network Utilization Summary:
 Recent: 54.86 % Max: 54.86 %  Overall:  54.86 %
-
-Monitors Warning Results: 
-RuntimeMonitor generated 0 warnings.
-
-Monitors Summmary Results: 
-RT6: stops at floors for which there are no pending calls 0
-RT7: open doors at hallways for which there are no pending calls 0
-RT8.1: no lantern lit when any door is open at a hallway and there are any pending calls at any other floor(s) 0
-RT8.2: direction indicated by lantern changes while the doors are open 0
-RT8.3: car services other direction when one of the car lanterns is lit 0
-RT9: drive speed not commaded to maximum degree practicable 0
-RT10: no door reversal occurs before the doors are commanded to nudge 0
 
