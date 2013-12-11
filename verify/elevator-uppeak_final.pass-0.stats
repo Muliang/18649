@@ -1,0 +1,2738 @@
+18649 <2013-Fall>
+Group 9
+Yujia Wang     andrewID: yujiaw
+Yichao Xue     andrewID: yichaox
+Wenhui Hu      andrewID: wenhuih
+
+Simulator Parameters:
+Command line = -b 200 -fs 5.0 -rt 2h -head HEADER -pf acceptance_test/uppeak_final.pass -monitor Proj11RuntimeMonitor
+RandomSeed = 1386725247096
+CanNetworkBitTime = 5000 ns
+Effective Can Bitrate = 199999.99999999997
+Run Time = 7200.0s
+Real time rate = null
+Acceptance Test File = acceptance_test/uppeak_final.pass
+Monitors: Proj11RuntimeMonitor  
+
+STATISTICS FOR ELEVATOR SIMULATION PASSENGER DELIVERY
+-----------------------------------------------------
+
+
+These passengers were delivered:
+Passenger 2: INJECTED AT 69.2s and DELIVERED in 35.516s
+  Satisfaction score: 100.0
+Passenger 0: INJECTED AT 60.0s and DELIVERED in 63.206s
+  Satisfaction score: 100.0
+Passenger 1: INJECTED AT 66.8s and DELIVERED in 77.96s
+  Satisfaction score: 100.0
+Passenger 5: INJECTED AT 90.6s and DELIVERED in 87.932s
+  Satisfaction score: 100.0
+Passenger 6: INJECTED AT 92.5s and DELIVERED in 102.936s
+  Satisfaction score: 100.0
+Passenger 3: INJECTED AT 73.6s and DELIVERED in 141.276s
+  Satisfaction score: 100.0
+Passenger 13: INJECTED AT 134.3s and DELIVERED in 121.482s
+  Satisfaction score: 100.0
+Passenger 25: INJECTED AT 188.2s and DELIVERED in 69.906s
+  Satisfaction score: 100.0
+Passenger 21: INJECTED AT 166.2s and DELIVERED in 93.664s
+  Satisfaction score: 100.0
+Passenger 11: INJECTED AT 119.6s and DELIVERED in 157.075s
+  Satisfaction score: 100.0
+Passenger 24: INJECTED AT 182.3s and DELIVERED in 96.109s
+  Satisfaction score: 100.0
+Passenger 30: INJECTED AT 214.7s and DELIVERED in 79.296s
+  Satisfaction score: 100.0
+Passenger 31: INJECTED AT 224.6s and DELIVERED in 70.561s
+  Satisfaction score: 100.0
+Passenger 20: INJECTED AT 163.5s and DELIVERED in 149.496s
+  Satisfaction score: 100.0
+Passenger 16: INJECTED AT 140.3s and DELIVERED in 172.837s
+  Satisfaction score: 100.0
+Passenger 45: INJECTED AT 295.6s and DELIVERED in 21.416s
+  Satisfaction score: 100.0
+Passenger 7: INJECTED AT 99.9s and DELIVERED in 231.847s
+  Satisfaction score: 100.0
+Passenger 49: INJECTED AT 319.6s and DELIVERED in 49.74s
+  Satisfaction score: 100.0
+Passenger 41: INJECTED AT 279.8s and DELIVERED in 131.283s
+  Satisfaction score: 100.0
+Passenger 47: INJECTED AT 309.4s and DELIVERED in 119.067s
+  Satisfaction score: 100.0
+Passenger 44: INJECTED AT 294.6s and DELIVERED in 150.908s
+  Satisfaction score: 100.0
+Passenger 46: INJECTED AT 303.5s and DELIVERED in 143.307s
+  Satisfaction score: 100.0
+Passenger 28: INJECTED AT 205.3s and DELIVERED in 242.716s
+  Satisfaction score: 100.0
+Passenger 60: INJECTED AT 399.6s and DELIVERED in 68.102s
+  Satisfaction score: 100.0
+Passenger 50: INJECTED AT 327.7s and DELIVERED in 140.131s
+  Satisfaction score: 100.0
+Passenger 35: INJECTED AT 250.5s and DELIVERED in 218.593s
+  Satisfaction score: 100.0
+Passenger 38: INJECTED AT 262.8s and DELIVERED in 206.913s
+  Satisfaction score: 100.0
+Passenger 40: INJECTED AT 270.399999999s and DELIVERED in 200.955000001s
+  Satisfaction score: 100.0
+Passenger 57: INJECTED AT 377.6s and DELIVERED in 97.744s
+  Satisfaction score: 100.0
+Passenger 67: INJECTED AT 442.6s and DELIVERED in 66.302s
+  Satisfaction score: 100.0
+Passenger 75: INJECTED AT 469.8s and DELIVERED in 58.454s
+  Satisfaction score: 100.0
+Passenger 69: INJECTED AT 445.9s and DELIVERED in 125.057s
+  Satisfaction score: 100.0
+Passenger 66: INJECTED AT 433.2s and DELIVERED in 139.496s
+  Satisfaction score: 100.0
+Passenger 64: INJECTED AT 427.6s and DELIVERED in 147.027s
+  Satisfaction score: 100.0
+Passenger 83: INJECTED AT 505.9s and DELIVERED in 70.107s
+  Satisfaction score: 100.0
+Passenger 89: INJECTED AT 534.2s and DELIVERED in 85.71s
+  Satisfaction score: 100.0
+Passenger 93: INJECTED AT 549.8s and DELIVERED in 88.967s
+  Satisfaction score: 100.0
+Passenger 72: INJECTED AT 461.1s and DELIVERED in 179.633s
+  Satisfaction score: 100.0
+Passenger 65: INJECTED AT 429.1s and DELIVERED in 213.328s
+  Satisfaction score: 100.0
+Passenger 114: INJECTED AT 646.4s and DELIVERED in 27.275s
+  Satisfaction score: 100.0
+Passenger 71: INJECTED AT 459.1s and DELIVERED in 216.398s
+  Satisfaction score: 100.0
+Passenger 92: INJECTED AT 543.5s and DELIVERED in 133.142s
+  Satisfaction score: 100.0
+Passenger 81: INJECTED AT 493.2s and DELIVERED in 184.843s
+  Satisfaction score: 100.0
+Passenger 115: INJECTED AT 653.0s and DELIVERED in 29.484s
+  Satisfaction score: 100.0
+Passenger 95: INJECTED AT 559.0s and DELIVERED in 134.161s
+  Satisfaction score: 100.0
+Passenger 80: INJECTED AT 491.3s and DELIVERED in 202.619s
+  Satisfaction score: 100.0
+Passenger 82: INJECTED AT 498.2s and DELIVERED in 197.301s
+  Satisfaction score: 100.0
+Passenger 63: INJECTED AT 419.3s and DELIVERED in 278.242s
+  Satisfaction score: 100.0
+Passenger 70: INJECTED AT 455.1s and DELIVERED in 244.55s
+  Satisfaction score: 100.0
+Passenger 77: INJECTED AT 484.2s and DELIVERED in 228.705s
+  Satisfaction score: 100.0
+Passenger 97: INJECTED AT 565.9s and DELIVERED in 148.676s
+  Satisfaction score: 100.0
+Passenger 107: INJECTED AT 615.2s and DELIVERED in 149.892s
+  Satisfaction score: 100.0
+Passenger 100: INJECTED AT 578.5s and DELIVERED in 188.546s
+  Satisfaction score: 100.0
+Passenger 102: INJECTED AT 593.8s and DELIVERED in 191.444s
+  Satisfaction score: 100.0
+Passenger 87: INJECTED AT 526.5s and DELIVERED in 276.656s
+  Satisfaction score: 100.0
+Passenger 139: INJECTED AT 760.8s and DELIVERED in 61.544s
+  Satisfaction score: 100.0
+Passenger 116: INJECTED AT 660.2s and DELIVERED in 202.832s
+  Satisfaction score: 100.0
+Passenger 104: INJECTED AT 603.4s and DELIVERED in 287.139s
+  Satisfaction score: 100.0
+Passenger 101: INJECTED AT 587.0s and DELIVERED in 320.853s
+  Satisfaction score: 100.0
+Passenger 136: INJECTED AT 750.1s and DELIVERED in 159.731s
+  Satisfaction score: 100.0
+Passenger 154: INJECTED AT 829.5s and DELIVERED in 98.258s
+  Satisfaction score: 100.0
+Passenger 148: INJECTED AT 799.8s and DELIVERED in 132.98s
+  Satisfaction score: 100.0
+Passenger 149: INJECTED AT 805.4s and DELIVERED in 139.738s
+  Satisfaction score: 100.0
+Passenger 110: INJECTED AT 629.0s and DELIVERED in 335.221s
+  Satisfaction score: 100.0
+Passenger 99: INJECTED AT 574.0s and DELIVERED in 390.533s
+  Satisfaction score: 100.0
+Passenger 124: INJECTED AT 699.0s and DELIVERED in 267.123s
+  Satisfaction score: 100.0
+Passenger 94: INJECTED AT 551.8s and DELIVERED in 415.636s
+  Satisfaction score: 100.0
+Passenger 134: INJECTED AT 749.0s and DELIVERED in 221.782s
+  Satisfaction score: 100.0
+Passenger 153: INJECTED AT 827.3s and DELIVERED in 156.632s
+  Satisfaction score: 100.0
+Passenger 118: INJECTED AT 669.0s and DELIVERED in 316.323s
+  Satisfaction score: 100.0
+Passenger 109: INJECTED AT 622.9s and DELIVERED in 364.191s
+  Satisfaction score: 100.0
+Passenger 125: INJECTED AT 706.3s and DELIVERED in 282.219s
+  Satisfaction score: 100.0
+Passenger 130: INJECTED AT 731.4s and DELIVERED in 258.61s
+  Satisfaction score: 100.0
+Passenger 161: INJECTED AT 864.7s and DELIVERED in 155.114s
+  Satisfaction score: 100.0
+Passenger 170: INJECTED AT 914.0s and DELIVERED in 142.343s
+  Satisfaction score: 100.0
+Passenger 185: INJECTED AT 985.4s and DELIVERED in 89.937s
+  Satisfaction score: 100.0
+Passenger 140: INJECTED AT 764.2s and DELIVERED in 312.648s
+  Satisfaction score: 100.0
+Passenger 165: INJECTED AT 878.4s and DELIVERED in 200.159s
+  Satisfaction score: 100.0
+Passenger 135: INJECTED AT 749.7s and DELIVERED in 330.94s
+  Satisfaction score: 100.0
+Passenger 177: INJECTED AT 941.6s and DELIVERED in 153.382s
+  Satisfaction score: 100.0
+Passenger 155: INJECTED AT 836.4s and DELIVERED in 259.825s
+  Satisfaction score: 100.0
+Passenger 167: INJECTED AT 890.7s and DELIVERED in 223.936s
+  Satisfaction score: 100.0
+Passenger 188: INJECTED AT 999.4s and DELIVERED in 154.683s
+  Satisfaction score: 100.0
+Passenger 181: INJECTED AT 961.0s and DELIVERED in 210.03s
+  Satisfaction score: 100.0
+Passenger 164: INJECTED AT 872.6s and DELIVERED in 314.59s
+  Satisfaction score: 100.0
+Passenger 182: INJECTED AT 966.4s and DELIVERED in 222.159s
+  Satisfaction score: 100.0
+Passenger 126: INJECTED AT 710.1s and DELIVERED in 496.848s
+  Satisfaction score: 100.0
+Passenger 209: INJECTED AT 1112.2s and DELIVERED in 96.319s
+  Satisfaction score: 100.0
+Passenger 184: INJECTED AT 979.4s and DELIVERED in 246.982s
+  Satisfaction score: 100.0
+Passenger 127: INJECTED AT 713.6s and DELIVERED in 514.791s
+  Satisfaction score: 100.0
+Passenger 192: INJECTED AT 1032.4s and DELIVERED in 197.749s
+  Satisfaction score: 100.0
+Passenger 199: INJECTED AT 1070.8s and DELIVERED in 160.955s
+  Satisfaction score: 100.0
+Passenger 212: INJECTED AT 1124.0s and DELIVERED in 121.338s
+  Satisfaction score: 100.0
+Passenger 171: INJECTED AT 921.6s and DELIVERED in 323.982s
+  Satisfaction score: 100.0
+Passenger 96: INJECTED AT 560.4s and DELIVERED in 686.697s
+  Satisfaction score: 100.0
+Passenger 236: INJECTED AT 1243.5s and DELIVERED in 6.124s
+  Satisfaction score: 100.0
+Passenger 193: INJECTED AT 1034.9s and DELIVERED in 230.016s
+  Satisfaction score: 100.0
+Passenger 205: INJECTED AT 1094.5s and DELIVERED in 171.903s
+  Satisfaction score: 100.0
+Passenger 224: INJECTED AT 1171.1s and DELIVERED in 148.364s
+  Satisfaction score: 100.0
+Passenger 220: INJECTED AT 1153.5s and DELIVERED in 182.864s
+  Satisfaction score: 100.0
+Passenger 219: INJECTED AT 1152.1s and DELIVERED in 204.015s
+  Satisfaction score: 100.0
+Passenger 228: INJECTED AT 1194.7s and DELIVERED in 204.351s
+  Satisfaction score: 100.0
+Passenger 244: INJECTED AT 1276.5s and DELIVERED in 124.295s
+  Satisfaction score: 100.0
+Passenger 245: INJECTED AT 1283.1s and DELIVERED in 136.526s
+  Satisfaction score: 100.0
+Passenger 226: INJECTED AT 1181.1s and DELIVERED in 256.501s
+  Satisfaction score: 100.0
+Passenger 217: INJECTED AT 1144.6s and DELIVERED in 294.824s
+  Satisfaction score: 100.0
+Passenger 262: INJECTED AT 1391.2s and DELIVERED in 49.995s
+  Satisfaction score: 100.0
+Passenger 251: INJECTED AT 1321.6s and DELIVERED in 123.938s
+  Satisfaction score: 100.0
+Passenger 257: INJECTED AT 1362.4s and DELIVERED in 93.552s
+  Satisfaction score: 100.0
+Passenger 145: INJECTED AT 789.3s and DELIVERED in 668.667s
+  Satisfaction score: 100.0
+Passenger 233: INJECTED AT 1217.9s and DELIVERED in 241.946s
+  Satisfaction score: 100.0
+Passenger 259: INJECTED AT 1373.1s and DELIVERED in 90.924s
+  Satisfaction score: 100.0
+Passenger 238: INJECTED AT 1256.0s and DELIVERED in 219.504s
+  Satisfaction score: 100.0
+Passenger 230: INJECTED AT 1205.2s and DELIVERED in 270.788s
+  Satisfaction score: 100.0
+Passenger 248: INJECTED AT 1309.0s and DELIVERED in 168.213s
+  Satisfaction score: 100.0
+Passenger 237: INJECTED AT 1251.1s and DELIVERED in 226.759s
+  Satisfaction score: 100.0
+Passenger 249: INJECTED AT 1311.3s and DELIVERED in 184.081s
+  Satisfaction score: 100.0
+Passenger 272: INJECTED AT 1441.1s and DELIVERED in 141.367s
+  Satisfaction score: 100.0
+Passenger 265: INJECTED AT 1408.0s and DELIVERED in 193.764s
+  Satisfaction score: 100.0
+Passenger 283: INJECTED AT 1505.8s and DELIVERED in 98.992s
+  Satisfaction score: 100.0
+Passenger 279: INJECTED AT 1485.8s and DELIVERED in 134.986s
+  Satisfaction score: 100.0
+Passenger 278: INJECTED AT 1479.3s and DELIVERED in 163.172s
+  Satisfaction score: 100.0
+Passenger 300: INJECTED AT 1583.0s and DELIVERED in 76.719s
+  Satisfaction score: 100.0
+Passenger 267: INJECTED AT 1412.0s and DELIVERED in 266.032s
+  Satisfaction score: 100.0
+Passenger 299: INJECTED AT 1579.2s and DELIVERED in 100.028s
+  Satisfaction score: 100.0
+Passenger 294: INJECTED AT 1553.8s and DELIVERED in 144.224s
+  Satisfaction score: 100.0
+Passenger 284: INJECTED AT 1507.0s and DELIVERED in 192.843s
+  Satisfaction score: 100.0
+Passenger 266: INJECTED AT 1408.1s and DELIVERED in 309.123s
+  Satisfaction score: 100.0
+Passenger 273: INJECTED AT 1447.3s and DELIVERED in 272.031s
+  Satisfaction score: 100.0
+Passenger 318: INJECTED AT 1686.3s and DELIVERED in 34.391s
+  Satisfaction score: 100.0
+Passenger 298: INJECTED AT 1574.8s and DELIVERED in 147.278s
+  Satisfaction score: 100.0
+Passenger 304: INJECTED AT 1599.4s and DELIVERED in 127.09s
+  Satisfaction score: 100.0
+Passenger 243: INJECTED AT 1275.9s and DELIVERED in 481.35s
+  Satisfaction score: 100.0
+Passenger 297: INJECTED AT 1566.4s and DELIVERED in 190.898s
+  Satisfaction score: 100.0
+Passenger 261: INJECTED AT 1388.0s and DELIVERED in 371.037s
+  Satisfaction score: 100.0
+Passenger 311: INJECTED AT 1641.7s and DELIVERED in 118.42s
+  Satisfaction score: 100.0
+Passenger 305: INJECTED AT 1604.6s and DELIVERED in 156.125s
+  Satisfaction score: 100.0
+Passenger 288: INJECTED AT 1526.8s and DELIVERED in 250.615s
+  Satisfaction score: 100.0
+Passenger 323: INJECTED AT 1713.1s and DELIVERED in 66.401s
+  Satisfaction score: 100.0
+Passenger 303: INJECTED AT 1596.0s and DELIVERED in 184.863s
+  Satisfaction score: 100.0
+Passenger 296: INJECTED AT 1563.8s and DELIVERED in 218.999s
+  Satisfaction score: 100.0
+Passenger 336: INJECTED AT 1773.0s and DELIVERED in 22.996s
+  Satisfaction score: 100.0
+Passenger 324: INJECTED AT 1716.4s and DELIVERED in 114.698s
+  Satisfaction score: 100.0
+Passenger 301: INJECTED AT 1587.0s and DELIVERED in 263.578s
+  Satisfaction score: 100.0
+Passenger 331: INJECTED AT 1753.4s and DELIVERED in 99.678s
+  Satisfaction score: 100.0
+Passenger 345: INJECTED AT 1803.4s and DELIVERED in 96.578s
+  Satisfaction score: 100.0
+Passenger 352: INJECTED AT 1836.8s and DELIVERED in 80.575s
+  Satisfaction score: 100.0
+Passenger 309: INJECTED AT 1630.4s and DELIVERED in 288.565s
+  Satisfaction score: 100.0
+Passenger 328: INJECTED AT 1743.0s and DELIVERED in 177.737s
+  Satisfaction score: 100.0
+Passenger 350: INJECTED AT 1830.9s and DELIVERED in 91.413s
+  Satisfaction score: 100.0
+Passenger 343: INJECTED AT 1794.3s and DELIVERED in 182.495s
+  Satisfaction score: 100.0
+Passenger 316: INJECTED AT 1669.9s and DELIVERED in 308.251s
+  Satisfaction score: 100.0
+Passenger 290: INJECTED AT 1532.6s and DELIVERED in 447.66s
+  Satisfaction score: 100.0
+Passenger 319: INJECTED AT 1689.7s and DELIVERED in 292.308s
+  Satisfaction score: 100.0
+Passenger 372: INJECTED AT 1944.0s and DELIVERED in 52.006s
+  Satisfaction score: 100.0
+Passenger 344: INJECTED AT 1800.4s and DELIVERED in 195.681s
+  Satisfaction score: 100.0
+Passenger 293: INJECTED AT 1546.9s and DELIVERED in 451.2s
+  Satisfaction score: 100.0
+Passenger 381: INJECTED AT 1999.5s and DELIVERED in 4.604s
+  Satisfaction score: 100.0
+Passenger 277: INJECTED AT 1472.7s and DELIVERED in 542.816s
+  Satisfaction score: 100.0
+Passenger 378: INJECTED AT 1981.8s and DELIVERED in 35.166s
+  Satisfaction score: 100.0
+Passenger 341: INJECTED AT 1787.4s and DELIVERED in 231.012s
+  Satisfaction score: 100.0
+Passenger 374: INJECTED AT 1960.9s and DELIVERED in 89.424s
+  Satisfaction score: 100.0
+Passenger 355: INJECTED AT 1850.9s and DELIVERED in 219.597s
+  Satisfaction score: 100.0
+Passenger 357: INJECTED AT 1864.6s and DELIVERED in 207.261s
+  Satisfaction score: 100.0
+Passenger 373: INJECTED AT 1953.0s and DELIVERED in 120.179s
+  Satisfaction score: 100.0
+Passenger 390: INJECTED AT 2036.3s and DELIVERED in 40.662s
+  Satisfaction score: 100.0
+Passenger 354: INJECTED AT 1850.0s and DELIVERED in 240.248s
+  Satisfaction score: 100.0
+Passenger 382: INJECTED AT 2000.3s and DELIVERED in 92.454s
+  Satisfaction score: 100.0
+Passenger 388: INJECTED AT 2034.9s and DELIVERED in 83.96s
+  Satisfaction score: 100.0
+Passenger 368: INJECTED AT 1928.4s and DELIVERED in 206.136s
+  Satisfaction score: 100.0
+Passenger 375: INJECTED AT 1968.7s and DELIVERED in 185.391s
+  Satisfaction score: 100.0
+Passenger 367: INJECTED AT 1921.2s and DELIVERED in 252.008s
+  Satisfaction score: 100.0
+Passenger 329: INJECTED AT 1745.0s and DELIVERED in 430.318s
+  Satisfaction score: 100.0
+Passenger 370: INJECTED AT 1931.0s and DELIVERED in 246.172s
+  Satisfaction score: 100.0
+Passenger 379: INJECTED AT 1990.9s and DELIVERED in 201.687s
+  Satisfaction score: 100.0
+Passenger 360: INJECTED AT 1885.7s and DELIVERED in 308.338s
+  Satisfaction score: 100.0
+Passenger 376: INJECTED AT 1973.4s and DELIVERED in 236.404s
+  Satisfaction score: 100.0
+Passenger 377: INJECTED AT 1973.5s and DELIVERED in 237.743s
+  Satisfaction score: 100.0
+Passenger 385: INJECTED AT 2015.8s and DELIVERED in 212.141s
+  Satisfaction score: 100.0
+Passenger 362: INJECTED AT 1893.3s and DELIVERED in 336.349s
+  Satisfaction score: 100.0
+Passenger 366: INJECTED AT 1913.4s and DELIVERED in 356.97s
+  Satisfaction score: 100.0
+Passenger 270: INJECTED AT 1425.4s and DELIVERED in 884.101s
+  Satisfaction score: 100.0
+Passenger 369: INJECTED AT 1928.5s and DELIVERED in 398.714s
+  Satisfaction score: 100.0
+Passenger 91: INJECTED AT 537.5s and DELIVERED in 1835.687s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 302: INJECTED AT 1592.6s and DELIVERED in 796.066s
+  Satisfaction score: 90.0
+    @2290.160000000: 0.90 Repeated hall call press
+Passenger 292: INJECTED AT 1543.9s and DELIVERED in 873.538s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 146: INJECTED AT 792.1s and DELIVERED in 1641.931s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 187: INJECTED AT 994.5s and DELIVERED in 1440.78s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 225: INJECTED AT 1176.0s and DELIVERED in 1261.166s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 160: INJECTED AT 856.1s and DELIVERED in 1582.977s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 387: INJECTED AT 2026.1s and DELIVERED in 414.86s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 380: INJECTED AT 1992.9s and DELIVERED in 458.268s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 52: INJECTED AT 344.2s and DELIVERED in 2108.624s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 351: INJECTED AT 1834.5s and DELIVERED in 634.435s
+  Satisfaction score: 90.0
+    @2307.300000000: 0.90 Repeated hall call press
+Passenger 216: INJECTED AT 1142.1s and DELIVERED in 1404.541s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 269: INJECTED AT 1423.5s and DELIVERED in 1141.775s
+  Satisfaction score: 90.0
+    @2290.160000000: 0.90 Repeated hall call press
+Passenger 258: INJECTED AT 1364.7s and DELIVERED in 1201.554s
+  Satisfaction score: 90.0
+    @2270.320000000: 0.90 Repeated hall call press
+Passenger 307: INJECTED AT 1615.4s and DELIVERED in 968.144s
+  Satisfaction score: 90.0
+    @2307.300000000: 0.90 Repeated hall call press
+Passenger 333: INJECTED AT 1756.4s and DELIVERED in 875.201s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 332: INJECTED AT 1753.6s and DELIVERED in 882.472s
+  Satisfaction score: 81.0
+    @2290.160000000: 0.90 Repeated hall call press
+    @2528.140000000: 0.90 Repeated hall call press
+Passenger 55: INJECTED AT 364.7s and DELIVERED in 2284.166s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 383: INJECTED AT 2001.2s and DELIVERED in 648.945s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 260: INJECTED AT 1382.8s and DELIVERED in 1269.454s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 317: INJECTED AT 1678.1s and DELIVERED in 990.54s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 322: INJECTED AT 1713.0s and DELIVERED in 972.113s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 389: INJECTED AT 2035.8s and DELIVERED in 667.286s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 106: INJECTED AT 613.0s and DELIVERED in 2092.247s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 338: INJECTED AT 1778.5s and DELIVERED in 941.916s
+  Satisfaction score: 81.0
+    @2290.160000000: 0.90 Repeated hall call press
+    @2528.140000000: 0.90 Repeated hall call press
+Passenger 349: INJECTED AT 1824.3s and DELIVERED in 913.538s
+  Satisfaction score: 81.0
+    @2307.300000000: 0.90 Repeated hall call press
+    @2545.380000000: 0.90 Repeated hall call press
+Passenger 105: INJECTED AT 610.8s and DELIVERED in 2128.206s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 111: INJECTED AT 629.5s and DELIVERED in 2110.677s
+  Satisfaction score: 40.5
+    @2307.300000000: 0.90 Repeated hall call press
+    @2545.380000000: 0.90 Repeated hall call press
+    @2654.977000000: 0.50 After the car came by 5 times without showing arrows compatible with UP, finally gave up and got on anyway.
+Passenger 211: INJECTED AT 1122.6s and DELIVERED in 1677.2s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 194: INJECTED AT 1042.2s and DELIVERED in 1779.114s
+  Satisfaction score: 81.0
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+Passenger 18: INJECTED AT 149.7s and DELIVERED in 2718.57s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 98: INJECTED AT 566.7s and DELIVERED in 2303.061s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 195: INJECTED AT 1043.2s and DELIVERED in 1828.437s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 201: INJECTED AT 1083.4s and DELIVERED in 1789.73s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 386: INJECTED AT 2016.1s and DELIVERED in 892.529s
+  Satisfaction score: 72.9
+    @2290.160000000: 0.90 Repeated hall call press
+    @2528.140000000: 0.90 Repeated hall call press
+    @2798.560000000: 0.90 Repeated hall call press
+Passenger 253: INJECTED AT 1338.0s and DELIVERED in 1589.874s
+  Satisfaction score: 36.45
+    @2290.160000000: 0.90 Repeated hall call press
+    @2528.140000000: 0.90 Repeated hall call press
+    @2798.560000000: 0.90 Repeated hall call press
+    @2876.514000000: 0.50 After the car came by 5 times without showing arrows compatible with UP, finally gave up and got on anyway.
+Passenger 242: INJECTED AT 1275.3s and DELIVERED in 1669.756s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 204: INJECTED AT 1091.4s and DELIVERED in 1871.13s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 56: INJECTED AT 369.4s and DELIVERED in 2593.466s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 337: INJECTED AT 1776.7s and DELIVERED in 1203.368s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 246: INJECTED AT 1292.2s and DELIVERED in 1689.364s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 189: INJECTED AT 1008.4s and DELIVERED in 1974.377s
+  Satisfaction score: 36.45
+    @2290.160000000: 0.90 Repeated hall call press
+    @2528.140000000: 0.90 Repeated hall call press
+    @2798.560000000: 0.90 Repeated hall call press
+    @2877.577000000: 0.50 After the car came by 6 times without showing arrows compatible with UP, finally gave up and got on anyway.
+Passenger 313: INJECTED AT 1653.3s and DELIVERED in 1375.901s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 239: INJECTED AT 1261.5s and DELIVERED in 1767.884s
+  Satisfaction score: 72.9
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+Passenger 359: INJECTED AT 1881.0s and DELIVERED in 1194.995s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 43: INJECTED AT 285.0s and DELIVERED in 2809.189s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 137: INJECTED AT 758.9s and DELIVERED in 2337.275s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 78: INJECTED AT 488.6s and DELIVERED in 2622.333s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 285: INJECTED AT 1515.5s and DELIVERED in 1597.285s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 62: INJECTED AT 416.3s and DELIVERED in 2698.349s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 310: INJECTED AT 1638.1s and DELIVERED in 1492.055s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 143: INJECTED AT 781.2s and DELIVERED in 2349.178s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 221: INJECTED AT 1155.8s and DELIVERED in 1992.632s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 358: INJECTED AT 1872.8s and DELIVERED in 1318.939s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 227: INJECTED AT 1190.2s and DELIVERED in 2024.35s
+  Satisfaction score: 65.61000000000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+Passenger 231: INJECTED AT 1206.8s and DELIVERED in 2038.874s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 23: INJECTED AT 176.1s and DELIVERED in 3104.171s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 176: INJECTED AT 938.6s and DELIVERED in 2343.44s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 128: INJECTED AT 719.7s and DELIVERED in 2579.471s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 4: INJECTED AT 80.9s and DELIVERED in 3219.639s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 175: INJECTED AT 933.3s and DELIVERED in 2369.112s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 22: INJECTED AT 171.4s and DELIVERED in 3133.077s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 291: INJECTED AT 1537.1s and DELIVERED in 1780.926s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 241: INJECTED AT 1270.3s and DELIVERED in 2049.798s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 276: INJECTED AT 1468.5s and DELIVERED in 1867.403s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 174: INJECTED AT 932.4s and DELIVERED in 2448.571s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 79: INJECTED AT 489.6s and DELIVERED in 2912.044s
+  Satisfaction score: 59.049000000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+Passenger 138: INJECTED AT 759.9s and DELIVERED in 2689.388s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 147: INJECTED AT 792.9s and DELIVERED in 2674.374s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 361: INJECTED AT 1890.9s and DELIVERED in 1578.047s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 256: INJECTED AT 1353.6s and DELIVERED in 2116.492s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 113: INJECTED AT 638.8s and DELIVERED in 2845.416s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 250: INJECTED AT 1316.0s and DELIVERED in 2186.986s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 121: INJECTED AT 690.5s and DELIVERED in 2814.308s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 281: INJECTED AT 1498.9s and DELIVERED in 2007.757s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 103: INJECTED AT 598.0s and DELIVERED in 2922.923s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 271: INJECTED AT 1433.5s and DELIVERED in 2136.612s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 157: INJECTED AT 843.6s and DELIVERED in 2726.556s
+  Satisfaction score: 53.144100000000016
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+Passenger 191: INJECTED AT 1022.6s and DELIVERED in 2596.774s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 312: INJECTED AT 1650.0s and DELIVERED in 1986.182s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 286: INJECTED AT 1517.5s and DELIVERED in 2120.484s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 58: INJECTED AT 385.3s and DELIVERED in 3254.227s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 252: INJECTED AT 1329.9s and DELIVERED in 2324.331s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 131: INJECTED AT 738.0s and DELIVERED in 2918.17s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 218: INJECTED AT 1150.5s and DELIVERED in 2520.773s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 356: INJECTED AT 1855.8s and DELIVERED in 1817.348s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 61: INJECTED AT 409.5s and DELIVERED in 3279.243s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 235: INJECTED AT 1234.3s and DELIVERED in 2498.319s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 117: INJECTED AT 664.3s and DELIVERED in 3069.886s
+  Satisfaction score: 47.829690000000014
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+Passenger 186: INJECTED AT 993.2s and DELIVERED in 2782.723s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 203: INJECTED AT 1086.4s and DELIVERED in 2708.657s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 68: INJECTED AT 445.4s and DELIVERED in 3351.595s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 234: INJECTED AT 1226.1s and DELIVERED in 2585.874s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 364: INJECTED AT 1896.8s and DELIVERED in 1932.651s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 330: INJECTED AT 1752.6s and DELIVERED in 2094.072s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 208: INJECTED AT 1105.1s and DELIVERED in 2743.345s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 325: INJECTED AT 1722.2s and DELIVERED in 2141.468s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 112: INJECTED AT 633.5s and DELIVERED in 3231.349s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 120: INJECTED AT 684.7s and DELIVERED in 3222.362s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 315: INJECTED AT 1666.6s and DELIVERED in 2261.239s
+  Satisfaction score: 43.04672100000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+Passenger 222: INJECTED AT 1161.1s and DELIVERED in 2809.73s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 180: INJECTED AT 954.6s and DELIVERED in 3036.905s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 26: INJECTED AT 198.2s and DELIVERED in 3795.433s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 39: INJECTED AT 263.399999999s and DELIVERED in 3745.082000001s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 172: INJECTED AT 922.8s and DELIVERED in 3103.017s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 365: INJECTED AT 1905.4s and DELIVERED in 2120.683s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 59: INJECTED AT 391.0s and DELIVERED in 3636.298s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 152: INJECTED AT 823.6s and DELIVERED in 3219.407s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 347: INJECTED AT 1813.7s and DELIVERED in 2230.471s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 122: INJECTED AT 697.0s and DELIVERED in 3393.001s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 287: INJECTED AT 1519.9s and DELIVERED in 2589.367s
+  Satisfaction score: 38.742048900000015
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+Passenger 320: INJECTED AT 1698.3s and DELIVERED in 2457.609s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 340: INJECTED AT 1783.2s and DELIVERED in 2373.949s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 335: INJECTED AT 1772.6s and DELIVERED in 2401.127s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 8: INJECTED AT 108.1s and DELIVERED in 4083.32s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 15: INJECTED AT 136.6s and DELIVERED in 4072.493s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 232: INJECTED AT 1214.6s and DELIVERED in 2996.616s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 84: INJECTED AT 506.3s and DELIVERED in 3706.505s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 326: INJECTED AT 1731.3s and DELIVERED in 2495.13s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 334: INJECTED AT 1764.4s and DELIVERED in 2462.381s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 17: INJECTED AT 147.6s and DELIVERED in 4122.39s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 88: INJECTED AT 528.1s and DELIVERED in 3762.522s
+  Satisfaction score: 34.86784401000001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+Passenger 207: INJECTED AT 1098.3s and DELIVERED in 3235.646s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 142: INJECTED AT 778.0s and DELIVERED in 3574.017s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 168: INJECTED AT 895.5s and DELIVERED in 3473.531s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 163: INJECTED AT 871.1s and DELIVERED in 3514.739s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 214: INJECTED AT 1135.7s and DELIVERED in 3268.282s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 346: INJECTED AT 1805.1s and DELIVERED in 2616.102s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 42: INJECTED AT 280.3s and DELIVERED in 4142.322s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 108: INJECTED AT 616.3s and DELIVERED in 3821.966s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 32: INJECTED AT 234.6s and DELIVERED in 4205.314s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 289: INJECTED AT 1531.5s and DELIVERED in 2949.82s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 247: INJECTED AT 1299.6s and DELIVERED in 3199.257s
+  Satisfaction score: 31.381059609000012
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+Passenger 169: INJECTED AT 904.9s and DELIVERED in 3636.405s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 173: INJECTED AT 923.5s and DELIVERED in 3619.796s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 210: INJECTED AT 1120.2s and DELIVERED in 3437.884s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 34: INJECTED AT 249.2s and DELIVERED in 4310.292s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 133: INJECTED AT 745.7s and DELIVERED in 3832.683s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 123: INJECTED AT 697.5s and DELIVERED in 3880.973s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 144: INJECTED AT 787.5s and DELIVERED in 3792.757s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 183: INJECTED AT 975.5s and DELIVERED in 3620.458s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 215: INJECTED AT 1137.7s and DELIVERED in 3460.107s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 308: INJECTED AT 1622.8s and DELIVERED in 3017.888s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 86: INJECTED AT 522.2s and DELIVERED in 4138.599s
+  Satisfaction score: 28.242953648100013
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+Passenger 295: INJECTED AT 1560.4s and DELIVERED in 3145.757s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 166: INJECTED AT 884.8s and DELIVERED in 3839.933s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 342: INJECTED AT 1791.0s and DELIVERED in 2951.26s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 29: INJECTED AT 206.4s and DELIVERED in 4552.62s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 150: INJECTED AT 813.5s and DELIVERED in 3946.851s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 229: INJECTED AT 1201.6s and DELIVERED in 3560.654s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 371: INJECTED AT 1936.2s and DELIVERED in 2840.398s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 73: INJECTED AT 463.6s and DELIVERED in 4330.26s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 200: INJECTED AT 1075.599999999s and DELIVERED in 3735.368000001s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 327: INJECTED AT 1734.2s and DELIVERED in 3125.325s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 202: INJECTED AT 1085.8s and DELIVERED in 3775.438s
+  Satisfaction score: 25.41865828329001
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+Passenger 158: INJECTED AT 846.8s and DELIVERED in 4059.194s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 353: INJECTED AT 1841.2s and DELIVERED in 3066.583s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 9: INJECTED AT 111.1s and DELIVERED in 4812.037s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 282: INJECTED AT 1502.9s and DELIVERED in 3437.951s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 151: INJECTED AT 818.0s and DELIVERED in 4140.304s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 37: INJECTED AT 261.399999999s and DELIVERED in 4713.370000001s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 179: INJECTED AT 946.2s and DELIVERED in 4046.004s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 384: INJECTED AT 2007.2s and DELIVERED in 3002.976s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 206: INJECTED AT 1095.0s and DELIVERED in 3916.388s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 54: INJECTED AT 355.9s and DELIVERED in 4697.986s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 48: INJECTED AT 311.4s and DELIVERED in 4764.439s
+  Satisfaction score: 22.87679245496101
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+Passenger 314: INJECTED AT 1657.1s and DELIVERED in 3485.543s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 339: INJECTED AT 1781.6s and DELIVERED in 3379.308s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 268: INJECTED AT 1415.7s and DELIVERED in 3765.268s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 141: INJECTED AT 770.0s and DELIVERED in 4412.311s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 90: INJECTED AT 535.1s and DELIVERED in 4662.852s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 162: INJECTED AT 870.9s and DELIVERED in 4328.933s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 263: INJECTED AT 1399.7s and DELIVERED in 3801.398s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 36: INJECTED AT 257.899999999s and DELIVERED in 4945.290000001s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 129: INJECTED AT 722.5s and DELIVERED in 4493.37s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 10: INJECTED AT 114.4s and DELIVERED in 5146.968s
+  Satisfaction score: 20.58911320946491
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+Passenger 27: INJECTED AT 201.7s and DELIVERED in 5125.388s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 178: INJECTED AT 944.8s and DELIVERED in 4383.796s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 119: INJECTED AT 676.7s and DELIVERED in 4653.676s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 254: INJECTED AT 1344.9s and DELIVERED in 3999.44s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 159: INJECTED AT 847.6s and DELIVERED in 4498.108s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 196: INJECTED AT 1043.599999999s and DELIVERED in 4319.786000001s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 264: INJECTED AT 1407.4s and DELIVERED in 3973.605s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 198: INJECTED AT 1062.9s and DELIVERED in 4335.483s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 33: INJECTED AT 241.7s and DELIVERED in 5158.795s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 12: INJECTED AT 128.8s and DELIVERED in 5316.286s
+  Satisfaction score: 18.53020188851842
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+Passenger 240: INJECTED AT 1269.5s and DELIVERED in 4199.568s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 132: INJECTED AT 744.3s and DELIVERED in 4769.593s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 53: INJECTED AT 347.7s and DELIVERED in 5167.928s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 156: INJECTED AT 838.8s and DELIVERED in 4692.781s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 223: INJECTED AT 1169.2s and DELIVERED in 4379.189s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 280: INJECTED AT 1490.0s and DELIVERED in 4076.439s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 363: INJECTED AT 1895.6s and DELIVERED in 3689.793s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 74: INJECTED AT 467.6s and DELIVERED in 5119.051s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 76: INJECTED AT 474.3s and DELIVERED in 5127.824s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 85: INJECTED AT 512.799999999s and DELIVERED in 5091.097000001s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 391: INJECTED AT 2042.0s and DELIVERED in 3605.686s
+  Satisfaction score: 16.67718169966658
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+Passenger 213: INJECTED AT 1127.4s and DELIVERED in 4585.291s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 306: INJECTED AT 1605.6s and DELIVERED in 4126.265s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 197: INJECTED AT 1053.2s and DELIVERED in 4696.5s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 274: INJECTED AT 1450.8s and DELIVERED in 4300.252s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 190: INJECTED AT 1017.4s and DELIVERED in 4749.633s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 275: INJECTED AT 1460.0s and DELIVERED in 4324.21s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 255: INJECTED AT 1352.0s and DELIVERED in 4432.741s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 348: INJECTED AT 1815.6s and DELIVERED in 3970.653s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 51: INJECTED AT 334.9s and DELIVERED in 5467.067s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 19: INJECTED AT 156.2s and DELIVERED in 5693.236s
+  Satisfaction score: 15.009463529699921
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+Passenger 14: INJECTED AT 134.9s and DELIVERED in 5753.901s
+  Satisfaction score: 13.50851717672993
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+    @5844.340000000: 0.90 Repeated hall call press
+Passenger 321: INJECTED AT 1707.4s and DELIVERED in 4203.014s
+  Satisfaction score: 13.50851717672993
+    @2270.320000000: 0.90 Repeated hall call press
+    @2510.720000000: 0.90 Repeated hall call press
+    @2780.720000000: 0.90 Repeated hall call press
+    @3023.120000000: 0.90 Repeated hall call press
+    @3190.960000000: 0.90 Repeated hall call press
+    @3377.360000000: 0.90 Repeated hall call press
+    @3563.760000000: 0.90 Repeated hall call press
+    @3731.740000000: 0.90 Repeated hall call press
+    @3906.380000000: 0.90 Repeated hall call press
+    @4086.360000000: 0.90 Repeated hall call press
+    @4268.160000000: 0.90 Repeated hall call press
+    @4481.520000000: 0.90 Repeated hall call press
+    @4638.380000000: 0.90 Repeated hall call press
+    @4853.580000000: 0.90 Repeated hall call press
+    @5052.760000000: 0.90 Repeated hall call press
+    @5258.520000000: 0.90 Repeated hall call press
+    @5441.140000000: 0.90 Repeated hall call press
+    @5645.520000000: 0.90 Repeated hall call press
+    @5844.340000000: 0.90 Repeated hall call press
+
+Passenger Delivery Summary
+Delivered: 392
+Stranded: 0
+Total: 392
+
+Deliver Stats (lower is better):
+Average_delivery_time: 1688.259
+Maximum_delivery_time:  5753.901
+Delivery_performance_score:  12506.937
+
+Satisfaction Stats (higher is better):
+Average_satisfaction_score: 70.243
+Min_satisfaction_score:  13.509
+Satisfaction_performance_score:  294.481
+
+
+
+
+Network Utilization Summary:
+Recent: 54.86 % Max: 54.86 %  Overall:  54.86 %
+
+Monitors Warning Results: 
+RuntimeMonitor generated 0 warnings.
+
+Monitors Summmary Results: 
+RT6: stops at floors for which there are no pending calls 0
+RT7: open doors at hallways for which there are no pending calls 0
+RT8.1: no lantern lit when any door is open at a hallway and there are any pending calls at any other floor(s) 0
+RT8.2: direction indicated by lantern changes while the doors are open 0
+RT8.3: car services other direction when one of the car lanterns is lit 0
+RT9: drive speed not commaded to maximum degree practicable 0
+RT10: no door reversal occurs before the doors are commanded to nudge 0
+
