@@ -56,7 +56,7 @@
 
 ;#arc '2B/2'
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 
 +0.10s I AT_FLOOR_PERIOD N AT_FLOOR_[3][FRONT]_CAN_ID AtFloor 3 FRONT = true;
 

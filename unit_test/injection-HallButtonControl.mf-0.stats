@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf unit_test/HallButtonControl.cf -mf unit_test/HallButtonControl.mf
-RandomSeed = 1386708087724
+RandomSeed = 1386720046437
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,14 +15,14 @@ Message File = unit_test/HallButtonControl.mf
 Controller File = unit_test/HallButtonControl.cf
 
 Assertion Results:
-@0.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@563da1dc :: getValue ?== false PASSED
-@0.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@3ff14318 :: lighted ?== false PASSED
+@0.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@18ad8e84 :: getValue ?== false PASSED
+@0.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@7344119b :: lighted ?== false PASSED
 @0.5s:  PASSED HallButtonControl[3][FRONT][UP]::checkState(STATE) ?== STATE_OFF PASSED
-@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@730eb2f0 :: lighted ?== true PASSED
-@2.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@49233bdc :: getValue ?== true PASSED
+@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@7d6c848f :: lighted ?== true PASSED
+@2.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@793aac5f :: getValue ?== true PASSED
 @2.5s:  PASSED HallButtonControl[3][FRONT][UP]::checkState(STATE) ?== STATE_ON PASSED
-@3.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@2c9ced84 :: lighted ?== false PASSED
-@3.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@5fc1c9dc :: getValue ?== false PASSED
+@3.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@620ee765 :: lighted ?== false PASSED
+@3.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@7bc8b313 :: getValue ?== false PASSED
 @3.5s:  PASSED HallButtonControl[3][FRONT][UP]::checkState(STATE) ?== STATE_OFF PASSED
 
 

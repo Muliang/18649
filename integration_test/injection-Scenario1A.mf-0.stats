@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf integration_test/Scenario1A.cf -mf integration_test/Scenario1A.mf
-RandomSeed = 1383870101561
+RandomSeed = 1386720840243
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,7 +15,7 @@ Message File = integration_test/Scenario1A.mf
 Controller File = integration_test/Scenario1A.cf
 
 Assertion Results:
-@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@efa0bf4 :: lighted ?== true PASSED
+@2.5s:  PASSED simulator.payloads.HallLightPayload$ReadableHallLightPayload@35cd1217 :: lighted ?== true PASSED
 
 
 ******************Summary******************
