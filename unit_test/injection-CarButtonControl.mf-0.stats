@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf unit_test/CarButtonControl.cf -mf unit_test/CarButtonControl.mf
-RandomSeed = 1386708088007
+RandomSeed = 1386720047124
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,20 +15,20 @@ Message File = unit_test/CarButtonControl.mf
 Controller File = unit_test/CarButtonControl.cf
 
 Assertion Results:
-@0.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@684d9ebf :: isLighted ?== false PASSED
-@0.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@786bfd73 :: getValue ?== false PASSED
+@0.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@2a6788c4 :: isLighted ?== false PASSED
+@0.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@79e0123b :: getValue ?== false PASSED
 @0.5s:  PASSED CarButtonControl[3][FRONT]::checkState(STATE) ?== STATE_OFF PASSED
-@1.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@4a05e593 :: isLighted ?== true PASSED
-@1.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@282f0e07 :: getValue ?== true PASSED
+@1.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@5f73089d :: isLighted ?== true PASSED
+@1.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@7b0acf26 :: getValue ?== true PASSED
 @1.5s:  PASSED CarButtonControl[3][FRONT]::checkState(STATE) ?== STATE_ON PASSED
-@2.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@72ad8bfd :: isLighted ?== true PASSED
-@2.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@2babbba1 :: getValue ?== true PASSED
+@2.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@4079ca2e :: isLighted ?== true PASSED
+@2.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@3564e3e2 :: getValue ?== true PASSED
 @2.5s:  PASSED CarButtonControl[3][FRONT]::checkState(STATE) ?== STATE_ON PASSED
-@3.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@7b8aeb1 :: isLighted ?== true PASSED
-@3.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@356a90c9 :: getValue ?== true PASSED
+@3.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@5a874bd3 :: isLighted ?== true PASSED
+@3.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@7ed69cff :: getValue ?== true PASSED
 @3.5s:  PASSED CarButtonControl[3][FRONT]::checkState(STATE) ?== STATE_ON PASSED
-@4.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@68a75974 :: isLighted ?== false PASSED
-@4.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@48b915d :: getValue ?== false PASSED
+@4.5s:  PASSED simulator.payloads.CarLightPayload$ReadableCarLightPayload@6f866002 :: isLighted ?== false PASSED
+@4.5s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@5f9849e5 :: getValue ?== false PASSED
 @4.5s:  PASSED CarButtonControl[3][FRONT]::checkState(STATE) ?== STATE_OFF PASSED
 
 

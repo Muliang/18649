@@ -49,7 +49,7 @@
 +0.00s I DOOR_OPENED_SENSOR_PERIOD N DOOR_OPEN_SENSOR_[FRONT][LEFT]_CAN_ID DoorOpened FRONT LEFT = false;
 ;End setting up Pre-conditions
 ; #arc '1B/1a'
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 ; #arc '1B/3b'
 +1.00s I HALL_BUTTON_CONTROL_PERIOD F HallCall 4 FRONT UP = true;
 ; #arc '1B/4'

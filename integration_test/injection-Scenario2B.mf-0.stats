@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf integration_test/Scenario2B.cf -mf integration_test/Scenario2B.mf
-RandomSeed = 1383870104398
+RandomSeed = 1386720845613
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,8 +15,8 @@ Message File = integration_test/Scenario2B.mf
 Controller File = integration_test/Scenario2B.cf
 
 Assertion Results:
-@5.3s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1a9830bc :: command ?== CLOSE PASSED
-@6.5s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@4f801c4 :: command ?== STOP PASSED
+@12.3s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1c0a0847 :: command ?== CLOSE PASSED
+@13.5s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@a5c0f8f :: command ?== STOP PASSED
 
 
 ******************Summary******************

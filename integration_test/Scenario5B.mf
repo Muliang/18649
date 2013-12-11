@@ -46,7 +46,7 @@
 ;End setting up Pre-conditions
 
 ;#arc '5B/1'
-+5.00s A F DoorMotor FRONT LEFT : command == CLOSE;
++12.00s A F DoorMotor FRONT LEFT : command == CLOSE;
 ;#arc '5B/3b'
 +0.00s I DOOR_REVERSAL_NETWORK_PERIOD N DOOR_REVERSAL_SENSOR_[FRONT][LEFT]_CAN_ID DoorReversal FRONT LEFT = true;
 

@@ -5,22 +5,22 @@ Yichao Xue     andrewID: yichaox
 Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
-Command line = -cf Scenario7D.cf -mf Scenario7D.mf -rt 0s -head HEADER
-RandomSeed = 1384490642221
+Command line = -rt 0s -head HEADER -cf integration_test/Scenario7D.cf -mf integration_test/Scenario7D.mf
+RandomSeed = 1386720856214
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
 Real time rate = null
-Message File = Scenario7D.mf
-Controller File = Scenario7D.cf
+Message File = integration_test/Scenario7D.mf
+Controller File = integration_test/Scenario7D.cf
 
 Assertion Results:
-@1.7s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@6b1701fd :: lighted ?== true PASSED
-@2.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@589c9874 :: getFloor ?== 4 PASSED
-@2.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@2295aedf :: getDirection ?== UP PASSED
-@5.3s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1b7ebdf8 :: command ?== CLOSE PASSED
-@6.8s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@6a48e2c5 :: command ?== STOP PASSED
-@7.3s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@a71c9a :: lighted ?== false PASSED
+@1.7s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@69e76a88 :: lighted ?== true PASSED
+@2.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@3c9c4703 :: getFloor ?== 4 PASSED
+@2.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@bb081e3 :: getDirection ?== UP PASSED
+@17.2s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@1fcc4f8 :: command ?== CLOSE PASSED
+@18.7s:  PASSED simulator.payloads.DoorMotorPayload$ReadableDoorMotorPayload@4b28899a :: command ?== STOP PASSED
+@19.2s:  PASSED simulator.payloads.CarLanternPayload$ReadableCarLanternPayload@20f5498f :: lighted ?== false PASSED
 
 
 ******************Summary******************

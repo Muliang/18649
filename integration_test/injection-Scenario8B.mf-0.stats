@@ -6,7 +6,7 @@ Wenhui Hu      andrewID: wenhuih
 
 Simulator Parameters:
 Command line = -rt 0s -head HEADER -cf integration_test/Scenario8B.cf -mf integration_test/Scenario8B.mf
-RandomSeed = 1383870112118
+RandomSeed = 1386720859679
 CanNetworkBitTime = 0 ns
 Effective Can Bitrate = Infinity
 Run Time = 0.0s
@@ -15,9 +15,9 @@ Message File = integration_test/Scenario8B.mf
 Controller File = integration_test/Scenario8B.cf
 
 Assertion Results:
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@49233bdc :: getFloor ?== 1 PASSED
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@2942022d :: getHallway ?== NONE PASSED
-@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@72ad8bfd :: getDirection ?== STOP PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@5ee819a8 :: getFloor ?== 1 PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@6d3c121b :: getHallway ?== NONE PASSED
+@0.2s:  PASSED simulator.payloads.CanMailbox$ReadableCanMailbox@52977e69 :: getDirection ?== STOP PASSED
 
 
 ******************Summary******************
